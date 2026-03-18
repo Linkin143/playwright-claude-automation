@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+app.use(express.static(path.join(__dirname, '../src')));
 
 const PATHS = {
   generatedTests: path.join(__dirname, '../../generated-tests'),
@@ -98,6 +99,10 @@ app.get('/health', (req, res) => {
     timestamp: new Date().toISOString(),
     paths: PATHS
   });
+});
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'web-interface.html'));
 });
 
 app.listen(PORT, () => {
