@@ -1,0 +1,27 @@
+{
+  "name": "playwright-claude-automation",
+  "version": "1.0.0",
+  "description": "Automated Playwright testing with Claude AI",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "bridge": "cd bridge-service && npm start"
+  },
+  "keywords": [
+    "playwright",
+    "automation",
+    "claude",
+    "testing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  }
+}
