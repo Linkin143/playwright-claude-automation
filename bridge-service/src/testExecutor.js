@@ -5,30 +5,31 @@ const resultProcessor = require('./resultProcessor');
 function execute(fileName, PATHS) {
   return new Promise((resolve, reject) => {
     const projectRoot = path.join(__dirname, '../..');
-    const command = `npx playwright test ${fileName} --reporter=json --headed --project=firefox`;
+    const command = `npx playwright test ${fileName} --headed --project=chromium`;
 
     console.log(`\n🚀 Executing test: ${fileName}`);
     console.log(`📂 Working directory: ${projectRoot}`);
+    console.log(`🎭 Running in HEADED mode - browser will be visible`);
 
-    const childProcess = exec(command, {
+    const childProcess = exec(command, { 
       cwd: projectRoot,
       maxBuffer: 10 * 1024 * 1024
     }, async (error, stdout, stderr) => {
-
-      if (stderr) {
-        console.log('⚠️  STDERR:', stderr);
-      }
-
+      
+      console.log('\n📋 Test Output:');
       if (stdout) {
-        console.log('📋 STDOUT:', stdout);
+        console.log(stdout);
       }
 
-      if (error && error.code !== 0 && error.code !== 1) {
-        console.error('❌ Execution error:', error);
+      if (stderr && !stderr.includes('DeprecationWarning')) {
+        console.log('⚠️  Errors/Warnings:');
+        console.log(stderr);
       }
 
-      console.log('✅ Test execution completed');
-
+      console.log('\n✅ Test execution completed');
+      
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
       await resultProcessor.process(fileName, PATHS);
       resolve();
     });

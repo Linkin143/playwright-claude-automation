@@ -8,10 +8,11 @@ export default defineConfig({
   workers: 1,
 
   reporter: [
-    ["html", { outputFolder: "test-results/html-report" }],
-    ["json", { outputFile: "test-results/results.json" }],
-    ["list"],
-  ],
+  ['html', { outputFolder: 'test-results/html-report', open: 'never' }],
+  ['json', { outputFile: 'test-results/results.json' }],
+  ['list'],
+  ['junit', { outputFile: 'test-results/junit.xml' }]
+],
 
   use: {
     trace: "retain-on-failure",
