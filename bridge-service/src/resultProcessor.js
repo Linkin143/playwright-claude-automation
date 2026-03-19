@@ -7,21 +7,21 @@ async function process(fileName, PATHS) {
   try {
     console.log(`\n📊 Processing results for: ${fileName}`);
 
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 3000));
 
     const resultsExist = await fs.access(PATHS.results).then(() => true).catch(() => false);
     
     if (!resultsExist) {
-      console.log('⚠️  Results file not found, checking test file manually...');
-      await checkTestFileDirectly(fileName, PATHS);
+      console.error('❌ Results file not found at:', PATHS.results);
+      console.error('   Test may have failed to execute properly');
       return;
     }
 
     const resultsData = await fs.readFile(PATHS.results, 'utf-8');
     
     if (!resultsData || resultsData.trim() === '') {
-      console.log('⚠️  Results file is empty, checking test file manually...');
-      await checkTestFileDirectly(fileName, PATHS);
+      console.error('❌ Results file is empty');
+      console.error('   Test may have crashed or not generated output');
       return;
     }
 
@@ -29,8 +29,8 @@ async function process(fileName, PATHS) {
     try {
       results = JSON.parse(resultsData);
     } catch (parseError) {
-      console.log('⚠️  Invalid JSON in results file, checking test file manually...');
-      await checkTestFileDirectly(fileName, PATHS);
+      console.error('❌ Invalid JSON in results file');
+      console.error('   Parse error:', parseError.message);
       return;
     }
 
@@ -39,8 +39,8 @@ async function process(fileName, PATHS) {
     const testResult = testSpec?.tests?.[0]?.results?.[0];
 
     if (!testResult) {
-      console.log('⚠️  No test results found in JSON, checking manually...');
-      await checkTestFileDirectly(fileName, PATHS);
+      console.error('❌ No test results found in JSON');
+      console.error('   Results structure:', JSON.stringify(results, null, 2));
       return;
     }
 
@@ -67,58 +67,18 @@ async function process(fileName, PATHS) {
     await claudeClient.sendResults(testData);
 
     if (status === 'PASSED') {
+      console.log('\n✅ Test PASSED - proceeding with Git commit and push');
       await gitManager.pushToGitHub(fileName, status, PATHS);
     } else {
-      console.log('\n⚠️  Test failed - skipping Git commit');
+      console.log('\n❌ Test FAILED - skipping Git commit and push');
+      console.log('   Failed test remains local only in tests/ folder');
+      console.log('   Review and fix the test, then resubmit');
     }
 
   } catch (error) {
     console.error('❌ Error processing results:', error.message);
-    await checkTestFileDirectly(fileName, PATHS);
+    console.error('   Stack:', error.stack);
   }
-}
-
-async function checkTestFileDirectly(fileName, PATHS) {
-  console.log('\n🔍 Running manual test check...');
-  
-  const { exec } = require('child_process');
-  const projectRoot = path.join(__dirname, '../..');
-  
-  return new Promise((resolve) => {
-    exec(`npx playwright test ${fileName}`, { cwd: projectRoot }, (error, stdout, stderr) => {
-      
-      const output = stdout + stderr;
-      const passed = output.includes('1 passed') || output.includes('passed (');
-      const failed = output.includes('1 failed') || output.includes('failed (');
-      
-      let status = 'UNKNOWN';
-      if (passed && !failed) {
-        status = 'PASSED';
-      } else if (failed) {
-        status = 'FAILED';
-      }
-      
-      console.log(`\n📈 Manual Test Check Results:`);
-      console.log(`   File: ${fileName}`);
-      console.log(`   Status: ${status}`);
-      
-      const testData = {
-        fileName,
-        status,
-        duration: 0,
-        error: failed ? 'Test failed - check output above' : null,
-        timestamp: new Date().toISOString()
-      };
-      
-      claudeClient.sendResults(testData);
-      
-      if (status === 'PASSED') {
-        gitManager.pushToGitHub(fileName, status, PATHS);
-      }
-      
-      resolve();
-    });
-  });
 }
 
 module.exports = { process };
