@@ -4,7 +4,7 @@ export default defineConfig({
   testDir: "./tests",
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
-  retries: 1,
+  retries: 0,
   workers: 1,
 
   reporter: [
@@ -14,13 +14,18 @@ export default defineConfig({
     ['junit', { outputFile: 'test-results/junit.xml' }]
   ],
 
+  timeout: 120000,
+
+  expect: {
+    timeout: 15000,
+  },
+
   use: {
     trace: "retain-on-failure",
     screenshot: "on",
     video: "retain-on-failure",
     actionTimeout: 30000,
     navigationTimeout: 60000,
-    headless: false,
   },
 
   projects: [
