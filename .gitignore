@@ -3,8 +3,8 @@ test-results/
 test-reports/
 test-plans/
 playwright-report/
+tests/
 artifacts/
-generated-tests/*.spec.ts
 .env
 *.log
 .DS_Store
