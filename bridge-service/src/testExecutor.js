@@ -5,7 +5,7 @@ const resultProcessor = require('./resultProcessor');
 function execute(fileName, PATHS) {
   return new Promise((resolve, reject) => {
     const projectRoot = path.join(__dirname, '../..');
-    const command = `npx playwright test ${fileName} --project=chromium`;
+    const command = `npx playwright test ${fileName} --project=chromium --headless`;
 
     console.log(`\n🚀 Executing test: ${fileName}`);
     console.log(`📂 Working directory: ${projectRoot}`);
