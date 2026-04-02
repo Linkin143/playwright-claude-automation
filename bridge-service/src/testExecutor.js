@@ -2,9 +2,22 @@ const { exec } = require('child_process');
 const path = require('path');
 const resultProcessor = require('./resultProcessor');
 
+<<<<<<< HEAD
 function runCommand(command, projectRoot) {
   return new Promise((resolve) => {
     const child = exec(command, {
+=======
+function execute(fileName, PATHS) {
+  return new Promise((resolve, reject) => {
+    const projectRoot = path.join(__dirname, '../..');
+    const command = `npx playwright test ${fileName} --project=chromium`;
+
+    console.log(`\n🚀 Executing test: ${fileName}`);
+    console.log(`📂 Working directory: ${projectRoot}`);
+    console.log(`🎭 Running in HEADED mode - browser will be visible`);
+
+    const childProcess = exec(command, { 
+>>>>>>> parent of e3cce2c (cmd change for test executor.)
       cwd: projectRoot,
       maxBuffer: 10 * 1024 * 1024
     }, (error, stdout, stderr) => {
