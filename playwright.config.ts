@@ -32,6 +32,7 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
+      retries: 0,
       use: {
         browserName: "chromium",
         viewport: null,
@@ -43,6 +44,7 @@ export default defineConfig({
     },
     {
       name: "firefox",
+      retries: 0,
       use: {
         browserName: "firefox",
         viewport: null,
@@ -50,6 +52,7 @@ export default defineConfig({
     },
     {
       name: "webkit",
+      retries: 0,
       use: {
         browserName: "webkit",
         viewport: null,
