@@ -3,7 +3,7 @@ test-results/
 test-reports/
 test-plans/
 playwright-report/
-tests/
+generated-tests/
 artifacts/
 .env
 *.log
