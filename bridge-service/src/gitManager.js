@@ -1,10 +1,9 @@
 const simpleGit = require('simple-git');
 const path = require('path');
+const fs = require('fs-extra');
+const os = require('os');
 
 async function pushToGitHub(fileName, status, PATHS) {
-  let originalRepoUrl = null;
-  let originalBranch = null;
-
   try {
     // ✅ Only push if TC passed
     if (status === 'FAILED') {
@@ -12,107 +11,90 @@ async function pushToGitHub(fileName, status, PATHS) {
       return;
     }
 
-    console.log('\n📦 Preparing Git operations...');
-
-    const testsDir = path.resolve(PATHS.tests);
-
-    const git = simpleGit({
-      baseDir: testsDir,
-      binary: 'git',
-      maxConcurrentProcesses: 1,
-    });
-
-    // ✅ Save original repo + branch
-    const currentRemotes = await git.getRemotes(true);
-    const origin = currentRemotes.find(r => r.name === 'origin');
-
-    if (!origin) {
-      throw new Error('❌ No origin remote found');
-    }
-
-    originalRepoUrl = origin.refs.fetch;
-
-    const branchSummary = await git.branchLocal();
-    originalBranch = branchSummary.current;
-
-    console.log(`🔙 Original repo: ${originalRepoUrl}`);
-    console.log(`🔙 Original branch: ${originalBranch}`);
-
-    // ✅ Git config
-    await git.addConfig('user.name', process.env.GITHUB_USERNAME || 'Playwright Bot');
-    await git.addConfig('user.email', process.env.GITHUB_EMAIL || 'bot@playwright.com');
-
-    // ✅ Add + commit
-    await git.add(fileName);
-    await git.commit(`✅ Add: ${fileName} - ${status}`);
-
-    // ❗ Ensure env exists
     if (!process.env.GITHUB_TOKEN || !process.env.GITHUB_REPO_URL) {
       console.log('⚠️ Missing GitHub config. Skipping push.');
       return;
     }
 
-    // ✅ Prepare NEW repo URL (with auth)
-    const newRepoUrl = process.env.GITHUB_REPO_URL.replace(
+    console.log('\n📦 Using TEMP repo (safe mode)...');
+
+    const sourceFilePath = path.resolve(PATHS.tests, fileName);
+
+    if (!fs.existsSync(sourceFilePath)) {
+      throw new Error(`❌ File not found: ${sourceFilePath}`);
+    }
+
+    // ✅ Create temp directory
+    const tempDir = path.join(os.tmpdir(), `git-temp-${Date.now()}`);
+    await fs.ensureDir(tempDir);
+
+    console.log(`📁 Temp directory: ${tempDir}`);
+
+    const git = simpleGit({
+      baseDir: tempDir,
+    });
+
+    // ✅ Auth repo URL
+    const repoUrl = process.env.GITHUB_REPO_URL.replace(
       'https://',
       `https://${process.env.GITHUB_USERNAME}:${process.env.GITHUB_TOKEN}@`
     );
 
-    // 🔁 Switch to NEW repo
-    await git.remote(['set-url', 'origin', newRepoUrl]);
-    console.log('🔁 Switched to NEW repo');
+    // 🔽 Clone repo (if exists)
+    try {
+      console.log('⬇️ Cloning target repo...');
+      await git.clone(repoUrl, tempDir);
+    } catch (cloneErr) {
+      console.log('⚠️ Clone failed, initializing fresh repo...');
+      await git.init();
+      await git.addRemote('origin', repoUrl);
+    }
 
-    // ✅ Always use MAIN branch
-    const targetBranch = 'main';
+    const tempGit = simpleGit({ baseDir: tempDir });
 
-    await git.checkout('main').catch(async () => {
-      console.log('⚠️ main not found → creating...');
-      await git.checkoutLocalBranch('main');
+    // ✅ Ensure main branch
+    await tempGit.checkout('main').catch(async () => {
+      await tempGit.checkoutLocalBranch('main');
     });
 
-    console.log(`📤 Pushing to NEW repo (main branch)...`);
-
-    // 🚀 Push logic
+    // ✅ Pull latest (if repo exists)
     try {
-      await git.push('origin', targetBranch, ['--set-upstream']);
-      console.log('🚀 Successfully pushed to NEW repo!');
-    } catch (err) {
-      console.log('⚠️ Push failed, trying pull + rebase...');
-
-      try {
-        await git.pull('origin', targetBranch, { '--rebase': 'true' });
-        await git.push('origin', targetBranch);
-        console.log('🚀 Push successful after rebase!');
-      } catch (err2) {
-        console.log('⚠️ Force pushing...');
-        await git.push('origin', targetBranch, ['--force']);
-        console.log('🚀 Force push successful!');
-      }
+      await tempGit.pull('origin', 'main');
+    } catch (e) {
+      console.log('ℹ️ No existing remote history (new repo)');
     }
+
+    // 📄 Copy file into temp repo
+    const destFilePath = path.join(tempDir, path.basename(fileName));
+    await fs.copy(sourceFilePath, destFilePath);
+
+    console.log(`📄 Copied file to temp repo: ${destFilePath}`);
+
+    // ✅ Git config
+    await tempGit.addConfig('user.name', process.env.GITHUB_USERNAME || 'Playwright Bot');
+    await tempGit.addConfig('user.email', process.env.GITHUB_EMAIL || 'bot@playwright.com');
+
+    // ✅ Commit + push
+    await tempGit.add('.');
+    await tempGit.commit(`✅ Add: ${fileName} - ${status}`).catch(() => {
+      console.log('ℹ️ Nothing to commit');
+    });
+
+    console.log('📤 Pushing to target repo (main)...');
+
+    await tempGit.push('origin', 'main', ['--set-upstream']).catch(async () => {
+      console.log('⚠️ Push failed, force pushing...');
+      await tempGit.push('origin', 'main', ['--force']);
+    });
+
+    console.log('🚀 Successfully pushed to NEW repo (safe mode)!');
+
+    // 🧹 Cleanup
+    await fs.remove(tempDir);
+    console.log('🧹 Temp directory cleaned');
 
   } catch (error) {
     console.error('❌ Git operation failed:', error.message);
-
-  } finally {
-    try {
-      const testsDir = path.resolve(PATHS.tests);
-      const git = simpleGit({ baseDir: testsDir });
-
-      // 🔁 Restore original repo
-      if (originalRepoUrl) {
-        await git.remote(['set-url', 'origin', originalRepoUrl]);
-        console.log('🔄 Restored original repository');
-      }
-
-      // 🔁 Restore original branch
-      if (originalBranch) {
-        await git.checkout(originalBranch);
-        console.log(`🔄 Switched back to original branch: ${originalBranch}`);
-      }
-
-    } catch (restoreError) {
-      console.error('❌ Failed to restore original repo/branch:', restoreError.message);
-    }
   }
 }
 
