@@ -2,6 +2,7 @@ const chokidar = require('chokidar');
 const path = require('path');
 const fs = require('fs').promises;
 const testExecutor = require('./testExecutor');
+const config = require('./config');
 
 function start(PATHS) {
   const watcher = chokidar.watch(PATHS.generatedTests, {
@@ -27,9 +28,16 @@ function start(PATHS) {
 
 async function processNewTest(filePath, PATHS) {
   const fileName = path.basename(filePath);
-  const destPath = path.join(PATHS.tests, fileName);
 
   try {
+    // 📦 Get subfolder name from config
+    const subFolderName = config.subFolderName;
+
+    // 🔍 Ensure subfolder exists (case-insensitive)
+    const targetFolder = await ensureSubFolder(PATHS.tests, subFolderName);
+
+    const destPath = path.join(targetFolder, fileName);
+
     await fs.copyFile(filePath, destPath);
     console.log(`✅ Test file copied to: ${destPath}`);
 
@@ -40,6 +48,33 @@ async function processNewTest(filePath, PATHS) {
 
   } catch (error) {
     console.error('❌ Error processing test:', error);
+  }
+}
+
+// 🔥 Case-insensitive folder checker + creator
+async function ensureSubFolder(basePath, folderName) {
+  try {
+    const entries = await fs.readdir(basePath, { withFileTypes: true });
+
+    const existing = entries.find(
+      entry =>
+        entry.isDirectory() &&
+        entry.name.toLowerCase() === folderName.toLowerCase()
+    );
+
+    if (existing) {
+      return path.join(basePath, existing.name); // preserve actual casing
+    }
+
+    const newFolderPath = path.join(basePath, folderName);
+    await fs.mkdir(newFolderPath, { recursive: true });
+
+    console.log(`📁 Created subfolder: ${newFolderPath}`);
+    return newFolderPath;
+
+  } catch (err) {
+    console.error('❌ Error ensuring subfolder:', err);
+    throw err;
   }
 }
 

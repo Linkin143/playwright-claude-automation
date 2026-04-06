@@ -2,6 +2,7 @@ const simpleGit = require('simple-git');
 const path = require('path');
 const fs = require('fs-extra');
 const os = require('os');
+const config = require('./config');
 
 async function pushToGitHub(fileName, status, PATHS) {
   try {
@@ -30,9 +31,7 @@ async function pushToGitHub(fileName, status, PATHS) {
 
     console.log(`📁 Temp directory: ${tempDir}`);
 
-    const git = simpleGit({
-      baseDir: tempDir,
-    });
+    const git = simpleGit({ baseDir: tempDir });
 
     // ✅ Auth repo URL
     const repoUrl = process.env.GITHUB_REPO_URL.replace(
@@ -40,7 +39,7 @@ async function pushToGitHub(fileName, status, PATHS) {
       `https://${process.env.GITHUB_USERNAME}:${process.env.GITHUB_TOKEN}@`
     );
 
-    // 🔽 Clone repo (if exists)
+    // 🔽 Clone repo
     try {
       console.log('⬇️ Cloning target repo...');
       await git.clone(repoUrl, tempDir);
@@ -57,20 +56,47 @@ async function pushToGitHub(fileName, status, PATHS) {
       await tempGit.checkoutLocalBranch('main');
     });
 
-    // ✅ Pull latest (if repo exists)
+    // ✅ Pull latest
     try {
       await tempGit.pull('origin', 'main');
     } catch (e) {
       console.log('ℹ️ No existing remote history (new repo)');
     }
 
-    // 📄 Copy file into temp repo
-    const destFilePath = path.join(tempDir, path.basename(fileName));
+    // ================================
+    // 🔥 Folder Handling (UPDATED LOGIC)
+    // ================================
+
+    const subFolderName = config.subFolderName;
+
+    const entries = await fs.readdir(tempDir, { withFileTypes: true });
+
+    const existingFolder = entries.find(
+      entry =>
+        entry.isDirectory() &&
+        entry.name.toLowerCase() === subFolderName.toLowerCase()
+    );
+
+    let targetFolderPath;
+
+    if (existingFolder) {
+      targetFolderPath = path.join(tempDir, existingFolder.name);
+      console.log(`📁 Using existing folder: ${existingFolder.name}`);
+    } else {
+      targetFolderPath = path.join(tempDir, subFolderName);
+      await fs.ensureDir(targetFolderPath);
+      console.log(`📁 Created folder: ${subFolderName}`);
+    }
+
+    // 📄 Copy file into that folder
+    const destFilePath = path.join(targetFolderPath, path.basename(fileName));
     await fs.copy(sourceFilePath, destFilePath);
 
-    console.log(`📄 Copied file to temp repo: ${destFilePath}`);
+    console.log(`📄 Copied file to: ${destFilePath}`);
 
+    // ================================
     // ✅ Git config
+    // ================================
     await tempGit.addConfig('user.name', process.env.GITHUB_USERNAME || 'Playwright Bot');
     await tempGit.addConfig('user.email', process.env.GITHUB_EMAIL || 'bot@playwright.com');
 
@@ -87,9 +113,9 @@ async function pushToGitHub(fileName, status, PATHS) {
       await tempGit.push('origin', 'main', ['--force']);
     });
 
-    console.log('🚀 Successfully pushed to NEW repo (safe mode)!');
+    console.log('🚀 Successfully pushed to repo!');
 
-    // 🧹 Cleanup
+    // 🧹 Cleanup temp directory
     await fs.remove(tempDir);
     console.log('🧹 Temp directory cleaned');
 
