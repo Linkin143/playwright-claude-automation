@@ -39,34 +39,17 @@ function execute(fileName, PATHS) {
 
     console.log(`\n🚀 Executing test: ${fileName}`);
     console.log(`📂 Working directory: ${projectRoot}`);
-    console.log(`🎭 Running in HEADLESS mode`);
+    console.log(`🎭 Running in ALL browsers (Chromium + Firefox + WebKit)`);
 
     try {
-      // 🔥 STEP 1: Chromium (FIRST)
-      const chromiumCmd = `npx playwright test ${fileName} --project=chromium`;
-      const chromiumPassed = await runCommand(chromiumCmd, projectRoot);
+      // ✅ RUN ALL BROWSERS IN ONE COMMAND
+      const command = `npx playwright test ${fileName} --project=chromium --project=firefox`;
+      const passed = await runCommand(command, projectRoot);
 
-      if (!chromiumPassed) {
-        console.log(`🛑 Stopping execution (Chromium failed)`);
-
-        await new Promise(r => setTimeout(r, 2000));
-        await resultProcessor.process(fileName, PATHS);
-
-        return resolve();
-      }
-
-      // 🔥 STEP 2: Firefox
-      const firefoxCmd = `npx playwright test ${fileName} --project=firefox`;
-      const firefoxPassed = await runCommand(firefoxCmd, projectRoot);
-
-      // 🔥 STEP 3: WebKit
-      const webkitCmd = `npx playwright test ${fileName} --project=webkit`;
-      const webkitPassed = await runCommand(webkitCmd, projectRoot);
-
-      if (firefoxPassed && webkitPassed) {
-        console.log(`🎉 All browsers passed`);
+      if (passed) {
+        console.log(`🎉 Test passed across browsers`);
       } else {
-        console.log(`⚠️ Cross-browser issues detected`);
+        console.log(`⚠️ Some browsers failed`);
       }
 
       console.log('\n✅ Test execution completed');
