@@ -31,7 +31,7 @@ set RETRY_COUNT=0
 :RETRY_LOOP
 echo Attempt !RETRY_COUNT! >> "%LOG_FILE%"
 
-call "%NODE_PATH%\npx.cmd" playwright test -- ".\%TEST_DIR%\*.spec.ts" >> "%LOG_FILE%" 2>&1
+call "%NODE_PATH%\npx.cmd" playwright test >> "%LOG_FILE%" 2>&1
 set EXIT_CODE=%ERRORLEVEL%
 
 if %EXIT_CODE%==0 (
