@@ -55,11 +55,13 @@ REM ===== EMAIL NOTIFICATION =====
 if %EXIT_CODE%==0 (
     powershell -ExecutionPolicy Bypass -File "%PROJECT_DIR%\send_email.ps1" ^
     -subject "Playwright SUCCESS" ^
-    -body "All tests passed at %date% %time%"
+    -body "All tests passed" ^
+    -logFile "%LOG_FILE%"
 ) else (
     powershell -ExecutionPolicy Bypass -File "%PROJECT_DIR%\send_email.ps1" ^
     -subject "Playwright FAILED" ^
-    -body "Tests failed at %date% %time%. Check logs."
+    -body "Tests failed" ^
+    -logFile "%LOG_FILE%"
 )
 
 echo ===== RUN ALL END %date% %time% ===== >> "%LOG_FILE%"

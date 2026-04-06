@@ -70,11 +70,13 @@ REM ===== EMAIL NOTIFICATION =====
 if %EXIT_CODE%==0 (
     powershell -ExecutionPolicy Bypass -File "%PROJECT_DIR%\send_email.ps1" ^
     -subject "%SCRIPT% SUCCESS" ^
-    -body "%SCRIPT% passed at %date% %time%"
+    -body "%SCRIPT% passed" ^
+    -logFile "%LOG_FILE%"
 ) else (
     powershell -ExecutionPolicy Bypass -File "%PROJECT_DIR%\send_email.ps1" ^
     -subject "%SCRIPT% FAILED" ^
-    -body "%SCRIPT% failed at %date% %time%. Check logs."
+    -body "%SCRIPT% failed" ^
+    -logFile "%LOG_FILE%"
 )
 
 echo ===== RUN END %date% %time% ===== >> "%LOG_FILE%"

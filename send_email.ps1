@@ -1,15 +1,11 @@
 param (
     [string]$subject,
-    [string]$body
+    [string]$body,
+    [string]$logFile
 )
 
-# ===== LOAD .env FILE =====
+# ===== LOAD .env =====
 $envPath = "C:\Documents\playwright-claude-automation\.env"
-
-if (!(Test-Path $envPath)) {
-    Write-Output "ERROR: .env file not found"
-    exit 1
-}
 
 Get-Content $envPath | ForEach-Object {
     if ($_ -match "^\s*([^#][^=]+)=(.*)$") {
@@ -19,33 +15,53 @@ Get-Content $envPath | ForEach-Object {
     }
 }
 
-# ===== READ VARIABLES =====
 $from = $env:EMAIL_USER
 $to = $env:EMAIL_TO
 $appPassword = $env:EMAIL_PASS
 
-if (-not $from -or -not $appPassword) {
-    Write-Output "ERROR: Missing email credentials in .env"
-    exit 1
-}
-
-# ===== EMAIL CONFIG =====
+# ===== SMTP =====
 $smtpServer = "smtp.gmail.com"
 $smtpPort = 587
 
 $message = New-Object system.net.mail.mailmessage
-$message.from = $from
-$message.to.add($to)
-$message.subject = $subject
-$message.body = $body
+$message.From = $from
+$message.To.Add($to)
+$message.Subject = $subject
 
+# ===== BEAUTIFUL BODY =====
+$summary = ""
+
+if (Test-Path $logFile) {
+    $summaryLines = Get-Content $logFile | Select-Object -Last 20
+    $summary = $summaryLines -join "`n"
+}
+
+$message.Body = @"
+===== PLAYWRIGHT REPORT =====
+
+Status: $subject
+Time: $(Get-Date)
+
+--- Last Log Lines ---
+$summary
+
+--- Full log attached ---
+"@
+
+# ===== ATTACH LOG =====
+if (Test-Path $logFile) {
+    $attachment = New-Object System.Net.Mail.Attachment($logFile)
+    $message.Attachments.Add($attachment)
+}
+
+# ===== SEND =====
 $smtp = New-Object Net.Mail.SmtpClient($smtpServer, $smtpPort)
 $smtp.EnableSsl = $true
 $smtp.Credentials = New-Object System.Net.NetworkCredential($from, $appPassword)
 
 try {
     $smtp.Send($message)
-    Write-Output "Email sent successfully"
+    Write-Output "Email sent"
 } catch {
-    Write-Output "ERROR: Failed to send email"
+    Write-Output "Email failed"
 }
