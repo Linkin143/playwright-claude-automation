@@ -4,7 +4,7 @@ test-reports/
 test-plans/
 playwright-report/
 generated-tests/*.spec.ts
-artifacts/*.json
+artifacts/*
 .env
 *.log
 .DS_Store
