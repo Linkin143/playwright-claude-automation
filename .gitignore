@@ -5,6 +5,7 @@ test-plans/
 playwright-report/
 generated-tests/
 artifacts/
+send_email.ps1
 .env
 *.log
 .DS_Store
