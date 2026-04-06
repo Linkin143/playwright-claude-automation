@@ -19,7 +19,16 @@ async function pushToGitHub(fileName, status, PATHS) {
 
     console.log('\n📦 Using TEMP repo (safe mode)...');
 
-    const sourceFilePath = path.resolve(PATHS.tests, fileName);
+    const subFolderName = config.subFolderName;
+
+    // ✅ UPDATED: Read from tests/<subFolderName>/
+    const sourceFilePath = path.resolve(
+      PATHS.tests,
+      subFolderName,
+      fileName
+    );
+
+    console.log(`📂 Reading file from: ${sourceFilePath}`);
 
     if (!fs.existsSync(sourceFilePath)) {
       throw new Error(`❌ File not found: ${sourceFilePath}`);
@@ -64,10 +73,8 @@ async function pushToGitHub(fileName, status, PATHS) {
     }
 
     // ================================
-    // 🔥 Folder Handling (UPDATED LOGIC)
+    // 🔥 Folder Handling
     // ================================
-
-    const subFolderName = config.subFolderName;
 
     const entries = await fs.readdir(tempDir, { withFileTypes: true });
 
@@ -97,8 +104,14 @@ async function pushToGitHub(fileName, status, PATHS) {
     // ================================
     // ✅ Git config
     // ================================
-    await tempGit.addConfig('user.name', process.env.GITHUB_USERNAME || 'Playwright Bot');
-    await tempGit.addConfig('user.email', process.env.GITHUB_EMAIL || 'bot@playwright.com');
+    await tempGit.addConfig(
+      'user.name',
+      process.env.GITHUB_USERNAME || 'Playwright Bot'
+    );
+    await tempGit.addConfig(
+      'user.email',
+      process.env.GITHUB_EMAIL || 'bot@playwright.com'
+    );
 
     // ✅ Commit + push
     await tempGit.add('.');
@@ -115,7 +128,7 @@ async function pushToGitHub(fileName, status, PATHS) {
 
     console.log('🚀 Successfully pushed to repo!');
 
-    // 🧹 Cleanup temp directory
+    // 🧹 Cleanup
     await fs.remove(tempDir);
     console.log('🧹 Temp directory cleaned');
 
