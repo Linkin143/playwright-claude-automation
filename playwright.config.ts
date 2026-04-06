@@ -2,11 +2,10 @@ import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests",
-  fullyParallel: false,
+  fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,
-  workers: 1,
-
+  workers: process.env.CI ? 2 : undefined,
   reporter: [
     ['html', { outputFolder: 'test-results/html-report', open: 'never' }],
     ['json', { outputFile: 'test-results/results.json' }],
@@ -38,7 +37,9 @@ export default defineConfig({
         viewport: null,
         launchOptions: {
           slowMo: 500,
-          args: ['--start-maximized']
+          args: ['--start-maximized',
+            '--disable-dev-shm-usage'
+          ]
         },
       },
     },
