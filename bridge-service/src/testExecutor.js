@@ -39,7 +39,7 @@ function execute(fileName, PATHS) {
 
     console.log(`\n🚀 Executing test: ${fileName}`);
     console.log(`📂 Working directory: ${projectRoot}`);
-    console.log(`🎭 Running in ALL browsers (Chromium + Firefox + WebKit)`);
+    console.log(`🎭 Running in ALL browsers (Chromium + Firefox)`);
 
     try {
       // ✅ RUN ALL BROWSERS IN ONE COMMAND
