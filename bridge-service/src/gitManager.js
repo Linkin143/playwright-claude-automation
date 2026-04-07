@@ -21,7 +21,7 @@ async function pushToGitHub(fileName, status, PATHS) {
 
     const subFolderName = config.subFolderName;
 
-    // ✅ UPDATED: Read from tests/<subFolderName>/
+    // ✅ Source path (already correct)
     const sourceFilePath = path.resolve(
       PATHS.tests,
       subFolderName,
@@ -73,10 +73,15 @@ async function pushToGitHub(fileName, status, PATHS) {
     }
 
     // ================================
-    // 🔥 Folder Handling
+    // 🔥 UPDATED: Work inside /tests folder
     // ================================
 
-    const entries = await fs.readdir(tempDir, { withFileTypes: true });
+    const testsDir = path.join(tempDir, 'tests');
+
+    // ensure tests folder exists (safe)
+    await fs.ensureDir(testsDir);
+
+    const entries = await fs.readdir(testsDir, { withFileTypes: true });
 
     const existingFolder = entries.find(
       entry =>
@@ -87,15 +92,15 @@ async function pushToGitHub(fileName, status, PATHS) {
     let targetFolderPath;
 
     if (existingFolder) {
-      targetFolderPath = path.join(tempDir, existingFolder.name);
-      console.log(`📁 Using existing folder: ${existingFolder.name}`);
+      targetFolderPath = path.join(testsDir, existingFolder.name);
+      console.log(`📁 Using existing folder: tests/${existingFolder.name}`);
     } else {
-      targetFolderPath = path.join(tempDir, subFolderName);
+      targetFolderPath = path.join(testsDir, subFolderName);
       await fs.ensureDir(targetFolderPath);
-      console.log(`📁 Created folder: ${subFolderName}`);
+      console.log(`📁 Created folder: tests/${subFolderName}`);
     }
 
-    // 📄 Copy file into that folder
+    // 📄 Copy file into tests/subfolder
     const destFilePath = path.join(targetFolderPath, path.basename(fileName));
     await fs.copy(sourceFilePath, destFilePath);
 
