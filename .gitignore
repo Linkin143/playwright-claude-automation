@@ -5,6 +5,7 @@ test-plans/
 playwright-report/
 generated-tests/*
 artifacts/*
+TestSteps/
 .env
 *.log
 .DS_Store
