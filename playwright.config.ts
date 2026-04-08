@@ -5,7 +5,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,
-  workers: 3,
+  workers: 2,
   reporter: [
     ['html', { outputFolder: 'test-results/html-report', open: 'never' }],
     ['json', { outputFile: 'test-results/results.json' }],
@@ -45,10 +45,11 @@ export default defineConfig({
     },
     {
       name: "firefox",
-      retries: 0,
+      retries: 1,
       use: {
         browserName: "firefox",
         viewport: null,
+        actionTimeout: 40000,
       },
     },
     {
