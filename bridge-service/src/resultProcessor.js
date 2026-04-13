@@ -111,13 +111,10 @@ async function process(fileName, PATHS) {
     await claudeClient.sendResults(testData);
 
     if (status === 'PASSED') {
-      console.log('\n✅ Test PASSED - proceeding with copy to passedTC and Git push');
-      
-      await copyToPassedTC(fileName, PATHS);
-      
+      console.log('\n✅ Test PASSED - proceeding with Git push');
       await gitManager.pushToGitHub(fileName, status, PATHS);
     } else {
-      console.log('\n❌ Test FAILED - skipping passedTC copy and Git push');
+      console.log('\n❌ Test FAILED - skipping Git push');
       console.log(`   Failed test remains in localTC/${config.subFolderName}/ only`);
       console.log('   Review and fix the test, then resubmit');
     }
@@ -125,106 +122,6 @@ async function process(fileName, PATHS) {
   } catch (error) {
     console.error('❌ Error processing results:', error.message);
     console.error('   Stack:', error.stack);
-  }
-}
-
-async function copyToPassedTC(fileName, PATHS) {
-  try {
-    const subFolderName = config.subFolderName;
-
-    console.log(`\n📦 Copying to passedTC/${subFolderName}/...`);
-
-    const sourceFilePath = path.join(PATHS.localTC, subFolderName, fileName);
-
-    const exists = await fs.access(sourceFilePath).then(() => true).catch(() => false);
-    if (!exists) {
-      throw new Error(`Source file not found: ${sourceFilePath}`);
-    }
-
-    const passedTCSubFolder = await ensureSubFolder(PATHS.passedTC, subFolderName);
-
-    const destFilePath = path.join(passedTCSubFolder, fileName);
-
-    await fs.copyFile(sourceFilePath, destFilePath);
-    console.log(`✅ Copied to: passedTC/${subFolderName}/${fileName}`);
-
-    console.log('⏳ Waiting for file stability in passedTC...');
-    await waitForFileStability(destFilePath, 3000, 10000);
-
-    console.log('✅ File stable in passedTC, ready for Git push');
-
-  } catch (error) {
-    console.error('❌ Error copying to passedTC:', error.message);
-    throw error;
-  }
-}
-
-async function ensureSubFolder(basePath, folderName) {
-  try {
-    await fs.mkdir(basePath, { recursive: true });
-
-    const entries = await fs.readdir(basePath, { withFileTypes: true });
-
-    const normalizedFolderName = normalizeFolderName(folderName);
-
-    const existing = entries.find(entry => {
-      if (!entry.isDirectory()) return false;
-      const normalizedEntryName = normalizeFolderName(entry.name);
-      return normalizedEntryName === normalizedFolderName;
-    });
-
-    if (existing) {
-      const existingPath = path.join(basePath, existing.name);
-      console.log(`📁 Using existing passedTC subfolder: ${existingPath}`);
-      return existingPath;
-    }
-
-    const newFolderPath = path.join(basePath, folderName);
-    await fs.mkdir(newFolderPath, { recursive: true });
-
-    console.log(`📁 Created passedTC subfolder: ${newFolderPath}`);
-    return newFolderPath;
-
-  } catch (err) {
-    console.error('❌ Error ensuring passedTC subfolder:', err);
-    throw err;
-  }
-}
-
-function normalizeFolderName(name) {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, '');
-}
-
-async function waitForFileStability(filePath, checkInterval = 3000, stableDuration = 10000) {
-  let lastSize = -1;
-  let stableTime = 0;
-
-  while (true) {
-    try {
-      const stats = await fs.stat(filePath);
-      const currentSize = stats.size;
-
-      if (currentSize === lastSize) {
-        stableTime += checkInterval;
-        console.log(`⏳ File stable for ${stableTime / 1000}s`);
-
-        if (stableTime >= stableDuration) {
-          console.log('✅ File is stable');
-          break;
-        }
-      } else {
-        stableTime = 0;
-        lastSize = currentSize;
-        console.log('🔄 File still changing...');
-      }
-
-    } catch (err) {
-      console.log('⚠️ Waiting for file to be accessible...');
-    }
-
-    await new Promise(resolve => setTimeout(resolve, checkInterval));
   }
 }
 
