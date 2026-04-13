@@ -2,7 +2,6 @@ const simpleGit = require('simple-git');
 const path = require('path');
 const fs = require('fs-extra');
 const os = require('os');
-const config = require('./config');
 
 async function pushToGitHub(fileName, status, PATHS) {
   try {
@@ -16,21 +15,7 @@ async function pushToGitHub(fileName, status, PATHS) {
       return;
     }
 
-    console.log('\n📦 Using TEMP repo (safe mode)...');
-
-    const subFolderName = config.subFolderName;
-
-    const sourceFilePath = path.resolve(
-      PATHS.passedTC,
-      subFolderName,
-      fileName
-    );
-
-    console.log(`📂 Reading file from: passedTC/${subFolderName}/${fileName}`);
-
-    if (!fs.existsSync(sourceFilePath)) {
-      throw new Error(`❌ File not found in passedTC: ${sourceFilePath}`);
-    }
+    console.log('\n📦 Preparing Git push from passedTC folder...');
 
     const tempDir = path.join(os.tmpdir(), `git-temp-${Date.now()}`);
     await fs.ensureDir(tempDir);
@@ -65,35 +50,21 @@ async function pushToGitHub(fileName, status, PATHS) {
       console.log('ℹ️ No existing remote history (new repo)');
     }
 
-    const testsDir = path.join(tempDir, 'tests');
+    const tempTestsDir = path.join(tempDir, 'tests');
+    await fs.ensureDir(tempTestsDir);
 
-    await fs.ensureDir(testsDir);
+    const sourcePassedTCDir = PATHS.passedTC;
 
-    const entries = await fs.readdir(testsDir, { withFileTypes: true });
+    console.log(`📂 Copying entire passedTC structure to temp repo...`);
+    console.log(`   From: ${sourcePassedTCDir}`);
+    console.log(`   To: ${tempTestsDir}`);
 
-    const normalizedSubFolderName = normalizeFolderName(subFolderName);
-
-    const existingFolder = entries.find(entry => {
-      if (!entry.isDirectory()) return false;
-      const normalizedEntryName = normalizeFolderName(entry.name);
-      return normalizedEntryName === normalizedSubFolderName;
+    await fs.copy(sourcePassedTCDir, tempTestsDir, {
+      overwrite: true,
+      recursive: true
     });
 
-    let targetFolderPath;
-
-    if (existingFolder) {
-      targetFolderPath = path.join(testsDir, existingFolder.name);
-      console.log(`📁 Using existing GitHub folder: tests/${existingFolder.name}`);
-    } else {
-      targetFolderPath = path.join(testsDir, subFolderName);
-      await fs.ensureDir(targetFolderPath);
-      console.log(`📁 Created GitHub folder: tests/${subFolderName}`);
-    }
-
-    const destFilePath = path.join(targetFolderPath, path.basename(fileName));
-    await fs.copy(sourceFilePath, destFilePath);
-
-    console.log(`📄 Copied file to GitHub repo: tests/${path.basename(targetFolderPath)}/${fileName}`);
+    console.log(`✅ Copied passedTC structure to temp repo`);
 
     await tempGit.addConfig(
       'user.name',
@@ -105,18 +76,27 @@ async function pushToGitHub(fileName, status, PATHS) {
     );
 
     await tempGit.add('.');
-    await tempGit.commit(`✅ Add: ${fileName} - ${status}`).catch(() => {
-      console.log('ℹ️ Nothing to commit');
+    
+    const commitResult = await tempGit.commit(`✅ Add: ${fileName} - ${status}`).catch(() => {
+      console.log('ℹ️ Nothing to commit (no changes detected)');
+      return null;
     });
 
-    console.log('📤 Pushing to target repo (main)...');
+    if (!commitResult) {
+      console.log('⏭️ No new changes to push');
+      await fs.remove(tempDir);
+      return;
+    }
+
+    console.log('📤 Pushing to GitHub (main branch)...');
 
     await tempGit.push('origin', 'main', ['--set-upstream']).catch(async () => {
       console.log('⚠️ Push failed, force pushing...');
       await tempGit.push('origin', 'main', ['--force']);
     });
 
-    console.log('🚀 Successfully pushed to GitHub repo!');
+    console.log('🚀 Successfully pushed to GitHub!');
+    console.log(`   Repository: ${process.env.GITHUB_REPO_URL}`);
 
     await fs.remove(tempDir);
     console.log('🧹 Temp directory cleaned');
@@ -124,12 +104,6 @@ async function pushToGitHub(fileName, status, PATHS) {
   } catch (error) {
     console.error('❌ Git operation failed:', error.message);
   }
-}
-
-function normalizeFolderName(name) {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, '');
 }
 
 module.exports = { pushToGitHub };
