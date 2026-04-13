@@ -25,7 +25,7 @@ on:
         description: |
           File or folder path
           Examples:
-          - tests/passedTC/msn/example.spec.ts
+          - tests/passedTC/example.spec.ts
           - tests/passedTC/msn/
         required: false
 
