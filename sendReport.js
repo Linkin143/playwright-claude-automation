@@ -2,6 +2,7 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 const path = require('path');
+const zlib = require('zlib');
 
 async function sendEmail() {
   let passed = 0;
@@ -43,8 +44,7 @@ async function sendEmail() {
                   error: errorMsg.split('\n')[0].slice(0, 120),
                 });
 
-                // 📸 Attach screenshots if exist
-                if (lastResult.attachments) {
+                if (lastResult.attachments && failedTests.length <= 3) {
                   lastResult.attachments.forEach(att => {
                     if (att.path && att.contentType?.includes('image')) {
                       if (fs.existsSync(att.path)) {
@@ -73,6 +73,8 @@ async function sendEmail() {
   if (fs.existsSync('./test-results/results.json')) {
     const results = JSON.parse(fs.readFileSync('./test-results/results.json', 'utf-8'));
     extractResults(results);
+  } else {
+    console.log('⚠️ No results.json found, sending summary email only');
   }
 
   const total       = passed + failed + skipped;
@@ -93,23 +95,42 @@ async function sendEmail() {
     ? `https://github.com/${repo}/actions/runs/${process.env.GITHUB_RUN_ID}`
     : '#';
 
-  // ✅ Attach CSV if it exists — named with run number for easy identification
-  const csvPath = './test-results/allure-summary.csv';
+  let csvPath = './test-results/allure-summary.csv';
+  let csvFilename = `test-results-run-${runNumber}.csv`;
+  let isCompressed = false;
+
+  if (fs.existsSync(csvPath + '.gz')) {
+    csvPath = csvPath + '.gz';
+    csvFilename = `test-results-run-${runNumber}.csv.gz`;
+    isCompressed = true;
+  }
+
   if (fs.existsSync(csvPath)) {
-    attachments.push({
-      filename: `test-results-run-${runNumber}.csv`,
-      path: csvPath,
-      contentType: 'text/csv',
-    });
-    console.log(`📎 CSV attached: test-results-run-${runNumber}.csv`);
+    const csvSize = fs.statSync(csvPath).size;
+    const csvSizeKB = (csvSize / 1024).toFixed(1);
+    
+    if (csvSize > 20 * 1024 * 1024) {
+      console.log(`⚠️ CSV too large (${csvSizeKB}KB), skipping attachment`);
+    } else {
+      attachments.unshift({
+        filename: csvFilename,
+        path: csvPath,
+        contentType: isCompressed ? 'application/gzip' : 'text/csv',
+      });
+      console.log(`📎 CSV attached: ${csvFilename} (${csvSizeKB}KB)`);
+    }
   } else {
     console.log('⚠️ CSV not found, skipping CSV attachment');
   }
 
-  // ✅ Attach up to 5 screenshots (after CSV so CSV is always first)
-  const screenshotAttachments = attachments.filter(a => a.contentType !== 'text/csv');
-  const csvAttachments        = attachments.filter(a => a.contentType === 'text/csv');
-  attachments = [...csvAttachments, ...screenshotAttachments.slice(0, 5)];
+  const screenshotAttachments = attachments.filter(a => 
+    !a.contentType?.includes('csv') && !a.contentType?.includes('gzip')
+  );
+  const csvAttachments = attachments.filter(a => 
+    a.contentType?.includes('csv') || a.contentType?.includes('gzip')
+  );
+  
+  attachments = [...csvAttachments, ...screenshotAttachments.slice(0, 3)];
 
   const failedRows = failedTests.length > 0
     ? failedTests.slice(0, 10).map(t => `
@@ -121,10 +142,13 @@ async function sendEmail() {
         </tr>`).join('')
     : `<tr><td colspan="4" style="padding:10px;text-align:center;color:green;">None 🎉 All tests passed!</td></tr>`;
 
+  const csvNote = isCompressed 
+    ? `📎 <strong>Attached:</strong> Compressed test results as <code>${csvFilename}</code> — extract and open in Excel/Sheets.`
+    : `📎 <strong>Attached:</strong> Full test results as <code>${csvFilename}</code> — open in Excel/Sheets.`;
+
   const htmlBody = `
   <div style="font-family:Arial,sans-serif;max-width:700px;margin:0 auto;padding:20px;color:#333;">
 
-    <!-- Header -->
     <div style="background:${statusColor};color:#fff;padding:16px 20px;border-radius:8px 8px 0 0;">
       <h2 style="margin:0;font-size:20px;">
         ${statusEmoji} Playwright Test Report — ${statusLabel}
@@ -134,7 +158,6 @@ async function sendEmail() {
       </p>
     </div>
 
-    <!-- Summary cards -->
     <div style="display:flex;gap:0;border:1px solid #ddd;border-top:none;">
       <div style="flex:1;padding:14px;text-align:center;border-right:1px solid #ddd;">
         <div style="font-size:26px;font-weight:bold;">${total}</div>
@@ -158,18 +181,14 @@ async function sendEmail() {
       </div>
     </div>
 
-    <!-- Meta info -->
     <div style="background:#f8f9fa;padding:12px 16px;border:1px solid #ddd;border-top:none;font-size:13px;">
       ⏱ Duration: <strong>${durationSec}s (${durationMin} min)</strong>
       &nbsp;&nbsp;|&nbsp;&nbsp;
       👤 Triggered by: <strong>${actor}</strong>
       &nbsp;&nbsp;|&nbsp;&nbsp;
-      🖥️ Environment: <strong>GitHub Actions</strong>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
       🌐 Browsers: <strong>Chromium + Firefox</strong>
     </div>
 
-    <!-- Failed tests table -->
     <div style="margin-top:20px;">
       <h3 style="font-size:15px;margin-bottom:8px;">❌ Failed Tests ${failed > 0 ? `(${failed})` : ''}</h3>
       <table style="width:100%;border-collapse:collapse;font-size:13px;border:1px solid #ddd;">
@@ -186,29 +205,26 @@ async function sendEmail() {
       ${failedTests.length > 10 ? `<p style="font-size:12px;color:#888;">...and ${failedTests.length - 10} more. See full report.</p>` : ''}
     </div>
 
-    <!-- CSV note -->
     <div style="margin-top:16px;padding:10px 14px;background:#f0f7ff;border:1px solid #cce0ff;border-radius:6px;font-size:13px;">
-      📎 <strong>Attached:</strong> Full test results as <code>test-results-run-${runNumber}.csv</code>
-      — open in Excel or Google Sheets for detailed analysis.
+      ${csvNote}
     </div>
 
-    <!-- CTA buttons -->
     <div style="margin-top:24px;display:flex;gap:12px;">
       <a href="${reportUrl}"
          style="display:inline-block;padding:12px 24px;background:#007bff;color:#fff;
                 text-decoration:none;border-radius:6px;font-weight:bold;font-size:14px;">
-        📊 Open Allure 3 Report
+        📊 Open Allure Report
       </a>
       <a href="${runUrl}"
          style="display:inline-block;padding:12px 24px;background:#6c757d;color:#fff;
                 text-decoration:none;border-radius:6px;font-weight:bold;font-size:14px;">
-        ⚙️ View GitHub Actions Run
+        ⚙️ View GitHub Actions
       </a>
     </div>
 
     <hr style="margin:24px 0;border:none;border-top:1px solid #eee;"/>
     <p style="font-size:11px;color:#aaa;margin:0;">
-      Auto-generated by Playwright + Allure 3 &nbsp;|&nbsp; ${repo} &nbsp;|&nbsp; Run #${runNumber}
+      Auto-generated by Playwright + Allure &nbsp;|&nbsp; ${repo} &nbsp;|&nbsp; Run #${runNumber}
     </p>
 
   </div>
@@ -225,12 +241,16 @@ async function sendEmail() {
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_TO,
-    subject: `${statusEmoji} Playwright Report #${runNumber} — ${statusLabel} (${passed}/${total} passed)`,
+    subject: `${statusEmoji} Playwright #${runNumber} — ${statusLabel} (${passed}/${total})`,
     html: htmlBody,
     attachments,
   });
 
-  console.log('✅ Email sent — Allure 3 report link + CSV attached!');
+  console.log(`✅ Email sent to ${process.env.EMAIL_TO}`);
+  console.log(`   Attachments: ${attachments.length} files`);
 }
 
-sendEmail();
+sendEmail().catch(err => {
+  console.error('❌ Email failed:', err.message);
+  process.exit(1);
+});

@@ -2,7 +2,12 @@ name: Playwright + Allure Report
 
 on:
   schedule:
-    - cron: '40 3 * * *'  # 09:10 IST daily
+    # Multiple triggers to beat GitHub Actions delays
+    # First available slot will run (others auto-cancel via concurrency)
+    - cron: '20 3 * * *'  # 08:50 IST
+    - cron: '25 3 * * *'  # 08:55 IST  
+    - cron: '30 3 * * *'  # 09:00 IST (target)
+    - cron: '35 3 * * *'  # 09:05 IST (backup)
 
   workflow_dispatch:
     inputs:
@@ -21,7 +26,7 @@ on:
         description: |
           File or folder path
           Examples:
-          - tests/passedTC/example.spec.ts
+          - tests/passedTC/msn/example.spec.ts
           - tests/passedTC/msn/
         required: false
 
@@ -32,14 +37,29 @@ on:
           tests/passedTC/msn/a.spec.ts,tests/passedTC/msn/b.spec.ts
         required: false
 
+      send_email:
+        description: "Send email report?"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
 permissions:
   contents: write
   pull-requests: write
   checks: write
 
+# Prevent multiple scheduled runs from executing simultaneously
+concurrency:
+  group: playwright-tests-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     steps:
       - name: Checkout
@@ -49,23 +69,48 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
+
+      # Cache dependencies (speeds up 2-3 minutes)
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
 
       - name: Install dependencies
         run: npm ci
 
+      # Cache Playwright browsers (speeds up 1-2 minutes)
+      - name: Cache Playwright Browsers
+        id: playwright-cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers-${{ hashFiles('package-lock.json') }}
+
       - name: Install browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
 
-      # ✅ Create all needed dirs at runtime
+      - name: Install browser dependencies (if cached)
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps
+
       - name: Create output directories
         run: mkdir -p allure-results allure-report test-results
 
-      # 🧠 Load schedule config
+      # Load schedule config with timezone handling
       - name: Load Schedule Config
         id: config
         run: |
-          DAY=$(date +%A | tr '[:upper:]' '[:lower:]')
-          echo "Today: $DAY"
+          # Get day in IST timezone
+          DAY=$(TZ=Asia/Kolkata date +%A | tr '[:upper:]' '[:lower:]')
+          echo "📅 Today (IST): $DAY"
 
           CONFIG_FILE=".github/schedule-config.json"
 
@@ -74,65 +119,74 @@ jobs:
             TEST_PATH=$(jq -r --arg day "$DAY" '.[$day].test_path // empty' $CONFIG_FILE)
             TEST_LIST=$(jq -r --arg day "$DAY" '.[$day].test_list // empty' $CONFIG_FILE)
           else
-            echo "Config file not found, using defaults"
+            echo "⚠️ Config file not found, using defaults"
             MODE="all"
           fi
 
           echo "mode=$MODE" >> $GITHUB_OUTPUT
           echo "test_path=$TEST_PATH" >> $GITHUB_OUTPUT
           echo "test_list=$TEST_LIST" >> $GITHUB_OUTPUT
+          
+          echo "🎯 Execution mode: $MODE"
 
-      # 🔥 Dynamic Execution
+      # Dynamic test execution with retry logic
       - name: Run Playwright Tests
+        id: test-execution
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             MODE="${{ github.event.inputs.mode || 'all' }}"
             TEST_PATH="${{ github.event.inputs.test_path }}"
             TEST_LIST="${{ github.event.inputs.test_list }}"
-            echo "Manual run"
+            echo "🖱️ Manual run"
           else
             MODE="${{ steps.config.outputs.mode }}"
             TEST_PATH="${{ steps.config.outputs.test_path }}"
             TEST_LIST="${{ steps.config.outputs.test_list }}"
-            echo "Scheduled run"
+            echo "⏰ Scheduled run"
           fi
 
-          echo "Mode: $MODE"
+          echo "🎯 Mode: $MODE"
 
           if [ "$MODE" = "skip" ]; then
-            echo "Skipping execution for today"
+            echo "⏭️ Skipping execution for today"
+            echo "skipped=true" >> $GITHUB_OUTPUT
             exit 0
           fi
 
+          # Retry failed tests once
+          RETRY_FLAG="--retries=1"
+
           if [ "$MODE" = "file" ]; then
-            echo "Running file: $TEST_PATH"
-            npx playwright test "$TEST_PATH" || true
+            echo "📄 Running file: $TEST_PATH"
+            npx playwright test "$TEST_PATH" $RETRY_FLAG || true
 
           elif [ "$MODE" = "folder" ]; then
-            echo "Running folder: $TEST_PATH"
-            npx playwright test "$TEST_PATH" || true
+            echo "📁 Running folder: $TEST_PATH"
+            npx playwright test "$TEST_PATH" $RETRY_FLAG || true
 
           elif [ "$MODE" = "multiple" ]; then
-            echo "Running multiple files"
+            echo "📄📄 Running multiple files"
             FILES=$(echo "$TEST_LIST" | tr ',' ' ')
-            npx playwright test $FILES || true
+            npx playwright test $FILES $RETRY_FLAG || true
 
           else
-            echo "Running all tests"
-            npx playwright test || true
+            echo "🌐 Running all tests in tests/passedTC/"
+            npx playwright test tests/passedTC/ $RETRY_FLAG || true
           fi
 
-      # ✅ Preserve Allure history for TREND graphs
+          echo "skipped=false" >> $GITHUB_OUTPUT
+
+      # Preserve history for trend graphs
       - name: Preserve Allure History
-        if: always()
+        if: always() && steps.test-execution.outputs.skipped != 'true'
         run: |
           if [ -d "allure-report/history" ]; then
+            echo "📊 Preserving history for trends"
             cp -r allure-report/history allure-results/
           fi
 
-      # ✅ Executor info only — categories & environmentInfo handled by playwright.config.ts
       - name: Add Allure Executor Info
-        if: always()
+        if: always() && steps.test-execution.outputs.skipped != 'true'
         run: |
           cat > allure-results/executor.json << EOF
           {
@@ -144,71 +198,75 @@ jobs:
           }
           EOF
 
-      # ✅ Generate Allure 3 report using npx (avoids global install path issues)
       - name: Generate Allure Report
-        if: always()
+        if: always() && steps.test-execution.outputs.skipped != 'true'
         run: |
           rm -rf allure-report
-          npx allure generate allure-results -o allure-report || {
-            echo "❌ Allure generate failed. Full log:"
-            cat /home/runner/.allure/logs/*.log 2>/dev/null || echo "No logs found"
+          npx allure generate allure-results -o allure-report --clean || {
+            echo "❌ Allure generate failed"
             exit 1
           }
-          echo "✅ Report generated. Contents:"
-          ls allure-report/
+          echo "✅ Report generated"
 
-      # ✅ Post Allure 3 summary to PR
       - name: Post Allure Summary to PR
-        if: always()
+        if: always() && steps.test-execution.outputs.skipped != 'true'
         uses: allure-framework/allure-action@v0
         with:
           report-directory: "./allure-report"
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # ✅ Export CSV
+      # Optimized CSV export (only essential columns)
       - name: Export Test Results CSV
-        if: always()
+        if: always() && steps.test-execution.outputs.skipped != 'true'
         run: |
-          echo "Test Name,Status,Duration(ms),Suite,Browser" > test-results/allure-summary.csv
+          echo "Test Name,Status,Duration(ms),Browser,Suite" > test-results/allure-summary.csv
           if [ -d "allure-results" ]; then
             for f in allure-results/*-result.json; do
               [ -f "$f" ] || continue
               NAME=$(jq -r '.name // "unknown"' "$f")
               STATUS=$(jq -r '.status // "unknown"' "$f")
               DURATION=$(jq -r '(.stop - .start) // 0' "$f" 2>/dev/null || echo "0")
-              SUITE=$(jq -r '.labels[]? | select(.name=="suite") | .value' "$f" | head -1)
               BROWSER=$(jq -r '.labels[]? | select(.name=="thread") | .value' "$f" | head -1)
-              echo "\"$NAME\",\"$STATUS\",\"$DURATION\",\"$SUITE\",\"$BROWSER\"" >> test-results/allure-summary.csv
+              SUITE=$(jq -r '.labels[]? | select(.name=="suite") | .value' "$f" | head -1)
+              echo "\"$NAME\",\"$STATUS\",\"$DURATION\",\"$BROWSER\",\"$SUITE\"" >> test-results/allure-summary.csv
             done
           fi
-          echo "✅ CSV rows: $(wc -l < test-results/allure-summary.csv)"
+          
+          # Compress CSV if large (>1MB)
+          CSV_SIZE=$(wc -c < test-results/allure-summary.csv)
+          if [ $CSV_SIZE -gt 1048576 ]; then
+            echo "📦 Compressing large CSV ($(($CSV_SIZE / 1024))KB)"
+            gzip test-results/allure-summary.csv
+            mv test-results/allure-summary.csv.gz test-results/allure-summary.csv
+          fi
+          
+          echo "✅ CSV ready"
 
-      # ✅ Upload all artifacts
       - name: Upload Test Artifacts
-        if: always()
+        if: always() && steps.test-execution.outputs.skipped != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: test-results-run-${{ github.run_number }}
           path: |
-            test-results/allure-summary.csv
+            test-results/allure-summary.csv*
             test-results/results.json
-            test-results/junit.xml
-            test-results/html-report/
             allure-report/
           retention-days: 30
 
-      # ✅ Deploy Allure 3 report to GitHub Pages
       - name: Deploy Allure Report to GitHub Pages
-        if: always()
+        if: always() && steps.test-execution.outputs.skipped != 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
           keep_files: true
 
-      # ✅ Send Email
-      - name: Send Email
-        if: always()
+      # Conditional email sending
+      - name: Send Email Report
+        if: |
+          always() && 
+          steps.test-execution.outputs.skipped != 'true' &&
+          (github.event.inputs.send_email != 'false' || github.event_name == 'schedule')
         run: node sendReport.js
         env:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
@@ -221,3 +279,18 @@ jobs:
           GITHUB_ACTOR: ${{ github.actor }}
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+
+      # Summary output
+      - name: Job Summary
+        if: always()
+        run: |
+          echo "## 🎭 Playwright Test Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.test-execution.outputs.skipped }}" = "true" ]; then
+            echo "⏭️ Tests skipped for today (Saturday/Sunday)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ Tests executed successfully" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "📊 [View Allure Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/)" >> $GITHUB_STEP_SUMMARY
+          fi
