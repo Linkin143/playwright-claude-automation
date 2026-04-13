@@ -1,0 +1,30 @@
+{
+"default": {
+"mode": "all"
+},
+"monday": {
+"mode": "folder",
+"test_path": "tests/msn"
+},
+"tuesday": {
+"mode": "file",
+"test_path": "tests/msn/007_msn_header_verify.spec.ts"
+},
+"wednesday": {
+"mode": "multiple",
+"test_list": "tests/msn/9903_msn_settings_panel.spec.ts,tests/msn/9903_msn_settings_panel.spec.ts"
+},
+"thursday": {
+"mode": "all"
+},
+"friday": {
+"mode": "folder",
+"test_path": "tests/msn"
+},
+"saturday": {
+"mode": "skip"
+},
+"sunday": {
+"mode": "skip"
+}
+}

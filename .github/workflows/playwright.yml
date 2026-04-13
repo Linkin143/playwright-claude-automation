@@ -1,0 +1,223 @@
+name: Playwright + Allure Report
+
+on:
+  schedule:
+    - cron: '40 3 * * *'  # 09:10 IST daily
+
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Select test execution mode"
+        required: false
+        default: "all"
+        type: choice
+        options:
+          - all
+          - file
+          - folder
+          - multiple
+
+      test_path:
+        description: |
+          File or folder path
+          Examples:
+          - tests/example.spec.ts
+          - tests/msn/
+        required: false
+
+      test_list:
+        description: |
+          Comma-separated test files
+          Example:
+          tests/msn/a.spec.ts,tests/msn/b.spec.ts
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install browsers
+        run: npx playwright install --with-deps
+
+      # ✅ Create all needed dirs at runtime
+      - name: Create output directories
+        run: mkdir -p allure-results allure-report test-results
+
+      # 🧠 Load schedule config
+      - name: Load Schedule Config
+        id: config
+        run: |
+          DAY=$(date +%A | tr '[:upper:]' '[:lower:]')
+          echo "Today: $DAY"
+
+          CONFIG_FILE=".github/schedule-config.json"
+
+          if [ -f "$CONFIG_FILE" ]; then
+            MODE=$(jq -r --arg day "$DAY" '.[$day].mode // .default.mode' $CONFIG_FILE)
+            TEST_PATH=$(jq -r --arg day "$DAY" '.[$day].test_path // empty' $CONFIG_FILE)
+            TEST_LIST=$(jq -r --arg day "$DAY" '.[$day].test_list // empty' $CONFIG_FILE)
+          else
+            echo "Config file not found, using defaults"
+            MODE="all"
+          fi
+
+          echo "mode=$MODE" >> $GITHUB_OUTPUT
+          echo "test_path=$TEST_PATH" >> $GITHUB_OUTPUT
+          echo "test_list=$TEST_LIST" >> $GITHUB_OUTPUT
+
+      # 🔥 Dynamic Execution
+      - name: Run Playwright Tests
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            MODE="${{ github.event.inputs.mode || 'all' }}"
+            TEST_PATH="${{ github.event.inputs.test_path }}"
+            TEST_LIST="${{ github.event.inputs.test_list }}"
+            echo "Manual run"
+          else
+            MODE="${{ steps.config.outputs.mode }}"
+            TEST_PATH="${{ steps.config.outputs.test_path }}"
+            TEST_LIST="${{ steps.config.outputs.test_list }}"
+            echo "Scheduled run"
+          fi
+
+          echo "Mode: $MODE"
+
+          if [ "$MODE" = "skip" ]; then
+            echo "Skipping execution for today"
+            exit 0
+          fi
+
+          if [ "$MODE" = "file" ]; then
+            echo "Running file: $TEST_PATH"
+            npx playwright test "$TEST_PATH" || true
+
+          elif [ "$MODE" = "folder" ]; then
+            echo "Running folder: $TEST_PATH"
+            npx playwright test "$TEST_PATH" || true
+
+          elif [ "$MODE" = "multiple" ]; then
+            echo "Running multiple files"
+            FILES=$(echo "$TEST_LIST" | tr ',' ' ')
+            npx playwright test $FILES || true
+
+          else
+            echo "Running all tests"
+            npx playwright test || true
+          fi
+
+      # ✅ Preserve Allure history for TREND graphs
+      - name: Preserve Allure History
+        if: always()
+        run: |
+          if [ -d "allure-report/history" ]; then
+            cp -r allure-report/history allure-results/
+          fi
+
+      # ✅ Executor info only — categories & environmentInfo handled by playwright.config.ts
+      - name: Add Allure Executor Info
+        if: always()
+        run: |
+          cat > allure-results/executor.json << EOF
+          {
+            "name": "GitHub Actions",
+            "type": "github",
+            "buildName": "Run #${{ github.run_number }} — ${{ github.ref_name }}",
+            "buildUrl": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
+            "reportUrl": "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          }
+          EOF
+
+      # ✅ Generate Allure 3 report using npx (avoids global install path issues)
+      - name: Generate Allure Report
+        if: always()
+        run: |
+          rm -rf allure-report
+          npx allure generate allure-results -o allure-report || {
+            echo "❌ Allure generate failed. Full log:"
+            cat /home/runner/.allure/logs/*.log 2>/dev/null || echo "No logs found"
+            exit 1
+          }
+          echo "✅ Report generated. Contents:"
+          ls allure-report/
+
+      # ✅ Post Allure 3 summary to PR
+      - name: Post Allure Summary to PR
+        if: always()
+        uses: allure-framework/allure-action@v0
+        with:
+          report-directory: "./allure-report"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ✅ Export CSV
+      - name: Export Test Results CSV
+        if: always()
+        run: |
+          echo "Test Name,Status,Duration(ms),Suite,Browser" > test-results/allure-summary.csv
+          if [ -d "allure-results" ]; then
+            for f in allure-results/*-result.json; do
+              [ -f "$f" ] || continue
+              NAME=$(jq -r '.name // "unknown"' "$f")
+              STATUS=$(jq -r '.status // "unknown"' "$f")
+              DURATION=$(jq -r '(.stop - .start) // 0' "$f" 2>/dev/null || echo "0")
+              SUITE=$(jq -r '.labels[]? | select(.name=="suite") | .value' "$f" | head -1)
+              BROWSER=$(jq -r '.labels[]? | select(.name=="thread") | .value' "$f" | head -1)
+              echo "\"$NAME\",\"$STATUS\",\"$DURATION\",\"$SUITE\",\"$BROWSER\"" >> test-results/allure-summary.csv
+            done
+          fi
+          echo "✅ CSV rows: $(wc -l < test-results/allure-summary.csv)"
+
+      # ✅ Upload all artifacts
+      - name: Upload Test Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-run-${{ github.run_number }}
+          path: |
+            test-results/allure-summary.csv
+            test-results/results.json
+            test-results/junit.xml
+            test-results/html-report/
+            allure-report/
+          retention-days: 30
+
+      # ✅ Deploy Allure 3 report to GitHub Pages
+      - name: Deploy Allure Report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          keep_files: true
+
+      # ✅ Send Email
+      - name: Send Email
+        if: always()
+        run: node sendReport.js
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          REPORT_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
