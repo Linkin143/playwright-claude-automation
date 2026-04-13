@@ -205,7 +205,7 @@ jobs:
           
           if npx allure generate allure-results -o allure-report; then
             echo "✅ Allure report generated successfully"
-            echo "📁 Report size: $(du -sh allure-report | cut -f1)"
+            echo "📁 Report size: $(du -sh allure-report 2>/dev/null | cut -f1 || echo 'unknown')"
           else
             echo "❌ Allure generation failed"
             echo "📋 Checking Allure logs..."
