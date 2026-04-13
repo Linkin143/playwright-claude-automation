@@ -3,7 +3,6 @@ name: Playwright + Allure Report
 on:
   schedule:
     # Multiple triggers to beat GitHub Actions delays
-    # First available slot will run (others auto-cancel via concurrency)
     - cron: '20 3 * * *'  # 08:50 IST
     - cron: '25 3 * * *'  # 08:55 IST  
     - cron: '30 3 * * *'  # 09:00 IST (target)
@@ -51,7 +50,6 @@ permissions:
   pull-requests: write
   checks: write
 
-# Prevent multiple scheduled runs from executing simultaneously
 concurrency:
   group: playwright-tests-${{ github.ref }}
   cancel-in-progress: true
@@ -71,7 +69,6 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      # Cache dependencies (speeds up 2-3 minutes)
       - name: Cache Node Modules
         uses: actions/cache@v3
         with:
@@ -85,7 +82,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Cache Playwright browsers (speeds up 1-2 minutes)
       - name: Cache Playwright Browsers
         id: playwright-cache
         uses: actions/cache@v3
@@ -104,11 +100,9 @@ jobs:
       - name: Create output directories
         run: mkdir -p allure-results allure-report test-results
 
-      # Load schedule config with timezone handling
       - name: Load Schedule Config
         id: config
         run: |
-          # Get day in IST timezone
           DAY=$(TZ=Asia/Kolkata date +%A | tr '[:upper:]' '[:lower:]')
           echo "📅 Today (IST): $DAY"
 
@@ -129,7 +123,6 @@ jobs:
           
           echo "🎯 Execution mode: $MODE"
 
-      # Dynamic test execution with retry logic
       - name: Run Playwright Tests
         id: test-execution
         run: |
@@ -153,7 +146,6 @@ jobs:
             exit 0
           fi
 
-          # Retry failed tests once
           RETRY_FLAG="--retries=1"
 
           if [ "$MODE" = "file" ]; then
@@ -176,7 +168,6 @@ jobs:
 
           echo "skipped=false" >> $GITHUB_OUTPUT
 
-      # Preserve history for trend graphs
       - name: Preserve Allure History
         if: always() && steps.test-execution.outputs.skipped != 'true'
         run: |
@@ -201,12 +192,30 @@ jobs:
       - name: Generate Allure Report
         if: always() && steps.test-execution.outputs.skipped != 'true'
         run: |
+          echo "📊 Generating Allure report..."
+          
+          if [ ! -d "allure-results" ] || [ -z "$(ls -A allure-results 2>/dev/null)" ]; then
+            echo "⚠️ No test results found in allure-results/"
+            mkdir -p allure-report
+            echo "<html><body><h1>No test results available</h1></body></html>" > allure-report/index.html
+            exit 0
+          fi
+          
           rm -rf allure-report
-          npx allure generate allure-results -o allure-report --clean || {
-            echo "❌ Allure generate failed"
+          
+          if npx allure generate allure-results -o allure-report; then
+            echo "✅ Allure report generated successfully"
+            echo "📁 Report size: $(du -sh allure-report | cut -f1)"
+          else
+            echo "❌ Allure generation failed"
+            echo "📋 Checking Allure logs..."
+            cat ~/.allure/logs/*.log 2>/dev/null || echo "No Allure logs found"
+            
+            echo "📋 Allure results structure:"
+            ls -lah allure-results/ 2>/dev/null | head -20 || echo "allure-results/ not found"
+            
             exit 1
-          }
-          echo "✅ Report generated"
+          fi
 
       - name: Post Allure Summary to PR
         if: always() && steps.test-execution.outputs.skipped != 'true'
@@ -215,7 +224,6 @@ jobs:
           report-directory: "./allure-report"
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Optimized CSV export (only essential columns)
       - name: Export Test Results CSV
         if: always() && steps.test-execution.outputs.skipped != 'true'
         run: |
@@ -232,12 +240,10 @@ jobs:
             done
           fi
           
-          # Compress CSV if large (>1MB)
-          CSV_SIZE=$(wc -c < test-results/allure-summary.csv)
-          if [ $CSV_SIZE -gt 1048576 ]; then
+          CSV_SIZE=$(wc -c < test-results/allure-summary.csv 2>/dev/null || echo "0")
+          if [ "$CSV_SIZE" -gt 1048576 ]; then
             echo "📦 Compressing large CSV ($(($CSV_SIZE / 1024))KB)"
             gzip test-results/allure-summary.csv
-            mv test-results/allure-summary.csv.gz test-results/allure-summary.csv
           fi
           
           echo "✅ CSV ready"
@@ -261,7 +267,6 @@ jobs:
           publish_dir: ./allure-report
           keep_files: true
 
-      # Conditional email sending
       - name: Send Email Report
         if: |
           always() && 
@@ -280,7 +285,6 @@ jobs:
           GITHUB_SHA: ${{ github.sha }}
           GITHUB_REPOSITORY: ${{ github.repository }}
 
-      # Summary output
       - name: Job Summary
         if: always()
         run: |
