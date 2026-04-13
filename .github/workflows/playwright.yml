@@ -21,15 +21,15 @@ on:
         description: |
           File or folder path
           Examples:
-          - tests/example.spec.ts
-          - tests/msn/
+          - tests/passedTC/example.spec.ts
+          - tests/passedTC/msn/
         required: false
 
       test_list:
         description: |
           Comma-separated test files
           Example:
-          tests/msn/a.spec.ts,tests/msn/b.spec.ts
+          tests/passedTC/msn/a.spec.ts,tests/passedTC/msn/b.spec.ts
         required: false
 
 permissions:

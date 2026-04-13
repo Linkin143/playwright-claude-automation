@@ -4,22 +4,22 @@
 },
 "monday": {
 "mode": "folder",
-"test_path": "tests/msn"
+"test_path": "tests/passedTC/msn"
 },
 "tuesday": {
 "mode": "file",
-"test_path": "tests/msn/007_msn_header_verify.spec.ts"
+"test_path": "tests/passedTC/msn/007_msn_header_verify.spec.ts"
 },
 "wednesday": {
 "mode": "multiple",
-"test_list": "tests/msn/9903_msn_settings_panel.spec.ts,tests/msn/9903_msn_settings_panel.spec.ts"
+"test_list": "tests/passedTC/msn/9903_msn_settings_panel.spec.ts,tests/passedTC/msn/9903_msn_settings_panel.spec.ts"
 },
 "thursday": {
 "mode": "all"
 },
 "friday": {
 "mode": "folder",
-"test_path": "tests/msn"
+"test_path": "tests/passedTC/msn"
 },
 "saturday": {
 "mode": "skip"
