@@ -14,7 +14,7 @@ function start(PATHS) {
     console.log(`\n📄 New test file detected: ${path.basename(filePath)}`);
 
     console.log('⏳ Waiting for file to stabilize (no changes)...');
-    await waitForFileStability(filePath, 10000, 30000);
+    await waitForFileStability(filePath, 5000, 30000);
 
     await processNewTest(filePath, PATHS);
   });
@@ -30,19 +30,19 @@ async function processNewTest(filePath, PATHS) {
   const fileName = path.basename(filePath);
 
   try {
-    // 📦 Get subfolder name from config
     const subFolderName = config.subFolderName;
 
-    // 🔍 Ensure subfolder exists (case-insensitive)
-    const targetFolder = await ensureSubFolder(PATHS.tests, subFolderName);
+    console.log(`📦 Using subfolder: ${subFolderName}`);
+
+    const targetFolder = await ensureSubFolder(PATHS.localTC, subFolderName);
 
     const destPath = path.join(targetFolder, fileName);
 
     await fs.copyFile(filePath, destPath);
-    console.log(`✅ Test file copied to: ${destPath}`);
+    console.log(`✅ Test file copied to: localTC/${subFolderName}/${fileName}`);
 
     console.log('⏳ Ensuring file is still stable before execution...');
-    await waitForFileStability(destPath, 5000, 15000);
+    await waitForFileStability(destPath, 3000, 10000);
 
     await testExecutor.execute(fileName, PATHS);
 
@@ -51,19 +51,24 @@ async function processNewTest(filePath, PATHS) {
   }
 }
 
-// 🔥 Case-insensitive folder checker + creator
 async function ensureSubFolder(basePath, folderName) {
   try {
+    await fs.mkdir(basePath, { recursive: true });
+
     const entries = await fs.readdir(basePath, { withFileTypes: true });
 
-    const existing = entries.find(
-      entry =>
-        entry.isDirectory() &&
-        entry.name.toLowerCase() === folderName.toLowerCase()
-    );
+    const normalizedFolderName = normalizeFolderName(folderName);
+
+    const existing = entries.find(entry => {
+      if (!entry.isDirectory()) return false;
+      const normalizedEntryName = normalizeFolderName(entry.name);
+      return normalizedEntryName === normalizedFolderName;
+    });
 
     if (existing) {
-      return path.join(basePath, existing.name); // preserve actual casing
+      const existingPath = path.join(basePath, existing.name);
+      console.log(`📁 Using existing subfolder: ${existingPath}`);
+      return existingPath;
     }
 
     const newFolderPath = path.join(basePath, folderName);
@@ -78,7 +83,12 @@ async function ensureSubFolder(basePath, folderName) {
   }
 }
 
-// 🔥 Smart stability checker
+function normalizeFolderName(name) {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '');
+}
+
 async function waitForFileStability(filePath, checkInterval = 5000, stableDuration = 30000) {
   let lastSize = -1;
   let stableTime = 0;
@@ -110,7 +120,6 @@ async function waitForFileStability(filePath, checkInterval = 5000, stableDurati
   }
 }
 
-// helper delay
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }

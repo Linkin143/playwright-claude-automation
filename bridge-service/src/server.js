@@ -15,7 +15,8 @@ app.use(express.static(path.join(__dirname, '../src')));
 
 const PATHS = {
   generatedTests: path.join(__dirname, '../../generated-tests'),
-  tests: path.join(__dirname, '../../tests'),
+  localTC: path.join(__dirname, '../../tests/localTC'),
+  passedTC: path.join(__dirname, '../../tests/passedTC'),
   results: path.join(__dirname, '../../test-results/results.json'),
   artifacts: path.join(__dirname, '../../artifacts'),
 };
@@ -105,11 +106,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'web-interface.html'));
 });
 
-
 app.listen(PORT, async () => {
   console.log(`🟢 Bridge Service running on http://localhost:${PORT}`);
   console.log(`📡 API Endpoint: http://localhost:${PORT}/api/receive-test`);
   console.log(`👀 Watching directory: ${PATHS.generatedTests}`);
+  console.log(`📂 LocalTC directory: ${PATHS.localTC}`);
+  console.log(`📂 PassedTC directory: ${PATHS.passedTC}`);
   
   await claudeClient.initialize();
   
