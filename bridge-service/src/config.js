@@ -1,3 +1,3 @@
 module.exports = {
-  subFolderName: 'MSN123'
+  subFolderName: 'MSN_Test'
 };
