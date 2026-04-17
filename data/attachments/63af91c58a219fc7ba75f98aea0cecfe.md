@@ -1,0 +1,1628 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: msn/99010_msn_weather_insights.spec.ts >> MSN – Weather Widget: Display, Navigation, and Stability >> Verify weather widget, navigate to forecast, return and check stability
+- Location: tests/passedTC/msn/99010_msn_weather_insights.spec.ts:32:7
+
+# Error details
+
+```
+Error: expect(locator).toBeAttached() failed
+
+Locator: locator('a#i_weatherddxxs')
+Expected: attached
+Timeout: 10000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeAttached" with timeout 10000ms
+  - waiting for locator('a#i_weatherddxxs')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e6]:
+    - generic [ref=e7]:
+      - generic "Skip to content" [ref=e8] [cursor=pointer]:
+        - button "Skip to content" [ref=e9]:
+          - generic:
+            - generic: Skip to content
+      - generic "Skip to footer" [ref=e10] [cursor=pointer]:
+        - button "Skip to footer" [ref=e11]:
+          - generic:
+            - generic: Skip to footer
+      - link "MSN" [ref=e14] [cursor=pointer]:
+        - /url: https://www.msn.com/en-in
+      - search [ref=e16]:
+        - search [ref=e18]:
+          - generic [ref=e19]:
+            - generic "Web search" [ref=e20] [cursor=pointer]:
+              - button "Web search" [ref=e21]:
+                - generic:
+                  - generic:
+                    - img
+            - searchbox "Enter your search term" [ref=e22]
+            - generic "Open Copilot" [ref=e26] [cursor=pointer]:
+              - button "Open Copilot" [ref=e27]:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img "Open Copilot"
+      - generic [ref=e28]:
+        - 'link "San Jose: Clear, 15 °C" [ref=e31] [cursor=pointer]':
+          - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=msnheader&cvid=69e1c85211c24322afbdd1def69e6e59
+          - img "Clear" [ref=e33]
+          - generic [ref=e34]:
+            - generic [ref=e35]: ‎15‎
+            - generic [ref=e37]: ‎°C‎
+        - generic "Open settings" [ref=e41] [cursor=pointer]:
+          - button "Open settings" [ref=e42]:
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Page settings
+                  - generic:
+                    - img
+        - generic "Sign In" [ref=e46]:
+          - button "Sign in to your account" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]: Sign in to your account
+            - generic [ref=e51]: Sign in
+  - generic [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e58]:
+        - list [ref=e61]:
+          - listitem [ref=e62]:
+            - link "Outlook.com" [ref=e65] [cursor=pointer]:
+              - /url: https://outlook.com
+              - generic [ref=e69]: Outlook.com
+          - listitem [ref=e70]:
+            - link "Flipkart" [ref=e73] [cursor=pointer]:
+              - /url: https://ww81.sitepvvaff.com/sssdomweb?enk=o=tjn52:tsid=42386:u=affinity-308.com:b=308:qld=NoReferer:pos=1:blid=0&subid=enin-msn-hp-mestripe
+              - generic [ref=e76]:
+                - generic [ref=e77]: Flipkart
+                - generic [ref=e79]: Sponsored
+          - listitem [ref=e80]:
+            - link "Find a tutor" [ref=e83] [cursor=pointer]:
+              - /url: https://www.bing.com/pros?FORM=BPIMNS
+              - generic [ref=e87]: Find a tutor
+          - listitem [ref=e88]:
+            - link "Myntra" [ref=e91] [cursor=pointer]:
+              - /url: https://sovrn.co/rbrfn16
+              - generic [ref=e94]:
+                - generic [ref=e95]: Myntra
+                - generic [ref=e97]: Sponsored
+          - listitem [ref=e98]:
+            - link "Nykaa" [ref=e101] [cursor=pointer]:
+              - /url: https://sovrn.co/p9zogj8
+              - generic [ref=e104]:
+                - generic [ref=e105]: Nykaa
+                - generic [ref=e107]: Sponsored
+          - listitem [ref=e108]:
+            - link "Facebook" [ref=e111] [cursor=pointer]:
+              - /url: https://www.facebook.com
+              - generic [ref=e115]: Facebook
+          - listitem [ref=e116]:
+            - link "Microsoft 365" [ref=e119] [cursor=pointer]:
+              - /url: https://www.office.com/?omkt=en-IN
+              - generic [ref=e123]: Microsoft 365
+          - listitem [ref=e124]:
+            - link "X" [ref=e127] [cursor=pointer]:
+              - /url: https://x.com
+              - generic [ref=e131]: X
+          - listitem [ref=e132]:
+            - link "OneDrive" [ref=e135] [cursor=pointer]:
+              - /url: https://onedrive.live.com/?wt.mc_id=oo_msn_msnhomepage_header
+              - generic [ref=e139]: OneDrive
+          - listitem [ref=e140]:
+            - link "Skype" [ref=e143] [cursor=pointer]:
+              - /url: https://www.skype.com/
+              - generic [ref=e147]: Skype
+          - listitem [ref=e148]:
+            - link "OneNote" [ref=e151] [cursor=pointer]:
+              - /url: https://www.onenote.com/notebooks?WT.mc_id=MSN_OneNote_TopMenu&auth=1&wdorigin=msn
+              - generic [ref=e155]: OneNote
+          - listitem [ref=e156]:
+            - link "Maps" [ref=e159] [cursor=pointer]:
+              - /url: https://bing.com/maps/?FORM=MSNMAP
+              - generic [ref=e163]: Maps
+          - listitem [ref=e164]:
+            - link "Microsoft Store" [ref=e167] [cursor=pointer]:
+              - /url: https://www.microsoft.com/en-in
+              - generic [ref=e171]: Microsoft Store
+        - button [ref=e172]:
+          - img [ref=e175]
+      - generic [ref=e177]:
+        - banner [ref=e178]
+        - generic [ref=e183]:
+          - navigation [ref=e185]:
+            - generic [ref=e186]:
+              - list [ref=e187]:
+                - listitem [ref=e188]:
+                  - link "Discover" [ref=e189] [cursor=pointer]:
+                    - /url: https://www.msn.com/en-in
+              - list [ref=e190]:
+                - listitem [ref=e191]:
+                  - link "News" [ref=e192] [cursor=pointer]:
+                    - /url: https://www.msn.com/en-in/channel/topic/Top%20stories/tp-Y_0b495ad3-9beb-45f8-9214-c8e95aa2468f
+                - listitem [ref=e193]:
+                  - link "Sports" [ref=e194] [cursor=pointer]:
+                    - /url: https://www.msn.com/en-in/sports
+                - listitem [ref=e195]:
+                  - link "Play" [ref=e196] [cursor=pointer]:
+                    - /url: https://www.msn.com/en-in/play?cgfrom=cg_home_pivot
+                - listitem [ref=e197]:
+                  - link "Money" [ref=e198] [cursor=pointer]:
+                    - /url: https://www.msn.com/en-in/money
+                - listitem [ref=e199]:
+                  - link "Weather" [ref=e200] [cursor=pointer]:
+                    - /url: https://www.msn.com/en-in/weather
+                - listitem [ref=e201]:
+                  - link "Watch" [ref=e202] [cursor=pointer]:
+                    - /url: https://www.msn.com/en-in/video
+                - listitem [ref=e203]:
+                  - link "Shopping" [ref=e204] [cursor=pointer]:
+                    - /url: https://www.bing.com/shop?entrypoint=msn&adunitId=378983&propertyId=316966&FORM=NVBSHP
+          - generic "Personalize your feed\"" [ref=e206] [cursor=pointer]:
+            - button "Personalize your feed\"" [ref=e207]:
+              - generic:
+                - generic:
+                  - img
+              - generic:
+                - generic: Personalize
+      - main [ref=e210]:
+        - generic [ref=e212]:
+          - generic [ref=e213]:
+            - generic [ref=e216]:
+              - tablist [ref=e218]:
+                - tab [ref=e219] [cursor=pointer]
+                - tab [ref=e221] [cursor=pointer]
+                - tab [ref=e223] [cursor=pointer]
+                - tab [ref=e225] [cursor=pointer]
+                - tab [ref=e227] [cursor=pointer]
+                - tab [selected] [ref=e229] [cursor=pointer]
+                - tab [ref=e231] [cursor=pointer]
+                - tab [ref=e233] [cursor=pointer]
+                - tab [ref=e235] [cursor=pointer]
+                - tab [ref=e237] [cursor=pointer]
+                - tab [ref=e239] [cursor=pointer]
+                - tab [ref=e241] [cursor=pointer]
+                - tab [ref=e243] [cursor=pointer]
+                - tab [ref=e245] [cursor=pointer]
+                - tab [ref=e247] [cursor=pointer]
+                - tab [ref=e249] [cursor=pointer]
+                - tab [ref=e251] [cursor=pointer]
+                - tab [ref=e253] [cursor=pointer]
+                - tab [ref=e255] [cursor=pointer]
+                - tab [ref=e257] [cursor=pointer]
+                - tab [ref=e259] [cursor=pointer]
+                - tab [ref=e261] [cursor=pointer]
+                - tab [ref=e263] [cursor=pointer]
+                - tab [ref=e265] [cursor=pointer]
+                - tab [ref=e267] [cursor=pointer]
+                - tab [ref=e269] [cursor=pointer]
+                - tab [ref=e271] [cursor=pointer]
+                - tab [ref=e273] [cursor=pointer]
+                - tab [ref=e275] [cursor=pointer]
+                - tab [ref=e277] [cursor=pointer]
+              - button [ref=e281]
+              - button [ref=e284]
+              - article "Flea & tick meds at 50% off" [ref=e285] [cursor=pointer]:
+                - generic [ref=e287]:
+                  - img [ref=e288]
+                  - generic [ref=e289]:
+                    - generic [ref=e290]:
+                      - generic [ref=e292]: chewy.com
+                      - link "Flea & tick meds at 50% off, chewy.com" [ref=e293]:
+                        - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=72d9173a-f825-4b8c-97e6-09b6233df4b4&bdc=pb&bidId=13&bidderId=4&cmExpId=RSV&impId=2&impTy=1&ldc=jhf2nczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=4e81668c-b656-446f-8392-21078a9ff96a&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De81EVTzBj1MhVgaHmf9Q6AgzVUCUxe-jUciicRer7rp-QuF48_fijjEw-8XPsyC7H8YNr2LKnUlEzs-wLkDFp5gZr6y82FKn9kuVZKJIzSHd3ceNhTH0hnlJBdqmpjCKxr1Nvj1iySdw4agPWxTQLQxVYCrU4LAoeDaYZXrvFnm-vYlQAsoeEKh3xaVt1OF6BLqaAMsw1liJCSOl9_tkQim6DAt4c%26u%3DaHR0cHMlM2ElMmYlMmZ3d3cuY2hld3kuY29tJTJmc2ltcGFyaWNhLXRyaW8tY2hld2FibGUtdGFibGV0LWRvZ3MlMmZkcCUyZjk3NjU2NiUzZnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZDQwMTY5NDkyMCUyNnV0bV9jb250ZW50JTNkMTMwNDAyMjA1NzE1NDg4OCUyNnV0bV9pZCUzZDQwMTY5NDkyMCUyNm1zY2xraWQlM2Q3YmNhODcyNTBiOWExZWFlY2UzM2VlYzRjM2M5YTU5ZSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZE1TRlRfU2VhcmNoX1BoYXJtYWN5X1BhcmFzaXRpY2lkZXNfQnJhbmRfSGlnaCUyNTIwVm9sdW1lJTI2dXRtX3Rlcm0lM2RzaW1wYXJpY2ElMjUyMHRyaW8lMjUyMHVzJTI2dXRtX2NvbnRlbnQlM2RQYXJhc2l0aWNpZGVzX0hpZ2glMjUyMFZvbHVtZV9CcmFuZF9TaW1wYXJpY2ElMjUyMFRyaW8%26rlid%3D7bca87250b9a1eaece33eec4c3c9a59e&rtype=targetURL&tagId=hp2-infopane-6&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                        - text: Flea & tick meds at 50% off
+                    - link "Sponsored" [ref=e295]:
+                      - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=72d9173a-f825-4b8c-97e6-09b6233df4b4&bdc=pb&bidId=13&bidderId=4&cmExpId=RSV&impId=2&impTy=1&ldc=jhf2nczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=4e81668c-b656-446f-8392-21078a9ff96a&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De81EVTzBj1MhVgaHmf9Q6AgzVUCUxe-jUciicRer7rp-QuF48_fijjEw-8XPsyC7H8YNr2LKnUlEzs-wLkDFp5gZr6y82FKn9kuVZKJIzSHd3ceNhTH0hnlJBdqmpjCKxr1Nvj1iySdw4agPWxTQLQxVYCrU4LAoeDaYZXrvFnm-vYlQAsoeEKh3xaVt1OF6BLqaAMsw1liJCSOl9_tkQim6DAt4c%26u%3DaHR0cHMlM2ElMmYlMmZ3d3cuY2hld3kuY29tJTJmc2ltcGFyaWNhLXRyaW8tY2hld2FibGUtdGFibGV0LWRvZ3MlMmZkcCUyZjk3NjU2NiUzZnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZDQwMTY5NDkyMCUyNnV0bV9jb250ZW50JTNkMTMwNDAyMjA1NzE1NDg4OCUyNnV0bV9pZCUzZDQwMTY5NDkyMCUyNm1zY2xraWQlM2Q3YmNhODcyNTBiOWExZWFlY2UzM2VlYzRjM2M5YTU5ZSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZE1TRlRfU2VhcmNoX1BoYXJtYWN5X1BhcmFzaXRpY2lkZXNfQnJhbmRfSGlnaCUyNTIwVm9sdW1lJTI2dXRtX3Rlcm0lM2RzaW1wYXJpY2ElMjUyMHRyaW8lMjUyMHVzJTI2dXRtX2NvbnRlbnQlM2RQYXJhc2l0aWNpZGVzX0hpZ2glMjUyMFZvbHVtZV9CcmFuZF9TaW1wYXJpY2ElMjUyMFRyaW8%26rlid%3D7bca87250b9a1eaece33eec4c3c9a59e&rtype=targetURL&tagId=hp2-infopane-6&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                  - button "See more" [ref=e297]:
+                    - img [ref=e298]
+            - article "6 offbeat train stops across India that every train lover must explore" [ref=e299] [cursor=pointer]:
+              - generic [ref=e301]:
+                - img [ref=e302]
+                - generic [ref=e303]:
+                  - generic [ref=e304]:
+                    - generic [ref=e305]:
+                      - img [ref=e306]
+                      - generic [ref=e307]: The Times of India
+                    - link "6 offbeat train stops across India that every train lover must explore, The Times of India" [ref=e308]:
+                      - /url: https://www.msn.com/en-in/travel/news/6-offbeat-train-stops-across-india-that-every-train-lover-must-explore/ss-AA1LG211
+                      - text: 6 offbeat train stops across India that every train lover must explore
+                  - generic "6 offbeat train stops across India that every train lover must explore" [ref=e311]:
+                    - generic [ref=e313]:
+                      - generic [ref=e314]:
+                        - button "62 Like" [ref=e315]:
+                          - generic [ref=e316]:
+                            - img [ref=e317]
+                            - generic [ref=e319]: "62"
+                        - button "Dislike" [ref=e320]:
+                          - img [ref=e322]
+                      - link "Start the conversation" [ref=e325]:
+                        - /url: https://www.msn.com/en-in/travel/news/6-offbeat-train-stops-across-india-that-every-train-lover-must-explore/ss-AA1LG211#comments
+                        - button "Start the conversation" [ref=e326]:
+                          - img [ref=e327]
+                - generic [ref=e329]:
+                  - button "Hide this story" [ref=e330]:
+                    - img [ref=e331]
+                    - text: Hide this story
+                  - button "See more" [ref=e332]:
+                    - img [ref=e333]
+            - article [ref=e334] [cursor=pointer]:
+              - link "Sponsored" [ref=e339]:
+                - /url: //go.microsoft.com/fwlink/?LinkID=286759
+            - article [ref=e340] [cursor=pointer]:
+              - generic [ref=e345]:
+                - generic [ref=e347]:
+                  - link "Top stories" [ref=e349]:
+                    - /url: https://www.msn.com/en-in/channel/topic/Top%20stories/tp-Y_0b495ad3-9beb-45f8-9214-c8e95aa2468f?cvid=69e1c85211c24322afbdd1def69e6e59&ocid=hpmsn
+                    - heading "Top stories" [level=2] [ref=e350]
+                  - button "More options" [ref=e352]
+                - list [ref=e355]:
+                  - 'listitem "US could ''do whatever we want'': Trump says Iran war ''going swimmingly'', signals deal could be close" [ref=e356]':
+                    - generic [ref=e357]:
+                      - generic [ref=e358]:
+                        - img [ref=e359]
+                        - generic [ref=e360]:
+                          - generic: WION ·now
+                      - generic [ref=e361]: "US could 'do whatever we want': Trump says Iran war 'going swimmingly', signals deal could be close"
+                  - 'listitem "''Fair for all'': Govt stands firm on women quota-delimitation link" [ref=e362]':
+                    - generic [ref=e363]:
+                      - generic [ref=e364]:
+                        - img [ref=e365]
+                        - generic [ref=e366]:
+                          - generic: Times Now ·1h
+                      - generic [ref=e367]: "'Fair for all': Govt stands firm on women quota-delimitation link"
+                  - listitem "Nida Khan, accused in Nashik TCS case, to apply for anticipatory bail, claims she's pregnant" [ref=e368]:
+                    - generic [ref=e369]:
+                      - generic [ref=e370]:
+                        - img [ref=e371]
+                        - generic [ref=e372]:
+                          - generic: Hindustan Times ·38m
+                      - generic [ref=e373]: Nida Khan, accused in Nashik TCS case, to apply for anticipatory bail, claims she's pregnant
+                - generic [ref=e375]:
+                  - generic [ref=e376]:
+                    - generic "Previous" [ref=e377]:
+                      - button "Previous" [ref=e378]
+                    - tablist [ref=e380]:
+                      - tab "tab-0" [selected] [ref=e381]
+                      - tab "tab-1" [ref=e383]
+                      - tab "tab-2" [ref=e385]
+                    - generic "Next" [ref=e387]:
+                      - button "Next" [ref=e388]
+                  - link "See more" [ref=e390]:
+                    - /url: https://www.msn.com/en-in/channel/topic/Top%20stories/tp-Y_0b495ad3-9beb-45f8-9214-c8e95aa2468f?cvid=69e1c85211c24322afbdd1def69e6e59&ocid=hpmsn
+            - article "23 Ways To Make Real Money in 2026" [ref=e391] [cursor=pointer]:
+              - generic [ref=e393]:
+                - img [ref=e394]
+                - generic [ref=e395]:
+                  - generic [ref=e396]:
+                    - generic [ref=e398]: FinanceBuzz
+                    - link "23 Ways To Make Real Money in 2026, FinanceBuzz" [ref=e399]:
+                      - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=52afe0aa-08a3-49fa-b2e3-e7be642c5c7c&bdc=pb&bidId=11&bidderId=4&cmExpId=RSV&impId=8&impTy=1&ldc=jhf2nczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=4e81668c-b656-446f-8392-21078a9ff96a&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De84fcRmLJb8t-cz_ovJOaXYjVUCUxYQbT9O_uSnkmYkJSCAbAR150n1oqKf3sgO_HMwgXbqz_ysYEfjk9haY38haIeti3LrWsTmfEa_uPvOgNjsYL8AIaMtWBmkubXBF8kGHerUOQXYA9RufSDAGS2oSHyMD5HbC-ZvxTLIf0QW1hx9N5qc6f3V494qzDcQDfb4zouE-8korkgaWQ6G-Ipb5in0co%26u%3DaHR0cHMlM2ElMmYlMmZmaW5hbmNlYnV6ei5jb20lMmZ3YXlzLXRvLW1ha2UtZXh0cmEtbW9uZXkteWFlei0xJTNmdXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkcGFpZC1uYXRpdmUlMjZ1dG1fY2FtcGFpZ24lM2RFUy1GQlotRFNQLU1ha2VNb25leS1TaWRlSHVzdGxlLUNQQ182Nzc4OTc2ODhfMTI2ODgzODA4NjcyMzQ5NiUyNnV0bV9jb250ZW50JTNkJTI2dXRtX3Rlcm0lM2RrZXl3b3JkJTI2bXQlM2RlJTI2ZGV2aWNlJTNkYyUyNmRldmljZW1vZGVsJTNkJTI2dGFyZ2V0aWQlM2Rrd2QtMjMzMTEwMjA5MDM4ODUzMyUzYWxvYy0xOTAlMjZ0YXJnZXQlM2QlMjZrZXl3b3JkJTNka2V5d29yZCUyNmNhbXBhaWduaWQlM2Q2Nzc4OTc2ODglMjZhZGdyb3VwaWQlM2QxMjY4ODM4MDg2NzIzNDk2JTI2bXNjbGtpZCUzZDhmMDljYWZlNWUzNTE2YmIzMDVlYTMxZjk2NjYzZGQx%26rlid%3D8f09cafe5e3516bb305ea31f96663dd1&rtype=targetURL&tagId=hp2-river-1&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                      - text: 23 Ways To Make Real Money in 2026
+                  - link "Sponsored" [ref=e401]:
+                    - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=52afe0aa-08a3-49fa-b2e3-e7be642c5c7c&bdc=pb&bidId=11&bidderId=4&cmExpId=RSV&impId=8&impTy=1&ldc=jhf2nczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=4e81668c-b656-446f-8392-21078a9ff96a&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De84fcRmLJb8t-cz_ovJOaXYjVUCUxYQbT9O_uSnkmYkJSCAbAR150n1oqKf3sgO_HMwgXbqz_ysYEfjk9haY38haIeti3LrWsTmfEa_uPvOgNjsYL8AIaMtWBmkubXBF8kGHerUOQXYA9RufSDAGS2oSHyMD5HbC-ZvxTLIf0QW1hx9N5qc6f3V494qzDcQDfb4zouE-8korkgaWQ6G-Ipb5in0co%26u%3DaHR0cHMlM2ElMmYlMmZmaW5hbmNlYnV6ei5jb20lMmZ3YXlzLXRvLW1ha2UtZXh0cmEtbW9uZXkteWFlei0xJTNmdXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkcGFpZC1uYXRpdmUlMjZ1dG1fY2FtcGFpZ24lM2RFUy1GQlotRFNQLU1ha2VNb25leS1TaWRlSHVzdGxlLUNQQ182Nzc4OTc2ODhfMTI2ODgzODA4NjcyMzQ5NiUyNnV0bV9jb250ZW50JTNkJTI2dXRtX3Rlcm0lM2RrZXl3b3JkJTI2bXQlM2RlJTI2ZGV2aWNlJTNkYyUyNmRldmljZW1vZGVsJTNkJTI2dGFyZ2V0aWQlM2Rrd2QtMjMzMTEwMjA5MDM4ODUzMyUzYWxvYy0xOTAlMjZ0YXJnZXQlM2QlMjZrZXl3b3JkJTNka2V5d29yZCUyNmNhbXBhaWduaWQlM2Q2Nzc4OTc2ODglMjZhZGdyb3VwaWQlM2QxMjY4ODM4MDg2NzIzNDk2JTI2bXNjbGtpZCUzZDhmMDljYWZlNWUzNTE2YmIzMDVlYTMxZjk2NjYzZGQx%26rlid%3D8f09cafe5e3516bb305ea31f96663dd1&rtype=targetURL&tagId=hp2-river-1&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                - button "See more" [ref=e403]:
+                  - img [ref=e404]
+            - 'article "He was holding my hand: Daisy Shah recalls the chilling moment a South filmmaker made her uncomfortable during a private meeting" [ref=e405] [cursor=pointer]':
+              - generic [ref=e407]:
+                - img [ref=e408]
+                - generic [ref=e409]:
+                  - generic [ref=e410]:
+                    - generic [ref=e411]:
+                      - img [ref=e412]
+                      - generic [ref=e413]: The Indian Express
+                      - generic [ref=e414]: ·
+                      - generic [ref=e415]: 18h
+                    - 'link "He was holding my hand: Daisy Shah recalls the chilling moment a South filmmaker made her uncomfortable during a private meeting, The Indian Express" [ref=e416]':
+                      - /url: https://www.msn.com/en-in/entertainment/bollywood/he-was-holding-my-hand-daisy-shah-recalls-the-chilling-moment-a-south-filmmaker-made-her-uncomfortable-during-a-private-meeting/ar-AA21279q
+                      - text: "He was holding my hand: Daisy Shah recalls the chilling moment a South filmmaker made her uncomfortable during a private meeting"
+                  - 'generic "He was holding my hand: Daisy Shah recalls the chilling moment a South filmmaker made her uncomfortable during a private meeting" [ref=e419]':
+                    - generic [ref=e421]:
+                      - generic [ref=e422]:
+                        - button "31 Like" [ref=e423]:
+                          - generic [ref=e424]:
+                            - img [ref=e425]
+                            - generic [ref=e427]: "31"
+                        - button "Dislike" [ref=e428]:
+                          - img [ref=e430]
+                      - link "View comments 1 Comment" [ref=e433]:
+                        - /url: https://www.msn.com/en-in/entertainment/bollywood/he-was-holding-my-hand-daisy-shah-recalls-the-chilling-moment-a-south-filmmaker-made-her-uncomfortable-during-a-private-meeting/ar-AA21279q#comments
+                        - button "View comments 1 Comment" [ref=e434]:
+                          - img [ref=e435]
+                        - generic [ref=e437]: "1"
+                - generic [ref=e438]:
+                  - button "Hide this story" [ref=e439]:
+                    - img [ref=e440]
+                    - text: Hide this story
+                  - button "See more" [ref=e441]:
+                    - img [ref=e442]
+            - article "Your eyes are warning you, 5 silent signs you should never ignore" [ref=e443] [cursor=pointer]:
+              - generic [ref=e445]:
+                - img [ref=e446]
+                - generic [ref=e447]:
+                  - generic [ref=e448]:
+                    - generic [ref=e449]:
+                      - img [ref=e450]
+                      - generic [ref=e451]: Times Now
+                      - generic [ref=e452]: ·
+                      - generic [ref=e453]: 2w
+                    - link "Your eyes are warning you, 5 silent signs you should never ignore, Times Now" [ref=e454]:
+                      - /url: https://www.msn.com/en-in/health/other/your-eyes-are-warning-you-5-silent-signs-you-should-never-ignore/ar-AA1ZE9Ro
+                      - text: Your eyes are warning you, 5 silent signs you should never ignore
+                  - generic "Your eyes are warning you, 5 silent signs you should never ignore" [ref=e457]:
+                    - generic [ref=e459]:
+                      - generic [ref=e460]:
+                        - button "1k Like" [ref=e461]:
+                          - generic [ref=e462]:
+                            - img [ref=e463]
+                            - generic [ref=e465]: 1k
+                        - button "Dislike" [ref=e466]:
+                          - img [ref=e468]
+                      - link "Start the conversation" [ref=e471]:
+                        - /url: https://www.msn.com/en-in/health/other/your-eyes-are-warning-you-5-silent-signs-you-should-never-ignore/ar-AA1ZE9Ro#comments
+                        - button "Start the conversation" [ref=e472]:
+                          - img [ref=e473]
+                - generic [ref=e475]:
+                  - button "Hide this story" [ref=e476]:
+                    - img [ref=e477]
+                    - text: Hide this story
+                  - button "See more" [ref=e478]:
+                    - img [ref=e479]
+            - article "Your Company a Top Workplace?" [ref=e480] [cursor=pointer]:
+              - generic [ref=e482]:
+                - img [ref=e483]
+                - generic [ref=e484]:
+                  - generic [ref=e485]:
+                    - generic [ref=e487]: Top Workplaces
+                    - link "Your Company a Top Workplace?, Top Workplaces" [ref=e488]:
+                      - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=284604fa-6e95-4a30-8c49-eaf0446e6406&bdc=pb&bidId=12&bidderId=4&cmExpId=RSV&impId=9&impTy=1&ldc=jhf2nczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=4e81668c-b656-446f-8392-21078a9ff96a&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De8UwXTueJIn8YJDxb6C3xRoDVUCUzWimpHb8COgKdHMIXZzJ6ss8xowkMMNlcUBeuvkUg_x8jtjVeN8AtmWJBrtaWMpL_NMm1ck5452ObBDPW2uRjS2A7uc4SWsaRkWZQhQBG9rHea4K1ZSd8oyS1x2kMaiumJaO2VwknLSUa6cbR4kU-rDRoewr7hok8nUWM7OefZHXlfrusCrBYspWa8ARD-n7I%26u%3DaHR0cHMlM2ElMmYlMmZ0b3B3b3JrcGxhY2VzLmNvbSUyZmJvb3N0LXlvdXItZW1wbG95ZXItYnJhbmQlMmYlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2Q0ODczMTg1NzklMjZ1dG1fdGVybSUzZGtleXdvcmQlMjZtc2Nsa2lkJTNkNTlhNGM2OGE0OTI0MWQ1MWQ1YTZhZjZiODE3Nzk0ZjUlMjZ1dG1fY29udGVudCUzZE5hdGlvbmFsJTI1MjAtJTI1MjBIUg%26rlid%3D59a4c68a49241d51d5a6af6b817794f5&rtype=targetURL&tagId=hp2-river-2&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                      - text: Your Company a Top Workplace?
+                  - link "Sponsored" [ref=e490]:
+                    - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=284604fa-6e95-4a30-8c49-eaf0446e6406&bdc=pb&bidId=12&bidderId=4&cmExpId=RSV&impId=9&impTy=1&ldc=jhf2nczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=4e81668c-b656-446f-8392-21078a9ff96a&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De8UwXTueJIn8YJDxb6C3xRoDVUCUzWimpHb8COgKdHMIXZzJ6ss8xowkMMNlcUBeuvkUg_x8jtjVeN8AtmWJBrtaWMpL_NMm1ck5452ObBDPW2uRjS2A7uc4SWsaRkWZQhQBG9rHea4K1ZSd8oyS1x2kMaiumJaO2VwknLSUa6cbR4kU-rDRoewr7hok8nUWM7OefZHXlfrusCrBYspWa8ARD-n7I%26u%3DaHR0cHMlM2ElMmYlMmZ0b3B3b3JrcGxhY2VzLmNvbSUyZmJvb3N0LXlvdXItZW1wbG95ZXItYnJhbmQlMmYlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2Q0ODczMTg1NzklMjZ1dG1fdGVybSUzZGtleXdvcmQlMjZtc2Nsa2lkJTNkNTlhNGM2OGE0OTI0MWQ1MWQ1YTZhZjZiODE3Nzk0ZjUlMjZ1dG1fY29udGVudCUzZE5hdGlvbmFsJTI1MjAtJTI1MjBIUg%26rlid%3D59a4c68a49241d51d5a6af6b817794f5&rtype=targetURL&tagId=hp2-river-2&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                - button "See more" [ref=e492]:
+                  - img [ref=e493]
+            - article [ref=e494] [cursor=pointer]:
+              - generic [ref=e500]:
+                - generic [ref=e502]:
+                  - img "IPL" [ref=e504]
+                  - link "IPL" [ref=e505]:
+                    - /url: https://www.msn.com/en-in/sports/cricket/ipl?ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59
+                    - heading "IPL" [level=2] [ref=e506]
+                  - button "More interests" [ref=e507]
+                  - generic [ref=e508]:
+                    - generic "Popular in your area" [ref=e509]:
+                      - button "Popular in your area" [ref=e510]
+                    - button "More options" [ref=e511]
+                - generic [ref=e515]:
+                  - link "MI 195/6 (20.0) VS PBKS 198/3 (16.3) PBKS won by 7 wickets" [ref=e516]:
+                    - /url: https://www.msn.com/en-in/sports/cricket/ipl/game-center/sp-id-270295?ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59
+                    - generic "MI" [ref=e517]:
+                      - generic [ref=e518]:
+                        - generic [ref=e519]:
+                          - generic [ref=e521]: MI
+                          - button "Click to follow MI":
+                            - generic:
+                              - img
+                        - generic [ref=e523]:
+                          - generic [ref=e524]: 195/6
+                          - generic [ref=e525]: (20.0)
+                    - generic [ref=e529]: VS
+                    - generic "PBKS" [ref=e530]:
+                      - generic [ref=e531]:
+                        - img [ref=e533]
+                        - generic [ref=e535]:
+                          - generic [ref=e537]: PBKS
+                          - button "Click to follow PBKS":
+                            - generic:
+                              - img
+                        - generic [ref=e539]:
+                          - generic [ref=e540]: 198/3
+                          - generic [ref=e541]: (16.3)
+                    - generic "PBKS won by 7 wickets" [ref=e544]
+                  - link "GT 17 Apr 2:00 pm KKR Narendra Modi Stadium, Ahmedabad" [ref=e545]:
+                    - /url: https://www.msn.com/en-in/sports/cricket/ipl/game-center/sp-id-270296?ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59
+                    - generic "GT" [ref=e546]:
+                      - generic [ref=e548]:
+                        - generic [ref=e550]: GT
+                        - button "Click to follow GT":
+                          - generic:
+                            - img
+                    - generic [ref=e553]:
+                      - generic [ref=e554]: 17 Apr
+                      - generic [ref=e555]: 2:00 pm
+                    - generic "KKR" [ref=e556]:
+                      - generic [ref=e558]:
+                        - generic [ref=e560]: KKR
+                        - button "Click to follow KKR":
+                          - generic:
+                            - img
+                    - generic "Narendra Modi Stadium, Ahmedabad" [ref=e563]
+                  - link "RCB 18 Apr 10:00 am DC M.Chinnaswamy Stadium, Bengaluru" [ref=e564]:
+                    - /url: https://www.msn.com/en-in/sports/cricket/ipl/game-center/sp-id-270297?ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59
+                    - generic "RCB" [ref=e565]:
+                      - generic [ref=e567]:
+                        - generic [ref=e569]: RCB
+                        - button "Click to follow RCB":
+                          - generic:
+                            - img
+                    - generic [ref=e572]:
+                      - generic [ref=e573]: 18 Apr
+                      - generic [ref=e574]: 10:00 am
+                    - generic "DC" [ref=e575]:
+                      - generic [ref=e577]:
+                        - generic [ref=e579]: DC
+                        - button "Click to follow DC":
+                          - generic:
+                            - img
+                    - generic "M.Chinnaswamy Stadium, Bengaluru" [ref=e582]
+                - generic [ref=e584]:
+                  - generic [ref=e585]:
+                    - generic "Previous" [ref=e586]:
+                      - button "Previous" [ref=e587]
+                    - tablist [ref=e589]:
+                      - tab "tab-0" [selected] [ref=e590]
+                      - tab "tab-1" [ref=e592]
+                      - tab "tab-2" [ref=e594]
+                      - tab "tab-3" [ref=e596]
+                      - tab "tab-4" [ref=e598]
+                      - tab "tab-5"
+                      - tab "tab-6"
+                    - generic "Next" [ref=e600]:
+                      - button "Next" [ref=e601]
+                  - link "See more IPL" [ref=e603]:
+                    - /url: https://www.msn.com/en-in/sports/cricket/ipl?ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59
+          - generic [ref=e604]:
+            - article [ref=e605] [cursor=pointer]:
+              - generic [ref=e610]:
+                - generic [ref=e612]:
+                  - link "Top Engaging News" [ref=e614]:
+                    - /url: https://www.msn.com/en-in/channel/topic/Top Engaging News/tp-Y_42e62c1c-32a7-462e-a6b0-8a718bfe473d?ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59
+                    - heading "Top Engaging News" [level=2] [ref=e615]
+                  - button "More options" [ref=e617]
+                - generic [ref=e619]:
+                  - 'link "News18 21 Comments ‘False implication’: Families of accused TCS staffers allege conspiracy, deny wrongdoing" [ref=e621]':
+                    - /url: https://www.msn.com/en-in/news/india/false-implication-families-of-accused-tcs-staffers-allege-conspiracy-deny-wrongdoing/ar-AA214ZKN
+                    - generic [ref=e622]:
+                      - img [ref=e623]
+                      - generic [ref=e624]: News18
+                      - link "21 Comments" [ref=e626]:
+                        - /url: https://www.msn.com/en-in/news/india/false-implication-families-of-accused-tcs-staffers-allege-conspiracy-deny-wrongdoing/ar-AA214ZKN#comments
+                        - img [ref=e627]
+                        - paragraph [ref=e628]: "21"
+                    - paragraph [ref=e629]: "‘False implication’: Families of accused TCS staffers allege conspiracy, deny wrongdoing"
+                  - 'link "The Indian Express 15 Comments I converted to Islam by choice: Chahatt Khanna slams conversion rumours and opens up about the toll of two divorces" [ref=e631]':
+                    - /url: https://www.msn.com/en-in/news/india/i-converted-to-islam-by-choice-chahatt-khanna-slams-conversion-rumours-and-opens-up-about-the-toll-of-two-divorces/ar-AA213jOw
+                    - generic [ref=e632]:
+                      - img [ref=e633]
+                      - generic [ref=e634]: The Indian Express
+                      - link "15 Comments" [ref=e636]:
+                        - /url: https://www.msn.com/en-in/news/india/i-converted-to-islam-by-choice-chahatt-khanna-slams-conversion-rumours-and-opens-up-about-the-toll-of-two-divorces/ar-AA213jOw#comments
+                        - img [ref=e637]
+                        - paragraph [ref=e638]: "15"
+                    - paragraph [ref=e639]: "I converted to Islam by choice: Chahatt Khanna slams conversion rumours and opens up about the toll of two divorces"
+                  - 'link "Moneycontrol 24 Comments ‘Send your wife if you want a child’: TCS staffer alleges forced namaz, conversion pressure in Nashik office" [ref=e641]':
+                    - /url: https://www.msn.com/en-in/money/topstories/send-your-wife-if-you-want-a-child-tcs-staffer-alleges-forced-namaz-conversion-pressure-in-nashik-office/ar-AA210eFu
+                    - generic [ref=e642]:
+                      - img [ref=e643]
+                      - generic [ref=e644]: Moneycontrol
+                      - link "24 Comments" [ref=e646]:
+                        - /url: https://www.msn.com/en-in/money/topstories/send-your-wife-if-you-want-a-child-tcs-staffer-alleges-forced-namaz-conversion-pressure-in-nashik-office/ar-AA210eFu#comments
+                        - img [ref=e647]
+                        - paragraph [ref=e648]: "24"
+                    - paragraph [ref=e649]: "‘Send your wife if you want a child’: TCS staffer alleges forced namaz, conversion pressure in Nashik office"
+                - generic [ref=e651]:
+                  - generic [ref=e652]:
+                    - generic "Previous" [ref=e653]:
+                      - button "Previous" [ref=e654]
+                    - tablist [ref=e656]:
+                      - tab "tab-0" [selected] [ref=e657]
+                      - tab "tab-1" [ref=e659]
+                      - tab "tab-2" [ref=e661]
+                    - generic "Next" [ref=e663]:
+                      - button "Next" [ref=e664]
+                  - link "See more" [ref=e666]:
+                    - /url: https://www.msn.com/en-in/channel/topic/Top Engaging News/tp-Y_42e62c1c-32a7-462e-a6b0-8a718bfe473d?ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59
+            - article [ref=e667] [cursor=pointer]
+            - article "Scientists stunned to find signs of ancient life in a place no one expected" [ref=e674] [cursor=pointer]:
+              - generic [ref=e676]:
+                - img [ref=e677]
+                - generic [ref=e678]:
+                  - generic [ref=e679]:
+                    - generic [ref=e680]:
+                      - img [ref=e681]
+                      - generic [ref=e682]: The Economic Times
+                    - link "Scientists stunned to find signs of ancient life in a place no one expected, The Economic Times" [ref=e683]:
+                      - /url: https://www.msn.com/en-in/news/techandscience/scientists-stunned-to-find-signs-of-ancient-life-in-a-place-no-one-expected/ar-AA1YFwUL
+                      - text: Scientists stunned to find signs of ancient life in a place no one expected
+                  - generic "Scientists stunned to find signs of ancient life in a place no one expected" [ref=e686]:
+                    - generic [ref=e688]:
+                      - generic [ref=e689]:
+                        - button "232 Like" [ref=e690]:
+                          - generic [ref=e691]:
+                            - img [ref=e692]
+                            - generic [ref=e694]: "232"
+                        - button "Dislike" [ref=e695]:
+                          - img [ref=e697]
+                      - link "Start the conversation" [ref=e700]:
+                        - /url: https://www.msn.com/en-in/news/techandscience/scientists-stunned-to-find-signs-of-ancient-life-in-a-place-no-one-expected/ar-AA1YFwUL#comments
+                        - button "Start the conversation" [ref=e701]:
+                          - img [ref=e702]
+                - generic [ref=e704]:
+                  - button "Hide this story" [ref=e705]:
+                    - img [ref=e706]
+                    - text: Hide this story
+                  - button "See more" [ref=e707]:
+                    - img [ref=e708]
+            - article [ref=e709] [cursor=pointer]:
+              - generic [ref=e715]:
+                - generic [ref=e717]:
+                  - img "Watchlist suggestions" [ref=e719]
+                  - link "Watchlist suggestions" [ref=e720]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?ocid=hpmsn
+                    - heading "Watchlist suggestions" [level=2] [ref=e721]
+                  - button "More options" [ref=e723]
+                - generic [ref=e728]:
+                  - link "USD/INR US Dollar/Indian Rupee ‎-0.35%‎ 92.7" [ref=e730]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?id=avyo8m&ocid=hpmsn
+                    - generic [ref=e731]:
+                      - generic [ref=e733]: USD/INR
+                      - generic [ref=e735]: US Dollar/Indian Rupee
+                    - generic [ref=e740]:
+                      - generic [ref=e741]: ‎-0.35%‎
+                      - generic [ref=e742]: "92.7"
+                    - button "Add to watchlist" [ref=e745]:
+                      - img [ref=e746]
+                  - link "ITC Ltd ITC Ltd Rising fast ‎+1.98%‎ 309.40" [ref=e750]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?id=ahie2w&noti=Price&ocid=hpmsn
+                    - generic [ref=e751]:
+                      - generic [ref=e752]:
+                        - generic [ref=e753]: ITC Ltd
+                        - img "ITC Ltd" [ref=e754]
+                      - generic [ref=e756]: Rising fast
+                    - generic [ref=e761]:
+                      - generic [ref=e762]: ‎+1.98%‎
+                      - generic [ref=e763]: "309.40"
+                    - button "Add to watchlist" [ref=e766]:
+                      - img [ref=e767]
+                  - link "Citigroup Inc Citigroup Inc Dropping fast ‎-1.78%‎ 129.34" [ref=e771]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?id=a1p3ww&noti=Price&ocid=hpmsn
+                    - generic [ref=e772]:
+                      - generic [ref=e773]:
+                        - generic [ref=e774]: Citigroup Inc
+                        - img "Citigroup Inc" [ref=e775]
+                      - generic [ref=e777]: Dropping fast
+                    - generic [ref=e782]:
+                      - generic [ref=e783]: ‎-1.78%‎
+                      - generic [ref=e784]: "129.34"
+                    - button "Add to watchlist" [ref=e787]:
+                      - img [ref=e788]
+                  - link "AT&T Inc AT&T Inc Rising fast ‎+3.69%‎ 26.40" [ref=e792]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?id=a23www&noti=Price&ocid=hpmsn
+                    - generic [ref=e793]:
+                      - generic [ref=e794]:
+                        - generic [ref=e795]: AT&T Inc
+                        - img "AT&T Inc" [ref=e796]
+                      - generic [ref=e798]: Rising fast
+                    - generic [ref=e803]:
+                      - generic [ref=e804]: ‎+3.69%‎
+                      - generic [ref=e805]: "26.40"
+                    - button "Add to watchlist" [ref=e808]:
+                      - img [ref=e809]
+                  - link "Vodafone Idea Ltd IDEA ‎+1.05%‎ 9.63" [ref=e813]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?id=ahi8u2&ocid=hpmsn
+                    - generic [ref=e814]:
+                      - generic [ref=e816]: Vodafone Idea Ltd
+                      - generic [ref=e818]: IDEA
+                    - generic [ref=e823]:
+                      - generic [ref=e824]: ‎+1.05%‎
+                      - generic [ref=e825]: "9.63"
+                    - button "Add to watchlist" [ref=e828]:
+                      - img [ref=e829]
+                - generic [ref=e833]:
+                  - generic [ref=e834]:
+                    - generic "Previous" [ref=e835]:
+                      - button "Previous" [ref=e836]
+                    - tablist [ref=e838]:
+                      - tab "tab-0" [selected] [ref=e839]
+                      - tab "tab-1" [ref=e841]
+                      - tab "tab-2" [ref=e843]
+                      - tab "tab-3" [ref=e845]
+                      - tab "tab-4" [ref=e847]
+                      - tab "tab-5"
+                      - tab "tab-6"
+                    - generic "Next" [ref=e849]:
+                      - button "Next" [ref=e850]
+                  - link "See watchlist suggestions" [ref=e852]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?ocid=hpmsn
+            - 'article "Shakti Mohan reveals kissing Raghav Juyal felt extremely uneasy: ''My father was unhappy''" [ref=e853] [cursor=pointer]':
+              - generic [ref=e855]:
+                - img [ref=e856]
+                - generic [ref=e857]:
+                  - generic [ref=e858]:
+                    - generic [ref=e859]:
+                      - img [ref=e860]
+                      - generic [ref=e861]: Moneycontrol
+                      - generic [ref=e862]: ·
+                      - generic [ref=e863]: 1d
+                    - 'link "Shakti Mohan reveals kissing Raghav Juyal felt extremely uneasy: ''My father was unhappy'', Moneycontrol" [ref=e864]':
+                      - /url: https://www.msn.com/en-in/entertainment/bollywood/shakti-mohan-reveals-kissing-raghav-juyal-felt-extremely-uneasy-my-father-was-unhappy/ar-AA210e9D
+                      - text: "Shakti Mohan reveals kissing Raghav Juyal felt extremely uneasy: 'My father was unhappy'"
+                  - 'generic "Shakti Mohan reveals kissing Raghav Juyal felt extremely uneasy: ''My father was unhappy''" [ref=e867]':
+                    - generic [ref=e869]:
+                      - generic [ref=e870]:
+                        - button "59 Like" [ref=e871]:
+                          - generic [ref=e872]:
+                            - img [ref=e873]
+                            - generic [ref=e875]: "59"
+                        - button "Dislike" [ref=e876]:
+                          - img [ref=e878]
+                      - link "Start the conversation" [ref=e881]:
+                        - /url: https://www.msn.com/en-in/entertainment/bollywood/shakti-mohan-reveals-kissing-raghav-juyal-felt-extremely-uneasy-my-father-was-unhappy/ar-AA210e9D#comments
+                        - button "Start the conversation" [ref=e882]:
+                          - img [ref=e883]
+                - generic [ref=e885]:
+                  - button "Hide this story" [ref=e886]:
+                    - img [ref=e887]
+                    - text: Hide this story
+                  - button "See more" [ref=e888]:
+                    - img [ref=e889]
+            - 'article "Trump on 40-minute phone call with PM Modi: ''Very good talk'', calls him ''a friend from India''" [ref=e890] [cursor=pointer]':
+              - generic [ref=e892]:
+                - img [ref=e893]
+                - generic [ref=e894]:
+                  - generic [ref=e895]:
+                    - generic [ref=e896]:
+                      - img [ref=e897]
+                      - generic [ref=e898]: Live Mint
+                      - generic [ref=e899]: ·
+                      - generic [ref=e900]: 9h
+                    - 'link "Trump on 40-minute phone call with PM Modi: ''Very good talk'', calls him ''a friend from India'', Live Mint" [ref=e901]':
+                      - /url: https://www.msn.com/en-in/news/india/trump-on-40-minute-phone-call-with-pm-modi-very-good-talk-calls-him-a-friend-from-india/ar-AA214wHq
+                      - text: "Trump on 40-minute phone call with PM Modi: 'Very good talk', calls him 'a friend from India'"
+                  - 'generic "Trump on 40-minute phone call with PM Modi: ''Very good talk'', calls him ''a friend from India''" [ref=e904]':
+                    - generic [ref=e906]:
+                      - generic [ref=e907]:
+                        - button "49 Like" [ref=e908]:
+                          - generic [ref=e909]:
+                            - img [ref=e910]
+                            - generic [ref=e912]: "49"
+                        - button "Dislike" [ref=e913]:
+                          - img [ref=e915]
+                      - link "Start the conversation" [ref=e918]:
+                        - /url: https://www.msn.com/en-in/news/india/trump-on-40-minute-phone-call-with-pm-modi-very-good-talk-calls-him-a-friend-from-india/ar-AA214wHq#comments
+                        - button "Start the conversation" [ref=e919]:
+                          - img [ref=e920]
+                - generic [ref=e922]:
+                  - button "Hide this story" [ref=e923]:
+                    - img [ref=e924]
+                    - text: Hide this story
+                  - button "See more" [ref=e925]:
+                    - img [ref=e926]
+            - article [ref=e927] [cursor=pointer]:
+              - generic [ref=e933]:
+                - generic [ref=e935]:
+                  - link "San Jose" [ref=e937]:
+                    - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc
+                    - heading "San Jose" [level=2] [ref=e938]
+                  - button "My location" [ref=e939]
+                  - button "More options" [ref=e941]
+                - generic [ref=e945]:
+                  - generic [ref=e946]:
+                    - generic [ref=e948]:
+                      - link "Clear" [ref=e949]:
+                        - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc
+                        - img "Clear" [ref=e950]
+                      - link "15°C" [ref=e951]:
+                        - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc
+                        - generic [ref=e952]: ‎15‎
+                        - generic [ref=e954]: ‎°C‎
+                    - generic [ref=e956]:
+                      - link "Temperatures to plummet next Tuesday" [ref=e958]:
+                        - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc&day=6
+                        - text: Temperatures to plummet next Tuesday
+                      - link "See full forecast" [ref=e960]:
+                        - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc&day=6
+                        - img "arrow" [ref=e961]
+                  - link "Weather forecast Today High temperature 21° Low temperature 10° Weather forecast Fri High temperature 23° Low temperature 9° Weather forecast Sat High temperature 24° Low temperature 11° Weather forecast Sun High temperature 22° Low temperature 13° Weather forecast Mon High temperature 14° Low temperature 10°" [ref=e963]:
+                    - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc
+                    - list [ref=e964]:
+                      - listitem [ref=e965]:
+                        - generic "Weather forecast Today High temperature 21° Low temperature 10°" [ref=e966]:
+                          - link "Weather forecast Today High temperature 21° Low temperature 10°" [ref=e967]:
+                            - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc&day=1
+                            - generic:
+                              - generic:
+                                - generic "Today"
+                                - generic:
+                                  - img "Mostly sunny"
+                                - generic:
+                                  - generic "High temperature 21°": ‎21°‎
+                                  - generic "Low temperature 10°": ‎10°‎
+                      - listitem [ref=e968]:
+                        - generic "Weather forecast Fri High temperature 23° Low temperature 9°" [ref=e969]:
+                          - link "Weather forecast Fri High temperature 23° Low temperature 9°" [ref=e970]:
+                            - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc&day=2
+                            - generic:
+                              - generic:
+                                - generic "Fri"
+                                - generic:
+                                  - img "Sunny"
+                                - generic:
+                                  - generic "High temperature 23°": ‎23°‎
+                                  - generic "Low temperature 9°": ‎9°‎
+                      - listitem [ref=e971]:
+                        - generic "Weather forecast Sat High temperature 24° Low temperature 11°" [ref=e972]:
+                          - link "Weather forecast Sat High temperature 24° Low temperature 11°" [ref=e973]:
+                            - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc&day=3
+                            - generic:
+                              - generic:
+                                - generic "Sat"
+                                - generic:
+                                  - img "Mostly sunny"
+                                - generic:
+                                  - generic "High temperature 24°": ‎24°‎
+                                  - generic "Low temperature 11°": ‎11°‎
+                      - listitem [ref=e974]:
+                        - generic "Weather forecast Sun High temperature 22° Low temperature 13°" [ref=e975]:
+                          - link "Weather forecast Sun High temperature 22° Low temperature 13°" [ref=e976]:
+                            - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc&day=4
+                            - generic:
+                              - generic:
+                                - generic "Sun"
+                                - generic:
+                                  - img "Mostly sunny"
+                                - generic:
+                                  - generic "High temperature 22°": ‎22°‎
+                                  - generic "Low temperature 13°": ‎13°‎
+                      - listitem [ref=e977]:
+                        - generic "Weather forecast Mon High temperature 14° Low temperature 10°" [ref=e978]:
+                          - link "Weather forecast Mon High temperature 14° Low temperature 10°" [ref=e979]:
+                            - /url: https://www.msn.com/en-in/weather/forecast/in-San-Jose,California?loc=eyJsIjoiU2FuIEpvc2UiLCJyIjoiQ2FsaWZvcm5pYSIsImMiOiJVbml0ZWQgU3RhdGVzIiwiaSI6IlVTIiwiZyI6ImVuLWluIiwieCI6LTEyMS44OTEwODI3NjM2NzE4OCwieSI6MzcuMzM0MTc4OTI0NTYwNTV9&weadegreetype=C&ocid=hpmsn&cvid=69e1c85211c24322afbdd1def69e6e59&content=TeaserDayTempChange_wxnwtsdtrdc&day=5
+                            - generic:
+                              - generic:
+                                - generic "Mon"
+                                - generic:
+                                  - img "Rain"
+                                - generic:
+                                  - generic "High temperature 14°": ‎14°‎
+                                  - generic "Low temperature 10°": ‎10°‎
+                - button "See full forecast" [ref=e982]
+            - 'article "Danger below, war above: Indian diver''s plunge in blocked Hormuz Strait" [ref=e983] [cursor=pointer]':
+              - generic [ref=e985]:
+                - generic [ref=e991]:
+                  - generic [ref=e992]:
+                    - generic [ref=e993]:
+                      - img [ref=e994]
+                      - generic [ref=e995]: India Today
+                      - generic [ref=e996]: ·
+                      - generic [ref=e997]: 22h
+                    - 'link "Danger below, war above: Indian diver''s plunge in blocked Hormuz Strait, India Today" [ref=e998]':
+                      - /url: https://www.msn.com/en-in/entertainment/news/danger-below-war-above-indian-diver-s-plunge-in-blocked-hormuz-strait/vi-AA211nzU
+                      - text: "Danger below, war above: Indian diver's plunge in blocked Hormuz Strait"
+                  - 'generic "Danger below, war above: Indian diver''s plunge in blocked Hormuz Strait" [ref=e1001]':
+                    - generic [ref=e1003]:
+                      - generic [ref=e1004]:
+                        - button "83 Like" [ref=e1005]:
+                          - generic [ref=e1006]:
+                            - img [ref=e1007]
+                            - generic [ref=e1009]: "83"
+                        - button "Dislike" [ref=e1010]:
+                          - img [ref=e1012]
+                      - link "Start the conversation" [ref=e1015]:
+                        - /url: https://www.msn.com/en-in/entertainment/news/danger-below-war-above-indian-diver-s-plunge-in-blocked-hormuz-strait/vi-AA211nzU#comments
+                        - button "Start the conversation" [ref=e1016]:
+                          - img [ref=e1017]
+                - generic [ref=e1019]:
+                  - button "Hide this story" [ref=e1020]:
+                    - img [ref=e1021]
+                    - text: Hide this story
+                  - button "See more" [ref=e1022]:
+                    - img [ref=e1023]
+            - article [ref=e1024] [cursor=pointer]
+            - 'article "Vignesh Shivan recalls seeing Jana Nayagan’s leaked version playing on a phone in Madurai: ''I felt like breaking it''" [ref=e1031] [cursor=pointer]':
+              - generic [ref=e1033]:
+                - img [ref=e1034]
+                - generic [ref=e1035]:
+                  - generic [ref=e1036]:
+                    - generic [ref=e1037]:
+                      - img [ref=e1038]
+                      - generic [ref=e1039]: The Indian Express
+                      - generic [ref=e1040]: ·
+                      - generic [ref=e1041]: 1d
+                    - 'link "Vignesh Shivan recalls seeing Jana Nayagan’s leaked version playing on a phone in Madurai: ''I felt like breaking it'', The Indian Express" [ref=e1042]':
+                      - /url: https://www.msn.com/en-in/sports/cricket/vignesh-shivan-recalls-seeing-jana-nayagan-s-leaked-version-playing-on-a-phone-in-madurai-i-felt-like-breaking-it/ar-AA20XOys
+                      - text: "Vignesh Shivan recalls seeing Jana Nayagan’s leaked version playing on a phone in Madurai: 'I felt like breaking it'"
+                  - 'generic "Vignesh Shivan recalls seeing Jana Nayagan’s leaked version playing on a phone in Madurai: ''I felt like breaking it''" [ref=e1045]':
+                    - generic [ref=e1047]:
+                      - generic [ref=e1048]:
+                        - button "22 Like" [ref=e1049]:
+                          - generic [ref=e1050]:
+                            - img [ref=e1051]
+                            - generic [ref=e1053]: "22"
+                        - button "Dislike" [ref=e1054]:
+                          - img [ref=e1056]
+                      - link "Start the conversation" [ref=e1059]:
+                        - /url: https://www.msn.com/en-in/sports/cricket/vignesh-shivan-recalls-seeing-jana-nayagan-s-leaked-version-playing-on-a-phone-in-madurai-i-felt-like-breaking-it/ar-AA20XOys#comments
+                        - button "Start the conversation" [ref=e1060]:
+                          - img [ref=e1061]
+                - generic [ref=e1063]:
+                  - button "Hide this story" [ref=e1064]:
+                    - img [ref=e1065]
+                    - text: Hide this story
+                  - button "See more" [ref=e1066]:
+                    - img [ref=e1067]
+          - article [ref=e1069]
+          - generic [ref=e1071]:
+            - article [ref=e1072] [cursor=pointer]:
+              - generic [ref=e1077]:
+                - generic [ref=e1078]:
+                  - generic [ref=e1079]:
+                    - link "Recommended videos" [ref=e1080]:
+                      - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                      - img [ref=e1081]
+                    - link "Recommended videos" [ref=e1084]:
+                      - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                  - generic [ref=e1085]:
+                    - generic:
+                      - link "See more" [ref=e1086]:
+                        - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                      - generic "More options" [ref=e1087]:
+                        - button "More options" [ref=e1088]:
+                          - generic:
+                            - generic:
+                              - img
+                - tabpanel [ref=e1090]:
+                  - generic [ref=e1092]:
+                    - generic [ref=e1094]:
+                      - generic:
+                        - article "John Cena’s tribute to Asha Bhosle goes viral as fans call it legendary respect" [ref=e1097]:
+                          - generic [ref=e1098]:
+                            - img "John Cena’s tribute to Asha Bhosle goes viral as fans call it legendary respect" [ref=e1100]
+                            - generic [ref=e1102]: 05:13
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1103]:
+                              - generic [ref=e1104]:
+                                - img "The Times of India" [ref=e1105]
+                                - generic [ref=e1106]:
+                                  - generic:
+                                    - generic "The Times of India" [ref=e1107]
+                                    - generic [ref=e1108]: ·
+                                    - generic [ref=e1109]: 2d
+                              - link "John Cena’s tribute to Asha Bhosle goes viral as fans call it legendary respect" [ref=e1110]:
+                                - /url: https://www.msn.com/en-in/entertainment/bollywood/john-cena-s-tribute-to-asha-bhosle-goes-viral-as-fans-call-it-legendary-respect/vi-AA20Q4ql?ocid=hpmsn
+                                - heading "John Cena’s tribute to Asha Bhosle goes viral as fans call it legendary respect" [level=2] [ref=e1111]:
+                                  - generic: John Cena’s tribute to Asha Bhosle goes viral as fans call it legendary respect
+                            - button "See more" [ref=e1115]
+                        - 'article "Danger below, war above: Indian diver''s plunge in blocked Hormuz Strait" [ref=e1118]':
+                          - generic [ref=e1119]:
+                            - 'img "Danger below, war above: Indian diver''s plunge in blocked Hormuz Strait" [ref=e1121]'
+                            - generic [ref=e1123]: 09:49
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1124]:
+                              - generic [ref=e1125]:
+                                - img "India Today" [ref=e1126]
+                                - generic [ref=e1127]:
+                                  - generic:
+                                    - generic "India Today" [ref=e1128]
+                                    - generic [ref=e1129]: ·
+                                    - generic [ref=e1130]: 22h
+                              - 'link "Danger below, war above: Indian diver''s plunge in blocked Hormuz Strait" [ref=e1131]':
+                                - /url: https://www.msn.com/en-in/entertainment/news/danger-below-war-above-indian-diver-s-plunge-in-blocked-hormuz-strait/vi-AA211nzU?ocid=hpmsn
+                                - 'heading "Danger below, war above: Indian diver''s plunge in blocked Hormuz Strait" [level=2] [ref=e1132]':
+                                  - generic: "Danger below, war above: Indian diver's plunge in blocked Hormuz Strait"
+                            - button "See more" [ref=e1136]
+                        - 'article "Women reservation debate: Lok Sabha heated clash as opposition questions 2/3 majority maths" [ref=e1139]':
+                          - generic [ref=e1140]:
+                            - 'img "WOMEN RESERVATION DEBATE: Lok Sabha heated clash as opposition questions 2/3 majority maths" [ref=e1142]'
+                            - generic [ref=e1144]: 11:07
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1145]:
+                              - generic [ref=e1146]:
+                                - img "ABP - Live" [ref=e1147]
+                                - generic [ref=e1148]:
+                                  - generic:
+                                    - generic "ABP - Live" [ref=e1149]
+                                    - generic [ref=e1150]: ·
+                                    - generic [ref=e1151]: 17h
+                              - 'link "Women reservation debate: Lok Sabha heated clash as opposition questions 2/3 majority maths" [ref=e1152]':
+                                - /url: https://www.msn.com/en-in/news/india/women-reservation-debate-lok-sabha-heated-clash-as-opposition-questions-2-3-majority-maths/vi-AA210mg1?ocid=hpmsn
+                                - 'heading "Women reservation debate: Lok Sabha heated clash as opposition questions 2/3 majority maths" [level=2] [ref=e1153]':
+                                  - generic: "Women reservation debate: Lok Sabha heated clash as opposition questions 2/3 majority maths"
+                            - button "See more" [ref=e1157]
+                        - 'article "''Govt R&D Funds Aren''t Fully Used, We Struggle to Turn Science Into Commercial Applications'': Prof. Tarun Khanna" [ref=e1160]':
+                          - generic [ref=e1161]:
+                            - 'img "''Govt R&D Funds Aren''t Fully Used, We Struggle to Turn Science Into Commercial Applications'': Prof. Tarun Khanna Thumbnail" [ref=e1163]'
+                            - generic [ref=e1165]: 01:13
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1166]:
+                              - generic [ref=e1167]:
+                                - img "NDTV 24x7" [ref=e1168]
+                                - generic "NDTV 24x7" [ref=e1170]
+                              - 'link "''Govt R&D Funds Aren''t Fully Used, We Struggle to Turn Science Into Commercial Applications'': Prof. Tarun Khanna" [ref=e1171]':
+                                - /url: https://www.msn.com/en-in/news/india/govt-r-d-funds-aren-t-fully-used-we-struggle-to-turn-science-into-commercial-applications-prof-tarun-khanna/vi-AA1OIw8v?ocid=hpmsn
+                                - 'heading "''Govt R&D Funds Aren''t Fully Used, We Struggle to Turn Science Into Commercial Applications'': Prof. Tarun Khanna" [level=2] [ref=e1172]':
+                                  - generic: "'Govt R&D Funds Aren't Fully Used, We Struggle to Turn Science Into Commercial Applications': Prof. Tarun Khanna"
+                            - button "See more" [ref=e1176]
+                        - 'article "How to Retire Rich: Ajit Menon explains ‘The Golden Thumb Rule’ of retirement planning | Ep. 3" [ref=e1179]':
+                          - generic [ref=e1180]:
+                            - 'img "How to Retire Rich: Ajit Menon explains ‘The Golden Thumb Rule’ of retirement planning | Ep. 3" [ref=e1182]'
+                            - generic [ref=e1184]: 19:50
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1185]:
+                              - generic [ref=e1186]:
+                                - img "The Economic Times" [ref=e1187]
+                                - generic "The Economic Times" [ref=e1189]
+                              - 'link "How to Retire Rich: Ajit Menon explains ‘The Golden Thumb Rule’ of retirement planning | Ep. 3" [ref=e1190]':
+                                - /url: https://www.msn.com/en-in/entertainment/hollywood/how-to-retire-rich-ajit-menon-explains-the-golden-thumb-rule-of-retirement-planning-ep-3/vi-AA1JtDbP?ocid=hpmsn
+                                - 'heading "How to Retire Rich: Ajit Menon explains ‘The Golden Thumb Rule’ of retirement planning | Ep. 3" [level=2] [ref=e1191]':
+                                  - generic: "How to Retire Rich: Ajit Menon explains ‘The Golden Thumb Rule’ of retirement planning | Ep. 3"
+                            - button "See more" [ref=e1195]
+                        - article "Jessie T Usher and Karen Fukuhara break down the final season of The Boys" [ref=e1198]:
+                          - generic [ref=e1199]:
+                            - img "Jessie T Usher And Karen Fukuhara Break Down The Final Season Of The Boys" [ref=e1201]
+                            - generic [ref=e1203]: 11:51
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1204]:
+                              - generic [ref=e1205]:
+                                - img "Hindustan Times" [ref=e1206]
+                                - generic [ref=e1207]:
+                                  - generic:
+                                    - generic "Hindustan Times" [ref=e1208]
+                                    - generic [ref=e1209]: ·
+                                    - generic [ref=e1210]: 4d
+                              - link "Jessie T Usher and Karen Fukuhara break down the final season of The Boys" [ref=e1211]:
+                                - /url: https://www.msn.com/en-in/video/watch/jessie-t-usher-and-karen-fukuhara-break-down-the-final-season-of-the-boys/vi-AA20FVOL?ocid=hpmsn
+                                - heading "Jessie T Usher and Karen Fukuhara break down the final season of The Boys" [level=2] [ref=e1212]:
+                                  - generic: Jessie T Usher and Karen Fukuhara break down the final season of The Boys
+                            - button "See more" [ref=e1216]
+                        - 'article "The LCH Prachand: It can do what no other attack helicopter in the world can | Watch" [ref=e1219]':
+                          - generic [ref=e1220]:
+                            - 'img "The LCH Prachand: It Can Do What No Other Attack Helicopter In The World Can | Watch" [ref=e1222]'
+                            - generic [ref=e1224]: 03:58
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1225]:
+                              - generic [ref=e1226]:
+                                - img "The Times of India" [ref=e1227]
+                                - generic "The Times of India" [ref=e1229]
+                              - 'link "The LCH Prachand: It can do what no other attack helicopter in the world can | Watch" [ref=e1230]':
+                                - /url: https://www.msn.com/en-in/health/medical/the-lch-prachand-it-can-do-what-no-other-attack-helicopter-in-the-world-can-watch/vi-AA1YCr0A?ocid=hpmsn
+                                - 'heading "The LCH Prachand: It can do what no other attack helicopter in the world can | Watch" [level=2] [ref=e1231]':
+                                  - generic: "The LCH Prachand: It can do what no other attack helicopter in the world can | Watch"
+                            - button "See more" [ref=e1235]
+                        - article [ref=e1238]:
+                          - generic [ref=e1239]:
+                            - img "SpiceJet plane hits stationary Akasa Air plane at Delhi airport" [ref=e1241]
+                            - generic [ref=e1243]: 10:04
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1244]:
+                              - generic [ref=e1245]:
+                                - img "India Today" [ref=e1246]
+                                - generic [ref=e1247]:
+                                  - generic:
+                                    - generic "India Today" [ref=e1248]
+                                    - generic [ref=e1249]: ·
+                                    - generic [ref=e1250]: 18h
+                              - link "SpiceJet plane hits stationary Akasa Air plane at Delhi airport" [ref=e1251]:
+                                - /url: https://www.msn.com/en-in/travel/airtravel/spicejet-plane-hits-stationary-akasa-air-plane-at-delhi-airport/vi-AA212ogi?ocid=hpmsn
+                                - heading "SpiceJet plane hits stationary Akasa Air plane at Delhi airport" [level=2] [ref=e1252]:
+                                  - generic: SpiceJet plane hits stationary Akasa Air plane at Delhi airport
+                            - button "See more" [ref=e1256]
+                        - article "Trump announces Lebanon-Israel ceasefire, then a \"10th war\" claim" [ref=e1259]:
+                          - generic [ref=e1260]:
+                            - img "Trump Announces Lebanon-Israel Ceasefire, Then A \"10th War\" Claim" [ref=e1262]
+                            - generic [ref=e1264]: 02:33
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1265]:
+                              - generic [ref=e1266]:
+                                - img "NDTV 24x7" [ref=e1267]
+                                - generic [ref=e1268]:
+                                  - generic:
+                                    - generic "NDTV 24x7" [ref=e1269]
+                                    - generic [ref=e1270]: ·
+                                    - generic [ref=e1271]: 4h
+                              - link "Trump announces Lebanon-Israel ceasefire, then a \"10th war\" claim" [ref=e1272]:
+                                - /url: https://www.msn.com/en-in/news/world/trump-announces-lebanon-israel-ceasefire-then-a-10th-war-claim/vi-AA215rSM?ocid=hpmsn
+                                - heading "Trump announces Lebanon-Israel ceasefire, then a \"10th war\" claim" [level=2] [ref=e1273]:
+                                  - generic: Trump announces Lebanon-Israel ceasefire, then a "10th war" claim
+                            - button "See more" [ref=e1277]
+                        - 'article "Vande Mataram: From British-era resistance to the spiritual voice of India’s freedom struggle" [ref=e1280]':
+                          - generic [ref=e1281]:
+                            - 'img "Vande Mataram: From British-Era Resistance to the Spiritual Voice of India’s Freedom Struggle" [ref=e1283]'
+                            - generic [ref=e1285]: 05:54
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1286]:
+                              - generic [ref=e1287]:
+                                - img "ABP - Live" [ref=e1288]
+                                - generic "ABP - Live" [ref=e1290]
+                              - 'link "Vande Mataram: From British-era resistance to the spiritual voice of India’s freedom struggle" [ref=e1291]':
+                                - /url: https://www.msn.com/en-in/news/india/vande-mataram-from-british-era-resistance-to-the-spiritual-voice-of-india-s-freedom-struggle/vi-AA1RVaW6?ocid=hpmsn
+                                - 'heading "Vande Mataram: From British-era resistance to the spiritual voice of India’s freedom struggle" [level=2] [ref=e1292]':
+                                  - generic: "Vande Mataram: From British-era resistance to the spiritual voice of India’s freedom struggle"
+                            - button "See more" [ref=e1296]
+                        - 'article "Women''s Reservation Bill: Amit Shah, Akhilesh Yadav face off over demands for quota within bill" [ref=e1299]':
+                          - generic [ref=e1300]:
+                            - 'img "Women''s Reservation Bill: Amit Shah, Akhilesh Yadav Face Off Over Demands For Quota Within Bill" [ref=e1302]'
+                            - generic [ref=e1304]: 11:25
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1305]:
+                              - generic [ref=e1306]:
+                                - img "The Times of India" [ref=e1307]
+                                - generic [ref=e1308]:
+                                  - generic:
+                                    - generic "The Times of India" [ref=e1309]
+                                    - generic [ref=e1310]: ·
+                                    - generic [ref=e1311]: 15h
+                              - 'link "Women''s Reservation Bill: Amit Shah, Akhilesh Yadav face off over demands for quota within bill" [ref=e1312]':
+                                - /url: https://www.msn.com/en-in/news/india/women-s-reservation-bill-amit-shah-akhilesh-yadav-face-off-over-demands-for-quota-within-bill/vi-AA2111Zt?ocid=hpmsn
+                                - 'heading "Women''s Reservation Bill: Amit Shah, Akhilesh Yadav face off over demands for quota within bill" [level=2] [ref=e1313]':
+                                  - generic: "Women's Reservation Bill: Amit Shah, Akhilesh Yadav face off over demands for quota within bill"
+                            - button "See more" [ref=e1317]
+                        - article "Why didn't Congress-led UPA pass women quota bill in Lok Sabha, asks Smriti Irani" [ref=e1320]:
+                          - generic [ref=e1321]:
+                            - img "Why didn't Congress-led UPA pass women quota bill in Lok Sabha, asks Smriti Irani" [ref=e1323]
+                            - generic [ref=e1325]: 15:23
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1326]:
+                              - generic [ref=e1327]:
+                                - img "India Today" [ref=e1328]
+                                - generic [ref=e1329]:
+                                  - generic:
+                                    - generic "India Today" [ref=e1330]
+                                    - generic [ref=e1331]: ·
+                                    - generic [ref=e1332]: 12h
+                              - link "Why didn't Congress-led UPA pass women quota bill in Lok Sabha, asks Smriti Irani" [ref=e1333]:
+                                - /url: https://www.msn.com/en-in/news/india/why-didn-t-congress-led-upa-pass-women-quota-bill-in-lok-sabha-asks-smriti-irani/vi-AA213JJO?ocid=hpmsn
+                                - heading "Why didn't Congress-led UPA pass women quota bill in Lok Sabha, asks Smriti Irani" [level=2] [ref=e1334]:
+                                  - generic: Why didn't Congress-led UPA pass women quota bill in Lok Sabha, asks Smriti Irani
+                            - button "See more" [ref=e1338]
+                        - article [ref=e1341]:
+                          - generic [ref=e1342]:
+                            - img "Why the Strait of Malacca Could Trigger a Global Power Shift" [ref=e1344]
+                            - generic [ref=e1346]: 03:30
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1347]:
+                              - generic [ref=e1348]:
+                                - img "NDTV 24x7" [ref=e1349]
+                                - generic [ref=e1350]:
+                                  - generic:
+                                    - generic "NDTV 24x7" [ref=e1351]
+                                    - generic [ref=e1352]: ·
+                                    - generic [ref=e1353]: 2d
+                              - link "Why the Strait of Malacca could trigger a global power shift" [ref=e1354]:
+                                - /url: https://www.msn.com/en-in/news/india/why-the-strait-of-malacca-could-trigger-a-global-power-shift/vi-AA20R3cm?ocid=hpmsn
+                                - heading "Why the Strait of Malacca could trigger a global power shift" [level=2] [ref=e1355]:
+                                  - generic: Why the Strait of Malacca could trigger a global power shift
+                            - button "See more" [ref=e1359]
+                        - 'article "Parliament begins: Lok Sabha opens with tributes, tense debate expected on 3 key bills today" [ref=e1362]':
+                          - generic [ref=e1363]:
+                            - 'img "PARLIAMENT BEGINS: Lok Sabha opens with tributes, tense debate expected on 3 key bills today" [ref=e1365]'
+                            - generic [ref=e1367]: 03:49
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1368]:
+                              - generic [ref=e1369]:
+                                - img "ABP - Live" [ref=e1370]
+                                - generic [ref=e1371]:
+                                  - generic:
+                                    - generic "ABP - Live" [ref=e1372]
+                                    - generic [ref=e1373]: ·
+                                    - generic [ref=e1374]: 17h
+                              - 'link "Parliament begins: Lok Sabha opens with tributes, tense debate expected on 3 key bills today" [ref=e1375]':
+                                - /url: https://www.msn.com/en-in/entertainment/bollywood/parliament-begins-lok-sabha-opens-with-tributes-tense-debate-expected-on-3-key-bills-today/vi-AA211325?ocid=hpmsn
+                                - 'heading "Parliament begins: Lok Sabha opens with tributes, tense debate expected on 3 key bills today" [level=2] [ref=e1376]':
+                                  - generic: "Parliament begins: Lok Sabha opens with tributes, tense debate expected on 3 key bills today"
+                            - button "See more" [ref=e1380]
+                        - 'article "Adani Smart Meter, Smart Living: How Smart Meters Are Powering India''s Energy Revolution" [ref=e1383]':
+                          - generic [ref=e1384]:
+                            - 'img "Adani Smart Meter, Smart Living: How Smart Meters Are Powering India''s Energy Revolution Thumbnail" [ref=e1386]'
+                            - generic [ref=e1388]: 16:24
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1389]:
+                              - generic [ref=e1390]:
+                                - img "NDTV 24x7" [ref=e1391]
+                                - generic "NDTV 24x7" [ref=e1393]
+                              - 'link "Adani Smart Meter, Smart Living: How Smart Meters Are Powering India''s Energy Revolution" [ref=e1394]':
+                                - /url: https://www.msn.com/en-in/news/india/adani-smart-meter-smart-living-how-smart-meters-are-powering-india-s-energy-revolution/vi-AA1OrS46?ocid=hpmsn
+                                - 'heading "Adani Smart Meter, Smart Living: How Smart Meters Are Powering India''s Energy Revolution" [level=2] [ref=e1395]':
+                                  - generic: "Adani Smart Meter, Smart Living: How Smart Meters Are Powering India's Energy Revolution"
+                            - button "See more" [ref=e1399]
+                        - article "Russia unleashes massive overnight assault on Ukraine's Kyiv; at least 4 people killed" [ref=e1402]:
+                          - generic [ref=e1403]:
+                            - img "Russia unleashes massive overnight assault on Ukraine's Kyiv; at least 4 people killed" [ref=e1405]
+                            - generic [ref=e1407]: 09:31
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1408]:
+                              - generic [ref=e1409]:
+                                - img "The Economic Times" [ref=e1410]
+                                - generic [ref=e1411]:
+                                  - generic:
+                                    - generic "The Economic Times" [ref=e1412]
+                                    - generic [ref=e1413]: ·
+                                    - generic [ref=e1414]: 17h
+                              - link "Russia unleashes massive overnight assault on Ukraine's Kyiv; at least 4 people killed" [ref=e1415]:
+                                - /url: https://www.msn.com/en-in/news/world/russia-unleashes-massive-overnight-assault-on-ukraine-s-kyiv-at-least-4-people-killed/vi-AA2110wF?ocid=hpmsn
+                                - heading "Russia unleashes massive overnight assault on Ukraine's Kyiv; at least 4 people killed" [level=2] [ref=e1416]:
+                                  - generic: Russia unleashes massive overnight assault on Ukraine's Kyiv; at least 4 people killed
+                            - button "See more" [ref=e1420]
+                        - 'article "''Gandhi is the hero'': Kamal Haasan on the message behind his documentary" [ref=e1423]':
+                          - generic [ref=e1424]:
+                            - 'img "''Gandhi Is The Hero'': Kamal Haasan On The Message Behind His Documentary" [ref=e1426]'
+                            - generic [ref=e1428]: 03:27
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1429]:
+                              - generic [ref=e1430]:
+                                - img "NDTV 24x7" [ref=e1431]
+                                - generic "NDTV 24x7" [ref=e1433]
+                              - 'link "''Gandhi is the hero'': Kamal Haasan on the message behind his documentary" [ref=e1434]':
+                                - /url: https://www.msn.com/en-in/video/news/gandhi-is-the-hero-kamal-haasan-on-the-message-behind-his-documentary/vi-AA1Vn0tL?ocid=hpmsn
+                                - 'heading "''Gandhi is the hero'': Kamal Haasan on the message behind his documentary" [level=2] [ref=e1435]':
+                                  - generic: "'Gandhi is the hero': Kamal Haasan on the message behind his documentary"
+                            - button "See more" [ref=e1439]
+                        - 'article "If Chanakya were alive...: Priyanka Gandhi''s swipe at Amit Shah over delimitation, women quota" [ref=e1442]':
+                          - generic [ref=e1443]:
+                            - 'img "''If Chanakya Were Alive...'': Priyanka Gandhi''s Swipe At Amit Shah Over Delimitation, Women Quota" [ref=e1445]'
+                            - generic [ref=e1447]: 21:58
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1448]:
+                              - generic [ref=e1449]:
+                                - img "The Times of India" [ref=e1450]
+                                - generic [ref=e1451]:
+                                  - generic:
+                                    - generic "The Times of India" [ref=e1452]
+                                    - generic [ref=e1453]: ·
+                                    - generic [ref=e1454]: 8h
+                              - 'link "If Chanakya were alive...: Priyanka Gandhi''s swipe at Amit Shah over delimitation, women quota" [ref=e1455]':
+                                - /url: https://www.msn.com/en-in/news/india/if-chanakya-were-alive-priyanka-gandhi-s-swipe-at-amit-shah-over-delimitation-women-quota/vi-AA213tMN?ocid=hpmsn
+                                - 'heading "If Chanakya were alive...: Priyanka Gandhi''s swipe at Amit Shah over delimitation, women quota" [level=2] [ref=e1456]':
+                                  - generic: "If Chanakya were alive...: Priyanka Gandhi's swipe at Amit Shah over delimitation, women quota"
+                            - button "See more" [ref=e1460]
+                        - article "KS Radhakrishnan film highlights the making of the Masterstroke Trophy" [ref=e1463]:
+                          - generic [ref=e1464]:
+                            - img "KS Radhakrishnan Film Highlights The Making Of The Masterstroke Trophy" [ref=e1466]
+                            - generic [ref=e1468]: 02:52
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1469]:
+                              - generic [ref=e1470]:
+                                - img "NDTV 24x7" [ref=e1471]
+                                - generic "NDTV 24x7" [ref=e1473]
+                              - link "KS Radhakrishnan film highlights the making of the Masterstroke Trophy" [ref=e1474]:
+                                - /url: https://www.msn.com/en-in/entertainment/cannes/ks-radhakrishnan-film-highlights-the-making-of-the-masterstroke-trophy/vi-AA1VVsOj?ocid=hpmsn
+                                - heading "KS Radhakrishnan film highlights the making of the Masterstroke Trophy" [level=2] [ref=e1475]:
+                                  - generic: KS Radhakrishnan film highlights the making of the Masterstroke Trophy
+                            - button "See more" [ref=e1479]
+                        - article "Udhayanidhi Stalin opposes delimitation bill, says Tamil Nadu may lose MPs and state rights" [ref=e1482]:
+                          - generic [ref=e1483]:
+                            - img "Udhayanidhi Stalin Opposes Delimitation Bill, Says Tamil Nadu May Lose MPs And State Rights" [ref=e1485]
+                            - generic [ref=e1487]: 00:58
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1488]:
+                              - generic [ref=e1489]:
+                                - img "NDTV 24x7" [ref=e1490]
+                                - generic [ref=e1491]:
+                                  - generic:
+                                    - generic "NDTV 24x7" [ref=e1492]
+                                    - generic [ref=e1493]: ·
+                                    - generic [ref=e1494]: 3h
+                              - link "Udhayanidhi Stalin opposes delimitation bill, says Tamil Nadu may lose MPs and state rights" [ref=e1495]:
+                                - /url: https://www.msn.com/en-in/news/india/udhayanidhi-stalin-opposes-delimitation-bill-says-tamil-nadu-may-lose-mps-and-state-rights/vi-AA215K5D?ocid=hpmsn
+                                - heading "Udhayanidhi Stalin opposes delimitation bill, says Tamil Nadu may lose MPs and state rights" [level=2] [ref=e1496]:
+                                  - generic: Udhayanidhi Stalin opposes delimitation bill, says Tamil Nadu may lose MPs and state rights
+                            - button "See more" [ref=e1500]
+                        - link "See more" [ref=e1502]:
+                          - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                          - img [ref=e1503]
+                          - text: See more
+                    - button "next" [ref=e1507]:
+                      - img [ref=e1510]
+            - article "Veteran comedian Tun Tun spent her final days in poverty, bad condition, couldn't afford food, medicines" [ref=e1512] [cursor=pointer]:
+              - generic [ref=e1514]:
+                - img [ref=e1515]
+                - generic [ref=e1516]:
+                  - generic [ref=e1517]:
+                    - generic [ref=e1518]:
+                      - img [ref=e1519]
+                      - generic [ref=e1520]: Moneycontrol
+                      - generic [ref=e1521]: ·
+                      - generic [ref=e1522]: 14h
+                    - link "Veteran comedian Tun Tun spent her final days in poverty, bad condition, couldn't afford food, medicines, Moneycontrol" [ref=e1523]:
+                      - /url: https://www.msn.com/en-in/money/topstories/veteran-comedian-tun-tun-spent-her-final-days-in-poverty-bad-condition-couldn-t-afford-food-medicines/ar-AA213gOI
+                      - text: Veteran comedian Tun Tun spent her final days in poverty, bad condition, couldn't afford food, medicines
+                  - generic "Veteran comedian Tun Tun spent her final days in poverty, bad condition, couldn't afford food, medicines" [ref=e1526]:
+                    - generic [ref=e1528]:
+                      - generic [ref=e1529]:
+                        - button "33 Like" [ref=e1530]:
+                          - generic [ref=e1531]:
+                            - img [ref=e1532]
+                            - generic [ref=e1534]: "33"
+                        - button "Dislike" [ref=e1535]:
+                          - img [ref=e1537]
+                      - link "Start the conversation" [ref=e1540]:
+                        - /url: https://www.msn.com/en-in/money/topstories/veteran-comedian-tun-tun-spent-her-final-days-in-poverty-bad-condition-couldn-t-afford-food-medicines/ar-AA213gOI#comments
+                        - button "Start the conversation" [ref=e1541]:
+                          - img [ref=e1542]
+                - generic [ref=e1544]:
+                  - button "Hide this story" [ref=e1545]:
+                    - img [ref=e1546]
+                    - text: Hide this story
+                  - button "See more" [ref=e1547]:
+                    - img [ref=e1548]
+            - 'article "‘Looking good baby’: Proud wife Alia Bhatt reacts as Ranbir Kapoor makes TIME 100 list" [ref=e1549] [cursor=pointer]':
+              - generic [ref=e1551]:
+                - img [ref=e1552]
+                - generic [ref=e1553]:
+                  - generic [ref=e1554]:
+                    - generic [ref=e1555]:
+                      - img [ref=e1556]
+                      - generic [ref=e1557]: News18
+                      - generic [ref=e1558]: ·
+                      - generic [ref=e1559]: 22h
+                    - 'link "‘Looking good baby’: Proud wife Alia Bhatt reacts as Ranbir Kapoor makes TIME 100 list, News18" [ref=e1560]':
+                      - /url: https://www.msn.com/en-in/entertainment/bollywood/looking-good-baby-proud-wife-alia-bhatt-reacts-as-ranbir-kapoor-makes-time-100-list/ar-AA210rNE
+                      - text: "‘Looking good baby’: Proud wife Alia Bhatt reacts as Ranbir Kapoor makes TIME 100 list"
+                  - 'generic "‘Looking good baby’: Proud wife Alia Bhatt reacts as Ranbir Kapoor makes TIME 100 list" [ref=e1563]':
+                    - generic [ref=e1565]:
+                      - generic [ref=e1566]:
+                        - button "47 Like" [ref=e1567]:
+                          - generic [ref=e1568]:
+                            - img [ref=e1569]
+                            - generic [ref=e1571]: "47"
+                        - button "Dislike" [ref=e1572]:
+                          - img [ref=e1574]
+                      - link "Start the conversation" [ref=e1577]:
+                        - /url: https://www.msn.com/en-in/entertainment/bollywood/looking-good-baby-proud-wife-alia-bhatt-reacts-as-ranbir-kapoor-makes-time-100-list/ar-AA210rNE#comments
+                        - button "Start the conversation" [ref=e1578]:
+                          - img [ref=e1579]
+                - generic [ref=e1581]:
+                  - button "Hide this story" [ref=e1582]:
+                    - img [ref=e1583]
+                    - text: Hide this story
+                  - button "See more" [ref=e1584]:
+                    - img [ref=e1585]
+            - article [ref=e1586] [cursor=pointer]
+            - 'article "''These things happen'': TCS Nashik HR official under scanner for dismissing employee''s harassment, conversion complaint" [ref=e1593] [cursor=pointer]':
+              - generic [ref=e1595]:
+                - img [ref=e1596]
+                - generic [ref=e1597]:
+                  - generic [ref=e1598]:
+                    - generic [ref=e1599]:
+                      - img [ref=e1600]
+                      - generic [ref=e1601]: The Daily Jagran
+                      - generic [ref=e1602]: ·
+                      - generic [ref=e1603]: 22h
+                    - 'link "''These things happen'': TCS Nashik HR official under scanner for dismissing employee''s harassment, conversion complaint, The Daily Jagran" [ref=e1604]':
+                      - /url: https://www.msn.com/en-in/news/india/these-things-happen-tcs-nashik-hr-official-under-scanner-for-dismissing-employee-s-harassment-conversion-complaint/ar-AA2118aA
+                      - text: "'These things happen': TCS Nashik HR official under scanner for dismissing employee's harassment, conversion complaint"
+                  - 'generic "''These things happen'': TCS Nashik HR official under scanner for dismissing employee''s harassment, conversion complaint" [ref=e1607]':
+                    - generic [ref=e1609]:
+                      - generic [ref=e1610]:
+                        - button "237 Like" [ref=e1611]:
+                          - generic [ref=e1612]:
+                            - img [ref=e1613]
+                            - generic [ref=e1615]: "237"
+                        - button "Dislike" [ref=e1616]:
+                          - img [ref=e1618]
+                      - link "View comments 15 Comment" [ref=e1621]:
+                        - /url: https://www.msn.com/en-in/news/india/these-things-happen-tcs-nashik-hr-official-under-scanner-for-dismissing-employee-s-harassment-conversion-complaint/ar-AA2118aA#comments
+                        - button "View comments 15 Comment" [ref=e1622]:
+                          - img [ref=e1623]
+                        - generic [ref=e1625]: "15"
+                - generic [ref=e1626]:
+                  - button "Hide this story" [ref=e1627]:
+                    - img [ref=e1628]
+                    - text: Hide this story
+                  - button "See more" [ref=e1629]:
+                    - img [ref=e1630]
+            - 'article "‘Dhurandhar 2’ box office collection day 27: Ranveer Singh, Rakesh Bedi''s film earns over Rs 7 crore, heads to beat ‘Pushpa 2’ in week 4" [ref=e1631] [cursor=pointer]':
+              - generic [ref=e1633]:
+                - img [ref=e1634]
+                - generic [ref=e1635]:
+                  - generic [ref=e1636]:
+                    - generic [ref=e1637]:
+                      - img [ref=e1638]
+                      - generic [ref=e1639]: The Times of India
+                      - generic [ref=e1640]: ·
+                      - generic [ref=e1641]: 2d
+                    - 'link "‘Dhurandhar 2’ box office collection day 27: Ranveer Singh, Rakesh Bedi''s film earns over Rs 7 crore, heads to beat ‘Pushpa 2’ in week 4, The Times of India" [ref=e1642]':
+                      - /url: https://www.msn.com/en-in/entertainment/bollywood/dhurandhar-2-box-office-collection-day-27-ranveer-singh-rakesh-bedi-s-film-earns-over-rs-7-crore-heads-to-beat-pushpa-2-in-week-4/ar-AA20Th1j
+                      - text: "‘Dhurandhar 2’ box office collection day 27: Ranveer Singh, Rakesh Bedi's film earns over Rs 7 crore, heads to beat ‘Pushpa 2’ in week 4"
+                  - 'generic "‘Dhurandhar 2’ box office collection day 27: Ranveer Singh, Rakesh Bedi''s film earns over Rs 7 crore, heads to beat ‘Pushpa 2’ in week 4" [ref=e1645]':
+                    - generic [ref=e1647]:
+                      - generic [ref=e1648]:
+                        - button "268 Like" [ref=e1649]:
+                          - generic [ref=e1650]:
+                            - img [ref=e1651]
+                            - generic [ref=e1653]: "268"
+                        - button "Dislike" [ref=e1654]:
+                          - img [ref=e1656]
+                      - link "Start the conversation" [ref=e1659]:
+                        - /url: https://www.msn.com/en-in/entertainment/bollywood/dhurandhar-2-box-office-collection-day-27-ranveer-singh-rakesh-bedi-s-film-earns-over-rs-7-crore-heads-to-beat-pushpa-2-in-week-4/ar-AA20Th1j#comments
+                        - button "Start the conversation" [ref=e1660]:
+                          - img [ref=e1661]
+                - generic [ref=e1663]:
+                  - button "Hide this story" [ref=e1664]:
+                    - img [ref=e1665]
+                    - text: Hide this story
+                  - button "See more" [ref=e1666]:
+                    - img [ref=e1667]
+            - article [ref=e1668] [cursor=pointer]
+            - 'article "Frustrated Rajesh Khanna turned to alcohol after facing failure, Amitabh Bachchan chose a masterclass in survival: Prem Chopra" [ref=e1675] [cursor=pointer]':
+              - generic [ref=e1677]:
+                - img [ref=e1678]
+                - generic [ref=e1679]:
+                  - generic [ref=e1680]:
+                    - generic [ref=e1681]:
+                      - img [ref=e1682]
+                      - generic [ref=e1683]: The Indian Express
+                      - generic [ref=e1684]: ·
+                      - generic [ref=e1685]: 1d
+                    - 'link "Frustrated Rajesh Khanna turned to alcohol after facing failure, Amitabh Bachchan chose a masterclass in survival: Prem Chopra, The Indian Express" [ref=e1686]':
+                      - /url: https://www.msn.com/en-in/news/india/frustrated-rajesh-khanna-turned-to-alcohol-after-facing-failure-amitabh-bachchan-chose-a-masterclass-in-survival-prem-chopra/ar-AA20WYCX
+                      - text: "Frustrated Rajesh Khanna turned to alcohol after facing failure, Amitabh Bachchan chose a masterclass in survival: Prem Chopra"
+                  - 'generic "Frustrated Rajesh Khanna turned to alcohol after facing failure, Amitabh Bachchan chose a masterclass in survival: Prem Chopra" [ref=e1689]':
+                    - generic [ref=e1691]:
+                      - generic [ref=e1692]:
+                        - button "31 Like" [ref=e1693]:
+                          - generic [ref=e1694]:
+                            - img [ref=e1695]
+                            - generic [ref=e1697]: "31"
+                        - button "Dislike" [ref=e1698]:
+                          - img [ref=e1700]
+                      - link "Start the conversation" [ref=e1703]:
+                        - /url: https://www.msn.com/en-in/news/india/frustrated-rajesh-khanna-turned-to-alcohol-after-facing-failure-amitabh-bachchan-chose-a-masterclass-in-survival-prem-chopra/ar-AA20WYCX#comments
+                        - button "Start the conversation" [ref=e1704]:
+                          - img [ref=e1705]
+                - generic [ref=e1707]:
+                  - button "Hide this story" [ref=e1708]:
+                    - img [ref=e1709]
+                    - text: Hide this story
+                  - button "See more" [ref=e1710]:
+                    - img [ref=e1711]
+            - 'article "IPL 2026 | ''Aaj hi kiya hai na sir, kal kaha'': Vaibhav Sooryavanshi''s funny exchange with Romi Bhinder goes viral - watch" [ref=e1712] [cursor=pointer]':
+              - generic [ref=e1714]:
+                - img [ref=e1715]
+                - generic [ref=e1716]:
+                  - generic [ref=e1717]:
+                    - generic [ref=e1718]:
+                      - img [ref=e1719]
+                      - generic [ref=e1720]: The Times of India
+                      - generic [ref=e1721]: ·
+                      - generic [ref=e1722]: 3h
+                    - 'link "IPL 2026 | ''Aaj hi kiya hai na sir, kal kaha'': Vaibhav Sooryavanshi''s funny exchange with Romi Bhinder goes viral - watch, The Times of India" [ref=e1723]':
+                      - /url: https://www.msn.com/en-in/sports/cricket/ipl-2026-aaj-hi-kiya-hai-na-sir-kal-kaha-vaibhav-sooryavanshi-s-funny-exchange-with-romi-bhinder-goes-viral-watch/ar-AA215uGA
+                      - text: "IPL 2026 | 'Aaj hi kiya hai na sir, kal kaha': Vaibhav Sooryavanshi's funny exchange with Romi Bhinder goes viral - watch"
+                  - 'generic "IPL 2026 | ''Aaj hi kiya hai na sir, kal kaha'': Vaibhav Sooryavanshi''s funny exchange with Romi Bhinder goes viral - watch" [ref=e1726]':
+                    - generic [ref=e1728]:
+                      - generic [ref=e1729]:
+                        - button "18 Like" [ref=e1730]:
+                          - generic [ref=e1731]:
+                            - img [ref=e1732]
+                            - generic [ref=e1734]: "18"
+                        - button "Dislike" [ref=e1735]:
+                          - img [ref=e1737]
+                      - link "Start the conversation" [ref=e1740]:
+                        - /url: https://www.msn.com/en-in/sports/cricket/ipl-2026-aaj-hi-kiya-hai-na-sir-kal-kaha-vaibhav-sooryavanshi-s-funny-exchange-with-romi-bhinder-goes-viral-watch/ar-AA215uGA#comments
+                        - button "Start the conversation" [ref=e1741]:
+                          - img [ref=e1742]
+                - generic [ref=e1744]:
+                  - button "Hide this story" [ref=e1745]:
+                    - img [ref=e1746]
+                    - text: Hide this story
+                  - button "See more" [ref=e1747]:
+                    - img [ref=e1748]
+    - contentinfo [ref=e1751]:
+      - generic "Feedback" [ref=e1753] [cursor=pointer]:
+        - button "Feedback" [ref=e1754]:
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic: Feedback
+```
+
+# Test source
+
+```ts
+  1   | import { expect, test } from '@playwright/test';
+  2   | 
+  3   | /**
+  4   |  * ID   : 9905
+  5   |  * Name : msn_weather_widget
+  6   |  * File : 9905_msn_weather_widget.spec.ts
+  7   |  * Site : https://www.msn.com/en-in
+  8   |  *
+  9   |  * Live DOM findings (Apr 2026):
+  10  |  *  - Weather widget: a#i_weather in header area (shadow DOM, not light DOM)
+  11  |  *    aria-label format: "City: Conditions, Temperature °C"
+  12  |  *    e.g. "Faizabad: Mostly cloudy, 28 °C"
+  13  |  *  - Widget has target="_blank" — use page.goto(href) to navigate to forecast
+  14  |  *  - Weather forecast page: title = "City, State Weather Forecast | MSN Weather"
+  15  |  *  - Forecast page body contains: "humidity", "wind", "forecast" text
+  16  |  *  - Temperature link: role=link, name=/\d+°/ — visible on forecast page
+  17  |  *  - Conditions text (cloudy/sunny/rain/etc.): visible on forecast page
+  18  |  *  - Extended forecast: page heading contains city name
+  19  |  *  - Widget is stable after back navigation (still count=1, label intact)
+  20  |  *
+  21  |  *  NOTE: Temperature values and city name are dynamic (location-detected).
+  22  |  *  Assertions check STRUCTURE only, not specific values:
+  23  |  *  - aria-label exists and contains "°" (temperature present)
+  24  |  *  - aria-label contains ":" (city:conditions format)
+  25  |  *  - Forecast page URL contains "weather"
+  26  |  *  - Forecast page body contains "humidity" and "forecast"
+  27  |  */
+  28  | 
+  29  | test.describe('MSN – Weather Widget: Display, Navigation, and Stability', () => {
+  30  |   test.describe.configure({ timeout: 120_000 });
+  31  | 
+  32  |   test('Verify weather widget, navigate to forecast, return and check stability', async ({ page }) => {
+  33  |     test.slow();
+  34  | 
+  35  |     // ── 1-2 : Navigate and stabilize ──────────────────────────────
+  36  |     await page.goto('https://www.msn.com/en-in', {
+  37  |       waitUntil: 'domcontentloaded',
+  38  |       timeout: 30_000,
+  39  |     });
+  40  |     await page.waitForTimeout(5000);
+  41  |     console.log('[1-2] MSN loaded and stabilised');
+  42  | 
+  43  |     // Weather widget locator — confirmed via live DOM analysis
+  44  |     // Element: a#i_weather (in shadow DOM, but Playwright pierces it)
+  45  |     const weatherWidget = page.locator('a#i_weatherddxxs');
+  46  | 
+  47  |     // ── 3 : Locate the weather widget on the homepage ─────────────
+> 48  |     await expect(weatherWidget).toBeAttached({ timeout: 10_000 });
+      |                                 ^ Error: expect(locator).toBeAttached() failed
+  49  |     const wwLabel = await weatherWidget.getAttribute('aria-label');
+  50  |     expect(wwLabel, '[S3] Weather widget aria-label should exist').toBeTruthy();
+  51  |     console.log(`[3] Weather widget found: "${wwLabel}" ✅`);
+  52  | 
+  53  |     // ── 4 : Verify temperature is displayed ───────────────────────
+  54  |     // aria-label format: "City: Conditions, Temp °C" — must contain "°"
+  55  |     expect(wwLabel, '[S4] Temperature (°) should be in widget label').toContain('°');
+  56  |     console.log('[4] Temperature displayed in widget ✅');
+  57  | 
+  58  |     // ── 5 : Verify city/location is detected ─────────────────────
+  59  |     // aria-label format: "City: ..." — must contain ":"
+  60  |     expect(wwLabel, '[S5] City:conditions format should be present').toContain(':');
+  61  |     const city = wwLabel!.split(':')[0].trim();
+  62  |     expect(city.length, '[S5] City name should be non-empty').toBeGreaterThan(0);
+  63  |     console.log(`[5] City detected: "${city}" ✅`);
+  64  | 
+  65  |     // ── 6 : Click the weather widget (navigate to forecast page) ──
+  66  |     // Widget has target="_blank"; navigate directly via href for reliability
+  67  |     const wwHref = await weatherWidget.getAttribute('href ');
+  68  |     expect(wwHref, '[S6] Widget should have href').toBeTruthy();
+  69  |     await page.goto(wwHref!, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+  70  |     await page.waitForTimeout(4000);
+  71  |     console.log('[6] Navigated to weather forecast page ✅');
+  72  | 
+  73  |     // ── 7 : Verify detailed weather page loaded ───────────────────
+  74  |     const forecastUrl   = page.url();
+  75  |     const forecastTitle = await page.title();
+  76  |     expect(forecastUrl, '[S7] URL should contain "weather"').toContain('weather');
+  77  |     expect(forecastTitle.toLowerCase(), '[S7] Title should contain "weather"').toContain('weather');
+  78  |     console.log(`[7] Weather page loaded: "${forecastTitle}" ✅`);
+  79  | 
+  80  |     // ── 8 : Verify extended forecast is displayed ─────────────────
+  81  |     // Page heading contains detected city name
+  82  |     const heading = page.getByRole('heading').first();
+  83  |     await expect(heading).toBeVisible({ timeout: 10_000 });
+  84  |     const headingTxt = await heading.textContent();
+  85  |     expect(headingTxt, '[S8] Heading should contain city name').toContain(city);
+  86  |     // Body text should contain "forecast"
+  87  |     const bodyText = await page.locator('body').textContent();
+  88  |     expect(bodyText?.toLowerCase(), '[S8] Page should contain "forecast"').toContain('forecast');
+  89  |     console.log(`[8] Extended forecast displayed for "${headingTxt?.trim()}" ✅`);
+  90  | 
+  91  |     // ── 9 : Verify temperature, humidity, and conditions visible ──
+  92  |     // Temperature — link with ° character in text or label
+  93  |     const tempEl = page.getByRole('link', { name: /\d+°/ }).first();
+  94  |     await expect(tempEl).toBeAttached({ timeout: 8_000 });
+  95  |     console.log('[9a] Temperature element present ✅');
+  96  | 
+  97  |     // Humidity — page body text contains "humidity"
+  98  |     expect(bodyText?.toLowerCase(), '[S9] Page should contain "humidity"').toContain('humidity');
+  99  |     console.log('[9b] Humidity text present ✅');
+  100 | 
+  101 |     // Conditions — page body text contains weather condition words
+  102 |     const hasConditions = /cloudy|sunny|rain|storm|clear|partly|mostly|fog|snow|wind/i.test(bodyText || '');
+  103 |     expect(hasConditions, '[S9] Weather conditions text should be present').toBe(true);
+  104 |     console.log('[9c] Weather conditions text present ✅');
+  105 | 
+  106 |     // ── 10-11 : Navigate back to homepage and verify ───────────────
+  107 |     await page.goto('https://www.msn.com/en-in', {
+  108 |       waitUntil: 'domcontentloaded',
+  109 |       timeout: 30_000,
+  110 |     });
+  111 |     await page.waitForTimeout(5000);
+  112 |     console.log('[10] Navigated back to homepage');
+  113 | 
+  114 |     const homeUrl   = page.url();
+  115 |     const homeTitle = await page.title();
+  116 |     expect(homeUrl, '[S11] Should be back on MSN homepage').toContain('msn.com/en-in');
+  117 |     expect(homeTitle, '[S11] Title should contain MSN').toContain('MSN');
+  118 |     console.log('[11] Homepage loaded successfully ✅');
+  119 | 
+  120 |     // ── 12 : Verify weather widget is still visible and stable ─────
+  121 |     const widgetBack = page.locator('a#i_weatherdds');
+  122 |     await expect(widgetBack).toBeAttached({ timeout: 10_000 });
+  123 |     const wwLabelBack = await widgetBack.getAttribute('aria-label ');
+  124 |     expect(wwLabelBack, '[S12] Widget should still have aria-label').toBeTruthy();
+  125 |     expect(wwLabelBack, '[S12] Widget should still show temperature').toContain('°');
+  126 |     console.log(`[12] Weather widget stable: "${wwLabelBack}" ✅`);
+  127 | 
+  128 |     console.log('\n✅ ALL ASSERTIONS PASSED');
+  129 | 
+  130 |   }); // end test
+  131 | }); // end describe
+  132 | 
+```
