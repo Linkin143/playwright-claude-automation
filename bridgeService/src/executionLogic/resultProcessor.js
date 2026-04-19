@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const claudeClient = require('../ai/claudeClient');
 const gitManager = require('../git/gitManager');
-const config = require('../config/config');
+const config = require('../../../config/config');
 async function process(fileName, PATHS) {
   try {
     console.log(`\n📊 Processing results for: ${fileName}`);

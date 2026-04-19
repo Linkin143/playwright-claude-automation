@@ -2,8 +2,7 @@ const simpleGit = require('simple-git');
 const path = require('path');
 const fs = require('fs-extra');
 const os = require('os');
-const config = require('../config/config');
-
+const config = require('../../../config/config');
 async function pushToGitHub(fileName, status, PATHS) {
   try {
     if (status === 'FAILED') {
