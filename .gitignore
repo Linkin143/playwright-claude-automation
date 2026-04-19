@@ -3,7 +3,7 @@ reports/test-results/*
 test-reports/
 test-plans/
 playwright-report/
-generated-tests/*
+ClaudeGeneratedTests/*
 reports/artifacts/*
 testSteps/
 .env
