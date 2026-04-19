@@ -1,8 +1,8 @@
 const fs = require('fs').promises;
 const path = require('path');
 const claudeClient = require('./claudeClient');
-const gitManager = require('./gitManager');
-const config = require('./config');
+const gitManager = require('../gitManager');
+const config = require('../config/config');
 
 async function process(fileName, PATHS) {
   try {

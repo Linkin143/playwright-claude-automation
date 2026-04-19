@@ -2,7 +2,7 @@ const chokidar = require('chokidar');
 const path = require('path');
 const fs = require('fs').promises;
 const testExecutor = require('./testExecutor');
-const config = require('./config');
+const config = require('../config/config');
 
 function start(PATHS) {
   const watcher = chokidar.watch(PATHS.generatedTests, {
