@@ -21,9 +21,9 @@ const SRC_ROOT = path.resolve(__dirname, '..');        // → bridge-service/src
 const PATHS = {
   root: ROOT_DIR,
 
-  generatedTests: path.join(ROOT_DIR, 'generated-tests'),
-  localTC: path.join(ROOT_DIR, 'tests', 'localTC'),
-  passedTC: path.join(ROOT_DIR, 'tests', 'passedTC'),
+  generatedTests: path.join(ROOT_DIR, 'claudeGeneratedTests'),
+  localTC: path.join(ROOT_DIR, 'tests', 'allTestFiles'),
+  passedTC: path.join(ROOT_DIR, 'tests', 'passedTestFiles'),
 
   results: path.join(ROOT_DIR, 'reports', 'test-results', 'results.json'),
   artifacts: path.join(ROOT_DIR, 'reports', 'artifacts'),

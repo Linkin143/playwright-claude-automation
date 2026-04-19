@@ -114,7 +114,7 @@ async function process(fileName, PATHS) {
       await gitManager.pushToGitHub(fileName, status, PATHS);
     } else {
       console.log('\n❌ Test FAILED - skipping Git push');
-      console.log(`   Failed test remains in localTC/${config.subFolderName}/ only`);
+      console.log(`   Failed test remains in allTestFiles/${config.subFolderName}/ only`);
       console.log('   Review and fix the test, then resubmit');
     }
 

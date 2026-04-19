@@ -3,7 +3,7 @@ import { Status } from "allure-js-commons";
 import * as os from "node:os";
 const isCI = process.env.CI === 'true';
 export default defineConfig({
-  testDir: isCI ? "./tests/passedTC" : "./tests/localTC",
+  testDir: isCI ? "./tests/passedTestFiles" : "./tests/allTestFiles",
 
   fullyParallel: true,
   forbidOnly: !!process.env.CI,

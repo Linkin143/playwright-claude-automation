@@ -26,10 +26,10 @@ async function pushToGitHub(fileName, status, PATHS) {
       fileName
     );
 
-    console.log(`📂 Source file: localTC/${subFolderName}/${fileName}`);
+    console.log(`📂 Source file: allTestFiles/${subFolderName}/${fileName}`);
 
     if (!fs.existsSync(sourceFilePath)) {
-      throw new Error(`❌ File not found in localTC: ${sourceFilePath}`);
+      throw new Error(`❌ File not found in allTestFiles: ${sourceFilePath}`);
     }
 
     const tempDir = path.join(os.tmpdir(), `git-temp-${Date.now()}`);
@@ -65,17 +65,17 @@ async function pushToGitHub(fileName, status, PATHS) {
       console.log('ℹ️ No existing remote history (new repo)');
     }
 
-    const passedTCDir = path.join(tempDir, 'tests', 'passedTC');
-    await fs.ensureDir(passedTCDir);
+    const passedTestFilesDir = path.join(tempDir, 'tests', 'passedTestFiles');
+    await fs.ensureDir(passedTestFilesDir);
 
-    console.log(`📂 Ensuring tests/passedTC directory in temp repo...`);
+    console.log(`📂 Ensuring tests/passedTestFiles directory in temp repo...`);
 
-    const targetSubFolder = await ensureSubFolder(passedTCDir, subFolderName);
+    const targetSubFolder = await ensureSubFolder(passedTestFilesDir, subFolderName);
 
     const destFilePath = path.join(targetSubFolder, fileName);
 
     await fs.copy(sourceFilePath, destFilePath);
-    console.log(`✅ Copied to temp repo: tests/passedTC/${path.basename(targetSubFolder)}/${fileName}`);
+    console.log(`✅ Copied to temp repo: tests/passedTestFiles/${path.basename(targetSubFolder)}/${fileName}`);
 
     console.log('⏳ Waiting for file stability in temp repo...');
     await waitForFileStability(destFilePath, 3000, 10000);
@@ -113,7 +113,7 @@ async function pushToGitHub(fileName, status, PATHS) {
 
     console.log('🚀 Successfully pushed to GitHub!');
     console.log(`   Repository: ${process.env.GITHUB_REPO_URL}`);
-    console.log(`   Structure: tests/passedTC/${path.basename(targetSubFolder)}/${fileName}`);
+    console.log(`   Structure: tests/passedTestFiles/${path.basename(targetSubFolder)}/${fileName}`);
 
     await fs.remove(tempDir);
     console.log('🧹 Temp directory cleaned');
