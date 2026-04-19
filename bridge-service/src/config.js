@@ -1,3 +1,4 @@
 module.exports = {
-  subFolderName: 'MSN_Test'
+  outerFolder:"Regression Testing",
+  subFolderName: 'MSN'
 };
