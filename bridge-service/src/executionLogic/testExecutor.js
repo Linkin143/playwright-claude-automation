@@ -35,8 +35,7 @@ function runCommand(command, projectRoot) {
 
 function execute(fileName, PATHS) {
   return new Promise(async (resolve, reject) => {
-    const projectRoot = path.join(__dirname, '../..');
-
+    const projectRoot = path.resolve(__dirname, '../../..');
     console.log(`\n🚀 Executing test: ${fileName}`);
     console.log(`📂 Working directory: ${projectRoot}`);
     console.log(`🎭 Running in ALL browsers (Chromium + Firefox)`);

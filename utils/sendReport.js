@@ -4,6 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const zlib = require('zlib');
 
+// 🔑 ROOT DIR (added)
+const ROOT_DIR = path.resolve(__dirname, '..');
+
 async function sendEmail() {
   let passed = 0;
   let failed = 0;
@@ -14,10 +17,10 @@ async function sendEmail() {
 
   function getFailureReason(errorMsg = '') {
     if (errorMsg.includes('Timeout') || errorMsg.includes('timeout')) return '⏱ Timeout';
-    if (errorMsg.includes('expect') || errorMsg.includes('assert'))   return '❌ Assertion';
+    if (errorMsg.includes('expect') || errorMsg.includes('assert')) return '❌ Assertion';
     if (errorMsg.includes('locator') || errorMsg.includes('element')) return '🔍 Element Issue';
     if (errorMsg.includes('net::ERR') || errorMsg.includes('navigation')) return '🌐 Navigation';
-    if (errorMsg.includes('login') || errorMsg.includes('auth'))      return '🔐 Auth Failure';
+    if (errorMsg.includes('login') || errorMsg.includes('auth')) return '🔐 Auth Failure';
     return '⚠️ Other';
   }
 
@@ -29,7 +32,7 @@ async function sendEmail() {
             if (test.results && test.results.length > 0) {
               const lastResult = test.results[test.results.length - 1];
 
-              if (lastResult.status === 'passed')  passed++;
+              if (lastResult.status === 'passed') passed++;
               if (lastResult.status === 'skipped') skipped++;
 
               if (lastResult.status === 'failed') {
@@ -70,14 +73,20 @@ async function sendEmail() {
     walk(data);
   }
 
-  if (fs.existsSync('./test-results/results.json')) {
-    const results = JSON.parse(fs.readFileSync('./test-results/results.json', 'utf-8'));
+  // ✅ UPDATED PATH
+  if (fs.existsSync(path.join(ROOT_DIR, 'reports', 'test-results', 'results.json'))) {
+    const results = JSON.parse(
+      fs.readFileSync(
+        path.join(ROOT_DIR, 'reports', 'test-results', 'results.json'),
+        'utf-8'
+      )
+    );
     extractResults(results);
   } else {
     console.log('⚠️ No results.json found, sending summary email only');
   }
 
-  const total       = passed + failed + skipped;
+  const total = passed + failed + skipped;
   const durationSec = (totalDuration / 1000).toFixed(2);
   const durationMin = (totalDuration / 60000).toFixed(1);
   const passPercent = total > 0 ? ((passed / total) * 100).toFixed(1) : 0;
@@ -87,15 +96,16 @@ async function sendEmail() {
 
   const reportUrl = process.env.REPORT_URL || '#';
   const runNumber = process.env.GITHUB_RUN_NUMBER || 'N/A';
-  const branch    = process.env.GITHUB_REF_NAME   || 'N/A';
-  const actor     = process.env.GITHUB_ACTOR      || 'N/A';
-  const repo      = process.env.GITHUB_REPOSITORY || 'N/A';
-  const commitSha = (process.env.GITHUB_SHA       || '').slice(0, 7);
-  const runUrl    = process.env.GITHUB_RUN_ID
+  const branch = process.env.GITHUB_REF_NAME || 'N/A';
+  const actor = process.env.GITHUB_ACTOR || 'N/A';
+  const repo = process.env.GITHUB_REPOSITORY || 'N/A';
+  const commitSha = (process.env.GITHUB_SHA || '').slice(0, 7);
+  const runUrl = process.env.GITHUB_RUN_ID
     ? `https://github.com/${repo}/actions/runs/${process.env.GITHUB_RUN_ID}`
     : '#';
 
-  let csvPath = './test-results/allure-summary.csv';
+  // ✅ UPDATED PATH
+  let csvPath = path.join(ROOT_DIR, 'reports', 'test-results', 'allure-summary.csv');
   let csvFilename = `test-results-run-${runNumber}.csv`;
   let isCompressed = false;
 
@@ -108,7 +118,7 @@ async function sendEmail() {
   if (fs.existsSync(csvPath)) {
     const csvSize = fs.statSync(csvPath).size;
     const csvSizeKB = (csvSize / 1024).toFixed(1);
-    
+
     if (csvSize > 20 * 1024 * 1024) {
       console.log(`⚠️ CSV too large (${csvSizeKB}KB), skipping attachment`);
     } else {
@@ -123,13 +133,13 @@ async function sendEmail() {
     console.log('⚠️ CSV not found, skipping CSV attachment');
   }
 
-  const screenshotAttachments = attachments.filter(a => 
+  const screenshotAttachments = attachments.filter(a =>
     !a.contentType?.includes('csv') && !a.contentType?.includes('gzip')
   );
-  const csvAttachments = attachments.filter(a => 
+  const csvAttachments = attachments.filter(a =>
     a.contentType?.includes('csv') || a.contentType?.includes('gzip')
   );
-  
+
   attachments = [...csvAttachments, ...screenshotAttachments.slice(0, 3)];
 
   const failedRows = failedTests.length > 0
@@ -142,7 +152,7 @@ async function sendEmail() {
         </tr>`).join('')
     : `<tr><td colspan="4" style="padding:10px;text-align:center;color:green;">None 🎉 All tests passed!</td></tr>`;
 
-  const csvNote = isCompressed 
+  const csvNote = isCompressed
     ? `📎 <strong>Attached:</strong> Compressed test results as <code>${csvFilename}</code> — extract and open in Excel/Sheets.`
     : `📎 <strong>Attached:</strong> Full test results as <code>${csvFilename}</code> — open in Excel/Sheets.`;
 
@@ -229,7 +239,6 @@ async function sendEmail() {
 
   </div>
   `;
-
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {

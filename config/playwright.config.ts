@@ -19,13 +19,13 @@ export default defineConfig({
 
   reporter: [
     ["list"],
-    ["html", { outputFolder: "test-results/html-report", open: "never" }],
-    ["json", { outputFile: "test-results/results.json" }],
-    ["junit", { outputFile: "test-results/junit.xml" }],
+    ["html", { outputFolder: "reports/test-results/html-report", open: "never" }],
+    ["json", { outputFile: "reports/test-results/results.json" }],
+    ["junit", { outputFile: "reports/test-results/junit.xml" }],
     [
       "allure-playwright",
       {
-        resultsDir: "allure-results",
+        resultsDir: "reports/allure-results",
         detail: true,
         suiteTitle: true,
 
@@ -133,5 +133,5 @@ export default defineConfig({
     },
   ],
 
-  outputDir: "artifacts",
+  outputDir: "reports/artifacts",
 });

@@ -4,9 +4,9 @@ import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-
+const ROOT_DIR = resolve(__dirname, '..');
 // ✅ Custom logo from project root
-const logoBase64 = readFileSync(resolve(__dirname, "companylogo.png")).toString("base64");
+const logoBase64 = readFileSync(resolve(ROOT_DIR,"assets","companylogo.png")).toString("base64");
 const logo = `data:image/png;base64,${logoBase64}`;
 
 export default defineConfig({
