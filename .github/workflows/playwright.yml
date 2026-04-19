@@ -98,7 +98,7 @@ jobs:
         run: npx playwright install-deps
 
       - name: Create output directories
-        run: mkdir -p allure-results allure-report test-results
+        run: mkdir -p reports/allure-results reports/allure-report reports/test-results
 
       - name: Load Schedule Config
         id: config
@@ -171,15 +171,15 @@ jobs:
       - name: Preserve Allure History
         if: always() && steps.test-execution.outputs.skipped != 'true'
         run: |
-          if [ -d "allure-report/history" ]; then
+          if [ -d "reports/allure-report/history" ]; then
             echo "📊 Preserving history for trends"
-            cp -r allure-report/history allure-results/
+            cp -r reports/allure-report/history reports/allure-results/
           fi
 
       - name: Add Allure Executor Info
         if: always() && steps.test-execution.outputs.skipped != 'true'
         run: |
-          cat > allure-results/executor.json << EOF
+          cat > reports/allure-results/executor.json << EOF
           {
             "name": "GitHub Actions",
             "type": "github",
@@ -194,25 +194,25 @@ jobs:
         run: |
           echo "📊 Generating Allure report..."
           
-          if [ ! -d "allure-results" ] || [ -z "$(ls -A allure-results 2>/dev/null)" ]; then
-            echo "⚠️ No test results found in allure-results/"
-            mkdir -p allure-report
-            echo "<html><body><h1>No test results available</h1></body></html>" > allure-report/index.html
+          if [ ! -d "reports/allure-results" ] || [ -z "$(ls -A reports/allure-results 2>/dev/null)" ]; then
+            echo "⚠️ No test results found in reports/allure-results/"
+            mkdir -p reports/allure-report
+            echo "<html><body><h1>No test results available</h1></body></html>" > reports/allure-report/index.html
             exit 0
           fi
           
-          rm -rf allure-report
+          rm -rf reports/allure-report
           
-          if npx allure generate allure-results -o allure-report; then
+          if npx allure generate reports/allure-results -o reports/allure-report; then
             echo "✅ Allure report generated successfully"
-            echo "📁 Report size: $(du -sh allure-report 2>/dev/null | cut -f1 || echo 'unknown')"
+            echo "📁 Report size: $(du -sh reports/allure-report 2>/dev/null | cut -f1 || echo 'unknown')"
           else
             echo "❌ Allure generation failed"
             echo "📋 Checking Allure logs..."
             cat ~/.allure/logs/*.log 2>/dev/null || echo "No Allure logs found"
             
             echo "📋 Allure results structure:"
-            ls -lah allure-results/ 2>/dev/null | head -20 || echo "allure-results/ not found"
+            ls -lah reports/allure-results/ 2>/dev/null | head -20 || echo "reports/allure-results/ not found"
             
             exit 1
           fi
@@ -221,29 +221,29 @@ jobs:
         if: always() && steps.test-execution.outputs.skipped != 'true'
         uses: allure-framework/allure-action@v0
         with:
-          report-directory: "./allure-report"
+          report-directory: "./reports/allure-report"
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Export Test Results CSV
         if: always() && steps.test-execution.outputs.skipped != 'true'
         run: |
-          echo "Test Name,Status,Duration(ms),Browser,Suite" > test-results/allure-summary.csv
-          if [ -d "allure-results" ]; then
-            for f in allure-results/*-result.json; do
+          echo "Test Name,Status,Duration(ms),Browser,Suite" > reports/test-results/allure-summary.csv
+          if [ -d "reports/allure-results" ]; then
+            for f in reports/allure-results/*-result.json; do
               [ -f "$f" ] || continue
               NAME=$(jq -r '.name // "unknown"' "$f")
               STATUS=$(jq -r '.status // "unknown"' "$f")
               DURATION=$(jq -r '(.stop - .start) // 0' "$f" 2>/dev/null || echo "0")
               BROWSER=$(jq -r '.labels[]? | select(.name=="thread") | .value' "$f" | head -1)
               SUITE=$(jq -r '.labels[]? | select(.name=="suite") | .value' "$f" | head -1)
-              echo "\"$NAME\",\"$STATUS\",\"$DURATION\",\"$BROWSER\",\"$SUITE\"" >> test-results/allure-summary.csv
+              echo "\"$NAME\",\"$STATUS\",\"$DURATION\",\"$BROWSER\",\"$SUITE\"" >> reports/test-results/allure-summary.csv
             done
           fi
           
-          CSV_SIZE=$(wc -c < test-results/allure-summary.csv 2>/dev/null || echo "0")
+          CSV_SIZE=$(wc -c < reports/test-results/allure-summary.csv 2>/dev/null || echo "0")
           if [ "$CSV_SIZE" -gt 1048576 ]; then
             echo "📦 Compressing large CSV ($(($CSV_SIZE / 1024))KB)"
-            gzip test-results/allure-summary.csv
+            gzip reports/test-results/allure-summary.csv
           fi
           
           echo "✅ CSV ready"
@@ -254,9 +254,9 @@ jobs:
         with:
           name: test-results-run-${{ github.run_number }}
           path: |
-            test-results/allure-summary.csv*
-            test-results/results.json
-            allure-report/
+            reports/test-results/allure-summary.csv*
+            reports/test-results/results.json
+            reports/allure-report/
           retention-days: 30
 
       - name: Deploy Allure Report to GitHub Pages
@@ -264,7 +264,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
+          publish_dir: ./reports/allure-report
           keep_files: true
 
       - name: Send Email Report
