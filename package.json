@@ -8,7 +8,7 @@
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
     "report": "playwright show-report",
-    "bridge": "cd bridge-service && npm start",
+    "bridge": "cd bridgeService && npm start",
     "allure:generate": "allure generate reports/allure-results -o reports/allure-report",
     "allure:open": "allure open reports/allure-report",
     "allure:serve": "allure serve reports/allure-results"

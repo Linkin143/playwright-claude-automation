@@ -10,8 +10,8 @@ testSteps/
 *.log
 .DS_Store
 playwright/.cache/
-bridge-service/node_modules
-bridge-service/.env
+bridgeService/node_modules
+bridgeService/.env
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

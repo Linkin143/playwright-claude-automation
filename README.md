@@ -10,12 +10,12 @@ Root project:
 npm install
 
 Bridge service:
-cd bridge-service
+cd bridgeService
 npm install
 
 ### 2. Configure Environment
 
-Edit `bridge-service/.env` with your credentials
+Edit `bridgeService/.env` with your credentials
 
 ### 3. Initialize Git Repository
 
