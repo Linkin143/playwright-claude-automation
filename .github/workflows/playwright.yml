@@ -25,15 +25,15 @@ on:
         description: |
           File or folder path
           Examples:
-          - tests/passedTC/example.spec.ts
-          - tests/passedTC/msn/
+          - tests/passedTestFiles/example.spec.ts
+          - tests/passedTestFiles/msn/
         required: false
 
       test_list:
         description: |
           Comma-separated test files
           Example:
-          tests/passedTC/msn/a.spec.ts,tests/passedTC/msn/b.spec.ts
+          tests/passedTestFiles/msn/a.spec.ts,tests/passedTestFiles/msn/b.spec.ts
         required: false
 
       send_email:
@@ -162,8 +162,8 @@ jobs:
             npx playwright test $FILES $RETRY_FLAG || true
 
           else
-            echo "🌐 Running all tests in tests/passedTC/"
-            npx playwright test tests/passedTC/ $RETRY_FLAG || true
+            echo "🌐 Running all tests in tests/passedTestFiles/"
+            npx playwright test tests/passedTestFiles/ $RETRY_FLAG || true
           fi
 
           echo "skipped=false" >> $GITHUB_OUTPUT
