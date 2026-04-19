@@ -20,20 +20,29 @@ on:
           - file
           - folder
           - multiple
+          - multipleFolders
 
       test_path:
         description: |
           File or folder path
           Examples:
-          - tests/passedTestFiles/example.spec.ts
-          - tests/passedTestFiles/msn/
+          - tests/passedTestFiles/msn/regressionTest/newsModule/example.spec.ts
+          - tests/passedTestFiles/msn/regressionTest/newsModule/
+          - tests/passedTestFiles/msn/regressionTest/
         required: false
 
       test_list:
         description: |
-          Comma-separated test files
+          Comma-separated test files (for 'multiple' mode)
           Example:
-          tests/passedTestFiles/msn/a.spec.ts,tests/passedTestFiles/msn/b.spec.ts
+          tests/passedTestFiles/msn/regressionTest/newsModule/a.spec.ts,tests/passedTestFiles/msn/regressionTest/sportsModule/b.spec.ts
+        required: false
+
+      folder_list:
+        description: |
+          Comma-separated folder paths (for 'multipleFolders' mode)
+          Example:
+          tests/passedTestFiles/msn/regressionTest/newsModule,tests/passedTestFiles/msn/regressionTest/sportsModule
         required: false
 
       send_email:
@@ -106,12 +115,13 @@ jobs:
           DAY=$(TZ=Asia/Kolkata date +%A | tr '[:upper:]' '[:lower:]')
           echo "📅 Today (IST): $DAY"
 
-          CONFIG_FILE=".github/schedule-config.json"
+          CONFIG_FILE=".github/workflows/schedule-config.json"
 
           if [ -f "$CONFIG_FILE" ]; then
             MODE=$(jq -r --arg day "$DAY" '.[$day].mode // .default.mode' $CONFIG_FILE)
             TEST_PATH=$(jq -r --arg day "$DAY" '.[$day].test_path // empty' $CONFIG_FILE)
             TEST_LIST=$(jq -r --arg day "$DAY" '.[$day].test_list // empty' $CONFIG_FILE)
+            FOLDER_LIST=$(jq -r --arg day "$DAY" '.[$day].folder_list // empty' $CONFIG_FILE)
           else
             echo "⚠️ Config file not found, using defaults"
             MODE="all"
@@ -120,6 +130,7 @@ jobs:
           echo "mode=$MODE" >> $GITHUB_OUTPUT
           echo "test_path=$TEST_PATH" >> $GITHUB_OUTPUT
           echo "test_list=$TEST_LIST" >> $GITHUB_OUTPUT
+          echo "folder_list=$FOLDER_LIST" >> $GITHUB_OUTPUT
           
           echo "🎯 Execution mode: $MODE"
 
@@ -130,11 +141,13 @@ jobs:
             MODE="${{ github.event.inputs.mode || 'all' }}"
             TEST_PATH="${{ github.event.inputs.test_path }}"
             TEST_LIST="${{ github.event.inputs.test_list }}"
+            FOLDER_LIST="${{ github.event.inputs.folder_list }}"
             echo "🖱️ Manual run"
           else
             MODE="${{ steps.config.outputs.mode }}"
             TEST_PATH="${{ steps.config.outputs.test_path }}"
             TEST_LIST="${{ steps.config.outputs.test_list }}"
+            FOLDER_LIST="${{ steps.config.outputs.folder_list }}"
             echo "⏰ Scheduled run"
           fi
 
@@ -149,17 +162,25 @@ jobs:
           RETRY_FLAG="--retries=1"
 
           if [ "$MODE" = "file" ]; then
-            echo "📄 Running file: $TEST_PATH"
+            echo "📄 Running single file: $TEST_PATH"
             npx playwright test "$TEST_PATH" $RETRY_FLAG || true
 
           elif [ "$MODE" = "folder" ]; then
-            echo "📁 Running folder: $TEST_PATH"
+            echo "📁 Running single folder: $TEST_PATH"
             npx playwright test "$TEST_PATH" $RETRY_FLAG || true
 
           elif [ "$MODE" = "multiple" ]; then
             echo "📄📄 Running multiple files"
             FILES=$(echo "$TEST_LIST" | tr ',' ' ')
             npx playwright test $FILES $RETRY_FLAG || true
+
+          elif [ "$MODE" = "multipleFolders" ]; then
+            echo "📁📁 Running multiple folders"
+            FOLDERS=$(echo "$FOLDER_LIST" | tr ',' ' ')
+            for FOLDER in $FOLDERS; do
+              echo "  ▶️ Running folder: $FOLDER"
+              npx playwright test "$FOLDER" $RETRY_FLAG || true
+            done
 
           else
             echo "🌐 Running all tests in tests/passedTestFiles/"
@@ -272,7 +293,7 @@ jobs:
           always() && 
           steps.test-execution.outputs.skipped != 'true' &&
           (github.event.inputs.send_email != 'false' || github.event_name == 'schedule')
-        run: node sendReport.js
+        run: node utils/sendReport.js
         env:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}

@@ -3,10 +3,11 @@ const path = require('path');
 const fs = require('fs-extra');
 const os = require('os');
 const config = require('../../../config/config');
+
 async function pushToGitHub(fileName, status, PATHS) {
   try {
     if (status === 'FAILED') {
-      console.log('⏭️ TC not passed. Skipping Git push.');
+      console.log('⏭️ Test not passed. Skipping Git push.');
       return;
     }
 
@@ -17,20 +18,23 @@ async function pushToGitHub(fileName, status, PATHS) {
 
     console.log('\n📦 Starting Git push workflow...');
 
-    const subFolderName = config.subFolderName;
+    const { siteName, testType, moduleName } = config;
 
-    const sourceFilePath = path.resolve(
-      PATHS.localTC,
-      subFolderName,
-      fileName
-    );
+    // Build source path: tests/allTestFiles/{siteName}/{testType}/{moduleName?}/
+    const sourcePathParts = [PATHS.localTC, siteName, testType];
+    if (moduleName && moduleName.trim() !== '') {
+      sourcePathParts.push(moduleName);
+    }
+    const sourceFilePath = path.join(...sourcePathParts, fileName);
 
-    console.log(`📂 Source file: allTestFiles/${subFolderName}/${fileName}`);
+    const relativeSourcePath = path.relative(PATHS.root, sourceFilePath);
+    console.log(`📂 Source file: ${relativeSourcePath}`);
 
     if (!fs.existsSync(sourceFilePath)) {
-      throw new Error(`❌ File not found in allTestFiles: ${sourceFilePath}`);
+      throw new Error(`❌ File not found: ${sourceFilePath}`);
     }
 
+    // Create temp directory
     const tempDir = path.join(os.tmpdir(), `git-temp-${Date.now()}`);
     await fs.ensureDir(tempDir);
 
@@ -43,6 +47,7 @@ async function pushToGitHub(fileName, status, PATHS) {
       `https://${process.env.GITHUB_USERNAME}:${process.env.GITHUB_TOKEN}@`
     );
 
+    // Clone repository
     try {
       console.log('⬇️ Cloning GitHub repository...');
       await git.clone(repoUrl, tempDir);
@@ -64,23 +69,35 @@ async function pushToGitHub(fileName, status, PATHS) {
       console.log('ℹ️ No existing remote history (new repo)');
     }
 
-    const passedTestFilesDir = path.join(tempDir, 'tests', 'passedTestFiles');
-    await fs.ensureDir(passedTestFilesDir);
+    // Build directory structure in temp repo: tests/passedTestFiles/{siteName}/{testType}/{moduleName?}/
+    const passedTestFilesBase = path.join(tempDir, 'tests', 'passedTestFiles');
+    await fs.ensureDir(passedTestFilesBase);
 
-    console.log(`📂 Ensuring tests/passedTestFiles directory in temp repo...`);
+    console.log(`\n📦 Building directory structure in temp repo:`);
+    console.log(`   Site: ${siteName}`);
+    console.log(`   Type: ${testType}`);
+    console.log(`   Module: ${moduleName || '(none - file saved at testType level)'}`);
 
-    const targetSubFolder = await ensureSubFolder(passedTestFilesDir, subFolderName);
+    const targetFolder = await ensureDirectoryStructure(
+      passedTestFilesBase,
+      siteName,
+      testType,
+      moduleName
+    );
 
-    const destFilePath = path.join(targetSubFolder, fileName);
+    const destFilePath = path.join(targetFolder, fileName);
 
     await fs.copy(sourceFilePath, destFilePath);
-    console.log(`✅ Copied to temp repo: tests/passedTestFiles/${path.basename(targetSubFolder)}/${fileName}`);
+    
+    const relativeDestPath = path.relative(tempDir, destFilePath);
+    console.log(`✅ Copied to temp repo: ${relativeDestPath}`);
 
     console.log('⏳ Waiting for file stability in temp repo...');
     await waitForFileStability(destFilePath, 3000, 10000);
 
     console.log('✅ File is stable in temp repo');
 
+    // Git config
     await tempGit.addConfig(
       'user.name',
       process.env.GITHUB_USERNAME || 'Playwright Bot'
@@ -90,6 +107,7 @@ async function pushToGitHub(fileName, status, PATHS) {
       process.env.GITHUB_EMAIL || 'bot@playwright.com'
     );
 
+    // Commit and push
     await tempGit.add('.');
     
     const commitResult = await tempGit.commit(`✅ Add: ${fileName} - ${status}`).catch(() => {
@@ -112,8 +130,9 @@ async function pushToGitHub(fileName, status, PATHS) {
 
     console.log('🚀 Successfully pushed to GitHub!');
     console.log(`   Repository: ${process.env.GITHUB_REPO_URL}`);
-    console.log(`   Structure: tests/passedTestFiles/${path.basename(targetSubFolder)}/${fileName}`);
+    console.log(`   Structure: ${relativeDestPath}`);
 
+    // Cleanup
     await fs.remove(tempDir);
     console.log('🧹 Temp directory cleaned');
 
@@ -122,14 +141,45 @@ async function pushToGitHub(fileName, status, PATHS) {
   }
 }
 
-async function ensureSubFolder(basePath, folderName) {
+/**
+ * Ensures multi-level directory structure with regex normalization at each level
+ * Structure: basePath/{siteName}/{testType}/{moduleName?}/
+ */
+async function ensureDirectoryStructure(basePath, siteName, testType, moduleName) {
   try {
+    // Ensure base path exists
     await fs.ensureDir(basePath);
 
-    const entries = await fs.readdir(basePath, { withFileTypes: true });
+    // Level 1: siteName
+    const siteFolder = await ensureSubFolder(basePath, siteName, 'Site');
 
+    // Level 2: testType
+    const typeFolder = await ensureSubFolder(siteFolder, testType, 'TestType');
+
+    // Level 3: moduleName (optional)
+    if (moduleName && moduleName.trim() !== '') {
+      const moduleFolder = await ensureSubFolder(typeFolder, moduleName, 'Module');
+      return moduleFolder;
+    }
+
+    // No module - return testType level
+    return typeFolder;
+
+  } catch (err) {
+    console.error('❌ Error ensuring directory structure:', err);
+    throw err;
+  }
+}
+
+/**
+ * Ensures a single folder level with regex normalization
+ */
+async function ensureSubFolder(basePath, folderName, level = '') {
+  try {
+    const entries = await fs.readdir(basePath, { withFileTypes: true });
     const normalizedFolderName = normalizeFolderName(folderName);
 
+    // Find existing folder (case-insensitive, special char insensitive)
     const existing = entries.find(entry => {
       if (!entry.isDirectory()) return false;
       const normalizedEntryName = normalizeFolderName(entry.name);
@@ -138,22 +188,26 @@ async function ensureSubFolder(basePath, folderName) {
 
     if (existing) {
       const existingPath = path.join(basePath, existing.name);
-      console.log(`📁 Using existing subfolder: ${existingPath}`);
+      console.log(`   📁 ${level}: Using existing "${existing.name}"`);
       return existingPath;
     }
 
+    // Create new folder
     const newFolderPath = path.join(basePath, folderName);
     await fs.mkdir(newFolderPath, { recursive: true });
 
-    console.log(`📁 Created subfolder: ${newFolderPath}`);
+    console.log(`   📁 ${level}: Created "${folderName}"`);
     return newFolderPath;
 
   } catch (err) {
-    console.error('❌ Error ensuring subfolder:', err);
+    console.error(`❌ Error ensuring ${level} folder:`, err);
     throw err;
   }
 }
 
+/**
+ * Normalize folder name: lowercase + alphanumeric only
+ */
 function normalizeFolderName(name) {
   return name
     .toLowerCase()

@@ -36,13 +36,17 @@ function runCommand(command, projectRoot) {
 function execute(fileName, PATHS) {
   return new Promise(async (resolve, reject) => {
     const projectRoot = path.resolve(__dirname, '../../..');
+    
     console.log(`\n🚀 Executing test: ${fileName}`);
     console.log(`📂 Working directory: ${projectRoot}`);
     console.log(`🎭 Running in ALL browsers (Chromium + Firefox)`);
 
     try {
-      // ✅ RUN ALL BROWSERS IN ONE COMMAND
+      // ✅ Simple: Just use filename - Playwright finds it in testDir automatically
       const command = `npx playwright test ${fileName} --project=chromium --project=firefox`;
+      
+      console.log(`🎬 Command: ${command}`);
+      
       const passed = await runCommand(command, projectRoot);
 
       if (passed) {

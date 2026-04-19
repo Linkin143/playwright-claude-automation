@@ -3,6 +3,7 @@ const path = require('path');
 const claudeClient = require('../ai/claudeClient');
 const gitManager = require('../git/gitManager');
 const config = require('../../../config/config');
+
 async function process(fileName, PATHS) {
   try {
     console.log(`\n📊 Processing results for: ${fileName}`);
@@ -113,8 +114,12 @@ async function process(fileName, PATHS) {
       console.log('\n✅ Test PASSED - proceeding with Git push');
       await gitManager.pushToGitHub(fileName, status, PATHS);
     } else {
+      const { siteName, testType, moduleName } = config;
+      const pathParts = [siteName, testType];
+      if (moduleName) pathParts.push(moduleName);
+      
       console.log('\n❌ Test FAILED - skipping Git push');
-      console.log(`   Failed test remains in allTestFiles/${config.subFolderName}/ only`);
+      console.log(`   Failed test remains in: tests/allTestFiles/${pathParts.join('/')}/`);
       console.log('   Review and fix the test, then resubmit');
     }
 

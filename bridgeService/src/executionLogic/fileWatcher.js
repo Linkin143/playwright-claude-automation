@@ -30,16 +30,27 @@ async function processNewTest(filePath, PATHS) {
   const fileName = path.basename(filePath);
 
   try {
-    const subFolderName = config.subFolderName;
+    const { siteName, testType, moduleName } = config;
 
-    console.log(`📦 Using subfolder: ${subFolderName}`);
+    console.log(`\n📦 Building directory structure:`);
+    console.log(`   Site: ${siteName}`);
+    console.log(`   Type: ${testType}`);
+    console.log(`   Module: ${moduleName || '(none - file saved at testType level)'}`);
 
-    const targetFolder = await ensureSubFolder(PATHS.localTC, subFolderName);
+    // Build multi-level path: tests/allTestFiles/{siteName}/{testType}/{moduleName?}/
+    const targetFolder = await ensureDirectoryStructure(
+      PATHS.localTC,
+      siteName,
+      testType,
+      moduleName
+    );
 
     const destPath = path.join(targetFolder, fileName);
 
     await fs.copyFile(filePath, destPath);
-    console.log(`✅ Test file copied to: localTC/${subFolderName}/${fileName}`);
+    
+    const relativePath = path.relative(PATHS.root, destPath);
+    console.log(`✅ Test file copied to: ${relativePath}`);
 
     console.log('⏳ Ensuring file is still stable before execution...');
     await waitForFileStability(destPath, 3000, 10000);
@@ -51,14 +62,45 @@ async function processNewTest(filePath, PATHS) {
   }
 }
 
-async function ensureSubFolder(basePath, folderName) {
+/**
+ * Ensures multi-level directory structure with regex normalization at each level
+ * Structure: basePath/{siteName}/{testType}/{moduleName?}/
+ */
+async function ensureDirectoryStructure(basePath, siteName, testType, moduleName) {
   try {
+    // Ensure base path exists
     await fs.mkdir(basePath, { recursive: true });
 
-    const entries = await fs.readdir(basePath, { withFileTypes: true });
+    // Level 1: siteName
+    const siteFolder = await ensureSubFolder(basePath, siteName, 'Site');
 
+    // Level 2: testType
+    const typeFolder = await ensureSubFolder(siteFolder, testType, 'TestType');
+
+    // Level 3: moduleName (optional)
+    if (moduleName && moduleName.trim() !== '') {
+      const moduleFolder = await ensureSubFolder(typeFolder, moduleName, 'Module');
+      return moduleFolder;
+    }
+
+    // No module - return testType level
+    return typeFolder;
+
+  } catch (err) {
+    console.error('❌ Error ensuring directory structure:', err);
+    throw err;
+  }
+}
+
+/**
+ * Ensures a single folder level with regex normalization
+ */
+async function ensureSubFolder(basePath, folderName, level = '') {
+  try {
+    const entries = await fs.readdir(basePath, { withFileTypes: true });
     const normalizedFolderName = normalizeFolderName(folderName);
 
+    // Find existing folder (case-insensitive, special char insensitive)
     const existing = entries.find(entry => {
       if (!entry.isDirectory()) return false;
       const normalizedEntryName = normalizeFolderName(entry.name);
@@ -67,22 +109,30 @@ async function ensureSubFolder(basePath, folderName) {
 
     if (existing) {
       const existingPath = path.join(basePath, existing.name);
-      console.log(`📁 Using existing subfolder: ${existingPath}`);
+      console.log(`   📁 ${level}: Using existing "${existing.name}"`);
       return existingPath;
     }
 
+    // Create new folder
     const newFolderPath = path.join(basePath, folderName);
     await fs.mkdir(newFolderPath, { recursive: true });
 
-    console.log(`📁 Created subfolder: ${newFolderPath}`);
+    console.log(`   📁 ${level}: Created "${folderName}"`);
     return newFolderPath;
 
   } catch (err) {
-    console.error('❌ Error ensuring subfolder:', err);
+    console.error(`❌ Error ensuring ${level} folder:`, err);
     throw err;
   }
 }
 
+/**
+ * Normalize folder name: lowercase + alphanumeric only
+ * Examples:
+ *   MSN-Test → msntest
+ *   News_Module → newsmodule
+ *   Regression Test → regressiontest
+ */
 function normalizeFolderName(name) {
   return name
     .toLowerCase()
