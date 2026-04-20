@@ -63,9 +63,6 @@ concurrency:
   group: playwright-tests-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -78,11 +75,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           cache: 'npm'
 
       - name: Cache Node Modules
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -96,7 +93,7 @@ jobs:
 
       - name: Cache Playwright Browsers
         id: playwright-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v3
         with:
           path: ~/.cache/ms-playwright
           key: playwright-browsers-${{ hashFiles('package-lock.json') }}
@@ -243,7 +240,7 @@ jobs:
 
       - name: Post Allure Summary to PR
         if: always() && steps.test-execution.outputs.skipped != 'true'
-        uses: allure-framework/allure-action@v1
+        uses: allure-framework/allure-action@v0
         with:
           report-directory: "./reports/allure-report"
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -285,7 +282,7 @@ jobs:
 
       - name: Deploy Allure Report to GitHub Pages
         if: always() && steps.test-execution.outputs.skipped != 'true'
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./reports/allure-report
