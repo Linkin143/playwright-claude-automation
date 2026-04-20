@@ -1,5 +1,5 @@
 module.exports = {
-  siteName: "teams",
+  siteName: "msn",
   testType: "regressionTest", 
-  moduleName: "exampleModule", // Optional: if empty/null, files saved at testType level
+  moduleName: "weatherModule", // Optional: if empty/null, files saved at testType level
 };
