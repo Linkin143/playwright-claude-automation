@@ -1,0 +1,4 @@
+[1-2] MSN loaded
+[3] Personalize clicked
+[4] Dialog opened
+[5] Discover clicked
