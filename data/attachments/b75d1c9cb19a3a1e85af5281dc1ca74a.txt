@@ -1,0 +1,6 @@
+[1-2] MSN loaded and stabilised
+[3] Weather widget found: "Washington: Light rain, 17 °C" ✅
+[4] Temperature displayed in widget ✅
+[5] City detected: "Washington" ✅
+[6] Navigated to weather forecast page ✅
+[7] Weather page loaded: "Tonawanda, NY, United States Weather Forecast | MSN Weather" ✅
