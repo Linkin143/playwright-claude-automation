@@ -1,0 +1,8 @@
+[1-2] MSN loaded
+[3] Personalize clicked
+[4] Dialog opened
+[5] Discover clicked
+[7] Typed "The Times Of India"
+[8] Enter pressed
+[9] TOI Follow=1 Unfollow=0
+[10] Clicked Follow TOI
