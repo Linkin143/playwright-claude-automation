@@ -1,1 +1,1 @@
-{"id":"f66956c9f90fae70ce32f7fc132e325a","fullName":"msn/regressionTest/weatherModule/9909_msn_weather_widget.spec.ts:32:7","name":"Verify weather widget, navigate to forecast, return and check stability","status":"passed","testResultsByEnv":{"default":"d8ae732d382601a8f2882d5a7328710c"}}
+{"id":"f66956c9f90fae70ce32f7fc132e325a","fullName":"msn/regressionTest/weatherModule/9909_msn_weather_widget.spec.ts:32:7","name":"Verify weather widget, navigate to forecast, return and check stability","status":"failed","testResultsByEnv":{"default":"608a56285fe11cfa1e02d2d7f876ac4b"}}
