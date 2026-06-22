@@ -1,0 +1,1653 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: msn/regressionTest/weatherModule/99010_msn_weather_insights.spec.ts >> MSN – Weather Widget: Display, Navigation, and Stability >> Verify weather widget, navigate to forecast, return and check stability
+- Location: tests/passedTestFiles/msn/regressionTest/weatherModule/99010_msn_weather_insights.spec.ts:32:7
+
+# Error details
+
+```
+Error: expect(locator).toBeAttached() failed
+
+Locator: locator('a#i_weatherddxxs')
+Expected: attached
+Timeout: 10000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeAttached" with timeout 10000ms
+  - waiting for locator('a#i_weatherddxxs')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e6]:
+    - generic [ref=e7]:
+      - generic "Skip to content" [ref=e8] [cursor=pointer]:
+        - button "Skip to content" [ref=e9]:
+          - generic:
+            - generic: Skip to content
+      - generic "Skip to footer" [ref=e10] [cursor=pointer]:
+        - button "Skip to footer" [ref=e11]:
+          - generic:
+            - generic: Skip to footer
+      - link "MSN" [ref=e14] [cursor=pointer]:
+        - /url: https://www.msn.com/en-in
+      - generic [ref=e16]:
+        - 'link "Washington: Mostly cloudy, 20 °C" [ref=e19] [cursor=pointer]':
+          - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+          - generic "Washington, Virginia, United States Click here to see more information" [ref=e20]: Washington
+          - img "Mostly cloudy" [ref=e22]
+          - generic [ref=e23]:
+            - generic [ref=e24]: ‎20‎
+            - generic [ref=e26]: ‎°C‎
+        - generic "Open settings" [ref=e30] [cursor=pointer]:
+          - button "Open settings" [ref=e31]:
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Page settings
+                  - generic:
+                    - img
+        - generic "Sign In" [ref=e35]:
+          - button "Sign in to your account" [ref=e37] [cursor=pointer]:
+            - generic [ref=e38]: Sign in to your account
+            - generic [ref=e40]: Sign in
+      - search [ref=e43]:
+        - generic [ref=e44]:
+          - generic "Web search" [ref=e45] [cursor=pointer]:
+            - button "Web search" [ref=e46]:
+              - generic:
+                - generic:
+                  - img
+          - searchbox "Enter your search term" [ref=e47]
+          - generic "Open Copilot" [ref=e51] [cursor=pointer]:
+            - button "Open Copilot" [ref=e52]:
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Open Copilot"
+  - generic [ref=e53]:
+    - generic [ref=e54]:
+      - generic [ref=e59]:
+        - list [ref=e62]:
+          - listitem [ref=e63]:
+            - link "Outlook.com" [ref=e66] [cursor=pointer]:
+              - /url: https://outlook.com
+              - generic [ref=e70]: Outlook.com
+          - listitem [ref=e71]:
+            - link "Flipkart" [ref=e74] [cursor=pointer]:
+              - /url: https://clk.tradedoubler.com/click?p=401531&a=3419260&epi=enin-msn-hp-mestripe
+              - generic [ref=e77]:
+                - generic [ref=e78]: Flipkart
+                - generic [ref=e80]: Sponsored
+          - listitem [ref=e81]:
+            - link "Find a tutor" [ref=e84] [cursor=pointer]:
+              - /url: https://www.bing.com/pros?FORM=BPIMNS
+              - generic [ref=e88]: Find a tutor
+          - listitem [ref=e89]:
+            - link "Booking.com" [ref=e92] [cursor=pointer]:
+              - /url: https://www.booking.com/index.html?aid=1624937&label=enin-msn-hp-mestripe
+              - generic [ref=e95]:
+                - generic [ref=e96]: Booking.com
+                - generic [ref=e98]: Sponsored
+          - listitem [ref=e99]:
+            - link "Nykaa" [ref=e102] [cursor=pointer]:
+              - /url: https://sovrn.co/p9zogj8
+              - generic [ref=e105]:
+                - generic [ref=e106]: Nykaa
+                - generic [ref=e108]: Sponsored
+          - listitem [ref=e109]:
+            - link "Facebook" [ref=e112] [cursor=pointer]:
+              - /url: https://www.facebook.com
+              - generic [ref=e116]: Facebook
+          - listitem [ref=e117]:
+            - link "Microsoft 365" [ref=e120] [cursor=pointer]:
+              - /url: https://www.office.com/?omkt=en-IN
+              - generic [ref=e124]: Microsoft 365
+          - listitem [ref=e125]:
+            - link "X" [ref=e128] [cursor=pointer]:
+              - /url: https://x.com
+              - generic [ref=e132]: X
+          - listitem [ref=e133]:
+            - link "OneDrive" [ref=e136] [cursor=pointer]:
+              - /url: https://onedrive.live.com/?wt.mc_id=oo_msn_msnhomepage_header
+              - generic [ref=e140]: OneDrive
+          - listitem [ref=e141]:
+            - link "Skype" [ref=e144] [cursor=pointer]:
+              - /url: https://www.skype.com/
+              - generic [ref=e148]: Skype
+          - listitem [ref=e149]:
+            - link "OneNote" [ref=e152] [cursor=pointer]:
+              - /url: https://www.onenote.com/notebooks?WT.mc_id=MSN_OneNote_TopMenu&auth=1&wdorigin=msn
+              - generic [ref=e156]: OneNote
+          - listitem [ref=e157]:
+            - link "Maps" [ref=e160] [cursor=pointer]:
+              - /url: https://bing.com/maps/?FORM=MSNMAP
+              - generic [ref=e164]: Maps
+          - listitem [ref=e165]:
+            - link "Microsoft Store" [ref=e168] [cursor=pointer]:
+              - /url: https://www.microsoft.com/en-in
+              - generic [ref=e172]: Microsoft Store
+        - button [ref=e173]:
+          - img [ref=e176]
+      - generic [ref=e178]:
+        - banner [ref=e179]
+        - generic [ref=e180]:
+          - generic [ref=e184]:
+            - navigation [ref=e186]:
+              - generic [ref=e187]:
+                - list [ref=e188]:
+                  - listitem [ref=e189]:
+                    - link "Discover" [ref=e190] [cursor=pointer]:
+                      - /url: https://www.msn.com/en-in
+                - list [ref=e191]:
+                  - listitem [ref=e192]:
+                    - link "News" [ref=e193] [cursor=pointer]:
+                      - /url: https://www.msn.com/en-in/channel/topic/Top%20stories/tp-Y_0b495ad3-9beb-45f8-9214-c8e95aa2468f
+                  - listitem [ref=e194]:
+                    - link "World Cup" [ref=e195] [cursor=pointer]:
+                      - /url: https://www.msn.com/en-in/sports/moments/league/ka-mit?serviceName=contentRetrieverService&query=FIFA%20World%20Cup%202026
+              - generic "Show more topics" [ref=e197] [cursor=pointer]:
+                - button "Show more topics" [ref=e198]:
+                  - generic:
+                    - generic:
+                      - img
+            - generic "Personalize your feed\"" [ref=e200] [cursor=pointer]:
+              - button "Personalize your feed\"" [ref=e201]:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - generic: Personalize
+          - button "Make MSN my homepage" [ref=e203] [cursor=pointer]
+      - generic [ref=e204]:
+        - alert [ref=e207]:
+          - generic [ref=e210]:
+            - link "Breaking News Keir Starmer quits as UK PM amid Labour revolt, sixth premier forced out in 10 years" [ref=e212] [cursor=pointer]:
+              - /url: https://www.msn.com/en-in/news/India/keir-starmer-quits-as-uk-pm-amid-labour-revolt-sixth-premier-forced-out-in-10-years/ar-AA26ezph
+              - generic [ref=e213]:
+                - img [ref=e214]
+                - generic [ref=e215]: Breaking News
+              - generic [ref=e216]: Keir Starmer quits as UK PM amid Labour revolt, sixth premier forced out in 10 years
+            - generic "Cancel" [ref=e217] [cursor=pointer]:
+              - button "Cancel" [ref=e218]:
+                - generic:
+                  - generic:
+                    - img
+        - main [ref=e220]:
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - generic [ref=e226]:
+                - tablist [ref=e228]:
+                  - tab [ref=e229] [cursor=pointer]
+                  - tab [ref=e231] [cursor=pointer]
+                  - tab [ref=e233] [cursor=pointer]
+                  - tab [ref=e235] [cursor=pointer]
+                  - tab [ref=e237] [cursor=pointer]
+                  - tab [selected] [ref=e239] [cursor=pointer]
+                  - tab [ref=e241] [cursor=pointer]
+                  - tab [ref=e243] [cursor=pointer]
+                  - tab [ref=e245] [cursor=pointer]
+                  - tab [ref=e247] [cursor=pointer]
+                  - tab [ref=e249] [cursor=pointer]
+                  - tab [ref=e251] [cursor=pointer]
+                  - tab [ref=e253] [cursor=pointer]
+                  - tab [ref=e255] [cursor=pointer]
+                  - tab [ref=e257] [cursor=pointer]
+                  - tab [ref=e259] [cursor=pointer]
+                  - tab [ref=e261] [cursor=pointer]
+                  - tab [ref=e263] [cursor=pointer]
+                  - tab [ref=e265] [cursor=pointer]
+                  - tab [ref=e267] [cursor=pointer]
+                  - tab [ref=e269] [cursor=pointer]
+                  - tab [ref=e271] [cursor=pointer]
+                  - tab [ref=e273] [cursor=pointer]
+                  - tab [ref=e275] [cursor=pointer]
+                  - tab [ref=e277] [cursor=pointer]
+                  - tab [ref=e279] [cursor=pointer]
+                  - tab [ref=e281] [cursor=pointer]
+                  - tab [ref=e283] [cursor=pointer]
+                - button [ref=e287]
+                - button [ref=e290]
+                - article "Men's Athletic Training 4-Pack - Black Core Mix - Medium - Cotton Blend - Bombas" [ref=e291] [cursor=pointer]:
+                  - generic [ref=e293]:
+                    - img [ref=e294]
+                    - generic [ref=e295]:
+                      - generic [ref=e296]:
+                        - generic [ref=e299]: Bombas
+                        - link "Men's Athletic Training 4-Pack - Black Core Mix - Medium - Cotton Blend - Bombas, Bombas" [ref=e300]:
+                          - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=b4a6f149-2c5b-4503-ba35-e7540d5eb5d2&bdc=pb&bidId=22&bidderId=4&cmExpId=RSV&impId=2&impTy=1&ldc=rhf2oczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=e60aadc9-c55b-4ea3-b48b-1246373dee0e&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De809jniqOIkp31I1X4rbtuqzVUCUxjGesj82vY0FgGQj5e-EaEijJSe8tzGrDAYubUQLaH9_nIxvKlDpitz9P8v76f0um4SZO_O8DKQAlf0SYYldtH6ryr6KD5NAQ04n8Nl4QvNO1AC66hH4pW0zwM5t-yo7UMBbYXnstYKwMQ9K0sSs08Xwivq0GCJBmYcspsCiBJ4g%26u%3DaHR0cHMlM2ElMmYlMmZib21iYXMuY29tJTJmcHJvZHVjdHMlMmZtZW5zLWF0aGxldGljLXRyYWluaW5nLTQtcGFjayUzZnZhcmlhbnQlM2RibGFjay1jb3JlLW1peCUyNnNsZWV2ZSUyYnNpemUlM2RtJTI2c29jayUyYnNpemUlM2RtJTI2dXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX2NhbXBhaWduJTNkUE1BWC1QTEFfQmluZ19QTWF4X1NvY2tzLVNvY2stQUNRLU5PTkUlMjZtc2Nsa2lkJTNkODE2ZmE0MWExODlkMTZiMDMzYzFjZTIzMTg1YzEwNDMlMjZ1dG1fdGVybSUzZDIzMjk1OTAyNjE5MzI3OTIlMjZ1dG1fY29udGVudCUzZFBlcmZvcm1hbmNlJTI1MjBTb2Nrcw%26rlid%3D816fa41a189d16b033c1ce23185c1043&rtype=targetURL&tagId=hp2-infopane-6&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                          - text: Men's Athletic Training 4-Pack - Black Core Mix - Medium - Cotton Blend - Bombas
+                      - link "Sponsored" [ref=e302]:
+                        - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=b4a6f149-2c5b-4503-ba35-e7540d5eb5d2&bdc=pb&bidId=22&bidderId=4&cmExpId=RSV&impId=2&impTy=1&ldc=rhf2oczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=e60aadc9-c55b-4ea3-b48b-1246373dee0e&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De809jniqOIkp31I1X4rbtuqzVUCUxjGesj82vY0FgGQj5e-EaEijJSe8tzGrDAYubUQLaH9_nIxvKlDpitz9P8v76f0um4SZO_O8DKQAlf0SYYldtH6ryr6KD5NAQ04n8Nl4QvNO1AC66hH4pW0zwM5t-yo7UMBbYXnstYKwMQ9K0sSs08Xwivq0GCJBmYcspsCiBJ4g%26u%3DaHR0cHMlM2ElMmYlMmZib21iYXMuY29tJTJmcHJvZHVjdHMlMmZtZW5zLWF0aGxldGljLXRyYWluaW5nLTQtcGFjayUzZnZhcmlhbnQlM2RibGFjay1jb3JlLW1peCUyNnNsZWV2ZSUyYnNpemUlM2RtJTI2c29jayUyYnNpemUlM2RtJTI2dXRtX3NvdXJjZSUzZGJpbmclMjZ1dG1fbWVkaXVtJTNkY3BjJTI2dXRtX2NhbXBhaWduJTNkUE1BWC1QTEFfQmluZ19QTWF4X1NvY2tzLVNvY2stQUNRLU5PTkUlMjZtc2Nsa2lkJTNkODE2ZmE0MWExODlkMTZiMDMzYzFjZTIzMTg1YzEwNDMlMjZ1dG1fdGVybSUzZDIzMjk1OTAyNjE5MzI3OTIlMjZ1dG1fY29udGVudCUzZFBlcmZvcm1hbmNlJTI1MjBTb2Nrcw%26rlid%3D816fa41a189d16b033c1ce23185c1043&rtype=targetURL&tagId=hp2-infopane-6&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                    - button "See more" [ref=e304]:
+                      - img [ref=e305]
+              - article [ref=e306] [cursor=pointer]:
+                - generic [ref=e311]:
+                  - generic [ref=e313]:
+                    - link "Top stories" [ref=e315]:
+                      - /url: https://www.msn.com/en-in/channel/topic/Top%20stories/tp-Y_0b495ad3-9beb-45f8-9214-c8e95aa2468f?cvid=6a3900bf72df46e2bb84aefb411f6b12&ocid=hpmsn
+                      - heading "Top stories" [level=2] [ref=e316]
+                    - button "More options" [ref=e318]
+                  - list [ref=e321]:
+                    - listitem "Keir Starmer quits as UK PM amid Labour revolt, sixth premier forced out in 10 years" [ref=e322]:
+                      - generic [ref=e323]:
+                        - generic [ref=e324]:
+                          - generic:
+                            - generic [ref=e325]: Breaking
+                            - img [ref=e326]
+                          - generic [ref=e327]:
+                            - generic: News18 ·55m
+                        - generic [ref=e328]: Keir Starmer quits as UK PM amid Labour revolt, sixth premier forced out in 10 years
+                    - listitem "Iran's Araghchi says Switzerland talks delivered 'major progress' on sanctions, oil exports" [ref=e329]:
+                      - generic [ref=e330]:
+                        - generic [ref=e331]:
+                          - img [ref=e332]
+                          - generic [ref=e333]:
+                            - generic: WION ·1h
+                        - generic [ref=e334]: Iran's Araghchi says Switzerland talks delivered 'major progress' on sanctions, oil exports
+                    - listitem "Aaditya slams Sena (UBT) rebels, says they abandoned poll mandate for greed" [ref=e335]:
+                      - generic [ref=e336]:
+                        - generic [ref=e337]:
+                          - img [ref=e338]
+                          - generic [ref=e339]:
+                            - generic: Press Trust of India ·now
+                        - generic [ref=e340]: Aaditya slams Sena (UBT) rebels, says they abandoned poll mandate for greed
+                  - generic [ref=e342]:
+                    - generic [ref=e343]:
+                      - generic "Previous" [ref=e344]:
+                        - button "Previous" [ref=e345]
+                      - tablist [ref=e347]:
+                        - tab "tab-0" [selected] [ref=e348]
+                        - tab "tab-1" [ref=e350]
+                        - tab "tab-2" [ref=e352]
+                      - generic "Next" [ref=e354]:
+                        - button "Next" [ref=e355]
+                    - link "See more" [ref=e357]:
+                      - /url: https://www.msn.com/en-in/channel/topic/Top%20stories/tp-Y_0b495ad3-9beb-45f8-9214-c8e95aa2468f?cvid=6a3900bf72df46e2bb84aefb411f6b12&ocid=hpmsn
+              - article [ref=e358] [cursor=pointer]:
+                - generic [ref=e362]:
+                  - generic: Sponsored
+              - article "SIDEREUS Rental - Sony Fx6 - Milano" [ref=e363] [cursor=pointer]:
+                - generic [ref=e365]:
+                  - img [ref=e366]
+                  - generic [ref=e367]:
+                    - generic [ref=e368]:
+                      - generic [ref=e371]: Sidereus Rental
+                      - link "SIDEREUS Rental - Sony Fx6 - Milano, Sidereus Rental" [ref=e372]:
+                        - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=4d3d393f-bc33-4544-9860-98c19dc1c684&bdc=pb&bidId=4&bidderId=4&cmExpId=RSV&impId=8&impTy=1&ldc=rhf2oczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=e60aadc9-c55b-4ea3-b48b-1246373dee0e&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De8Ic34BRUK1YaLQdIBlxgNfjVUCUzpCkvWMca4ROLOBNkr2neysiQr9qC3pXPNfqpQqE__fxGi3ibDbBSxCz2G5fjsKBLVjTVR-VZkDdGJ3c1HMWe_kGe-fnAYcXyB9uxegCbKEmK56m3lUSawGGGbdiVWrpZCfYk6sNXz2bOApb-_RKD6goZRsSRBo-8t9IXJ1G7-0g%26u%3DaHR0cHMlM2ElMmYlMmZzaWRlcmV1cy5zaXRlJTJmcHJvZHVjdC1wYWdlJTJmc29ueS1meDYlMmYlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2Q0ODY0NjA1MjIlMjZ1dG1fdGVybSUzZGtleXdvcmQlMjZ1dG1fY29udGVudCUzZDc3NTg0NTAyODg2ODQ5JTI2bXNjbGtpZCUzZGU0MjEzMzgwYjhjMDFjNDA1Y2I4NTliOWI4MDE3YWU3%26rlid%3De4213380b8c01c405cb859b9b8017ae7&rtype=targetURL&tagId=hp2-river-1&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                        - text: SIDEREUS Rental - Sony Fx6 - Milano
+                    - link "Sponsored" [ref=e374]:
+                      - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=4d3d393f-bc33-4544-9860-98c19dc1c684&bdc=pb&bidId=4&bidderId=4&cmExpId=RSV&impId=8&impTy=1&ldc=rhf2oczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=e60aadc9-c55b-4ea3-b48b-1246373dee0e&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De8Ic34BRUK1YaLQdIBlxgNfjVUCUzpCkvWMca4ROLOBNkr2neysiQr9qC3pXPNfqpQqE__fxGi3ibDbBSxCz2G5fjsKBLVjTVR-VZkDdGJ3c1HMWe_kGe-fnAYcXyB9uxegCbKEmK56m3lUSawGGGbdiVWrpZCfYk6sNXz2bOApb-_RKD6goZRsSRBo-8t9IXJ1G7-0g%26u%3DaHR0cHMlM2ElMmYlMmZzaWRlcmV1cy5zaXRlJTJmcHJvZHVjdC1wYWdlJTJmc29ueS1meDYlMmYlM2Z1dG1fc291cmNlJTNkYmluZyUyNnV0bV9tZWRpdW0lM2RjcGMlMjZ1dG1fY2FtcGFpZ24lM2Q0ODY0NjA1MjIlMjZ1dG1fdGVybSUzZGtleXdvcmQlMjZ1dG1fY29udGVudCUzZDc3NTg0NTAyODg2ODQ5JTI2bXNjbGtpZCUzZGU0MjEzMzgwYjhjMDFjNDA1Y2I4NTliOWI4MDE3YWU3%26rlid%3De4213380b8c01c405cb859b9b8017ae7&rtype=targetURL&tagId=hp2-river-1&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                  - button "See more" [ref=e376]:
+                    - img [ref=e377]
+              - article [ref=e378] [cursor=pointer]:
+                - generic [ref=e384]:
+                  - generic [ref=e386]:
+                    - img "World Cup coverage" [ref=e388]
+                    - link "World Cup coverage" [ref=e389]:
+                      - /url: https://www.msn.com/en-in/sports/football/fifa_world_cup?uxmode=ruby&ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12
+                      - heading "World Cup coverage" [level=2] [ref=e390]
+                    - button "More interests" [ref=e391]
+                    - generic [ref=e392]:
+                      - generic "Trending now" [ref=e393]:
+                        - button "Trending now" [ref=e394]
+                      - button "More options" [ref=e395]
+                  - generic [ref=e399]:
+                    - link "NZL Group G 1 - 3 Final · 22 Jun EGY" [ref=e401]:
+                      - /url: https://www.msn.com/en-in/sports/football/fifa_world_cup/game-center/sp-id-66456988?uxmode=ruby&ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12
+                      - generic [ref=e402]:
+                        - generic [ref=e403]:
+                          - generic [ref=e404]:
+                            - button "Click to follow New Zealand":
+                              - generic:
+                                - img
+                          - generic "New Zealand" [ref=e405]: NZL
+                        - generic [ref=e407]:
+                          - generic [ref=e408]: Group G
+                          - generic [ref=e409]:
+                            - generic [ref=e411]: "1"
+                            - generic [ref=e412]: "-"
+                            - generic [ref=e413]:
+                              - generic [ref=e414]: "3"
+                              - img [ref=e416]
+                          - generic "22 Jun - Final" [ref=e418]: Final · 22 Jun
+                        - generic [ref=e419]:
+                          - generic [ref=e420]:
+                            - button "Click to follow Egypt":
+                              - generic:
+                                - img
+                          - generic "Egypt" [ref=e421]: EGY
+                    - link "URU Group H 2 - 2 Final · 21 Jun CPV" [ref=e423]:
+                      - /url: https://www.msn.com/en-in/sports/football/fifa_world_cup/game-center/sp-id-66457000?uxmode=ruby&ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12
+                      - generic [ref=e424]:
+                        - generic [ref=e425]:
+                          - generic [ref=e426]:
+                            - button "Click to follow Uruguay":
+                              - generic:
+                                - img
+                          - generic "Uruguay" [ref=e427]: URU
+                        - generic [ref=e429]:
+                          - generic [ref=e430]: Group H
+                          - generic [ref=e431]:
+                            - generic [ref=e433]: "2"
+                            - generic [ref=e434]: "-"
+                            - generic [ref=e436]: "2"
+                          - generic "21 Jun - Final" [ref=e437]: Final · 21 Jun
+                        - generic [ref=e438]:
+                          - generic [ref=e439]:
+                            - button "Click to follow Cape Verde":
+                              - generic:
+                                - img
+                          - generic "Cape Verde" [ref=e440]: CPV
+                    - link "BEL Group G 0 - 0 Final · 21 Jun IRN" [ref=e442]:
+                      - /url: https://www.msn.com/en-in/sports/football/fifa_world_cup/game-center/sp-id-66456986?uxmode=ruby&ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12
+                      - generic [ref=e443]:
+                        - generic [ref=e444]:
+                          - generic [ref=e445]:
+                            - button "Click to follow Belgium":
+                              - generic:
+                                - img
+                          - generic "Belgium" [ref=e446]: BEL
+                        - generic [ref=e448]:
+                          - generic [ref=e449]: Group G
+                          - generic [ref=e450]:
+                            - generic [ref=e452]: "0"
+                            - generic [ref=e453]: "-"
+                            - generic [ref=e455]: "0"
+                          - generic "21 Jun - Final" [ref=e456]: Final · 21 Jun
+                        - generic [ref=e457]:
+                          - generic [ref=e458]:
+                            - button "Click to follow Iran":
+                              - generic:
+                                - img
+                          - generic "Iran" [ref=e459]: IRN
+                  - generic [ref=e461]:
+                    - generic [ref=e462]:
+                      - generic "Previous" [ref=e463]:
+                        - button "Previous" [ref=e464]
+                      - tablist [ref=e466]:
+                        - tab "tab-0" [selected] [ref=e467]
+                        - tab "tab-1" [ref=e469]
+                        - tab "tab-2" [ref=e471]
+                        - tab "tab-3" [ref=e473]
+                        - tab "tab-4" [ref=e475]
+                        - tab "tab-5"
+                        - tab "tab-6"
+                        - tab "tab-7"
+                        - tab "tab-8"
+                        - tab "tab-9"
+                        - tab "tab-10"
+                        - tab "tab-11"
+                      - generic "Next" [ref=e477]:
+                        - button "Next" [ref=e478]
+                    - link "See more" [ref=e480]:
+                      - /url: https://www.msn.com/en-in/sports/football/fifa_world_cup?uxmode=ruby&ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12
+              - article "Satellite captures Godzilla El Nino wave in Pacific Ocean rising like never before" [ref=e481] [cursor=pointer]:
+                - generic [ref=e483]:
+                  - img [ref=e484]
+                  - generic [ref=e485]:
+                    - generic [ref=e486]:
+                      - generic [ref=e487]:
+                        - generic [ref=e488]:
+                          - img [ref=e489]
+                          - generic [ref=e490]: India Today
+                        - generic [ref=e491]: ·
+                        - generic [ref=e492]: 1h
+                      - link "Satellite captures Godzilla El Nino wave in Pacific Ocean rising like never before, India Today" [ref=e493]:
+                        - /url: https://www.msn.com/en-in/news/techandscience/satellite-captures-godzilla-el-nino-wave-in-pacific-ocean-rising-like-never-before/ar-AA26ex6T
+                        - text: Satellite captures Godzilla El Nino wave in Pacific Ocean rising like never before
+                    - generic "Satellite captures Godzilla El Nino wave in Pacific Ocean rising like never before" [ref=e496]:
+                      - generic [ref=e498]:
+                        - generic [ref=e499]:
+                          - button "14 Like" [ref=e500]:
+                            - generic [ref=e501]:
+                              - img [ref=e502]
+                              - generic [ref=e504]: "14"
+                          - button "Dislike" [ref=e505]:
+                            - img [ref=e507]
+                        - link "Start the conversation" [ref=e510]:
+                          - /url: https://www.msn.com/en-in/news/techandscience/satellite-captures-godzilla-el-nino-wave-in-pacific-ocean-rising-like-never-before/ar-AA26ex6T#comments
+                          - button "Start the conversation" [ref=e511]:
+                            - img [ref=e512]
+                  - generic [ref=e514]:
+                    - button "Hide this story" [ref=e515]:
+                      - img [ref=e516]
+                      - text: Hide this story
+                    - button "See more" [ref=e517]:
+                      - img [ref=e518]
+              - article "Men's Golf Ankle Sock 3-Pack - Mountain Blue Mix - Medium - Cotton Blend - Bombas" [ref=e519] [cursor=pointer]:
+                - generic [ref=e521]:
+                  - img [ref=e522]
+                  - generic [ref=e523]:
+                    - generic [ref=e524]:
+                      - generic [ref=e527]: Bombas
+                      - link "Men's Golf Ankle Sock 3-Pack - Mountain Blue Mix - Medium - Cotton Blend - Bombas, Bombas" [ref=e528]:
+                        - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=b7183961-291b-4c45-8c6e-d531a936fbce&bdc=pb&bidId=23&bidderId=4&cmExpId=RSV&impId=9&impTy=1&ldc=rhf2oczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=e60aadc9-c55b-4ea3-b48b-1246373dee0e&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De8MZC4hbGy86zV0NAgThwNnTVUCUz1-VE_W2s-VM8jYGE2CJle54LPAHo0ocrd-JzC7yv3iNoeYkBbdz-RnjhuG7eEX_Dv36ATgwvN255UcoyTYxi2l5Hx-yDhPYR7DWK5SnRMEclCrtFEUivY67RuIz3uZGAC7qMGmrIrgu_Oz_YZLEMbTaULfUNRl3I2dVxK39jcWwOoGUumYt6qWaG-02Fbh3U%26u%3DaHR0cHMlM2ElMmYlMmZib21iYXMuY29tJTJmcHJvZHVjdHMlMmZtZW5zLXBlcmZvcm1hbmNlLWdvbGYtYW5rbGUtc29jay0zLXBhY2slM2Z2YXJpYW50JTNkbW91bnRhaW4tYmx1ZS1taXglMjZzaXplJTNkbSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZFBNQVgtUExBX0JpbmdfUE1heF9Tb2Nrcy1Tb2NrLUFDUS1OT05FJTI2bXNjbGtpZCUzZGZmM2RmNTcwNDEwMzE5N2E3OGI3OWY0OTQxYzIzYTZhJTI2dXRtX3Rlcm0lM2QyMzI5NTkwMjYxOTMyNzkyJTI2dXRtX2NvbnRlbnQlM2RQZXJmb3JtYW5jZSUyNTIwU29ja3M%26rlid%3Dff3df5704103197a78b79f4941c23a6a&rtype=targetURL&tagId=hp2-river-2&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                        - text: Men's Golf Ankle Sock 3-Pack - Mountain Blue Mix - Medium - Cotton Blend - Bombas
+                    - link "Sponsored" [ref=e530]:
+                      - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=b7183961-291b-4c45-8c6e-d531a936fbce&bdc=pb&bidId=23&bidderId=4&cmExpId=RSV&impId=9&impTy=1&ldc=rhf2oczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=e60aadc9-c55b-4ea3-b48b-1246373dee0e&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De8MZC4hbGy86zV0NAgThwNnTVUCUz1-VE_W2s-VM8jYGE2CJle54LPAHo0ocrd-JzC7yv3iNoeYkBbdz-RnjhuG7eEX_Dv36ATgwvN255UcoyTYxi2l5Hx-yDhPYR7DWK5SnRMEclCrtFEUivY67RuIz3uZGAC7qMGmrIrgu_Oz_YZLEMbTaULfUNRl3I2dVxK39jcWwOoGUumYt6qWaG-02Fbh3U%26u%3DaHR0cHMlM2ElMmYlMmZib21iYXMuY29tJTJmcHJvZHVjdHMlMmZtZW5zLXBlcmZvcm1hbmNlLWdvbGYtYW5rbGUtc29jay0zLXBhY2slM2Z2YXJpYW50JTNkbW91bnRhaW4tYmx1ZS1taXglMjZzaXplJTNkbSUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZFBNQVgtUExBX0JpbmdfUE1heF9Tb2Nrcy1Tb2NrLUFDUS1OT05FJTI2bXNjbGtpZCUzZGZmM2RmNTcwNDEwMzE5N2E3OGI3OWY0OTQxYzIzYTZhJTI2dXRtX3Rlcm0lM2QyMzI5NTkwMjYxOTMyNzkyJTI2dXRtX2NvbnRlbnQlM2RQZXJmb3JtYW5jZSUyNTIwU29ja3M%26rlid%3Dff3df5704103197a78b79f4941c23a6a&rtype=targetURL&tagId=hp2-river-2&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                  - button "See more" [ref=e532]:
+                    - img [ref=e533]
+              - 'article "''We don’t speak Punjabi. We are not Indians'': Canadian woman rants about FIFA World Cup opening ceremony performance" [ref=e534] [cursor=pointer]':
+                - generic [ref=e536]:
+                  - img [ref=e537]
+                  - generic [ref=e538]:
+                    - generic [ref=e539]:
+                      - generic [ref=e540]:
+                        - generic [ref=e541]:
+                          - img [ref=e542]
+                          - generic [ref=e543]: The Times of India
+                        - generic [ref=e544]: ·
+                        - generic [ref=e545]: 19h
+                      - 'link "''We don’t speak Punjabi. We are not Indians'': Canadian woman rants about FIFA World Cup opening ceremony performance, The Times of India" [ref=e546]':
+                        - /url: https://www.msn.com/en-in/news/world/we-don-t-speak-punjabi-we-are-not-indians-canadian-woman-rants-about-fifa-world-cup-opening-ceremony-performance/ar-AA26bQUw
+                        - text: "'We don’t speak Punjabi. We are not Indians': Canadian woman rants about FIFA World Cup opening ceremony performance"
+                    - 'generic "''We don’t speak Punjabi. We are not Indians'': Canadian woman rants about FIFA World Cup opening ceremony performance" [ref=e549]':
+                      - generic [ref=e551]:
+                        - generic [ref=e552]:
+                          - button "162 Like" [ref=e553]:
+                            - generic [ref=e554]:
+                              - img [ref=e555]
+                              - generic [ref=e557]: "162"
+                          - button "Dislike" [ref=e558]:
+                            - img [ref=e560]
+                        - link "View comments 14 Comment" [ref=e563]:
+                          - /url: https://www.msn.com/en-in/news/world/we-don-t-speak-punjabi-we-are-not-indians-canadian-woman-rants-about-fifa-world-cup-opening-ceremony-performance/ar-AA26bQUw#comments
+                          - button "View comments 14 Comment" [ref=e564]:
+                            - img [ref=e565]
+                          - generic [ref=e567]: "14"
+                  - generic [ref=e568]:
+                    - button "Hide this story" [ref=e569]:
+                      - img [ref=e570]
+                      - text: Hide this story
+                    - button "See more" [ref=e571]:
+                      - img [ref=e572]
+              - article "BJP's 'massacre' claim after road name change. Then Trinamool's history jibe" [ref=e573] [cursor=pointer]:
+                - generic [ref=e575]:
+                  - img [ref=e576]
+                  - generic [ref=e577]:
+                    - generic [ref=e578]:
+                      - generic [ref=e579]:
+                        - generic [ref=e580]:
+                          - img [ref=e581]
+                          - generic [ref=e582]: NDTV 24x7
+                        - generic [ref=e583]: ·
+                        - generic [ref=e584]: 3h
+                      - link "BJP's 'massacre' claim after road name change. Then Trinamool's history jibe, NDTV 24x7" [ref=e585]:
+                        - /url: https://www.msn.com/en-in/news/india/bjp-s-massacre-claim-after-road-name-change-then-trinamool-s-history-jibe/ar-AA26dOFW
+                        - text: BJP's 'massacre' claim after road name change. Then Trinamool's history jibe
+                    - generic "BJP's 'massacre' claim after road name change. Then Trinamool's history jibe" [ref=e588]:
+                      - generic [ref=e590]:
+                        - generic [ref=e591]:
+                          - button "11 Like" [ref=e592]:
+                            - generic [ref=e593]:
+                              - img [ref=e594]
+                              - generic [ref=e596]: "11"
+                          - button "Dislike" [ref=e597]:
+                            - img [ref=e599]
+                        - link "Start the conversation" [ref=e602]:
+                          - /url: https://www.msn.com/en-in/news/india/bjp-s-massacre-claim-after-road-name-change-then-trinamool-s-history-jibe/ar-AA26dOFW#comments
+                          - button "Start the conversation" [ref=e603]:
+                            - img [ref=e604]
+                  - generic [ref=e606]:
+                    - button "Hide this story" [ref=e607]:
+                      - img [ref=e608]
+                      - text: Hide this story
+                    - button "See more" [ref=e609]:
+                      - img [ref=e610]
+            - generic [ref=e611]:
+              - article [ref=e612] [cursor=pointer]:
+                - generic [ref=e617]:
+                  - generic [ref=e619]:
+                    - link "Top Engaging News" [ref=e621]:
+                      - /url: https://www.msn.com/en-in/channel/topic/Top Engaging News/tp-Y_42e62c1c-32a7-462e-a6b0-8a718bfe473d?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12
+                      - heading "Top Engaging News" [level=2] [ref=e622]
+                    - button "More options" [ref=e624]
+                  - generic [ref=e626]:
+                    - 'link "Times Now 13 Comments Temple funds to stay with temples: TN CM Vijay cancels ₹246-crore projects" [ref=e628]':
+                      - /url: https://www.msn.com/en-in/news/india/temple-funds-to-stay-with-temples-tn-cm-vijay-cancels-246-crore-projects/ar-AA26e1D1
+                      - generic [ref=e629]:
+                        - img [ref=e630]
+                        - generic [ref=e631]: Times Now
+                        - link "13 Comments" [ref=e633]:
+                          - /url: https://www.msn.com/en-in/news/india/temple-funds-to-stay-with-temples-tn-cm-vijay-cancels-246-crore-projects/ar-AA26e1D1#comments
+                          - img [ref=e634]
+                          - paragraph [ref=e635]: "13"
+                      - paragraph [ref=e636]: "Temple funds to stay with temples: TN CM Vijay cancels ₹246-crore projects"
+                    - 'link "News18 21 Comments Students first: PM Modi waits 45 minutes at Delhi airport so NEET aspirants face no hassle" [ref=e638]':
+                      - /url: https://www.msn.com/en-in/news/india/students-first-pm-modi-waits-45-minutes-at-delhi-airport-so-neet-aspirants-face-no-hassle/ar-AA26bGLh
+                      - generic [ref=e639]:
+                        - img [ref=e640]
+                        - generic [ref=e641]: News18
+                        - link "21 Comments" [ref=e643]:
+                          - /url: https://www.msn.com/en-in/news/india/students-first-pm-modi-waits-45-minutes-at-delhi-airport-so-neet-aspirants-face-no-hassle/ar-AA26bGLh#comments
+                          - img [ref=e644]
+                          - paragraph [ref=e645]: "21"
+                      - paragraph [ref=e646]: "Students first: PM Modi waits 45 minutes at Delhi airport so NEET aspirants face no hassle"
+                    - 'link "Hindustan Times 7 Comments BioCompute founder Anagha Rajesh shuts Bengaluru op and moves to US, explains why: ''India is not ready''" [ref=e648]':
+                      - /url: https://www.msn.com/en-in/news/india/biocompute-founder-anagha-rajesh-shuts-bengaluru-op-and-moves-to-us-explains-why-india-is-not-ready/ar-AA26dVx4
+                      - generic [ref=e649]:
+                        - img [ref=e650]
+                        - generic [ref=e651]: Hindustan Times
+                        - link "7 Comments" [ref=e653]:
+                          - /url: https://www.msn.com/en-in/news/india/biocompute-founder-anagha-rajesh-shuts-bengaluru-op-and-moves-to-us-explains-why-india-is-not-ready/ar-AA26dVx4#comments
+                          - img [ref=e654]
+                          - paragraph [ref=e655]: "7"
+                      - paragraph [ref=e656]: "BioCompute founder Anagha Rajesh shuts Bengaluru op and moves to US, explains why: 'India is not ready'"
+                  - generic [ref=e658]:
+                    - generic [ref=e659]:
+                      - generic "Previous" [ref=e660]:
+                        - button "Previous" [ref=e661]
+                      - tablist [ref=e663]:
+                        - tab "tab-0" [selected] [ref=e664]
+                        - tab "tab-1" [ref=e666]
+                        - tab "tab-2" [ref=e668]
+                      - generic "Next" [ref=e670]:
+                        - button "Next" [ref=e671]
+                    - link "See more" [ref=e673]:
+                      - /url: https://www.msn.com/en-in/channel/topic/Top Engaging News/tp-Y_42e62c1c-32a7-462e-a6b0-8a718bfe473d?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12
+              - article [ref=e674] [cursor=pointer]:
+                - generic [ref=e680]:
+                  - generic [ref=e682]:
+                    - img "Watchlist suggestions" [ref=e684]
+                    - link "Watchlist suggestions" [ref=e685]:
+                      - /url: https://www.msn.com/en-in/money/watchlist?ocid=hpmsn
+                      - heading "Watchlist suggestions" [level=2] [ref=e686]
+                    - button "More options" [ref=e688]
+                  - generic [ref=e693]:
+                    - link "NASDAQ COMP ‎+1.91%‎ 26,517.93" [ref=e695]:
+                      - /url: https://www.msn.com/en-in/money/watchlist?id=a3oxnm&ocid=hpmsn
+                      - generic [ref=e696]:
+                        - generic [ref=e698]: NASDAQ
+                        - generic [ref=e700]: COMP
+                      - generic [ref=e705]:
+                        - generic [ref=e706]: ‎+1.91%‎
+                        - generic [ref=e707]: 26,517.93
+                      - button "Add to watchlist" [ref=e710]:
+                        - img [ref=e711]
+                    - link "USD/INR US Dollar/Indian Rupee ‎+0.40%‎ 94.6975" [ref=e715]:
+                      - /url: https://www.msn.com/en-in/money/watchlist?id=avyo8m&ocid=hpmsn
+                      - generic [ref=e716]:
+                        - generic [ref=e718]: USD/INR
+                        - generic [ref=e720]: US Dollar/Indian Rupee
+                      - generic [ref=e725]:
+                        - generic [ref=e726]: ‎+0.40%‎
+                        - generic [ref=e727]: "94.6975"
+                      - button "Add to watchlist" [ref=e730]:
+                        - img [ref=e731]
+                    - link "24K Gold (10 Grams) - Indian Rupee XAUINR ‎+1.31%‎ 145857" [ref=e735]:
+                      - /url: https://www.msn.com/en-in/money/watchlist?id=cejq77&ocid=hpmsn
+                      - generic [ref=e736]:
+                        - generic [ref=e738]: 24K Gold (10 Grams) - Indian Rupee
+                        - generic [ref=e740]: XAUINR
+                      - generic [ref=e745]:
+                        - generic [ref=e746]: ‎+1.31%‎
+                        - generic [ref=e747]: "145857"
+                      - button "Add to watchlist" [ref=e750]:
+                        - img [ref=e751]
+                    - link "Reliance Industries Ltd Reliance Industries Ltd Rising fast ‎+1.61%‎ 1,330.60" [ref=e755]:
+                      - /url: https://www.msn.com/en-in/money/watchlist?id=ahjo52&noti=Price&ocid=hpmsn
+                      - generic [ref=e756]:
+                        - generic [ref=e757]:
+                          - generic [ref=e758]: Reliance Industries Ltd
+                          - img "Reliance Industries Ltd" [ref=e759]
+                        - generic [ref=e761]: Rising fast
+                      - generic [ref=e766]:
+                        - generic [ref=e767]: ‎+1.61%‎
+                        - generic [ref=e768]: 1,330.60
+                      - button "Add to watchlist" [ref=e771]:
+                        - img [ref=e772]
+                    - link "Yes Bank Ltd Yes Bank Ltd Dropping fast ‎-1.57%‎ 25.01" [ref=e776]:
+                      - /url: https://www.msn.com/en-in/money/watchlist?id=ahkpar&noti=Price&ocid=hpmsn
+                      - generic [ref=e777]:
+                        - generic [ref=e778]:
+                          - generic [ref=e779]: Yes Bank Ltd
+                          - img "Yes Bank Ltd" [ref=e780]
+                        - generic [ref=e782]: Dropping fast
+                      - generic [ref=e787]:
+                        - generic [ref=e788]: ‎-1.57%‎
+                        - generic [ref=e789]: "25.01"
+                      - button "Add to watchlist" [ref=e792]:
+                        - img [ref=e793]
+                  - generic [ref=e797]:
+                    - generic [ref=e798]:
+                      - generic "Previous" [ref=e799]:
+                        - button "Previous" [ref=e800]
+                      - tablist [ref=e802]:
+                        - tab "tab-0" [selected] [ref=e803]
+                        - tab "tab-1" [ref=e805]
+                        - tab "tab-2" [ref=e807]
+                        - tab "tab-3" [ref=e809]
+                        - tab "tab-4" [ref=e811]
+                        - tab "tab-5"
+                        - tab "tab-6"
+                      - generic "Next" [ref=e813]:
+                        - button "Next" [ref=e814]
+                    - link "See watchlist suggestions" [ref=e816]:
+                      - /url: https://www.msn.com/en-in/money/watchlist?ocid=hpmsn
+              - article "68-year-old man dies just before his first holiday after 37 years of work, doctor shares emotional story" [ref=e817] [cursor=pointer]:
+                - generic [ref=e819]:
+                  - img [ref=e820]
+                  - generic [ref=e821]:
+                    - generic [ref=e822]:
+                      - generic [ref=e823]:
+                        - generic [ref=e824]:
+                          - img [ref=e825]
+                          - generic [ref=e826]: Times Now
+                        - generic [ref=e827]: ·
+                        - generic [ref=e828]: 7h
+                      - link "68-year-old man dies just before his first holiday after 37 years of work, doctor shares emotional story, Times Now" [ref=e829]:
+                        - /url: https://www.msn.com/en-in/health/other/68-year-old-man-dies-just-before-his-first-holiday-after-37-years-of-work-doctor-shares-emotional-story/ar-AA26dE34
+                        - text: 68-year-old man dies just before his first holiday after 37 years of work, doctor shares emotional story
+                    - generic "68-year-old man dies just before his first holiday after 37 years of work, doctor shares emotional story" [ref=e832]:
+                      - generic [ref=e834]:
+                        - generic [ref=e835]:
+                          - button "39 Like" [ref=e836]:
+                            - generic [ref=e837]:
+                              - img [ref=e838]
+                              - generic [ref=e840]: "39"
+                          - button "Dislike" [ref=e841]:
+                            - img [ref=e843]
+                        - link "View comments 2 Comment" [ref=e846]:
+                          - /url: https://www.msn.com/en-in/health/other/68-year-old-man-dies-just-before-his-first-holiday-after-37-years-of-work-doctor-shares-emotional-story/ar-AA26dE34#comments
+                          - button "View comments 2 Comment" [ref=e847]:
+                            - img [ref=e848]
+                          - generic [ref=e850]: "2"
+                  - generic [ref=e851]:
+                    - button "Hide this story" [ref=e852]:
+                      - img [ref=e853]
+                      - text: Hide this story
+                    - button "See more" [ref=e854]:
+                      - img [ref=e855]
+              - 'article "''Pin-drop silence on set'': Upasana Singh recalls Salman Khan''s reaction after she referred to him as ''kaun hai ye aadmi''" [ref=e856] [cursor=pointer]':
+                - generic [ref=e858]:
+                  - img [ref=e859]
+                  - generic [ref=e860]:
+                    - generic [ref=e861]:
+                      - generic [ref=e862]:
+                        - generic [ref=e863]:
+                          - img [ref=e864]
+                          - generic [ref=e865]: Hindustan Times
+                        - generic [ref=e866]: ·
+                        - generic [ref=e867]: 1d
+                      - 'link "''Pin-drop silence on set'': Upasana Singh recalls Salman Khan''s reaction after she referred to him as ''kaun hai ye aadmi'', Hindustan Times" [ref=e868]':
+                        - /url: https://www.msn.com/en-in/entertainment/other/pin-drop-silence-on-set-upasana-singh-recalls-salman-khan-s-reaction-after-she-referred-to-him-as-kaun-hai-ye-aadmi/ar-AA26aPVu
+                        - text: "'Pin-drop silence on set': Upasana Singh recalls Salman Khan's reaction after she referred to him as 'kaun hai ye aadmi'"
+                    - 'generic "''Pin-drop silence on set'': Upasana Singh recalls Salman Khan''s reaction after she referred to him as ''kaun hai ye aadmi''" [ref=e871]':
+                      - generic [ref=e873]:
+                        - generic [ref=e874]:
+                          - button "40 Like" [ref=e875]:
+                            - generic [ref=e876]:
+                              - img [ref=e877]
+                              - generic [ref=e879]: "40"
+                          - button "Dislike" [ref=e880]:
+                            - img [ref=e882]
+                        - link "Start the conversation" [ref=e885]:
+                          - /url: https://www.msn.com/en-in/entertainment/other/pin-drop-silence-on-set-upasana-singh-recalls-salman-khan-s-reaction-after-she-referred-to-him-as-kaun-hai-ye-aadmi/ar-AA26aPVu#comments
+                          - button "Start the conversation" [ref=e886]:
+                            - img [ref=e887]
+                  - generic [ref=e889]:
+                    - button "Hide this story" [ref=e890]:
+                      - img [ref=e891]
+                      - text: Hide this story
+                    - button "See more" [ref=e892]:
+                      - img [ref=e893]
+              - article [ref=e894] [cursor=pointer]
+              - article "The storm looked ordinary - then a 320 km/h tornado emerged" [ref=e901] [cursor=pointer]:
+                - generic [ref=e903]:
+                  - generic [ref=e907]:
+                    - generic [ref=e908]:
+                      - generic [ref=e909]:
+                        - generic [ref=e910]:
+                          - img [ref=e911]
+                          - generic [ref=e912]: TED
+                        - generic [ref=e913]: ·
+                        - generic [ref=e914]: 3d
+                      - link "The storm looked ordinary - then a 320 km/h tornado emerged, TED" [ref=e915]:
+                        - /url: https://www.msn.com/en-in/autos/photos/the-storm-looked-ordinary-then-a-320-km-h-tornado-emerged/vi-AA25Yof2
+                        - text: The storm looked ordinary - then a 320 km/h tornado emerged
+                    - generic "The storm looked ordinary - then a 320 km/h tornado emerged" [ref=e918]:
+                      - generic [ref=e920]:
+                        - generic [ref=e921]:
+                          - button "20 Like" [ref=e922]:
+                            - generic [ref=e923]:
+                              - img [ref=e924]
+                              - generic [ref=e926]: "20"
+                          - button "Dislike" [ref=e927]:
+                            - img [ref=e929]
+                        - link "Start the conversation" [ref=e932]:
+                          - /url: https://www.msn.com/en-in/autos/photos/the-storm-looked-ordinary-then-a-320-km-h-tornado-emerged/vi-AA25Yof2#comments
+                          - button "Start the conversation" [ref=e933]:
+                            - img [ref=e934]
+                  - generic [ref=e936]:
+                    - button "Hide this story" [ref=e937]:
+                      - img [ref=e938]
+                      - text: Hide this story
+                    - button "See more" [ref=e939]:
+                      - img [ref=e940]
+              - article [ref=e941] [cursor=pointer]
+              - article [ref=e948] [cursor=pointer]:
+                - generic [ref=e954]:
+                  - generic [ref=e956]:
+                    - link "Washington" [ref=e958]:
+                      - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                      - heading "Washington" [level=2] [ref=e959]
+                    - button "My location" [ref=e960]
+                    - button "More options" [ref=e962]
+                  - generic [ref=e966]:
+                    - generic [ref=e967]:
+                      - generic [ref=e969]:
+                        - link "Mostly cloudy" [ref=e970]:
+                          - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                          - img "Mostly cloudy" [ref=e971]
+                        - link "20°C" [ref=e972]:
+                          - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                          - generic [ref=e973]: ‎20‎
+                          - generic [ref=e975]: ‎°C‎
+                      - generic [ref=e977]:
+                        - link "Low temps to drop tomorrow" [ref=e979]:
+                          - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                          - text: Low temps to drop tomorrow
+                        - link "See full forecast" [ref=e981]:
+                          - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                          - img "arrow" [ref=e982]
+                    - link "Weather forecast Today High temperature 29° Low temperature 21° Weather forecast Tue High temperature 27° Low temperature 14° Weather forecast Wed High temperature 28° Low temperature 16° Weather forecast Thu High temperature 29° Low temperature 20° Weather forecast Fri High temperature 27° Low temperature 20°" [ref=e984]:
+                      - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                      - list [ref=e985]:
+                        - listitem [ref=e986]:
+                          - generic "Weather forecast Today High temperature 29° Low temperature 21°" [ref=e987]:
+                            - link "Weather forecast Today High temperature 29° Low temperature 21°" [ref=e988]:
+                              - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                              - generic:
+                                - generic:
+                                  - generic "Today"
+                                  - generic:
+                                    - img "Light rain showers"
+                                  - generic:
+                                    - generic "High temperature 29°": ‎29°‎
+                                    - generic "Low temperature 21°": ‎21°‎
+                        - listitem [ref=e989]:
+                          - generic "Weather forecast Tue High temperature 27° Low temperature 14°" [ref=e990]:
+                            - link "Weather forecast Tue High temperature 27° Low temperature 14°" [ref=e991]:
+                              - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                              - generic:
+                                - generic:
+                                  - generic "Tue"
+                                  - generic:
+                                    - img "Partly sunny"
+                                  - generic:
+                                    - generic "High temperature 27°": ‎27°‎
+                                    - generic "Low temperature 14°": ‎14°‎
+                        - listitem [ref=e992]:
+                          - generic "Weather forecast Wed High temperature 28° Low temperature 16°" [ref=e993]:
+                            - link "Weather forecast Wed High temperature 28° Low temperature 16°" [ref=e994]:
+                              - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                              - generic:
+                                - generic:
+                                  - generic "Wed"
+                                  - generic:
+                                    - img "Sunny"
+                                  - generic:
+                                    - generic "High temperature 28°": ‎28°‎
+                                    - generic "Low temperature 16°": ‎16°‎
+                        - listitem [ref=e995]:
+                          - generic "Weather forecast Thu High temperature 29° Low temperature 20°" [ref=e996]:
+                            - link "Weather forecast Thu High temperature 29° Low temperature 20°" [ref=e997]:
+                              - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                              - generic:
+                                - generic:
+                                  - generic "Thu"
+                                  - generic:
+                                    - img "Mostly sunny"
+                                  - generic:
+                                    - generic "High temperature 29°": ‎29°‎
+                                    - generic "Low temperature 20°": ‎20°‎
+                        - listitem [ref=e998]:
+                          - generic "Weather forecast Fri High temperature 27° Low temperature 20°" [ref=e999]:
+                            - link "Weather forecast Fri High temperature 27° Low temperature 20°" [ref=e1000]:
+                              - /url: https://www.msn.com/en-in/weather/forecast/in-Washington,Virginia
+                              - generic:
+                                - generic:
+                                  - generic "Fri"
+                                  - generic:
+                                    - img "Rain showers"
+                                  - generic:
+                                    - generic "High temperature 27°": ‎27°‎
+                                    - generic "Low temperature 20°": ‎20°‎
+                  - button "See full forecast" [ref=e1003]
+            - article [ref=e1005]
+            - generic [ref=e1007]:
+              - article [ref=e1008] [cursor=pointer]:
+                - generic [ref=e1013]:
+                  - generic [ref=e1014]:
+                    - generic [ref=e1015]:
+                      - link "Recommended videos" [ref=e1016]:
+                        - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                        - img [ref=e1017]
+                      - link "Recommended videos" [ref=e1020]:
+                        - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                    - generic [ref=e1021]:
+                      - generic:
+                        - link "See more" [ref=e1022]:
+                          - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                        - generic "More options" [ref=e1023]:
+                          - button "More options" [ref=e1024]:
+                            - generic:
+                              - generic:
+                                - img
+                  - tabpanel [ref=e1026]:
+                    - generic [ref=e1028]:
+                      - generic [ref=e1030]:
+                        - generic:
+                          - article "The Hollywood climbing stunts that look impossible - but are they?" [ref=e1033]:
+                            - generic [ref=e1034]:
+                              - img "The Hollywood Climbing Stunts That Look Impossible - But Are They?" [ref=e1036]
+                              - generic [ref=e1038]: 20:41
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1039]:
+                                - generic [ref=e1040]:
+                                  - img "Magnus Midtbø" [ref=e1041]
+                                  - generic [ref=e1042]:
+                                    - generic:
+                                      - generic "Magnus Midtbø" [ref=e1043]
+                                      - generic [ref=e1044]: ·
+                                      - generic [ref=e1045]: 2w
+                                - link "The Hollywood climbing stunts that look impossible - but are they?" [ref=e1046]:
+                                  - /url: https://www.msn.com/en-in/entertainment/hollywood/the-hollywood-climbing-stunts-that-look-impossible-but-are-they/vi-AA24UoSI?ocid=hpmsn
+                                  - heading "The Hollywood climbing stunts that look impossible - but are they?" [level=2] [ref=e1047]:
+                                    - generic: The Hollywood climbing stunts that look impossible - but are they?
+                              - button "See more" [ref=e1051]
+                          - article [ref=e1054]:
+                            - generic [ref=e1055]:
+                              - img "Watch What Happens When a Truck Hauls 32,000 Pounds" [ref=e1057]
+                              - generic [ref=e1059]: 20:19
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1060]:
+                                - generic [ref=e1061]:
+                                  - img "WhistlinDiesel" [ref=e1062]
+                                  - generic [ref=e1063]:
+                                    - generic:
+                                      - generic "WhistlinDiesel" [ref=e1064]
+                                      - generic [ref=e1065]: ·
+                                      - generic [ref=e1066]: 2d
+                                - link "Watch what happens when a truck hauls 32,000 pounds" [ref=e1067]:
+                                  - /url: https://www.msn.com/en-in/lifestyle/pets-animals/watch-what-happens-when-a-truck-hauls-32-000-pounds/vi-AA1YPT2f?ocid=hpmsn
+                                  - heading "Watch what happens when a truck hauls 32,000 pounds" [level=2] [ref=e1068]:
+                                    - generic: Watch what happens when a truck hauls 32,000 pounds
+                              - button "See more" [ref=e1072]
+                          - article [ref=e1075]:
+                            - generic [ref=e1076]:
+                              - img "One Wrong Move… and This Crashed Airplane Was Gone Forever" [ref=e1078]
+                              - generic [ref=e1080]: 19:22
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1081]:
+                                - generic [ref=e1082]:
+                                  - img "HeavyDSparks" [ref=e1083]
+                                  - generic "HeavyDSparks" [ref=e1085]
+                                - link "One wrong move and this crashed airplane was gone forever" [ref=e1086]:
+                                  - /url: https://www.msn.com/en-in/video/news/one-wrong-move-and-this-crashed-airplane-was-gone-forever/vi-AA1ZOUON?ocid=hpmsn
+                                  - heading "One wrong move and this crashed airplane was gone forever" [level=2] [ref=e1087]:
+                                    - generic: One wrong move and this crashed airplane was gone forever
+                              - button "See more" [ref=e1091]
+                          - article [ref=e1094]:
+                            - generic [ref=e1095]:
+                              - img "Can This SEAT Leon Family Wagon Handle Nürburgring?" [ref=e1097]
+                              - generic [ref=e1099]: 10:57
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1100]:
+                                - generic [ref=e1101]:
+                                  - img "Misha Charoudin" [ref=e1102]
+                                  - generic [ref=e1103]:
+                                    - generic:
+                                      - generic "Misha Charoudin" [ref=e1104]
+                                      - generic [ref=e1105]: ·
+                                      - generic [ref=e1106]: 2d
+                                - link "Can this SEAT Leon family wagon handle Nürburgring?" [ref=e1107]:
+                                  - /url: https://www.msn.com/en-in/autos/news/can-this-seat-leon-family-wagon-handle-n%C3%BCrburgring/vi-AA266Xod?ocid=hpmsn
+                                  - heading "Can this SEAT Leon family wagon handle Nürburgring?" [level=2] [ref=e1108]:
+                                    - generic: Can this SEAT Leon family wagon handle Nürburgring?
+                              - button "See more" [ref=e1112]
+                          - article "A 4-megaton bomb in North Carolina was one switch away from detonation" [ref=e1115]:
+                            - generic [ref=e1116]:
+                              - img "A 4-Megaton Bomb In North Carolina Was One Switch Away From Detonation" [ref=e1118]
+                              - generic [ref=e1120]: 16:45
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1121]:
+                                - generic [ref=e1122]:
+                                  - img "Veritasium" [ref=e1123]
+                                  - generic [ref=e1124]:
+                                    - generic:
+                                      - generic "Veritasium" [ref=e1125]
+                                      - generic [ref=e1126]: ·
+                                      - generic [ref=e1127]: 1d
+                                - link "A 4-megaton bomb in North Carolina was one switch away from detonation" [ref=e1128]:
+                                  - /url: https://www.msn.com/en-in/news/world/a-4-megaton-bomb-in-north-carolina-was-one-switch-away-from-detonation/vi-AA1XuI7h?ocid=hpmsn
+                                  - heading "A 4-megaton bomb in North Carolina was one switch away from detonation" [level=2] [ref=e1129]:
+                                    - generic: A 4-megaton bomb in North Carolina was one switch away from detonation
+                              - button "See more" [ref=e1133]
+                          - article "British students try American biscuits and gravy for the first time!" [ref=e1136]:
+                            - generic [ref=e1137]:
+                              - img "British Students Try American Biscuits and Gravy for the First Time!" [ref=e1139]
+                              - generic [ref=e1141]: 08:29
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1142]:
+                                - generic [ref=e1143]:
+                                  - img "JOLLY" [ref=e1144]
+                                  - generic [ref=e1145]:
+                                    - generic:
+                                      - generic "JOLLY" [ref=e1146]
+                                      - generic [ref=e1147]: ·
+                                      - generic [ref=e1148]: 1d
+                                - link "British students try American biscuits and gravy for the first time!" [ref=e1149]:
+                                  - /url: https://www.msn.com/en-in/foodanddrink/other/british-students-try-american-biscuits-and-gravy-for-the-first-time/vi-AA22tbui?ocid=hpmsn
+                                  - heading "British students try American biscuits and gravy for the first time!" [level=2] [ref=e1150]:
+                                    - generic: British students try American biscuits and gravy for the first time!
+                              - button "See more" [ref=e1154]
+                          - article "He was climbing with his bare hands - then his grip started slipping" [ref=e1157]:
+                            - generic [ref=e1158]:
+                              - img "He Was Climbing With His Bare Hands - Then His Grip Started Slipping" [ref=e1160]
+                              - generic [ref=e1162]: 37:09
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1163]:
+                                - generic [ref=e1164]:
+                                  - img "Magnus Midtbø" [ref=e1165]
+                                  - generic [ref=e1166]:
+                                    - generic:
+                                      - generic "Magnus Midtbø" [ref=e1167]
+                                      - generic [ref=e1168]: ·
+                                      - generic [ref=e1169]: 2d
+                                - link "He was climbing with his bare hands - then his grip started slipping" [ref=e1170]:
+                                  - /url: https://www.msn.com/en-in/travel/news/he-was-climbing-with-his-bare-hands-then-his-grip-started-slipping/vi-AA26527h?ocid=hpmsn
+                                  - heading "He was climbing with his bare hands - then his grip started slipping" [level=2] [ref=e1171]:
+                                    - generic: He was climbing with his bare hands - then his grip started slipping
+                              - button "See more" [ref=e1175]
+                          - article "Watch what happens when a cobra defends itself surrounded by humans" [ref=e1178]:
+                            - generic [ref=e1179]:
+                              - img "Watch What Happens When A Cobra Defends Itself Surrounded By Humans" [ref=e1181]
+                              - generic [ref=e1183]: 09:41
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1184]:
+                                - generic [ref=e1185]:
+                                  - img "Animalogic" [ref=e1186]
+                                  - generic [ref=e1187]:
+                                    - generic:
+                                      - generic "Animalogic" [ref=e1188]
+                                      - generic [ref=e1189]: ·
+                                      - generic [ref=e1190]: 6d
+                                - link "Watch what happens when a cobra defends itself surrounded by humans" [ref=e1191]:
+                                  - /url: https://www.msn.com/en-in/news/india/watch-what-happens-when-a-cobra-defends-itself-surrounded-by-humans/vi-AA21t0OP?ocid=hpmsn
+                                  - heading "Watch what happens when a cobra defends itself surrounded by humans" [level=2] [ref=e1192]:
+                                    - generic: Watch what happens when a cobra defends itself surrounded by humans
+                              - button "See more" [ref=e1196]
+                          - article "This is why 456 nuclear bombs were detonated in this location" [ref=e1199]:
+                            - generic [ref=e1200]:
+                              - img "This is Why 456 Nuclear Bombs Were Detonated in This One Location" [ref=e1202]
+                              - generic [ref=e1204]: 28:54
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1205]:
+                                - generic [ref=e1206]:
+                                  - img "Yes Theory" [ref=e1207]
+                                  - generic [ref=e1208]:
+                                    - generic:
+                                      - generic "Yes Theory" [ref=e1209]
+                                      - generic [ref=e1210]: ·
+                                      - generic [ref=e1211]: 1d
+                                - link "This is why 456 nuclear bombs were detonated in this location" [ref=e1212]:
+                                  - /url: https://www.msn.com/en-in/news/india/this-is-why-456-nuclear-bombs-were-detonated-in-this-location/vi-AA1V654p?ocid=hpmsn
+                                  - heading "This is why 456 nuclear bombs were detonated in this location" [level=2] [ref=e1213]:
+                                    - generic: This is why 456 nuclear bombs were detonated in this location
+                              - button "See more" [ref=e1217]
+                          - article [ref=e1220]:
+                            - generic [ref=e1221]:
+                              - img "Swimming in syrup is as easy as swimming in water" [ref=e1223]
+                              - generic [ref=e1225]: 06:44
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1226]:
+                                - generic [ref=e1227]:
+                                  - img "The Action Lab" [ref=e1228]
+                                  - generic [ref=e1229]:
+                                    - generic:
+                                      - generic "The Action Lab" [ref=e1230]
+                                      - generic [ref=e1231]: ·
+                                      - generic [ref=e1232]: 2d
+                                - link "Swimming in syrup is as easy as swimming in water" [ref=e1233]:
+                                  - /url: https://www.msn.com/en-in/foodanddrink/other/swimming-in-syrup-is-as-easy-as-swimming-in-water/vi-AA2668aY?ocid=hpmsn
+                                  - heading "Swimming in syrup is as easy as swimming in water" [level=2] [ref=e1234]:
+                                    - generic: Swimming in syrup is as easy as swimming in water
+                              - button "See more" [ref=e1238]
+                          - article "160,000 people were sent to this island to die - then the experiments began" [ref=e1241]:
+                            - generic [ref=e1242]:
+                              - img "160,000 People Were Sent To This Island To Die - Then The Experiments Began" [ref=e1244]
+                              - generic [ref=e1246]: 14:49
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1247]:
+                                - generic [ref=e1248]:
+                                  - img "Yes Theory" [ref=e1249]
+                                  - generic [ref=e1250]:
+                                    - generic:
+                                      - generic "Yes Theory" [ref=e1251]
+                                      - generic [ref=e1252]: ·
+                                      - generic [ref=e1253]: 3w
+                                - link "160,000 people were sent to this island to die - then the experiments began" [ref=e1254]:
+                                  - /url: https://www.msn.com/en-in/news/world/160-000-people-were-sent-to-this-island-to-die-then-the-experiments-began/vi-AA24qmx9?ocid=hpmsn
+                                  - heading "160,000 people were sent to this island to die - then the experiments began" [level=2] [ref=e1255]:
+                                    - generic: 160,000 people were sent to this island to die - then the experiments began
+                              - button "See more" [ref=e1259]
+                          - article "Nostradamus predicted a famine so severe people would turn on each other, \"what happens next is even worse\"" [ref=e1262]:
+                            - generic [ref=e1263]:
+                              - img "Nostradamus Predicted a Famine So Severe People Would Turn on Each Other, \"What Happens Next Is Even Worse\"" [ref=e1265]
+                              - generic [ref=e1267]: 20:46
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1268]:
+                                - generic [ref=e1269]:
+                                  - img "The Why Files" [ref=e1270]
+                                  - generic [ref=e1271]:
+                                    - generic:
+                                      - generic "The Why Files" [ref=e1272]
+                                      - generic [ref=e1273]: ·
+                                      - generic [ref=e1274]: 1w
+                                - link "Nostradamus predicted a famine so severe people would turn on each other, \"what happens next is even worse\"" [ref=e1275]:
+                                  - /url: https://www.msn.com/en-in/lifestyle/relationships/nostradamus-predicted-a-famine-so-severe-people-would-turn-on-each-other-what-happens-next-is-even-worse/vi-AA25hA3a?ocid=hpmsn
+                                  - heading "Nostradamus predicted a famine so severe people would turn on each other, \"what happens next is even worse\"" [level=2] [ref=e1276]:
+                                    - generic: Nostradamus predicted a famine so severe people would turn on each other, "what happens next is even worse"
+                              - button "See more" [ref=e1280]
+                          - article [ref=e1283]:
+                            - generic [ref=e1284]:
+                              - img "The new world's blackest paint vs. The brightest flashlight!" [ref=e1286]
+                              - generic [ref=e1288]: 10:07
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1289]:
+                                - generic [ref=e1290]:
+                                  - img "The Action Lab" [ref=e1291]
+                                  - generic [ref=e1292]:
+                                    - generic:
+                                      - generic "The Action Lab" [ref=e1293]
+                                      - generic [ref=e1294]: ·
+                                      - generic [ref=e1295]: 2d
+                                - link "The new world's blackest paint vs. the brightest flashlight!" [ref=e1296]:
+                                  - /url: https://www.msn.com/en-in/news/world/the-new-world-s-blackest-paint-vs-the-brightest-flashlight/vi-AA2664nO?ocid=hpmsn
+                                  - heading "The new world's blackest paint vs. the brightest flashlight!" [level=2] [ref=e1297]:
+                                    - generic: The new world's blackest paint vs. the brightest flashlight!
+                              - button "See more" [ref=e1301]
+                          - article [ref=e1304]:
+                            - generic [ref=e1305]:
+                              - img "Gravity-defying coin takes 2 minutes to tip over" [ref=e1307]
+                              - generic [ref=e1309]: 09:07
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1310]:
+                                - generic [ref=e1311]:
+                                  - img "The Action Lab" [ref=e1312]
+                                  - generic [ref=e1313]:
+                                    - generic:
+                                      - generic "The Action Lab" [ref=e1314]
+                                      - generic [ref=e1315]: ·
+                                      - generic [ref=e1316]: 2d
+                                - link "Gravity-defying coin takes 2 minutes to tip over" [ref=e1317]:
+                                  - /url: https://www.msn.com/en-in/money/markets/gravity-defying-coin-takes-2-minutes-to-tip-over/vi-AA265wMG?ocid=hpmsn
+                                  - heading "Gravity-defying coin takes 2 minutes to tip over" [level=2] [ref=e1318]:
+                                    - generic: Gravity-defying coin takes 2 minutes to tip over
+                              - button "See more" [ref=e1322]
+                          - article "The wild level of confidence Trevor Noah found in New York" [ref=e1325]:
+                            - generic [ref=e1326]:
+                              - img "The Wild Level of Confidence Trevor Noah Found in New York" [ref=e1328]
+                              - generic [ref=e1330]: 08:50
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1331]:
+                                - generic [ref=e1332]:
+                                  - img "Trevor Noah" [ref=e1333]
+                                  - generic [ref=e1334]:
+                                    - generic:
+                                      - generic "Trevor Noah" [ref=e1335]
+                                      - generic [ref=e1336]: ·
+                                      - generic [ref=e1337]: 1h
+                                - link "The wild level of confidence Trevor Noah found in New York" [ref=e1338]:
+                                  - /url: https://www.msn.com/en-in/news/world/the-wild-level-of-confidence-trevor-noah-found-in-new-york/vi-AA26eOBT?ocid=hpmsn
+                                  - heading "The wild level of confidence Trevor Noah found in New York" [level=2] [ref=e1339]:
+                                    - generic: The wild level of confidence Trevor Noah found in New York
+                              - button "See more" [ref=e1343]
+                          - article [ref=e1346]:
+                            - generic [ref=e1347]:
+                              - img "Fast Nürburgring Corner Tests This VW GTI Wagon" [ref=e1349]
+                              - generic [ref=e1351]: 09:00
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1352]:
+                                - generic [ref=e1353]:
+                                  - img "Misha Charoudin" [ref=e1354]
+                                  - generic [ref=e1355]:
+                                    - generic:
+                                      - generic "Misha Charoudin" [ref=e1356]
+                                      - generic [ref=e1357]: ·
+                                      - generic [ref=e1358]: 1d
+                                - link "Fast Nürburgring corner tests this VW GTI wagon" [ref=e1359]:
+                                  - /url: https://www.msn.com/en-in/autos/news/fast-n%C3%BCrburgring-corner-tests-this-vw-gti-wagon/vi-AA26ad0A?ocid=hpmsn
+                                  - heading "Fast Nürburgring corner tests this VW GTI wagon" [level=2] [ref=e1360]:
+                                    - generic: Fast Nürburgring corner tests this VW GTI wagon
+                              - button "See more" [ref=e1364]
+                          - article "A magnitude 9 earthquake hit – then the nuclear nightmare began" [ref=e1367]:
+                            - generic [ref=e1368]:
+                              - img "A Magnitude 9 Earthquake Hit – Then The Nuclear Nightmare Began" [ref=e1370]
+                              - generic [ref=e1372]: 21:39
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1373]:
+                                - generic [ref=e1374]:
+                                  - img "fern" [ref=e1375]
+                                  - generic [ref=e1376]:
+                                    - generic:
+                                      - generic "fern" [ref=e1377]
+                                      - generic [ref=e1378]: ·
+                                      - generic [ref=e1379]: 1h
+                                - link "A magnitude 9 earthquake hit – then the nuclear nightmare began" [ref=e1380]:
+                                  - /url: https://www.msn.com/en-in/news/world/a-magnitude-9-earthquake-hit-then-the-nuclear-nightmare-began/vi-AA256eA6?ocid=hpmsn
+                                  - heading "A magnitude 9 earthquake hit – then the nuclear nightmare began" [level=2] [ref=e1381]:
+                                    - generic: A magnitude 9 earthquake hit – then the nuclear nightmare began
+                              - button "See more" [ref=e1385]
+                          - article [ref=e1388]:
+                            - generic [ref=e1389]:
+                              - img "What Happens When Toyota Alphard Hits Nürburgring Track?" [ref=e1391]
+                              - generic [ref=e1393]: 11:09
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1394]:
+                                - generic [ref=e1395]:
+                                  - img "Misha Charoudin" [ref=e1396]
+                                  - generic [ref=e1397]:
+                                    - generic:
+                                      - generic "Misha Charoudin" [ref=e1398]
+                                      - generic [ref=e1399]: ·
+                                      - generic [ref=e1400]: 1d
+                                - link "What happens when Toyota Alphard hits Nürburgring track?" [ref=e1401]:
+                                  - /url: https://www.msn.com/en-in/autos/news/what-happens-when-toyota-alphard-hits-n%C3%BCrburgring-track/vi-AA26aCid?ocid=hpmsn
+                                  - heading "What happens when Toyota Alphard hits Nürburgring track?" [level=2] [ref=e1402]:
+                                    - generic: What happens when Toyota Alphard hits Nürburgring track?
+                              - button "See more" [ref=e1406]
+                          - article [ref=e1409]:
+                            - generic [ref=e1410]:
+                              - img "I Flew Every Major U.S. Airline – United Was the Biggest Letdown" [ref=e1412]
+                              - generic [ref=e1414]: 08:12
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1415]:
+                                - generic [ref=e1416]:
+                                  - img "Trek Trendy" [ref=e1417]
+                                  - generic [ref=e1418]:
+                                    - generic:
+                                      - generic "Trek Trendy" [ref=e1419]
+                                      - generic [ref=e1420]: ·
+                                      - generic [ref=e1421]: 2d
+                                - link "I flew every major US airline – United was the biggest letdown" [ref=e1422]:
+                                  - /url: https://www.msn.com/en-in/news/world/i-flew-every-major-us-airline-united-was-the-biggest-letdown/vi-AA1X7nOI?ocid=hpmsn
+                                  - heading "I flew every major US airline – United was the biggest letdown" [level=2] [ref=e1423]:
+                                    - generic: I flew every major US airline – United was the biggest letdown
+                              - button "See more" [ref=e1427]
+                          - article "He paid $18,000 to sleep under the ocean - then the sharks appeared" [ref=e1430]:
+                            - generic [ref=e1431]:
+                              - img "He Paid $18,000 to Sleep Under the Ocean - Then the Sharks Appeared" [ref=e1433]
+                              - generic [ref=e1435]: 19:44
+                              - generic:
+                                - generic:
+                                  - generic:
+                                    - img
+                              - generic [ref=e1436]:
+                                - generic [ref=e1437]:
+                                  - img "Trek Trendy" [ref=e1438]
+                                  - generic [ref=e1439]:
+                                    - generic:
+                                      - generic "Trek Trendy" [ref=e1440]
+                                      - generic [ref=e1441]: ·
+                                      - generic [ref=e1442]: 6d
+                                - link "He paid $18,000 to sleep under the ocean - then the sharks appeared" [ref=e1443]:
+                                  - /url: https://www.msn.com/en-in/travel/news/he-paid-18-000-to-sleep-under-the-ocean-then-the-sharks-appeared/vi-AA1XTwiK?ocid=hpmsn
+                                  - heading "He paid $18,000 to sleep under the ocean - then the sharks appeared" [level=2] [ref=e1444]:
+                                    - generic: He paid $18,000 to sleep under the ocean - then the sharks appeared
+                              - button "See more" [ref=e1448]
+                          - link "See more" [ref=e1450]:
+                            - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                            - img [ref=e1451]
+                            - text: See more
+                      - button "next" [ref=e1455]:
+                        - img [ref=e1458]
+              - 'article "Rain coming: Monsoon winds begin hitting Gujarat, state faces 84% rain deficit" [ref=e1460] [cursor=pointer]':
+                - generic [ref=e1462]:
+                  - img [ref=e1463]
+                  - generic [ref=e1464]:
+                    - generic [ref=e1465]:
+                      - generic [ref=e1466]:
+                        - generic [ref=e1467]:
+                          - img [ref=e1468]
+                          - generic [ref=e1469]: India Today
+                        - generic [ref=e1470]: ·
+                        - generic [ref=e1471]: 2h
+                      - 'link "Rain coming: Monsoon winds begin hitting Gujarat, state faces 84% rain deficit, India Today" [ref=e1472]':
+                        - /url: https://www.msn.com/en-in/news/india/rain-coming-monsoon-winds-begin-hitting-gujarat-state-faces-84-rain-deficit/ar-AA26eSXo
+                        - text: "Rain coming: Monsoon winds begin hitting Gujarat, state faces 84% rain deficit"
+                    - 'generic "Rain coming: Monsoon winds begin hitting Gujarat, state faces 84% rain deficit" [ref=e1475]':
+                      - generic [ref=e1477]:
+                        - generic [ref=e1478]:
+                          - button "10 Like" [ref=e1479]:
+                            - generic [ref=e1480]:
+                              - img [ref=e1481]
+                              - generic [ref=e1483]: "10"
+                          - button "Dislike" [ref=e1484]:
+                            - img [ref=e1486]
+                        - link "Start the conversation" [ref=e1489]:
+                          - /url: https://www.msn.com/en-in/news/india/rain-coming-monsoon-winds-begin-hitting-gujarat-state-faces-84-rain-deficit/ar-AA26eSXo#comments
+                          - button "Start the conversation" [ref=e1490]:
+                            - img [ref=e1491]
+                  - generic [ref=e1493]:
+                    - button "Hide this story" [ref=e1494]:
+                      - img [ref=e1495]
+                      - text: Hide this story
+                    - button "See more" [ref=e1496]:
+                      - img [ref=e1497]
+              - article [ref=e1498] [cursor=pointer]:
+                - generic [ref=e1503]:
+                  - generic [ref=e1505]:
+                    - link "Games" [ref=e1507]:
+                      - /url: https://www.msn.com/en-in/play
+                      - heading "Games" [level=2] [ref=e1508]
+                    - button "More options" [ref=e1510]
+                  - list [ref=e1514]:
+                    - generic:
+                      - listitem [ref=e1515]:
+                        - link "Casino Heist Slots" [ref=e1516]:
+                          - /url: https://www.msn.com/en-in/play/games/casino-heist-slots/cg-9mt0xqt1zlbq?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12&ei=7
+                          - generic [ref=e1517]:
+                            - img "Casino Heist Slots"
+                      - listitem [ref=e1518]:
+                        - 'link "Screw Puzzle: Nut and Bolt" [ref=e1519]':
+                          - /url: https://www.msn.com/en-in/play/games/screw-puzzle-nut-and-bolt/cg-9n21399h2r5p?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12&ei=7
+                          - generic [ref=e1520]:
+                            - 'img "Screw Puzzle: Nut and Bolt"'
+                      - listitem [ref=e1521]:
+                        - link "Amazing FreeCell Solitaire" [ref=e1522]:
+                          - /url: https://www.msn.com/en-in/play/games/amazing-freecell-solitaire/cg-9nrcmft81cgs?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12&ei=7
+                          - generic [ref=e1523]:
+                            - img "Amazing FreeCell Solitaire"
+                      - listitem [ref=e1524]:
+                        - link "Secrets of the Past" [ref=e1525]:
+                          - /url: https://www.msn.com/en-in/play/games/secrets-of-the-past/cg-9nglr2nbd7vm?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12&ei=7
+                          - generic [ref=e1526]:
+                            - img "Secrets of the Past"
+                      - listitem [ref=e1527]:
+                        - link "Dinosaurs Merge Master" [ref=e1528]:
+                          - /url: https://www.msn.com/en-in/play/games/dinosaurs-merge-master/cg-9n7mhcswnqrj?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12&ei=7
+                          - generic [ref=e1529]:
+                            - img "Dinosaurs Merge Master"
+                      - listitem [ref=e1530]:
+                        - link "Slots Lounge" [ref=e1531]:
+                          - /url: https://www.msn.com/en-in/play/games/slots-lounge/cg-9nnwpnjtvmgl?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12&ei=7
+                          - generic [ref=e1532]:
+                            - img "Slots Lounge"
+                      - listitem [ref=e1533]:
+                        - link "Sudoku Master" [ref=e1534]:
+                          - /url: https://www.msn.com/en-in/play/games/sudoku-master/cg-9nsq1zfk0z36?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12&ei=7
+                          - generic [ref=e1535]:
+                            - img "Sudoku Master"
+                      - listitem [ref=e1536]:
+                        - link "Fury Tanks" [ref=e1537]:
+                          - /url: https://www.msn.com/en-in/play/games/fury-tanks/cg-9pk2b6lx3qnc?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12&ei=7
+                          - generic [ref=e1538]:
+                            - img "Fury Tanks"
+                      - listitem [ref=e1539]:
+                        - link "Bricks Breaker Deluxe Crusher" [ref=e1540]:
+                          - /url: https://www.msn.com/en-in/play/games/bricks-breaker-deluxe-crusher/cg-9nnjfbfrzq3j?ocid=hpmsn&cvid=6a3900bf72df46e2bb84aefb411f6b12&ei=7
+                          - generic [ref=e1541]:
+                            - img "Bricks Breaker Deluxe Crusher"
+                  - generic [ref=e1543]:
+                    - generic [ref=e1544]:
+                      - generic "Previous" [ref=e1545]:
+                        - button "Previous" [ref=e1546]
+                      - tablist [ref=e1548]:
+                        - tab "tab-0" [selected] [ref=e1549]
+                        - tab "tab-1" [ref=e1551]
+                      - generic "Next" [ref=e1553]:
+                        - button "Next" [ref=e1554]
+                    - link "Explore more games" [ref=e1556]:
+                      - /url: https://www.msn.com/en-in/play
+              - article "Allu Arjun’s lawyers move Hyderabad court seeking permission for virtual appearance in 'Pushpa 2' stampede case" [ref=e1557] [cursor=pointer]:
+                - generic [ref=e1559]:
+                  - img [ref=e1560]
+                  - generic [ref=e1561]:
+                    - generic [ref=e1562]:
+                      - generic [ref=e1563]:
+                        - generic [ref=e1564]:
+                          - img [ref=e1565]
+                          - generic [ref=e1566]: The Times of India
+                        - generic [ref=e1567]: ·
+                        - generic [ref=e1568]: 3h
+                      - link "Allu Arjun’s lawyers move Hyderabad court seeking permission for virtual appearance in 'Pushpa 2' stampede case, The Times of India" [ref=e1569]:
+                        - /url: https://www.msn.com/en-in/entertainment/bollywood/allu-arjun-s-lawyers-move-hyderabad-court-seeking-permission-for-virtual-appearance-in-pushpa-2-stampede-case/ar-AA26et6I
+                        - text: Allu Arjun’s lawyers move Hyderabad court seeking permission for virtual appearance in 'Pushpa 2' stampede case
+                    - generic "Allu Arjun’s lawyers move Hyderabad court seeking permission for virtual appearance in 'Pushpa 2' stampede case" [ref=e1572]:
+                      - generic [ref=e1574]:
+                        - generic [ref=e1575]:
+                          - button "Like" [ref=e1576]:
+                            - img [ref=e1578]
+                          - button "Dislike" [ref=e1580]:
+                            - img [ref=e1582]
+                        - link "Start the conversation" [ref=e1585]:
+                          - /url: https://www.msn.com/en-in/entertainment/bollywood/allu-arjun-s-lawyers-move-hyderabad-court-seeking-permission-for-virtual-appearance-in-pushpa-2-stampede-case/ar-AA26et6I#comments
+                          - button "Start the conversation" [ref=e1586]:
+                            - img [ref=e1587]
+                  - generic [ref=e1589]:
+                    - button "Hide this story" [ref=e1590]:
+                      - img [ref=e1591]
+                      - text: Hide this story
+                    - button "See more" [ref=e1592]:
+                      - img [ref=e1593]
+              - 'article "Parking dispute turns deadly in Delhi: 26-year-old woman stabbed to death by minor, husband injured" [ref=e1594] [cursor=pointer]':
+                - generic [ref=e1596]:
+                  - img [ref=e1597]
+                  - generic [ref=e1598]:
+                    - generic [ref=e1599]:
+                      - generic [ref=e1600]:
+                        - generic [ref=e1601]:
+                          - img [ref=e1602]
+                          - generic [ref=e1603]: News18
+                        - generic [ref=e1604]: ·
+                        - generic [ref=e1605]: 5h
+                      - 'link "Parking dispute turns deadly in Delhi: 26-year-old woman stabbed to death by minor, husband injured, News18" [ref=e1606]':
+                        - /url: https://www.msn.com/en-in/news/india/parking-dispute-turns-deadly-in-delhi-26-year-old-woman-stabbed-to-death-by-minor-husband-injured/ar-AA26drLh
+                        - text: "Parking dispute turns deadly in Delhi: 26-year-old woman stabbed to death by minor, husband injured"
+                    - 'generic "Parking dispute turns deadly in Delhi: 26-year-old woman stabbed to death by minor, husband injured" [ref=e1609]':
+                      - generic [ref=e1611]:
+                        - generic [ref=e1612]:
+                          - button "7 Like" [ref=e1613]:
+                            - generic [ref=e1614]:
+                              - img [ref=e1615]
+                              - generic [ref=e1617]: "7"
+                          - button "Dislike" [ref=e1618]:
+                            - img [ref=e1620]
+                        - link "View comments 1 Comment" [ref=e1623]:
+                          - /url: https://www.msn.com/en-in/news/india/parking-dispute-turns-deadly-in-delhi-26-year-old-woman-stabbed-to-death-by-minor-husband-injured/ar-AA26drLh#comments
+                          - button "View comments 1 Comment" [ref=e1624]:
+                            - img [ref=e1625]
+                          - generic [ref=e1627]: "1"
+                  - generic [ref=e1628]:
+                    - button "Hide this story" [ref=e1629]:
+                      - img [ref=e1630]
+                      - text: Hide this story
+                    - button "See more" [ref=e1631]:
+                      - img [ref=e1632]
+              - article [ref=e1633] [cursor=pointer]
+              - 'article "Women''s T20 World Cup 2026: Semis qualification scenarios for all teams" [ref=e1640] [cursor=pointer]':
+                - generic [ref=e1642]:
+                  - img [ref=e1643]
+                  - generic [ref=e1644]:
+                    - generic [ref=e1645]:
+                      - generic [ref=e1646]:
+                        - generic [ref=e1647]:
+                          - img [ref=e1648]
+                          - generic [ref=e1649]: ABP - Live
+                        - generic [ref=e1650]: ·
+                        - generic [ref=e1651]: 3h
+                      - 'link "Women''s T20 World Cup 2026: Semis qualification scenarios for all teams, ABP - Live" [ref=e1652]':
+                        - /url: https://www.msn.com/en-in/sports/cricket/women-s-t20-world-cup-2026-semis-qualification-scenarios-for-all-teams/ar-AA26e9sg
+                        - text: "Women's T20 World Cup 2026: Semis qualification scenarios for all teams"
+                    - 'generic "Women''s T20 World Cup 2026: Semis qualification scenarios for all teams" [ref=e1655]':
+                      - generic [ref=e1657]:
+                        - generic [ref=e1658]:
+                          - button "17 Like" [ref=e1659]:
+                            - generic [ref=e1660]:
+                              - img [ref=e1661]
+                              - generic [ref=e1663]: "17"
+                          - button "Dislike" [ref=e1664]:
+                            - img [ref=e1666]
+                        - link "Start the conversation" [ref=e1669]:
+                          - /url: https://www.msn.com/en-in/sports/cricket/women-s-t20-world-cup-2026-semis-qualification-scenarios-for-all-teams/ar-AA26e9sg#comments
+                          - button "Start the conversation" [ref=e1670]:
+                            - img [ref=e1671]
+                  - generic [ref=e1673]:
+                    - button "Hide this story" [ref=e1674]:
+                      - img [ref=e1675]
+                      - text: Hide this story
+                    - button "See more" [ref=e1676]:
+                      - img [ref=e1677]
+            - generic [ref=e1678]:
+              - article [ref=e1679] [cursor=pointer]
+              - article "Brands fear crores in losses as '100%' label ban to take effect from July" [ref=e1686] [cursor=pointer]:
+                - generic [ref=e1688]:
+                  - img [ref=e1689]
+                  - generic [ref=e1690]:
+                    - generic [ref=e1691]:
+                      - generic [ref=e1692]:
+                        - generic [ref=e1693]:
+                          - img [ref=e1694]
+                          - generic [ref=e1695]: NDTV 24x7
+                        - generic [ref=e1696]: ·
+                        - generic [ref=e1697]: 1h
+                      - link "Brands fear crores in losses as '100%' label ban to take effect from July, NDTV 24x7" [ref=e1698]:
+                        - /url: https://www.msn.com/en-in/money/topstories/brands-fear-crores-in-losses-as-100-label-ban-to-take-effect-from-july/ar-AA26eK9f
+                        - text: Brands fear crores in losses as '100%' label ban to take effect from July
+                    - generic "Brands fear crores in losses as '100%' label ban to take effect from July" [ref=e1701]:
+                      - generic [ref=e1703]:
+                        - generic [ref=e1704]:
+                          - button "8 Like" [ref=e1705]:
+                            - generic [ref=e1706]:
+                              - img [ref=e1707]
+                              - generic [ref=e1709]: "8"
+                          - button "Dislike" [ref=e1710]:
+                            - img [ref=e1712]
+                        - link "View comments 1 Comment" [ref=e1715]:
+                          - /url: https://www.msn.com/en-in/money/topstories/brands-fear-crores-in-losses-as-100-label-ban-to-take-effect-from-july/ar-AA26eK9f#comments
+                          - button "View comments 1 Comment" [ref=e1716]:
+                            - img [ref=e1717]
+                          - generic [ref=e1719]: "1"
+                  - generic [ref=e1720]:
+                    - button "Hide this story" [ref=e1721]:
+                      - img [ref=e1722]
+                      - text: Hide this story
+                    - button "See more" [ref=e1723]:
+                      - img [ref=e1724]
+    - contentinfo [ref=e1727]:
+      - generic "Feedback" [ref=e1729] [cursor=pointer]:
+        - button "Feedback" [ref=e1730]:
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic: Feedback
+```
+
+# Test source
+
+```ts
+  1   | import { expect, test } from '@playwright/test';
+  2   | 
+  3   | /**
+  4   |  * ID   : 9905
+  5   |  * Name : msn_weather_widget
+  6   |  * File : 9905_msn_weather_widget.spec.ts
+  7   |  * Site : https://www.msn.com/en-in
+  8   |  *
+  9   |  * Live DOM findings (Apr 2026):
+  10  |  *  - Weather widget: a#i_weather in header area (shadow DOM, not light DOM)
+  11  |  *    aria-label format: "City: Conditions, Temperature °C"
+  12  |  *    e.g. "Faizabad: Mostly cloudy, 28 °C"
+  13  |  *  - Widget has target="_blank" — use page.goto(href) to navigate to forecast
+  14  |  *  - Weather forecast page: title = "City, State Weather Forecast | MSN Weather"
+  15  |  *  - Forecast page body contains: "humidity", "wind", "forecast" text
+  16  |  *  - Temperature link: role=link, name=/\d+°/ — visible on forecast page
+  17  |  *  - Conditions text (cloudy/sunny/rain/etc.): visible on forecast page
+  18  |  *  - Extended forecast: page heading contains city name
+  19  |  *  - Widget is stable after back navigation (still count=1, label intact)
+  20  |  *
+  21  |  *  NOTE: Temperature values and city name are dynamic (location-detected).
+  22  |  *  Assertions check STRUCTURE only, not specific values:
+  23  |  *  - aria-label exists and contains "°" (temperature present)
+  24  |  *  - aria-label contains ":" (city:conditions format)
+  25  |  *  - Forecast page URL contains "weather"
+  26  |  *  - Forecast page body contains "humidity" and "forecast"
+  27  |  */
+  28  | 
+  29  | test.describe('MSN – Weather Widget: Display, Navigation, and Stability', () => {
+  30  |   test.describe.configure({ timeout: 120_000 });
+  31  | 
+  32  |   test('Verify weather widget, navigate to forecast, return and check stability', async ({ page }) => {
+  33  |     test.slow();
+  34  | 
+  35  |     // ── 1-2 : Navigate and stabilize ──────────────────────────────
+  36  |     await page.goto('https://www.msn.com/en-in', {
+  37  |       waitUntil: 'domcontentloaded',
+  38  |       timeout: 30_000,
+  39  |     });
+  40  |     await page.waitForTimeout(5000);
+  41  |     console.log('[1-2] MSN loaded and stabilised');
+  42  | 
+  43  |     // Weather widget locator — confirmed via live DOM analysis
+  44  |     // Element: a#i_weather (in shadow DOM, but Playwright pierces it)
+  45  |     const weatherWidget = page.locator('a#i_weatherddxxs');
+  46  | 
+  47  |     // ── 3 : Locate the weather widget on the homepage ─────────────
+> 48  |     await expect(weatherWidget).toBeAttached({ timeout: 10_000 });
+      |                                 ^ Error: expect(locator).toBeAttached() failed
+  49  |     const wwLabel = await weatherWidget.getAttribute('aria-label');
+  50  |     expect(wwLabel, '[S3] Weather widget aria-label should exist').toBeTruthy();
+  51  |     console.log(`[3] Weather widget found: "${wwLabel}" ✅`);
+  52  | 
+  53  |     // ── 4 : Verify temperature is displayed ───────────────────────
+  54  |     // aria-label format: "City: Conditions, Temp °C" — must contain "°"
+  55  |     expect(wwLabel, '[S4] Temperature (°) should be in widget label').toContain('°');
+  56  |     console.log('[4] Temperature displayed in widget ✅');
+  57  | 
+  58  |     // ── 5 : Verify city/location is detected ─────────────────────
+  59  |     // aria-label format: "City: ..." — must contain ":"
+  60  |     expect(wwLabel, '[S5] City:conditions format should be present').toContain(':');
+  61  |     const city = wwLabel!.split(':')[0].trim();
+  62  |     expect(city.length, '[S5] City name should be non-empty').toBeGreaterThan(0);
+  63  |     console.log(`[5] City detected: "${city}" ✅`);
+  64  | 
+  65  |     // ── 6 : Click the weather widget (navigate to forecast page) ──
+  66  |     // Widget has target="_blank"; navigate directly via href for reliability
+  67  |     const wwHref = await weatherWidget.getAttribute('href ');
+  68  |     expect(wwHref, '[S6] Widget should have href').toBeTruthy();
+  69  |     await page.goto(wwHref!, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+  70  |     await page.waitForTimeout(4000);
+  71  |     console.log('[6] Navigated to weather forecast page ✅');
+  72  | 
+  73  |     // ── 7 : Verify detailed weather page loaded ───────────────────
+  74  |     const forecastUrl   = page.url();
+  75  |     const forecastTitle = await page.title();
+  76  |     expect(forecastUrl, '[S7] URL should contain "weather"').toContain('weather');
+  77  |     expect(forecastTitle.toLowerCase(), '[S7] Title should contain "weather"').toContain('weather');
+  78  |     console.log(`[7] Weather page loaded: "${forecastTitle}" ✅`);
+  79  | 
+  80  |     // ── 8 : Verify extended forecast is displayed ─────────────────
+  81  |     // Page heading contains detected city name
+  82  |     const heading = page.getByRole('heading').first();
+  83  |     await expect(heading).toBeVisible({ timeout: 10_000 });
+  84  |     const headingTxt = await heading.textContent();
+  85  |     expect(headingTxt, '[S8] Heading should contain city name').toContain(city);
+  86  |     // Body text should contain "forecast"
+  87  |     const bodyText = await page.locator('body').textContent();
+  88  |     expect(bodyText?.toLowerCase(), '[S8] Page should contain "forecast"').toContain('forecast');
+  89  |     console.log(`[8] Extended forecast displayed for "${headingTxt?.trim()}" ✅`);
+  90  | 
+  91  |     // ── 9 : Verify temperature, humidity, and conditions visible ──
+  92  |     // Temperature — link with ° character in text or label
+  93  |     const tempEl = page.getByRole('link', { name: /\d+°/ }).first();
+  94  |     await expect(tempEl).toBeAttached({ timeout: 8_000 });
+  95  |     console.log('[9a] Temperature element present ✅');
+  96  | 
+  97  |     // Humidity — page body text contains "humidity"
+  98  |     expect(bodyText?.toLowerCase(), '[S9] Page should contain "humidity"').toContain('humidity');
+  99  |     console.log('[9b] Humidity text present ✅');
+  100 | 
+  101 |     // Conditions — page body text contains weather condition words
+  102 |     const hasConditions = /cloudy|sunny|rain|storm|clear|partly|mostly|fog|snow|wind/i.test(bodyText || '');
+  103 |     expect(hasConditions, '[S9] Weather conditions text should be present').toBe(true);
+  104 |     console.log('[9c] Weather conditions text present ✅');
+  105 | 
+  106 |     // ── 10-11 : Navigate back to homepage and verify ───────────────
+  107 |     await page.goto('https://www.msn.com/en-in', {
+  108 |       waitUntil: 'domcontentloaded',
+  109 |       timeout: 30_000,
+  110 |     });
+  111 |     await page.waitForTimeout(5000);
+  112 |     console.log('[10] Navigated back to homepage');
+  113 | 
+  114 |     const homeUrl   = page.url();
+  115 |     const homeTitle = await page.title();
+  116 |     expect(homeUrl, '[S11] Should be back on MSN homepage').toContain('msn.com/en-in');
+  117 |     expect(homeTitle, '[S11] Title should contain MSN').toContain('MSN');
+  118 |     console.log('[11] Homepage loaded successfully ✅');
+  119 | 
+  120 |     // ── 12 : Verify weather widget is still visible and stable ─────
+  121 |     const widgetBack = page.locator('a#i_weatherdds');
+  122 |     await expect(widgetBack).toBeAttached({ timeout: 10_000 });
+  123 |     const wwLabelBack = await widgetBack.getAttribute('aria-label ');
+  124 |     expect(wwLabelBack, '[S12] Widget should still have aria-label').toBeTruthy();
+  125 |     expect(wwLabelBack, '[S12] Widget should still show temperature').toContain('°');
+  126 |     console.log(`[12] Weather widget stable: "${wwLabelBack}" ✅`);
+  127 | 
+  128 |     console.log('\n✅ ALL ASSERTIONS PASSED');
+  129 | 
+  130 |   }); // end test
+  131 | }); // end describe
+  132 | 
+```
