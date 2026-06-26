@@ -1,0 +1,1631 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: msn/regressionTest/weatherModule/99010_msn_weather_insights.spec.ts >> MSN – Weather Widget: Display, Navigation, and Stability >> Verify weather widget, navigate to forecast, return and check stability
+- Location: tests/passedTestFiles/msn/regressionTest/weatherModule/99010_msn_weather_insights.spec.ts:32:7
+
+# Error details
+
+```
+Error: expect(locator).toBeAttached() failed
+
+Locator: locator('a#i_weatherddxxs')
+Expected: attached
+Timeout: 10000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeAttached" with timeout 10000ms
+  - waiting for locator('a#i_weatherddxxs')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e6]:
+    - generic [ref=e7]:
+      - generic "Skip to content" [ref=e8] [cursor=pointer]:
+        - button "Skip to content" [ref=e9]:
+          - generic:
+            - generic: Skip to content
+      - generic "Skip to footer" [ref=e10] [cursor=pointer]:
+        - button "Skip to footer" [ref=e11]:
+          - generic:
+            - generic: Skip to footer
+      - link "MSN" [ref=e14] [cursor=pointer]:
+        - /url: https://www.msn.com/en-in
+      - generic [ref=e16]:
+        - 'link "Des Moines: Mostly cloudy, 20 °C" [ref=e19] [cursor=pointer]':
+          - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+          - img "Mostly cloudy" [ref=e21]
+          - generic [ref=e22]:
+            - generic [ref=e23]: ‎20‎
+            - generic [ref=e25]: ‎°C‎
+        - generic "Open settings" [ref=e29] [cursor=pointer]:
+          - button "Open settings" [ref=e30]:
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Page settings
+                  - generic:
+                    - img
+        - generic "Sign In" [ref=e34]:
+          - button "Sign in to your account" [ref=e36] [cursor=pointer]:
+            - generic [ref=e37]: Sign in to your account
+            - generic [ref=e39]: Sign in
+      - search [ref=e42]:
+        - generic [ref=e43]:
+          - generic "Web search" [ref=e44] [cursor=pointer]:
+            - button "Web search" [ref=e45]:
+              - generic:
+                - generic:
+                  - img
+          - searchbox "Enter your search term" [ref=e46]
+          - generic "Open Copilot" [ref=e50] [cursor=pointer]:
+            - button "Open Copilot" [ref=e51]:
+              - generic:
+                - generic:
+                  - generic:
+                    - img "Open Copilot"
+  - generic [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e58]:
+        - list [ref=e61]:
+          - listitem [ref=e62]:
+            - link "Outlook.com" [ref=e65] [cursor=pointer]:
+              - /url: https://outlook.com
+              - generic [ref=e69]: Outlook.com
+          - listitem [ref=e70]:
+            - link "Flipkart" [ref=e73] [cursor=pointer]:
+              - /url: https://clk.tradedoubler.com/click?p=401531&a=3419260&epi=enin-msn-hp-mestripe
+              - generic [ref=e76]:
+                - generic [ref=e77]: Flipkart
+                - generic [ref=e79]: Sponsored
+          - listitem [ref=e80]:
+            - link "Find a tutor" [ref=e83] [cursor=pointer]:
+              - /url: https://www.bing.com/pros?FORM=BPIMNS
+              - generic [ref=e87]: Find a tutor
+          - listitem [ref=e88]:
+            - link "Booking.com" [ref=e91] [cursor=pointer]:
+              - /url: https://www.booking.com/index.html?aid=1624937&label=enin-msn-hp-mestripe
+              - generic [ref=e94]:
+                - generic [ref=e95]: Booking.com
+                - generic [ref=e97]: Sponsored
+          - listitem [ref=e98]:
+            - link "Nykaa" [ref=e101] [cursor=pointer]:
+              - /url: https://sovrn.co/p9zogj8
+              - generic [ref=e104]:
+                - generic [ref=e105]: Nykaa
+                - generic [ref=e107]: Sponsored
+          - listitem [ref=e108]:
+            - link "Facebook" [ref=e111] [cursor=pointer]:
+              - /url: https://www.facebook.com
+              - generic [ref=e115]: Facebook
+          - listitem [ref=e116]:
+            - link "Microsoft 365" [ref=e119] [cursor=pointer]:
+              - /url: https://www.office.com/?omkt=en-IN
+              - generic [ref=e123]: Microsoft 365
+          - listitem [ref=e124]:
+            - link "X" [ref=e127] [cursor=pointer]:
+              - /url: https://x.com
+              - generic [ref=e131]: X
+          - listitem [ref=e132]:
+            - link "OneDrive" [ref=e135] [cursor=pointer]:
+              - /url: https://onedrive.live.com/?wt.mc_id=oo_msn_msnhomepage_header
+              - generic [ref=e139]: OneDrive
+          - listitem [ref=e140]:
+            - link "Skype" [ref=e143] [cursor=pointer]:
+              - /url: https://www.skype.com/
+              - generic [ref=e147]: Skype
+          - listitem [ref=e148]:
+            - link "OneNote" [ref=e151] [cursor=pointer]:
+              - /url: https://www.onenote.com/notebooks?WT.mc_id=MSN_OneNote_TopMenu&auth=1&wdorigin=msn
+              - generic [ref=e155]: OneNote
+          - listitem [ref=e156]:
+            - link "Maps" [ref=e159] [cursor=pointer]:
+              - /url: https://bing.com/maps/?FORM=MSNMAP
+              - generic [ref=e163]: Maps
+          - listitem [ref=e164]:
+            - link "Microsoft Store" [ref=e167] [cursor=pointer]:
+              - /url: https://www.microsoft.com/en-in
+              - generic [ref=e171]: Microsoft Store
+        - button [ref=e172]:
+          - img [ref=e175]
+      - generic [ref=e177]:
+        - banner [ref=e178]
+        - generic [ref=e179]:
+          - generic [ref=e183]:
+            - navigation [ref=e185]:
+              - generic [ref=e186]:
+                - list [ref=e187]:
+                  - listitem [ref=e188]:
+                    - link "Discover" [ref=e189] [cursor=pointer]:
+                      - /url: https://www.msn.com/en-in
+                - list [ref=e190]:
+                  - listitem [ref=e191]:
+                    - link "News" [ref=e192] [cursor=pointer]:
+                      - /url: https://www.msn.com/en-in/channel/topic/Top%20stories/tp-Y_0b495ad3-9beb-45f8-9214-c8e95aa2468f
+                  - listitem [ref=e193]:
+                    - link "World Cup" [ref=e194] [cursor=pointer]:
+                      - /url: https://www.msn.com/en-in/sports/moments/league/ka-mit?serviceName=contentRetrieverService&query=FIFA%20World%20Cup%202026
+              - generic "Show more topics" [ref=e196] [cursor=pointer]:
+                - button "Show more topics" [ref=e197]:
+                  - generic:
+                    - generic:
+                      - img
+            - generic "Personalize your feed\"" [ref=e199] [cursor=pointer]:
+              - button "Personalize your feed\"" [ref=e200]:
+                - generic:
+                  - generic:
+                    - img
+                - generic:
+                  - generic: Personalize
+          - button "Make MSN my homepage" [ref=e202] [cursor=pointer]
+      - main [ref=e205]:
+        - generic [ref=e207]:
+          - generic [ref=e208]:
+            - generic [ref=e211]:
+              - tablist [ref=e213]:
+                - tab [ref=e214] [cursor=pointer]
+                - tab [ref=e216] [cursor=pointer]
+                - tab [ref=e218] [cursor=pointer]
+                - tab [ref=e220] [cursor=pointer]
+                - tab [ref=e222] [cursor=pointer]
+                - tab [selected] [ref=e224] [cursor=pointer]
+                - tab [ref=e226] [cursor=pointer]
+                - tab [ref=e228] [cursor=pointer]
+                - tab [ref=e230] [cursor=pointer]
+                - tab [ref=e232] [cursor=pointer]
+                - tab [ref=e234] [cursor=pointer]
+                - tab [ref=e236] [cursor=pointer]
+                - tab [ref=e238] [cursor=pointer]
+                - tab [ref=e240] [cursor=pointer]
+                - tab [ref=e242] [cursor=pointer]
+                - tab [ref=e244] [cursor=pointer]
+                - tab [ref=e246] [cursor=pointer]
+                - tab [ref=e248] [cursor=pointer]
+                - tab [ref=e250] [cursor=pointer]
+                - tab [ref=e252] [cursor=pointer]
+                - tab [ref=e254] [cursor=pointer]
+                - tab [ref=e256] [cursor=pointer]
+                - tab [ref=e258] [cursor=pointer]
+                - tab [ref=e260] [cursor=pointer]
+                - tab [ref=e262] [cursor=pointer]
+                - tab [ref=e264] [cursor=pointer]
+                - tab [ref=e266] [cursor=pointer]
+                - tab [ref=e268] [cursor=pointer]
+                - tab [ref=e270] [cursor=pointer]
+                - tab [ref=e272] [cursor=pointer]
+                - tab [ref=e274] [cursor=pointer]
+              - button [ref=e278]
+              - button [ref=e281]
+              - article "403 forbidden? Fix Now - Repair, Update & Optimize Now - Repair Now - Try for Free" [ref=e282] [cursor=pointer]:
+                - generic [ref=e284]:
+                  - img [ref=e285]
+                  - generic [ref=e286]:
+                    - generic [ref=e287]:
+                      - generic [ref=e290]: Fortect
+                      - link "403 forbidden? Fix Now - Repair, Update & Optimize Now - Repair Now - Try for Free, Fortect" [ref=e291]:
+                        - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=54aa95de-0e57-44ed-9c22-df1b57daf563&bdc=pb&bidId=1&bidderId=4&cmExpId=RSV&impId=2&impTy=1&ldc=rhf2pczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=fa102a84-dc7e-4341-aa76-622fe12e8f2c&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De8E1VY2-YT9Q0KCy8RX1X5tzVUCUzDGlsX4VlKOAz9gjJBtAWxBdEpSaIeXyVpbDHx7x5RM-z53ytW-BLZpMP4g-6fwDxJFoRWjJ3oeRMjhpXMW4mbHALKZRESX-hW9kbJlzGqnw4LpgNYU_6H93lwnDzc8bcAqL3bm2JjFCWJSNO0uaUxL_9tlorWLszobsilDaOtlRt0_6_x5tynAKb3zE8-be0%26u%3DaHR0cHMlM2ElMmYlMmZ3d3cuZm9ydGVjdC5jb20lMmZnbyUyZnJvdXRlLWFsZXBoLnBocCUzZmNoYW5uZWwlM2RhbGVwaCUyNmxweCUzZGZpeC1wYyUyNmR5bl9wYXJhbSUzZEZpeCUyYkJyb3dzZXIlMmJFcnJvcnMlMmJOb3clMjZiYW5uZXIlM2Q1NzA1NjkxNzMlMjZhZGdyb3VwJTNkMTE4NzQ3NDUzNjgwMjM2NiUyNmtleXdvcmQlM2Q0MDMlMjUyMGZvcmJpZGRlbiUyNmFkc19uYW1lJTNkJTI2Yml0JTNkMSUyNm1zY2xraWQlM2Q4NGNjZmMxYjhlZjYxZjI2M2RjYTk2MjVhYjRmNWE5YyUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZDEuMDEuMDUuMDA1X1NlYXJjaF9VUyUyNTIwQ0ElMjUyMFVLJTI1MjBBVSUyNTIwTlolMjUyMElFX0VOX1dpbmRvd3MlMjUyMElzc3VlcyUyNnV0bV90ZXJtJTNkNDAzJTI1MjBmb3JiaWRkZW4lMjZ1dG1fY29udGVudCUzZEludGVybmV0JTI1MjAtJTI1MjBCcm93c2VyLUhURg%26rlid%3D84ccfc1b8ef61f263dca9625ab4f5a9c&rtype=targetURL&tagId=hp2-infopane-6&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                        - text: 403 forbidden? Fix Now - Repair, Update & Optimize Now - Repair Now - Try for Free
+                    - link "Sponsored" [ref=e293]:
+                      - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=54aa95de-0e57-44ed-9c22-df1b57daf563&bdc=pb&bidId=1&bidderId=4&cmExpId=RSV&impId=2&impTy=1&ldc=rhf2pczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=fa102a84-dc7e-4341-aa76-622fe12e8f2c&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De8E1VY2-YT9Q0KCy8RX1X5tzVUCUzDGlsX4VlKOAz9gjJBtAWxBdEpSaIeXyVpbDHx7x5RM-z53ytW-BLZpMP4g-6fwDxJFoRWjJ3oeRMjhpXMW4mbHALKZRESX-hW9kbJlzGqnw4LpgNYU_6H93lwnDzc8bcAqL3bm2JjFCWJSNO0uaUxL_9tlorWLszobsilDaOtlRt0_6_x5tynAKb3zE8-be0%26u%3DaHR0cHMlM2ElMmYlMmZ3d3cuZm9ydGVjdC5jb20lMmZnbyUyZnJvdXRlLWFsZXBoLnBocCUzZmNoYW5uZWwlM2RhbGVwaCUyNmxweCUzZGZpeC1wYyUyNmR5bl9wYXJhbSUzZEZpeCUyYkJyb3dzZXIlMmJFcnJvcnMlMmJOb3clMjZiYW5uZXIlM2Q1NzA1NjkxNzMlMjZhZGdyb3VwJTNkMTE4NzQ3NDUzNjgwMjM2NiUyNmtleXdvcmQlM2Q0MDMlMjUyMGZvcmJpZGRlbiUyNmFkc19uYW1lJTNkJTI2Yml0JTNkMSUyNm1zY2xraWQlM2Q4NGNjZmMxYjhlZjYxZjI2M2RjYTk2MjVhYjRmNWE5YyUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZDEuMDEuMDUuMDA1X1NlYXJjaF9VUyUyNTIwQ0ElMjUyMFVLJTI1MjBBVSUyNTIwTlolMjUyMElFX0VOX1dpbmRvd3MlMjUyMElzc3VlcyUyNnV0bV90ZXJtJTNkNDAzJTI1MjBmb3JiaWRkZW4lMjZ1dG1fY29udGVudCUzZEludGVybmV0JTI1MjAtJTI1MjBCcm93c2VyLUhURg%26rlid%3D84ccfc1b8ef61f263dca9625ab4f5a9c&rtype=targetURL&tagId=hp2-infopane-6&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                  - button "See more" [ref=e295]:
+                    - img [ref=e296]
+            - article "'How can you hate a 15-year-old?' Ashwin explodes at Vaibhav Sooryavanshi backlash after Dambulla fracas" [ref=e297] [cursor=pointer]:
+              - generic [ref=e299]:
+                - img [ref=e300]
+                - generic [ref=e301]:
+                  - generic [ref=e302]:
+                    - generic [ref=e303]:
+                      - generic [ref=e304]:
+                        - img [ref=e305]
+                        - generic [ref=e306]: Hindustan Times
+                      - generic [ref=e307]: ·
+                      - generic [ref=e308]: 2d
+                    - link "'How can you hate a 15-year-old?' Ashwin explodes at Vaibhav Sooryavanshi backlash after Dambulla fracas, Hindustan Times" [ref=e309]:
+                      - /url: https://www.msn.com/en-in/sports/cricket/how-can-you-hate-a-15-year-old-ashwin-explodes-at-vaibhav-sooryavanshi-backlash-after-dambulla-fracas/ar-AA26lGPp
+                      - text: "'How can you hate a 15-year-old?' Ashwin explodes at Vaibhav Sooryavanshi backlash after Dambulla fracas"
+                  - generic "'How can you hate a 15-year-old?' Ashwin explodes at Vaibhav Sooryavanshi backlash after Dambulla fracas" [ref=e312]:
+                    - generic [ref=e314]:
+                      - generic [ref=e315]:
+                        - button "268 Like" [ref=e316]:
+                          - generic [ref=e317]:
+                            - img [ref=e318]
+                            - generic [ref=e320]: "268"
+                        - button "Dislike" [ref=e321]:
+                          - img [ref=e323]
+                      - link "View comments 1 Comment" [ref=e326]:
+                        - /url: https://www.msn.com/en-in/sports/cricket/how-can-you-hate-a-15-year-old-ashwin-explodes-at-vaibhav-sooryavanshi-backlash-after-dambulla-fracas/ar-AA26lGPp#comments
+                        - button "View comments 1 Comment" [ref=e327]:
+                          - img [ref=e328]
+                        - generic [ref=e330]: "1"
+                - generic [ref=e331]:
+                  - button "Hide this story" [ref=e332]:
+                    - img [ref=e333]
+                    - text: Hide this story
+                  - button "See more" [ref=e334]:
+                    - img [ref=e335]
+            - article [ref=e336] [cursor=pointer]:
+              - generic [ref=e340]:
+                - generic: Sponsored
+            - article "Cruise Travel Insurance - Cruise Trip Insurance - No Matter Where You Travel" [ref=e341] [cursor=pointer]:
+              - generic [ref=e343]:
+                - img [ref=e344]
+                - generic [ref=e345]:
+                  - generic [ref=e346]:
+                    - generic [ref=e349]: cruise.travelinsurance.com
+                    - link "Cruise Travel Insurance - Cruise Trip Insurance - No Matter Where You Travel, cruise.travelinsurance.com" [ref=e350]:
+                      - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=30fec2e8-8aac-4560-a4c0-ef4130a370eb&bdc=pb&bidId=1&bidderId=4&cmExpId=RSV&impId=8&impTy=1&ldc=rhf2pczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=fa102a84-dc7e-4341-aa76-622fe12e8f2c&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De86vc3uBYfv_j4Rgy2pftNITVUCUz9AwwJazqUqYG9JCBicTOoKz4UWIGgcNU-qojhA1mGG2LXwbG4g2A3vNtQt9UL4wdtT3eJmdiBFkrfJdMlPm4GGMepdXHRfUUKvbHSxeAV_YuNK9BTzuk-NLWU2VDMxz4JWbI4LuA7CA5VdTdVm7dvEh2-pP2nVJjwjzm2ceB5juNxNr8gy5-6LOQtuVuT49M%26u%3DaHR0cHMlM2ElMmYlMmZjcnVpc2UudHJhdmVsaW5zdXJhbmNlLmNvbSUyZiUzZm1zY2xraWQlM2QyNzA2MWIxYmI4MjcxZTkzOTBhMDcxMjU5ZDllMDE2NiUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZENydWlzZSUyNTIwVHJhdmVsJTI1MjBJbnN1cmFuY2UlMjZ1dG1fdGVybSUzZGNhcm5pdmFsJTI1MjBjcnVpc2UlMjUyMGxpbmVzJTI1MjB0cmF2ZWwlMjUyMGluc3VyYW5jZSUyNnV0bV9jb250ZW50JTNkQ3J1aXNlJTI1MjBUcmlwJTI1MjBJbnN1cmFuY2UlMjUyMEV4YWN0%26rlid%3D27061b1bb8271e9390a071259d9e0166&rtype=targetURL&tagId=hp2-river-1&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                      - text: Cruise Travel Insurance - Cruise Trip Insurance - No Matter Where You Travel
+                  - link "Sponsored" [ref=e352]:
+                    - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=30fec2e8-8aac-4560-a4c0-ef4130a370eb&bdc=pb&bidId=1&bidderId=4&cmExpId=RSV&impId=8&impTy=1&ldc=rhf2pczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=fa102a84-dc7e-4341-aa76-622fe12e8f2c&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De86vc3uBYfv_j4Rgy2pftNITVUCUz9AwwJazqUqYG9JCBicTOoKz4UWIGgcNU-qojhA1mGG2LXwbG4g2A3vNtQt9UL4wdtT3eJmdiBFkrfJdMlPm4GGMepdXHRfUUKvbHSxeAV_YuNK9BTzuk-NLWU2VDMxz4JWbI4LuA7CA5VdTdVm7dvEh2-pP2nVJjwjzm2ceB5juNxNr8gy5-6LOQtuVuT49M%26u%3DaHR0cHMlM2ElMmYlMmZjcnVpc2UudHJhdmVsaW5zdXJhbmNlLmNvbSUyZiUzZm1zY2xraWQlM2QyNzA2MWIxYmI4MjcxZTkzOTBhMDcxMjU5ZDllMDE2NiUyNnV0bV9zb3VyY2UlM2RiaW5nJTI2dXRtX21lZGl1bSUzZGNwYyUyNnV0bV9jYW1wYWlnbiUzZENydWlzZSUyNTIwVHJhdmVsJTI1MjBJbnN1cmFuY2UlMjZ1dG1fdGVybSUzZGNhcm5pdmFsJTI1MjBjcnVpc2UlMjUyMGxpbmVzJTI1MjB0cmF2ZWwlMjUyMGluc3VyYW5jZSUyNnV0bV9jb250ZW50JTNkQ3J1aXNlJTI1MjBUcmlwJTI1MjBJbnN1cmFuY2UlMjUyMEV4YWN0%26rlid%3D27061b1bb8271e9390a071259d9e0166&rtype=targetURL&tagId=hp2-river-1&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                - button "See more" [ref=e354]:
+                  - img [ref=e355]
+            - article [ref=e356] [cursor=pointer]:
+              - generic [ref=e362]:
+                - generic [ref=e364]:
+                  - img "World Cup coverage" [ref=e366]
+                  - link "World Cup coverage" [ref=e367]:
+                    - /url: https://www.msn.com/en-in/sports/football/fifa_world_cup?uxmode=ruby&ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e
+                    - heading "World Cup coverage" [level=2] [ref=e368]
+                  - button "More interests" [ref=e369]
+                  - generic [ref=e370]:
+                    - generic "Trending now" [ref=e371]:
+                      - button "Trending now" [ref=e372]
+                    - button "More options" [ref=e373]
+                - generic [ref=e377]:
+                  - link "PAR Group D 0 - 0 Final · 26 Jun AUS" [ref=e379]:
+                    - /url: https://www.msn.com/en-in/sports/football/fifa_world_cup/game-center/sp-id-66456950?uxmode=ruby&ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e
+                    - generic [ref=e380]:
+                      - generic [ref=e381]:
+                        - generic [ref=e382]:
+                          - button "Click to follow Paraguay":
+                            - generic:
+                              - img
+                        - generic "Paraguay" [ref=e383]: PAR
+                      - generic [ref=e385]:
+                        - generic [ref=e386]: Group D
+                        - generic [ref=e387]:
+                          - generic [ref=e389]: "0"
+                          - generic [ref=e390]: "-"
+                          - generic [ref=e392]: "0"
+                        - generic "26 Jun - Final" [ref=e393]: Final · 26 Jun
+                      - generic [ref=e394]:
+                        - generic [ref=e395]:
+                          - button "Click to follow Australia":
+                            - generic:
+                              - img
+                        - generic "Australia" [ref=e396]: AUS
+                  - link "TUR Group D 3 - 2 Final · 26 Jun USA" [ref=e398]:
+                    - /url: https://www.msn.com/en-in/sports/football/fifa_world_cup/game-center/sp-id-66456948?uxmode=ruby&ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e
+                    - generic [ref=e399]:
+                      - generic [ref=e400]:
+                        - generic [ref=e401]:
+                          - button "Click to follow Turkiye":
+                            - generic:
+                              - img
+                        - generic "Turkiye" [ref=e402]: TUR
+                      - generic [ref=e404]:
+                        - generic [ref=e405]: Group D
+                        - generic [ref=e406]:
+                          - generic [ref=e407]:
+                            - img [ref=e409]
+                            - generic [ref=e411]: "3"
+                          - generic [ref=e412]: "-"
+                          - generic [ref=e414]: "2"
+                        - generic "26 Jun - Final" [ref=e415]: Final · 26 Jun
+                      - generic [ref=e416]:
+                        - generic [ref=e417]:
+                          - button "Click to follow USA":
+                            - generic:
+                              - img
+                        - generic "USA" [ref=e418]
+                  - link "JPN Group F 1 - 1 Final · 25 Jun SWE" [ref=e420]:
+                    - /url: https://www.msn.com/en-in/sports/football/fifa_world_cup/game-center/sp-id-66456978?uxmode=ruby&ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e
+                    - generic [ref=e421]:
+                      - generic [ref=e422]:
+                        - generic [ref=e423]:
+                          - button "Click to follow Japan":
+                            - generic:
+                              - img
+                        - generic "Japan" [ref=e424]: JPN
+                      - generic [ref=e426]:
+                        - generic [ref=e427]: Group F
+                        - generic [ref=e428]:
+                          - generic [ref=e430]: "1"
+                          - generic [ref=e431]: "-"
+                          - generic [ref=e433]: "1"
+                        - generic "25 Jun - Final" [ref=e434]: Final · 25 Jun
+                      - generic [ref=e435]:
+                        - generic [ref=e436]:
+                          - button "Click to follow Sweden":
+                            - generic:
+                              - img
+                        - generic "Sweden" [ref=e437]: SWE
+                - generic [ref=e439]:
+                  - generic [ref=e440]:
+                    - generic "Previous" [ref=e441]:
+                      - button "Previous" [ref=e442]
+                    - tablist [ref=e444]:
+                      - tab "tab-0" [selected] [ref=e445]
+                      - tab "tab-1" [ref=e447]
+                      - tab "tab-2" [ref=e449]
+                      - tab "tab-3" [ref=e451]
+                      - tab "tab-4" [ref=e453]
+                      - tab "tab-5"
+                      - tab "tab-6"
+                      - tab "tab-7"
+                      - tab "tab-8"
+                      - tab "tab-9"
+                      - tab "tab-10"
+                      - tab "tab-11"
+                    - generic "Next" [ref=e455]:
+                      - button "Next" [ref=e456]
+                  - link "See more" [ref=e458]:
+                    - /url: https://www.msn.com/en-in/sports/football/fifa_world_cup?uxmode=ruby&ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e
+            - article [ref=e459] [cursor=pointer]:
+              - generic [ref=e464]:
+                - generic [ref=e466]:
+                  - link "Top stories" [ref=e468]:
+                    - /url: https://www.msn.com/en-in/channel/topic/Top%20stories/tp-Y_0b495ad3-9beb-45f8-9214-c8e95aa2468f?cvid=6a3e25b7b52e413491297d967adfd95e&ocid=hpmsn
+                    - heading "Top stories" [level=2] [ref=e469]
+                  - button "More options" [ref=e471]
+                - list [ref=e474]:
+                  - 'listitem "''He was our son too...'': Siya''s family breaks silence on Pune murder, demands accused be pushed from the same fort" [ref=e475]':
+                    - generic [ref=e476]:
+                      - generic [ref=e477]:
+                        - img [ref=e478]
+                        - generic [ref=e479]:
+                          - generic: WION ·now
+                      - generic [ref=e480]: "'He was our son too...': Siya's family breaks silence on Pune murder, demands accused be pushed from the same fort"
+                  - listitem "How Venezuela’s strongest earthquake in a century could affect India’s crude oil imports" [ref=e481]:
+                    - generic [ref=e482]:
+                      - generic [ref=e483]:
+                        - img [ref=e484]
+                        - generic [ref=e485]:
+                          - generic: The Times of India ·48m
+                      - generic [ref=e486]: How Venezuela’s strongest earthquake in a century could affect India’s crude oil imports
+                  - 'listitem "Champat Rai''s driver, retired banker & more: The 8 arrested in Ram Mandir donation theft case" [ref=e487]':
+                    - generic [ref=e488]:
+                      - generic [ref=e489]:
+                        - img [ref=e490]
+                        - generic [ref=e491]:
+                          - generic: News18 ·32m
+                      - generic [ref=e492]: "Champat Rai's driver, retired banker & more: The 8 arrested in Ram Mandir donation theft case"
+                - generic [ref=e494]:
+                  - generic [ref=e495]:
+                    - generic "Previous" [ref=e496]:
+                      - button "Previous" [ref=e497]
+                    - tablist [ref=e499]:
+                      - tab "tab-0" [selected] [ref=e500]
+                      - tab "tab-1" [ref=e502]
+                      - tab "tab-2" [ref=e504]
+                    - generic "Next" [ref=e506]:
+                      - button "Next" [ref=e507]
+                  - link "See more" [ref=e509]:
+                    - /url: https://www.msn.com/en-in/channel/topic/Top%20stories/tp-Y_0b495ad3-9beb-45f8-9214-c8e95aa2468f?cvid=6a3e25b7b52e413491297d967adfd95e&ocid=hpmsn
+            - article "Low priced Ilio psoas - Earth's Biggest Selection - Amazon.com Official Site" [ref=e510] [cursor=pointer]:
+              - generic [ref=e512]:
+                - img [ref=e513]
+                - generic [ref=e514]:
+                  - generic [ref=e515]:
+                    - generic [ref=e518]: amazon.com
+                    - link "Low priced Ilio psoas - Earth's Biggest Selection - Amazon.com Official Site, amazon.com" [ref=e519]:
+                      - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=a739c7f8-bbf1-48e3-97e9-f16257baf6b7&bdc=pb&bidId=2&bidderId=4&cmExpId=RSV&impId=9&impTy=1&ldc=rhf2pczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=fa102a84-dc7e-4341-aa76-622fe12e8f2c&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De85z8HQ4LtVo4dLtJfVQC4ajVUCUx205LaqTJMqeB3emnwBFQuiOZjgxT7ne87ZiSpXadqr66PQy-INCChs9jECECuKUvnenAt691rGglTYo8I9MQfCqQ-SWefcE6KMv4ZdJR45e9IOyIGUNDXfmu0nh6Wc6_Gyq3L4nv1_Kr5YZux_iRSY50_koc26RCH4acokNx2XKNoJKg2WceTR2sb2zd53Fk%26u%3DaHR0cHMlM2ElMmYlMmZ3d3cuYW1hem9uLmNvbSUyZnMlMmYlM2ZpZSUzZFVURjglMjZrZXl3b3JkcyUzZGlsaW8lMmJwc29hcyUyNmluZGV4JTNkYXBzJTI2dGFnJTNkbWgwYi0yMCUyNnJlZiUzZHBkX3NsXzQ5Y2VqMGRzNXFfZSUyNmFkZ3JwaWQlM2QxMzM1OTA5MjE0MDEzNjM3JTI2aHZhZGlkJTNkODM0OTQ2MTUxOTc1OTIlMjZodm5ldHclM2RhJTI2aHZxbXQlM2RlJTI2aHZibXQlM2RiZSUyNmh2ZGV2JTNkYyUyNmh2bG9jaW50JTNkJTI2aHZsb2NwaHklM2QxMDA5MDMlMjZodnRhcmdpZCUzZGt3ZC04MzQ5NTU2NDI5MTQxNCUzYWxvYy0xOTAlMjZoeWRhZGNyJTNkMjM2NDNfMTM0OTEwNTIlMjZtY2lkJTNkMDY2YjljNzRiNTM0MzI0OTljN2JjOWM4NzU1OTAxZWY%26rlid%3Db841c42319131f9810a3ae1d3caa0575&rtype=targetURL&tagId=hp2-river-2&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                      - text: Low priced Ilio psoas - Earth's Biggest Selection - Amazon.com Official Site
+                  - link "Sponsored" [ref=e521]:
+                    - /url: https://www.bing.com/api/v1/mediation/tracking?adUnit=1732768568&auId=a739c7f8-bbf1-48e3-97e9-f16257baf6b7&bdc=pb&bidId=2&bidderId=4&cmExpId=RSV&impId=9&impTy=1&ldc=rhf2pczr&mkt=en-us&oAdUnit=1732768568&pId=1&publisherId=17160724&rId=fa102a84-dc7e-4341-aa76-622fe12e8f2c&region=na&rlink=https%3A%2F%2Fwww.bing.com%2Faclick%3Fld%3De85z8HQ4LtVo4dLtJfVQC4ajVUCUx205LaqTJMqeB3emnwBFQuiOZjgxT7ne87ZiSpXadqr66PQy-INCChs9jECECuKUvnenAt691rGglTYo8I9MQfCqQ-SWefcE6KMv4ZdJR45e9IOyIGUNDXfmu0nh6Wc6_Gyq3L4nv1_Kr5YZux_iRSY50_koc26RCH4acokNx2XKNoJKg2WceTR2sb2zd53Fk%26u%3DaHR0cHMlM2ElMmYlMmZ3d3cuYW1hem9uLmNvbSUyZnMlMmYlM2ZpZSUzZFVURjglMjZrZXl3b3JkcyUzZGlsaW8lMmJwc29hcyUyNmluZGV4JTNkYXBzJTI2dGFnJTNkbWgwYi0yMCUyNnJlZiUzZHBkX3NsXzQ5Y2VqMGRzNXFfZSUyNmFkZ3JwaWQlM2QxMzM1OTA5MjE0MDEzNjM3JTI2aHZhZGlkJTNkODM0OTQ2MTUxOTc1OTIlMjZodm5ldHclM2RhJTI2aHZxbXQlM2RlJTI2aHZibXQlM2RiZSUyNmh2ZGV2JTNkYyUyNmh2bG9jaW50JTNkJTI2aHZsb2NwaHklM2QxMDA5MDMlMjZodnRhcmdpZCUzZGt3ZC04MzQ5NTU2NDI5MTQxNCUzYWxvYy0xOTAlMjZoeWRhZGNyJTNkMjM2NDNfMTM0OTEwNTIlMjZtY2lkJTNkMDY2YjljNzRiNTM0MzI0OTljN2JjOWM4NzU1OTAxZWY%26rlid%3Db841c42319131f9810a3ae1d3caa0575&rtype=targetURL&tagId=hp2-river-2&trafficGroup=zfa_angvir&trafficSubGroup=erfreir&uberGroup=hore_1c&uberSubGroup=erfreir
+                - button "See more" [ref=e523]:
+                  - img [ref=e524]
+            - 'article "Cocktail 2 box office collection day 6: Shahid Kapoor, Kriti Sanon, Rashmika Mandanna film inches toward Rs 70 crore" [ref=e525] [cursor=pointer]':
+              - generic [ref=e527]:
+                - img [ref=e528]
+                - generic [ref=e529]:
+                  - generic [ref=e530]:
+                    - generic [ref=e531]:
+                      - generic [ref=e532]:
+                        - img [ref=e533]
+                        - generic [ref=e534]: Times Now
+                      - generic [ref=e535]: ·
+                      - generic [ref=e536]: 1d
+                    - 'link "Cocktail 2 box office collection day 6: Shahid Kapoor, Kriti Sanon, Rashmika Mandanna film inches toward Rs 70 crore, Times Now" [ref=e537]':
+                      - /url: https://www.msn.com/en-in/entertainment/bollywood/cocktail-2-box-office-collection-day-6-shahid-kapoor-kriti-sanon-rashmika-mandanna-film-inches-toward-rs-70-crore/ar-AA26rkYB
+                      - text: "Cocktail 2 box office collection day 6: Shahid Kapoor, Kriti Sanon, Rashmika Mandanna film inches toward Rs 70 crore"
+                  - 'generic "Cocktail 2 box office collection day 6: Shahid Kapoor, Kriti Sanon, Rashmika Mandanna film inches toward Rs 70 crore" [ref=e540]':
+                    - generic [ref=e542]:
+                      - generic [ref=e543]:
+                        - button "256 Like" [ref=e544]:
+                          - generic [ref=e545]:
+                            - img [ref=e546]
+                            - generic [ref=e548]: "256"
+                        - button "Dislike" [ref=e549]:
+                          - img [ref=e551]
+                      - link "Start the conversation" [ref=e554]:
+                        - /url: https://www.msn.com/en-in/entertainment/bollywood/cocktail-2-box-office-collection-day-6-shahid-kapoor-kriti-sanon-rashmika-mandanna-film-inches-toward-rs-70-crore/ar-AA26rkYB#comments
+                        - button "Start the conversation" [ref=e555]:
+                          - img [ref=e556]
+                - generic [ref=e558]:
+                  - button "Hide this story" [ref=e559]:
+                    - img [ref=e560]
+                    - text: Hide this story
+                  - button "See more" [ref=e561]:
+                    - img [ref=e562]
+            - 'article "New passport to cost Rs 2,500; Rs 5K for tatkal: Centre hikes fees, new rates to take effect from July 1" [ref=e563] [cursor=pointer]':
+              - generic [ref=e565]:
+                - img [ref=e566]
+                - generic [ref=e567]:
+                  - generic [ref=e568]:
+                    - generic [ref=e569]:
+                      - generic [ref=e570]:
+                        - img [ref=e571]
+                        - generic [ref=e572]: The Times of India
+                      - generic [ref=e573]: ·
+                      - generic [ref=e574]: 16h
+                    - 'link "New passport to cost Rs 2,500; Rs 5K for tatkal: Centre hikes fees, new rates to take effect from July 1, The Times of India" [ref=e575]':
+                      - /url: https://www.msn.com/en-in/travel/news/new-passport-to-cost-rs-2-500-rs-5k-for-tatkal-centre-hikes-fees-new-rates-to-take-effect-from-july-1/ar-AA26wS81
+                      - text: "New passport to cost Rs 2,500; Rs 5K for tatkal: Centre hikes fees, new rates to take effect from July 1"
+                  - 'generic "New passport to cost Rs 2,500; Rs 5K for tatkal: Centre hikes fees, new rates to take effect from July 1" [ref=e578]':
+                    - generic [ref=e580]:
+                      - generic [ref=e581]:
+                        - button "24 Like" [ref=e582]:
+                          - generic [ref=e583]:
+                            - img [ref=e584]
+                            - generic [ref=e586]: "24"
+                        - button "Dislike" [ref=e587]:
+                          - img [ref=e589]
+                      - link "Start the conversation" [ref=e592]:
+                        - /url: https://www.msn.com/en-in/travel/news/new-passport-to-cost-rs-2-500-rs-5k-for-tatkal-centre-hikes-fees-new-rates-to-take-effect-from-july-1/ar-AA26wS81#comments
+                        - button "Start the conversation" [ref=e593]:
+                          - img [ref=e594]
+                - generic [ref=e596]:
+                  - button "Hide this story" [ref=e597]:
+                    - img [ref=e598]
+                    - text: Hide this story
+                  - button "See more" [ref=e599]:
+                    - img [ref=e600]
+          - generic [ref=e601]:
+            - article [ref=e602] [cursor=pointer]:
+              - generic [ref=e607]:
+                - generic [ref=e609]:
+                  - link "Top Engaging News" [ref=e611]:
+                    - /url: https://www.msn.com/en-in/channel/topic/Top Engaging News/tp-Y_42e62c1c-32a7-462e-a6b0-8a718bfe473d?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e
+                    - heading "Top Engaging News" [level=2] [ref=e612]
+                  - button "More options" [ref=e614]
+                - generic [ref=e616]:
+                  - 'link "News18 5 Comments ''Heinous act of terror'': Canada admits for first time Khalistani extremists behind Air India Kanishka bombing" [ref=e618]':
+                    - /url: https://www.msn.com/en-in/news/india/heinous-act-of-terror-canada-admits-for-first-time-khalistani-extremists-behind-air-india-kanishka-bombing/ar-AA26xppL
+                    - generic [ref=e619]:
+                      - img [ref=e620]
+                      - generic [ref=e621]: News18
+                      - link "5 Comments" [ref=e623]:
+                        - /url: https://www.msn.com/en-in/news/india/heinous-act-of-terror-canada-admits-for-first-time-khalistani-extremists-behind-air-india-kanishka-bombing/ar-AA26xppL#comments
+                        - img [ref=e624]
+                        - paragraph [ref=e625]: "5"
+                    - paragraph [ref=e626]: "'Heinous act of terror': Canada admits for first time Khalistani extremists behind Air India Kanishka bombing"
+                  - link "ABP - Live 10 Comments If not passport or Aadhaar, what is the real proof of Indian citizenship? The answer may surprise you" [ref=e628]:
+                    - /url: https://www.msn.com/en-in/autos/photos/if-not-passport-or-aadhaar-what-is-the-real-proof-of-indian-citizenship-the-answer-may-surprise-you/ar-AA26vv1I
+                    - generic [ref=e629]:
+                      - img [ref=e630]
+                      - generic [ref=e631]: ABP - Live
+                      - link "10 Comments" [ref=e633]:
+                        - /url: https://www.msn.com/en-in/autos/photos/if-not-passport-or-aadhaar-what-is-the-real-proof-of-indian-citizenship-the-answer-may-surprise-you/ar-AA26vv1I#comments
+                        - img [ref=e634]
+                        - paragraph [ref=e635]: "10"
+                    - paragraph [ref=e636]: If not passport or Aadhaar, what is the real proof of Indian citizenship? The answer may surprise you
+                  - link "India Today 3 Comments Why Khamenei funeral invite for PM Modi puts India in a delicate spot" [ref=e638]:
+                    - /url: https://www.msn.com/en-in/news/india/why-khamenei-funeral-invite-for-pm-modi-puts-india-in-a-delicate-spot/ar-AA26vmOh
+                    - generic [ref=e639]:
+                      - img [ref=e640]
+                      - generic [ref=e641]: India Today
+                      - link "3 Comments" [ref=e643]:
+                        - /url: https://www.msn.com/en-in/news/india/why-khamenei-funeral-invite-for-pm-modi-puts-india-in-a-delicate-spot/ar-AA26vmOh#comments
+                        - img [ref=e644]
+                        - paragraph [ref=e645]: "3"
+                    - paragraph [ref=e646]: Why Khamenei funeral invite for PM Modi puts India in a delicate spot
+                - generic [ref=e648]:
+                  - generic [ref=e649]:
+                    - generic "Previous" [ref=e650]:
+                      - button "Previous" [ref=e651]
+                    - tablist [ref=e653]:
+                      - tab "tab-0" [selected] [ref=e654]
+                      - tab "tab-1" [ref=e656]
+                      - tab "tab-2" [ref=e658]
+                    - generic "Next" [ref=e660]:
+                      - button "Next" [ref=e661]
+                  - link "See more" [ref=e663]:
+                    - /url: https://www.msn.com/en-in/channel/topic/Top Engaging News/tp-Y_42e62c1c-32a7-462e-a6b0-8a718bfe473d?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e
+            - article [ref=e664] [cursor=pointer]:
+              - generic [ref=e670]:
+                - generic [ref=e672]:
+                  - img "Watchlist suggestions" [ref=e674]
+                  - link "Watchlist suggestions" [ref=e675]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?ocid=hpmsn
+                    - heading "Watchlist suggestions" [level=2] [ref=e676]
+                  - button "More options" [ref=e678]
+                - generic [ref=e683]:
+                  - link "Vodafone Idea Ltd IDEA ‎-1.75%‎ 14.06" [ref=e685]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?id=ahi8u2&ocid=hpmsn
+                    - generic [ref=e686]:
+                      - generic [ref=e688]: Vodafone Idea Ltd
+                      - generic [ref=e690]: IDEA
+                    - generic [ref=e695]:
+                      - generic [ref=e696]: ‎-1.75%‎
+                      - generic [ref=e697]: "14.06"
+                    - button "Add to watchlist" [ref=e700]:
+                      - img [ref=e701]
+                  - link "Tata Motors Passenger Vehicles Ltd TMPV ‎+1.00%‎ 353.20" [ref=e705]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?id=ahk9xm&ocid=hpmsn
+                    - generic [ref=e706]:
+                      - generic [ref=e708]: Tata Motors Passenger Vehicles Ltd
+                      - generic [ref=e710]: TMPV
+                    - generic [ref=e715]:
+                      - generic [ref=e716]: ‎+1.00%‎
+                      - generic [ref=e717]: "353.20"
+                    - button "Add to watchlist" [ref=e720]:
+                      - img [ref=e721]
+                  - link "Infosys Ltd INFY ‎-3.29%‎ 10.57" [ref=e725]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?id=a1vkgh&ocid=hpmsn
+                    - generic [ref=e726]:
+                      - generic [ref=e728]: Infosys Ltd
+                      - generic [ref=e730]: INFY
+                    - generic [ref=e735]:
+                      - generic [ref=e736]: ‎-3.29%‎
+                      - generic [ref=e737]: "10.57"
+                    - button "Add to watchlist" [ref=e740]:
+                      - img [ref=e741]
+                  - link "HFCL Ltd HFCL ‎+5.00%‎ 215.00" [ref=e745]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?id=ahi4oc&ocid=hpmsn
+                    - generic [ref=e746]:
+                      - generic [ref=e748]: HFCL Ltd
+                      - generic [ref=e750]: HFCL
+                    - generic [ref=e755]:
+                      - generic [ref=e756]: ‎+5.00%‎
+                      - generic [ref=e757]: "215.00"
+                    - button "Add to watchlist" [ref=e760]:
+                      - img [ref=e761]
+                  - link "SENSEX SENSEX ‎+0.14%‎ 77,100.47" [ref=e765]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?id=ahkucw&ocid=hpmsn
+                    - generic [ref=e766]:
+                      - generic [ref=e768]: SENSEX
+                      - generic [ref=e770]: SENSEX
+                    - generic [ref=e775]:
+                      - generic [ref=e776]: ‎+0.14%‎
+                      - generic [ref=e777]: 77,100.47
+                    - button "Add to watchlist" [ref=e780]:
+                      - img [ref=e781]
+                - generic [ref=e785]:
+                  - generic [ref=e786]:
+                    - generic "Previous" [ref=e787]:
+                      - button "Previous" [ref=e788]
+                    - tablist [ref=e790]:
+                      - tab "tab-0" [selected] [ref=e791]
+                      - tab "tab-1" [ref=e793]
+                      - tab "tab-2" [ref=e795]
+                      - tab "tab-3" [ref=e797]
+                      - tab "tab-4" [ref=e799]
+                      - tab "tab-5"
+                      - tab "tab-6"
+                    - generic "Next" [ref=e801]:
+                      - button "Next" [ref=e802]
+                  - link "See watchlist suggestions" [ref=e804]:
+                    - /url: https://www.msn.com/en-in/money/watchlist?ocid=hpmsn
+            - article "GTA 5 made $10 billion. Here's what GTA 6 could earn if it repeats history" [ref=e805] [cursor=pointer]:
+              - generic [ref=e807]:
+                - img [ref=e808]
+                - generic [ref=e809]:
+                  - generic [ref=e810]:
+                    - generic [ref=e811]:
+                      - generic [ref=e812]:
+                        - img [ref=e813]
+                        - generic [ref=e814]: India Today
+                      - generic [ref=e815]: ·
+                      - generic [ref=e816]: 1d
+                    - link "GTA 5 made $10 billion. Here's what GTA 6 could earn if it repeats history, India Today" [ref=e817]:
+                      - /url: https://www.msn.com/en-in/money/topstories/gta-5-made-10-billion-here-s-what-gta-6-could-earn-if-it-repeats-history/ar-AA26uSXR
+                      - text: GTA 5 made $10 billion. Here's what GTA 6 could earn if it repeats history
+                  - generic "GTA 5 made $10 billion. Here's what GTA 6 could earn if it repeats history" [ref=e820]:
+                    - generic [ref=e822]:
+                      - generic [ref=e823]:
+                        - button "119 Like" [ref=e824]:
+                          - generic [ref=e825]:
+                            - img [ref=e826]
+                            - generic [ref=e828]: "119"
+                        - button "Dislike" [ref=e829]:
+                          - img [ref=e831]
+                      - link "Start the conversation" [ref=e834]:
+                        - /url: https://www.msn.com/en-in/money/topstories/gta-5-made-10-billion-here-s-what-gta-6-could-earn-if-it-repeats-history/ar-AA26uSXR#comments
+                        - button "Start the conversation" [ref=e835]:
+                          - img [ref=e836]
+                - generic [ref=e838]:
+                  - button "Hide this story" [ref=e839]:
+                    - img [ref=e840]
+                    - text: Hide this story
+                  - button "See more" [ref=e841]:
+                    - img [ref=e842]
+            - article "Brazilian woman deported for stalking BTS star Jungkook" [ref=e843] [cursor=pointer]:
+              - generic [ref=e845]:
+                - generic [ref=e851]:
+                  - generic [ref=e852]:
+                    - generic [ref=e853]:
+                      - generic [ref=e854]:
+                        - img [ref=e855]
+                        - generic [ref=e856]: WION
+                      - generic [ref=e857]: ·
+                      - generic [ref=e858]: 17h
+                    - link "Brazilian woman deported for stalking BTS star Jungkook, WION" [ref=e859]:
+                      - /url: https://www.msn.com/en-in/entertainment/hollywood/brazilian-woman-deported-for-stalking-bts-star-jungkook/vi-AA26vWAz
+                      - text: Brazilian woman deported for stalking BTS star Jungkook
+                  - generic "Brazilian woman deported for stalking BTS star Jungkook" [ref=e862]:
+                    - generic [ref=e864]:
+                      - generic [ref=e865]:
+                        - button "19 Like" [ref=e866]:
+                          - generic [ref=e867]:
+                            - img [ref=e868]
+                            - generic [ref=e870]: "19"
+                        - button "Dislike" [ref=e871]:
+                          - img [ref=e873]
+                      - link "Start the conversation" [ref=e876]:
+                        - /url: https://www.msn.com/en-in/entertainment/hollywood/brazilian-woman-deported-for-stalking-bts-star-jungkook/vi-AA26vWAz#comments
+                        - button "Start the conversation" [ref=e877]:
+                          - img [ref=e878]
+                - generic [ref=e880]:
+                  - button "Hide this story" [ref=e881]:
+                    - img [ref=e882]
+                    - text: Hide this story
+                  - button "See more" [ref=e883]:
+                    - img [ref=e884]
+            - article [ref=e885] [cursor=pointer]
+            - article "The largest river on Earth isn't on the ground - and it's bigger than the Amazon" [ref=e892] [cursor=pointer]:
+              - generic [ref=e894]:
+                - generic [ref=e898]:
+                  - generic [ref=e899]:
+                    - generic [ref=e900]:
+                      - generic [ref=e901]:
+                        - img [ref=e902]
+                        - generic [ref=e903]: TED
+                      - generic [ref=e904]: ·
+                      - generic [ref=e905]: 2w
+                    - link "The largest river on Earth isn't on the ground - and it's bigger than the Amazon, TED" [ref=e906]:
+                      - /url: https://www.msn.com/en-in/news/techandscience/the-largest-river-on-earth-isn-t-on-the-ground-and-it-s-bigger-than-the-amazon/vi-AA24UuHK
+                      - text: The largest river on Earth isn't on the ground - and it's bigger than the Amazon
+                  - generic "The largest river on Earth isn't on the ground - and it's bigger than the Amazon" [ref=e909]:
+                    - generic [ref=e911]:
+                      - generic [ref=e912]:
+                        - button "76 Like" [ref=e913]:
+                          - generic [ref=e914]:
+                            - img [ref=e915]
+                            - generic [ref=e917]: "76"
+                        - button "Dislike" [ref=e918]:
+                          - img [ref=e920]
+                      - link "View comments 1 Comment" [ref=e923]:
+                        - /url: https://www.msn.com/en-in/news/techandscience/the-largest-river-on-earth-isn-t-on-the-ground-and-it-s-bigger-than-the-amazon/vi-AA24UuHK#comments
+                        - button "View comments 1 Comment" [ref=e924]:
+                          - img [ref=e925]
+                        - generic [ref=e927]: "1"
+                - generic [ref=e928]:
+                  - button "Hide this story" [ref=e929]:
+                    - img [ref=e930]
+                    - text: Hide this story
+                  - button "See more" [ref=e931]:
+                    - img [ref=e932]
+            - article [ref=e933] [cursor=pointer]
+            - article [ref=e940] [cursor=pointer]:
+              - generic [ref=e946]:
+                - generic [ref=e948]:
+                  - link "Des Moines" [ref=e950]:
+                    - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                    - heading "Des Moines" [level=2] [ref=e951]
+                  - button "My location" [ref=e952]
+                  - button "More options" [ref=e954]
+                - generic [ref=e958]:
+                  - generic [ref=e959]:
+                    - generic [ref=e961]:
+                      - link "Mostly cloudy" [ref=e962]:
+                        - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                        - img "Mostly cloudy" [ref=e963]
+                      - link "20°C" [ref=e964]:
+                        - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                        - generic [ref=e965]: ‎20‎
+                        - generic [ref=e967]: ‎°C‎
+                    - generic [ref=e969]:
+                      - link "Temperatures to rise on Sunday" [ref=e971]:
+                        - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                        - text: Temperatures to rise on Sunday
+                      - link "See full forecast" [ref=e973]:
+                        - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                        - img "arrow" [ref=e974]
+                  - link "Weather forecast Today High temperature 27° Low temperature 17° Weather forecast Sat High temperature 27° Low temperature 23° Weather forecast Sun High temperature 33° Low temperature 26° Weather forecast Mon High temperature 34° Low temperature 26° Weather forecast Tue High temperature 35° Low temperature 25°" [ref=e976]:
+                    - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                    - list [ref=e977]:
+                      - listitem [ref=e978]:
+                        - generic "Weather forecast Today High temperature 27° Low temperature 17°" [ref=e979]:
+                          - link "Weather forecast Today High temperature 27° Low temperature 17°" [ref=e980]:
+                            - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                            - generic:
+                              - generic:
+                                - generic "Today"
+                                - generic:
+                                  - img "Partly sunny"
+                                - generic:
+                                  - generic "High temperature 27°": ‎27°‎
+                                  - generic "Low temperature 17°": ‎17°‎
+                      - listitem [ref=e981]:
+                        - generic "Weather forecast Sat High temperature 27° Low temperature 23°" [ref=e982]:
+                          - link "Weather forecast Sat High temperature 27° Low temperature 23°" [ref=e983]:
+                            - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                            - generic:
+                              - generic:
+                                - generic "Sat"
+                                - generic:
+                                  - img "Mostly cloudy"
+                                - generic:
+                                  - generic "High temperature 27°": ‎27°‎
+                                  - generic "Low temperature 23°": ‎23°‎
+                      - listitem [ref=e984]:
+                        - generic "Weather forecast Sun High temperature 33° Low temperature 26°" [ref=e985]:
+                          - link "Weather forecast Sun High temperature 33° Low temperature 26°" [ref=e986]:
+                            - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                            - generic:
+                              - generic:
+                                - generic "Sun"
+                                - generic:
+                                  - img "Mostly sunny"
+                                - generic:
+                                  - generic "High temperature 33°": ‎33°‎
+                                  - generic "Low temperature 26°": ‎26°‎
+                      - listitem [ref=e987]:
+                        - generic "Weather forecast Mon High temperature 34° Low temperature 26°" [ref=e988]:
+                          - link "Weather forecast Mon High temperature 34° Low temperature 26°" [ref=e989]:
+                            - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                            - generic:
+                              - generic:
+                                - generic "Mon"
+                                - generic:
+                                  - img "Mostly sunny"
+                                - generic:
+                                  - generic "High temperature 34°": ‎34°‎
+                                  - generic "Low temperature 26°": ‎26°‎
+                      - listitem [ref=e990]:
+                        - generic "Weather forecast Tue High temperature 35° Low temperature 25°" [ref=e991]:
+                          - link "Weather forecast Tue High temperature 35° Low temperature 25°" [ref=e992]:
+                            - /url: https://www.msn.com/en-in/weather/forecast/in-Des-Moines,Iowa
+                            - generic:
+                              - generic:
+                                - generic "Tue"
+                                - generic:
+                                  - img "Sunny"
+                                - generic:
+                                  - generic "High temperature 35°": ‎35°‎
+                                  - generic "Low temperature 25°": ‎25°‎
+                - button "See full forecast" [ref=e995]
+          - article [ref=e997]
+          - generic [ref=e999]:
+            - article [ref=e1000] [cursor=pointer]:
+              - generic [ref=e1005]:
+                - generic [ref=e1006]:
+                  - generic [ref=e1007]:
+                    - link "Recommended videos" [ref=e1008]:
+                      - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                      - img [ref=e1009]
+                    - link "Recommended videos" [ref=e1012]:
+                      - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                  - generic [ref=e1013]:
+                    - generic:
+                      - link "See more" [ref=e1014]:
+                        - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                      - generic "More options" [ref=e1015]:
+                        - button "More options" [ref=e1016]:
+                          - generic:
+                            - generic:
+                              - img
+                - tabpanel [ref=e1018]:
+                  - generic [ref=e1020]:
+                    - generic [ref=e1022]:
+                      - generic:
+                        - article [ref=e1025]:
+                          - generic [ref=e1026]:
+                            - img "Calling My Dog From Two Feet Away" [ref=e1028]
+                            - generic [ref=e1030]: 01:24
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1031]:
+                              - generic [ref=e1032]:
+                                - img "Tucker Budzyn" [ref=e1033]
+                                - generic [ref=e1034]:
+                                  - generic:
+                                    - generic "Tucker Budzyn" [ref=e1035]
+                                    - generic [ref=e1036]: ·
+                                    - generic [ref=e1037]: 3h
+                              - link "Calling my dog from two feet away" [ref=e1038]:
+                                - /url: https://www.msn.com/en-in/lifestyle/smart-living/calling-my-dog-from-two-feet-away/vi-AA26ztdU?ocid=hpmsn
+                                - heading "Calling my dog from two feet away" [level=2] [ref=e1039]:
+                                  - generic: Calling my dog from two feet away
+                            - button "See more" [ref=e1043]
+                        - article "An Everest climber knew he was about to die - then someone started walking beside him, \"You're not alone\"" [ref=e1046]:
+                          - generic [ref=e1047]:
+                            - img "An Everest Climber Knew He Was About To Die - Then Someone Started Walking Beside Him, \"You're Not Alone\"" [ref=e1049]
+                            - generic [ref=e1051]: 23:56
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1052]:
+                              - generic [ref=e1053]:
+                                - img "The Why Files" [ref=e1054]
+                                - generic [ref=e1055]:
+                                  - generic:
+                                    - generic "The Why Files" [ref=e1056]
+                                    - generic [ref=e1057]: ·
+                                    - generic [ref=e1058]: 3d
+                              - link "An Everest climber knew he was about to die - then someone started walking beside him, \"You're not alone\"" [ref=e1059]:
+                                - /url: https://www.msn.com/en-in/lifestyle/relationships/an-everest-climber-knew-he-was-about-to-die-then-someone-started-walking-beside-him-you-re-not-alone/vi-AA25sX2U?ocid=hpmsn
+                                - heading "An Everest climber knew he was about to die - then someone started walking beside him, \"You're not alone\"" [level=2] [ref=e1060]:
+                                  - generic: An Everest climber knew he was about to die - then someone started walking beside him, "You're not alone"
+                            - button "See more" [ref=e1064]
+                        - 'article "Aldi shopping secrets: Best deals, fresh finds & fall favorites on a budget!" [ref=e1067]':
+                          - generic [ref=e1068]:
+                            - img "Why YOU should be shopping at Aldi! 🧡 🛒 25+ Best Ever Deals!" [ref=e1070]
+                            - generic [ref=e1072]: 07:35
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1073]:
+                              - generic [ref=e1074]:
+                                - img "Do It On A Dime" [ref=e1075]
+                                - generic [ref=e1076]:
+                                  - generic:
+                                    - generic "Do It On A Dime" [ref=e1077]
+                                    - generic [ref=e1078]: ·
+                                    - generic [ref=e1079]: 2w
+                              - 'link "Aldi shopping secrets: Best deals, fresh finds & fall favorites on a budget!" [ref=e1080]':
+                                - /url: https://www.msn.com/en-in/travel/news/aldi-shopping-secrets-best-deals-fresh-finds-fall-favorites-on-a-budget/vi-AA24XA6F?ocid=hpmsn
+                                - 'heading "Aldi shopping secrets: Best deals, fresh finds & fall favorites on a budget!" [level=2] [ref=e1081]':
+                                  - generic: "Aldi shopping secrets: Best deals, fresh finds & fall favorites on a budget!"
+                            - button "See more" [ref=e1085]
+                        - article "The Hollywood climbing stunts that look impossible - but are they?" [ref=e1088]:
+                          - generic [ref=e1089]:
+                            - img "The Hollywood Climbing Stunts That Look Impossible - But Are They?" [ref=e1091]
+                            - generic [ref=e1093]: 20:41
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1094]:
+                              - generic [ref=e1095]:
+                                - img "Magnus Midtbø" [ref=e1096]
+                                - generic [ref=e1097]:
+                                  - generic:
+                                    - generic "Magnus Midtbø" [ref=e1098]
+                                    - generic [ref=e1099]: ·
+                                    - generic [ref=e1100]: 2w
+                              - link "The Hollywood climbing stunts that look impossible - but are they?" [ref=e1101]:
+                                - /url: https://www.msn.com/en-in/entertainment/hollywood/the-hollywood-climbing-stunts-that-look-impossible-but-are-they/vi-AA24UoSI?ocid=hpmsn
+                                - heading "The Hollywood climbing stunts that look impossible - but are they?" [level=2] [ref=e1102]:
+                                  - generic: The Hollywood climbing stunts that look impossible - but are they?
+                            - button "See more" [ref=e1106]
+                        - article [ref=e1109]:
+                          - generic [ref=e1110]:
+                            - 'img "Salary Transparent Street: 7 Jobs Making Over $200K/Year" [ref=e1112]'
+                            - generic [ref=e1114]: 01:14
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1115]:
+                              - generic [ref=e1116]:
+                                - img "NowThis" [ref=e1117]
+                                - generic [ref=e1118]:
+                                  - generic:
+                                    - generic "NowThis" [ref=e1119]
+                                    - generic [ref=e1120]: ·
+                                    - generic [ref=e1121]: 9h
+                              - 'link "Salary Transparent Street: 7 jobs making over $200K/year" [ref=e1122]':
+                                - /url: https://www.msn.com/en-in/video/peopleandplaces/salary-transparent-street-7-jobs-making-over-200k-year/vi-AA26yn1r?ocid=hpmsn
+                                - 'heading "Salary Transparent Street: 7 jobs making over $200K/year" [level=2] [ref=e1123]':
+                                  - generic: "Salary Transparent Street: 7 jobs making over $200K/year"
+                            - button "See more" [ref=e1127]
+                        - article [ref=e1130]:
+                          - generic [ref=e1131]:
+                            - img "Welcome to Jolly! Josh & Ollie's Fun New Channel Adventure" [ref=e1133]
+                            - generic [ref=e1135]: 08:31
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1136]:
+                              - generic [ref=e1137]:
+                                - img "JOLLY" [ref=e1138]
+                                - generic [ref=e1139]:
+                                  - generic:
+                                    - generic "JOLLY" [ref=e1140]
+                                    - generic [ref=e1141]: ·
+                                    - generic [ref=e1142]: 29m
+                              - link "Welcome to Jolly! Josh & Ollie's fun new channel adventure" [ref=e1143]:
+                                - /url: https://www.msn.com/en-in/tv/other/welcome-to-jolly-josh-ollie-s-fun-new-channel-adventure/vi-AA26ysYk?ocid=hpmsn
+                                - heading "Welcome to Jolly! Josh & Ollie's fun new channel adventure" [level=2] [ref=e1144]:
+                                  - generic: Welcome to Jolly! Josh & Ollie's fun new channel adventure
+                            - button "See more" [ref=e1148]
+                        - article [ref=e1151]:
+                          - generic [ref=e1152]:
+                            - img "What Turned Ale Into Modern Beer" [ref=e1154]
+                            - generic [ref=e1156]: 10:59
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1157]:
+                              - generic [ref=e1158]:
+                                - img "Extra History" [ref=e1159]
+                                - generic "Extra History" [ref=e1161]
+                              - link "What turned ale into modern beer" [ref=e1162]:
+                                - /url: https://www.msn.com/en-in/video/news/what-turned-ale-into-modern-beer/vi-AA1VJL8k?ocid=hpmsn
+                                - heading "What turned ale into modern beer" [level=2] [ref=e1163]:
+                                  - generic: What turned ale into modern beer
+                            - button "See more" [ref=e1167]
+                        - article [ref=e1170]:
+                          - generic [ref=e1171]:
+                            - img "The Planet Warmed By 1°C - And Worse May Be Coming" [ref=e1173]
+                            - generic [ref=e1175]: 05:21
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1176]:
+                              - generic [ref=e1177]:
+                                - img "TED" [ref=e1178]
+                                - generic [ref=e1179]:
+                                  - generic:
+                                    - generic "TED" [ref=e1180]
+                                    - generic [ref=e1181]: ·
+                                    - generic [ref=e1182]: 19h
+                              - link "The planet warmed by 1°C - and worse may be coming" [ref=e1183]:
+                                - /url: https://www.msn.com/en-in/weather/topstories/the-planet-warmed-by-1-c-and-worse-may-be-coming/vi-AA25YlQl?ocid=hpmsn
+                                - heading "The planet warmed by 1°C - and worse may be coming" [level=2] [ref=e1184]:
+                                  - generic: The planet warmed by 1°C - and worse may be coming
+                            - button "See more" [ref=e1188]
+                        - article "The hidden VIP areas on the world’s biggest cruise ship - most passengers never see them" [ref=e1191]:
+                          - generic [ref=e1192]:
+                            - img "The Hidden VIP Areas on the World’s Biggest Cruise Ship - Most Passengers Never See Them" [ref=e1194]
+                            - generic [ref=e1196]: 33:09
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1197]:
+                              - generic [ref=e1198]:
+                                - img "Trek Trendy" [ref=e1199]
+                                - generic "Trek Trendy" [ref=e1201]
+                              - link "The hidden VIP areas on the world’s biggest cruise ship - most passengers never see them" [ref=e1202]:
+                                - /url: https://www.msn.com/en-in/travel/news/the-hidden-vip-areas-on-the-world-s-biggest-cruise-ship-most-passengers-never-see-them/vi-AA1Vfl40?ocid=hpmsn
+                                - heading "The hidden VIP areas on the world’s biggest cruise ship - most passengers never see them" [level=2] [ref=e1203]:
+                                  - generic: The hidden VIP areas on the world’s biggest cruise ship - most passengers never see them
+                            - button "See more" [ref=e1207]
+                        - article [ref=e1210]:
+                          - generic [ref=e1211]:
+                            - img "DIY LAMINATOR TIPS | How to laminate at home" [ref=e1213]
+                            - generic [ref=e1215]: 04:48
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1216]:
+                              - generic [ref=e1217]:
+                                - img "Do It On A Dime" [ref=e1218]
+                                - generic [ref=e1219]:
+                                  - generic:
+                                    - generic "Do It On A Dime" [ref=e1220]
+                                    - generic [ref=e1221]: ·
+                                    - generic [ref=e1222]: 1h
+                              - 'link "How to laminate at home for less: 5 simple tricks you need!" [ref=e1223]':
+                                - /url: https://www.msn.com/en-in/health/wellness/how-to-laminate-at-home-for-less-5-simple-tricks-you-need/vi-AA22N0TA?ocid=hpmsn
+                                - 'heading "How to laminate at home for less: 5 simple tricks you need!" [level=2] [ref=e1224]':
+                                  - generic: "How to laminate at home for less: 5 simple tricks you need!"
+                            - button "See more" [ref=e1228]
+                        - 'article "Blind man faces his fears: touching sea creatures at SeaWorld San Diego" [ref=e1231]':
+                          - generic [ref=e1232]:
+                            - 'img "Blind Man Faces His Fears: Touching Sea Creatures at SeaWorld San Diego" [ref=e1234]'
+                            - generic [ref=e1236]: 13:53
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1237]:
+                              - generic [ref=e1238]:
+                                - img "Blind Surfer Pete Gustin" [ref=e1239]
+                                - generic [ref=e1240]:
+                                  - generic:
+                                    - generic "Blind Surfer Pete Gustin" [ref=e1241]
+                                    - generic [ref=e1242]: ·
+                                    - generic [ref=e1243]: 3h
+                              - 'link "Blind man faces his fears: touching sea creatures at SeaWorld San Diego" [ref=e1244]':
+                                - /url: https://www.msn.com/en-in/entertainment/hollywood/blind-man-faces-his-fears-touching-sea-creatures-at-seaworld-san-diego/vi-AA26iRPL?ocid=hpmsn
+                                - 'heading "Blind man faces his fears: touching sea creatures at SeaWorld San Diego" [level=2] [ref=e1245]':
+                                  - generic: "Blind man faces his fears: touching sea creatures at SeaWorld San Diego"
+                            - button "See more" [ref=e1249]
+                        - article "Homemade countertop wipes & cutting board cleaner | Kitchen organization tips" [ref=e1252]:
+                          - generic [ref=e1253]:
+                            - img "DIY KITCHEN WIPES | How to keep a clean kitchen!" [ref=e1255]
+                            - generic [ref=e1257]: 04:42
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1258]:
+                              - generic [ref=e1259]:
+                                - img "Do It On A Dime" [ref=e1260]
+                                - generic [ref=e1261]:
+                                  - generic:
+                                    - generic "Do It On A Dime" [ref=e1262]
+                                    - generic [ref=e1263]: ·
+                                    - generic [ref=e1264]: 1h
+                              - link "Homemade countertop wipes & cutting board cleaner | Kitchen organization tips" [ref=e1265]:
+                                - /url: https://www.msn.com/en-in/lifestyle/style/homemade-countertop-wipes-cutting-board-cleaner-kitchen-organization-tips/vi-AA2510XF?ocid=hpmsn
+                                - heading "Homemade countertop wipes & cutting board cleaner | Kitchen organization tips" [level=2] [ref=e1266]:
+                                  - generic: Homemade countertop wipes & cutting board cleaner | Kitchen organization tips
+                            - button "See more" [ref=e1270]
+                        - 'article "Easy DIY home fragrance: Natural, budget-friendly scent hacks" [ref=e1273]':
+                          - generic [ref=e1274]:
+                            - img "HOME SCENT HACKS | Cheap & Easy" [ref=e1276]
+                            - generic [ref=e1278]: 02:47
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1279]:
+                              - generic [ref=e1280]:
+                                - img "Do It On A Dime" [ref=e1281]
+                                - generic [ref=e1282]:
+                                  - generic:
+                                    - generic "Do It On A Dime" [ref=e1283]
+                                    - generic [ref=e1284]: ·
+                                    - generic [ref=e1285]: 1h
+                              - 'link "Easy DIY home fragrance: Natural, budget-friendly scent hacks" [ref=e1286]':
+                                - /url: https://www.msn.com/en-in/money/unionbudget2017-18/easy-diy-home-fragrance-natural-budget-friendly-scent-hacks/vi-AA22qROe?ocid=hpmsn
+                                - 'heading "Easy DIY home fragrance: Natural, budget-friendly scent hacks" [level=2] [ref=e1287]':
+                                  - generic: "Easy DIY home fragrance: Natural, budget-friendly scent hacks"
+                            - button "See more" [ref=e1291]
+                        - article [ref=e1294]:
+                          - generic [ref=e1295]:
+                            - img "Celina Really Has A TV Show" [ref=e1297]
+                            - generic [ref=e1299]: 05:31
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1300]:
+                              - generic [ref=e1301]:
+                                - img "Celina SpookyBoo" [ref=e1302]
+                                - generic [ref=e1303]:
+                                  - generic:
+                                    - generic "Celina SpookyBoo" [ref=e1304]
+                                    - generic [ref=e1305]: ·
+                                    - generic [ref=e1306]: 18h
+                              - link "Celina really has a TV show" [ref=e1307]:
+                                - /url: https://www.msn.com/en-in/tv/news/celina-really-has-a-tv-show/vi-AA26woUg?ocid=hpmsn
+                                - heading "Celina really has a TV show" [level=2] [ref=e1308]:
+                                  - generic: Celina really has a TV show
+                            - button "See more" [ref=e1312]
+                        - article [ref=e1315]:
+                          - generic [ref=e1316]:
+                            - img "I Upgraded the Razer Huntsman Mini" [ref=e1318]
+                            - generic [ref=e1320]: 09:40
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1321]:
+                              - generic [ref=e1322]:
+                                - img "Switch and Click" [ref=e1323]
+                                - generic [ref=e1324]:
+                                  - generic:
+                                    - generic "Switch and Click" [ref=e1325]
+                                    - generic [ref=e1326]: ·
+                                    - generic [ref=e1327]: 44m
+                              - link "I upgraded the Razer Huntsman Mini" [ref=e1328]:
+                                - /url: https://www.msn.com/en-in/money/news/i-upgraded-the-razer-huntsman-mini/vi-AA22Xt11?ocid=hpmsn
+                                - heading "I upgraded the Razer Huntsman Mini" [level=2] [ref=e1329]:
+                                  - generic: I upgraded the Razer Huntsman Mini
+                            - button "See more" [ref=e1333]
+                        - article [ref=e1336]:
+                          - generic [ref=e1337]:
+                            - img "Ben Shapiro Reviews Spielberg's Disclosure Day" [ref=e1339]
+                            - generic [ref=e1341]: 11:26
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1342]:
+                              - generic [ref=e1343]:
+                                - img "Ben Shapiro" [ref=e1344]
+                                - generic [ref=e1345]:
+                                  - generic:
+                                    - generic "Ben Shapiro" [ref=e1346]
+                                    - generic [ref=e1347]: ·
+                                    - generic [ref=e1348]: 1w
+                              - link "Ben Shapiro reviews Spielberg's Disclosure Day" [ref=e1349]:
+                                - /url: https://www.msn.com/en-in/lifestyle/valentineday/ben-shapiro-reviews-spielberg-s-disclosure-day/vi-AA25IAWp?ocid=hpmsn
+                                - heading "Ben Shapiro reviews Spielberg's Disclosure Day" [level=2] [ref=e1350]:
+                                  - generic: Ben Shapiro reviews Spielberg's Disclosure Day
+                            - button "See more" [ref=e1354]
+                        - article "A luxury Bali retreat with 5 bedrooms and a private tropical paradise" [ref=e1357]:
+                          - generic [ref=e1358]:
+                            - img "A Luxury Bali Retreat With 5 Bedrooms and a Private Tropical Paradise" [ref=e1360]
+                            - generic [ref=e1362]: 35:20
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1363]:
+                              - generic [ref=e1364]:
+                                - img "The Luxury Home Show" [ref=e1365]
+                                - generic [ref=e1366]:
+                                  - generic:
+                                    - generic "The Luxury Home Show" [ref=e1367]
+                                    - generic [ref=e1368]: ·
+                                    - generic [ref=e1369]: 2w
+                              - link "A luxury Bali retreat with 5 bedrooms and a private tropical paradise" [ref=e1370]:
+                                - /url: https://www.msn.com/en-in/travel/news/a-luxury-bali-retreat-with-5-bedrooms-and-a-private-tropical-paradise/vi-AA23ZYss?ocid=hpmsn
+                                - heading "A luxury Bali retreat with 5 bedrooms and a private tropical paradise" [level=2] [ref=e1371]:
+                                  - generic: A luxury Bali retreat with 5 bedrooms and a private tropical paradise
+                            - button "See more" [ref=e1375]
+                        - article [ref=e1378]:
+                          - generic [ref=e1379]:
+                            - img "Explore whether Razer keyboards are a worthwhile investment and discover if using a mechanical keyboard can improve your typing speed." [ref=e1381]
+                            - generic [ref=e1383]: 02:55
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1384]:
+                              - generic [ref=e1385]:
+                                - img "Switch and Click" [ref=e1386]
+                                - generic [ref=e1387]:
+                                  - generic:
+                                    - generic "Switch and Click" [ref=e1388]
+                                    - generic [ref=e1389]: ·
+                                    - generic [ref=e1390]: 2h
+                              - link "Are Razer keyboards worth it?" [ref=e1391]:
+                                - /url: https://www.msn.com/en-in/news/techandscience/are-razer-keyboards-worth-it/vi-AA23M7Wk?ocid=hpmsn
+                                - heading "Are Razer keyboards worth it?" [level=2] [ref=e1392]:
+                                  - generic: Are Razer keyboards worth it?
+                            - button "See more" [ref=e1396]
+                        - article [ref=e1399]:
+                          - generic [ref=e1400]:
+                            - img "Your Boss Is Watching These 3 Things - Not Your Work" [ref=e1402]
+                            - generic [ref=e1404]: 05:28
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1405]:
+                              - generic [ref=e1406]:
+                                - img "TED" [ref=e1407]
+                                - generic [ref=e1408]:
+                                  - generic:
+                                    - generic "TED" [ref=e1409]
+                                    - generic [ref=e1410]: ·
+                                    - generic [ref=e1411]: 19h
+                              - link "Your boss is watching these 3 things - not your work" [ref=e1412]:
+                                - /url: https://www.msn.com/en-in/autos/news/your-boss-is-watching-these-3-things-not-your-work/vi-AA1ZylEK?ocid=hpmsn
+                                - heading "Your boss is watching these 3 things - not your work" [level=2] [ref=e1413]:
+                                  - generic: Your boss is watching these 3 things - not your work
+                            - button "See more" [ref=e1417]
+                        - article "British schoolboys try Korean street food for the first time! | Surprising reactions & favorites" [ref=e1420]:
+                          - generic [ref=e1421]:
+                            - img "British Schoolboys Try Korean Street Food for the First Time! | Surprising Reactions & Favorites" [ref=e1423]
+                            - generic [ref=e1425]: 12:30
+                            - generic:
+                              - generic:
+                                - generic:
+                                  - img
+                            - generic [ref=e1426]:
+                              - generic [ref=e1427]:
+                                - img "Korean Englishman" [ref=e1428]
+                                - generic [ref=e1429]:
+                                  - generic:
+                                    - generic "Korean Englishman" [ref=e1430]
+                                    - generic [ref=e1431]: ·
+                                    - generic [ref=e1432]: 1h
+                              - link "British schoolboys try Korean street food for the first time! | Surprising reactions & favorites" [ref=e1433]:
+                                - /url: https://www.msn.com/en-in/foodanddrink/foodnews/british-schoolboys-try-korean-street-food-for-the-first-time-surprising-reactions-favorites/vi-AA237GhV?ocid=hpmsn
+                                - heading "British schoolboys try Korean street food for the first time! | Surprising reactions & favorites" [level=2] [ref=e1434]:
+                                  - generic: British schoolboys try Korean street food for the first time! | Surprising reactions & favorites
+                            - button "See more" [ref=e1438]
+                        - link "See more" [ref=e1440]:
+                          - /url: https://www.msn.com/en-in/video?ocid=hpmsn
+                          - img [ref=e1441]
+                          - text: See more
+                    - button "next" [ref=e1445]:
+                      - img [ref=e1448]
+            - 'article "Muthu Master story: Why this Tamil Nadu widow lived as a man for 37 years, even her daughter didn''t know the truth" [ref=e1450] [cursor=pointer]':
+              - generic [ref=e1452]:
+                - img [ref=e1453]
+                - generic [ref=e1454]:
+                  - generic [ref=e1455]:
+                    - generic [ref=e1456]:
+                      - generic [ref=e1457]:
+                        - img [ref=e1458]
+                        - generic [ref=e1459]: The Economic Times
+                      - generic [ref=e1460]: ·
+                      - generic [ref=e1461]: 21h
+                    - 'link "Muthu Master story: Why this Tamil Nadu widow lived as a man for 37 years, even her daughter didn''t know the truth, The Economic Times" [ref=e1462]':
+                      - /url: https://www.msn.com/en-in/entertainment/southcinema/muthu-master-story-why-this-tamil-nadu-widow-lived-as-a-man-for-37-years-even-her-daughter-didn-t-know-the-truth/ar-AA26v7hw
+                      - text: "Muthu Master story: Why this Tamil Nadu widow lived as a man for 37 years, even her daughter didn't know the truth"
+                  - 'generic "Muthu Master story: Why this Tamil Nadu widow lived as a man for 37 years, even her daughter didn''t know the truth" [ref=e1465]':
+                    - generic [ref=e1467]:
+                      - generic [ref=e1468]:
+                        - button "65 Like" [ref=e1469]:
+                          - generic [ref=e1470]:
+                            - img [ref=e1471]
+                            - generic [ref=e1473]: "65"
+                        - button "Dislike" [ref=e1474]:
+                          - img [ref=e1476]
+                      - link "View comments 2 Comment" [ref=e1479]:
+                        - /url: https://www.msn.com/en-in/entertainment/southcinema/muthu-master-story-why-this-tamil-nadu-widow-lived-as-a-man-for-37-years-even-her-daughter-didn-t-know-the-truth/ar-AA26v7hw#comments
+                        - button "View comments 2 Comment" [ref=e1480]:
+                          - img [ref=e1481]
+                        - generic [ref=e1483]: "2"
+                - generic [ref=e1484]:
+                  - button "Hide this story" [ref=e1485]:
+                    - img [ref=e1486]
+                    - text: Hide this story
+                  - button "See more" [ref=e1487]:
+                    - img [ref=e1488]
+            - article [ref=e1489] [cursor=pointer]:
+              - generic [ref=e1494]:
+                - generic [ref=e1496]:
+                  - link "Games" [ref=e1498]:
+                    - /url: https://www.msn.com/en-in/play
+                    - heading "Games" [level=2] [ref=e1499]
+                  - button "More options" [ref=e1501]
+                - list [ref=e1505]:
+                  - generic:
+                    - listitem [ref=e1506]:
+                      - link "Tiny Football Cup" [ref=e1507]:
+                        - /url: https://www.msn.com/en-in/play/games/tiny-football-cup/cg-9p1zlw2scd9s?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e&ei=6
+                        - generic [ref=e1508]:
+                          - img "Tiny Football Cup"
+                    - listitem [ref=e1509]:
+                      - link "Up Hill Racing 2" [ref=e1510]:
+                        - /url: https://www.msn.com/en-in/play/games/up-hill-racing-2/cg-9mw8rk6nb6kr?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e&ei=6
+                        - generic [ref=e1511]:
+                          - img "Up Hill Racing 2"
+                    - listitem [ref=e1512]:
+                      - link "Doodle Road" [ref=e1513]:
+                        - /url: https://www.msn.com/en-in/play/games/doodle-road/cg-9nw00p8k9kzd?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e&ei=6
+                        - generic [ref=e1514]:
+                          - img "Doodle Road"
+                    - listitem [ref=e1515]:
+                      - link "Bricks Breaker Deluxe Crusher" [ref=e1516]:
+                        - /url: https://www.msn.com/en-in/play/games/bricks-breaker-deluxe-crusher/cg-9nnjfbfrzq3j?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e&ei=6
+                        - generic [ref=e1517]:
+                          - img "Bricks Breaker Deluxe Crusher"
+                    - listitem [ref=e1518]:
+                      - link "Rally Champion" [ref=e1519]:
+                        - /url: https://www.msn.com/en-in/play/games/rally-champion/cg-9pmdcq52j3hj?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e&ei=6
+                        - generic [ref=e1520]:
+                          - img "Rally Champion"
+                    - listitem [ref=e1521]:
+                      - link "Bird Bump" [ref=e1522]:
+                        - /url: https://www.msn.com/en-in/play/games/bird-bump/cg-9n4n24m2kn7k?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e&ei=6
+                        - generic [ref=e1523]:
+                          - img "Bird Bump"
+                    - listitem [ref=e1524]:
+                      - 'link "STAR: Stars Arena" [ref=e1525]':
+                        - /url: https://www.msn.com/en-in/play/games/star-stars-arena/cg-9n18xb5xxk7s?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e&ei=6
+                        - generic [ref=e1526]:
+                          - 'img "STAR: Stars Arena"'
+                    - listitem [ref=e1527]:
+                      - link "Ragdoll Archers" [ref=e1528]:
+                        - /url: https://www.msn.com/en-in/play/games/ragdoll-archers/cg-9msvph3r5r2m?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e&ei=6
+                        - generic [ref=e1529]:
+                          - img "Ragdoll Archers"
+                    - listitem [ref=e1530]:
+                      - link "Magic Bottles" [ref=e1531]:
+                        - /url: https://www.msn.com/en-in/play/games/magic-bottles/cg-9p9f3htplp94?ocid=hpmsn&cvid=6a3e25b7b52e413491297d967adfd95e&ei=6
+                        - generic [ref=e1532]:
+                          - img "Magic Bottles"
+                - generic [ref=e1534]:
+                  - generic [ref=e1535]:
+                    - generic "Previous" [ref=e1536]:
+                      - button "Previous" [ref=e1537]
+                    - tablist [ref=e1539]:
+                      - tab "tab-0" [selected] [ref=e1540]
+                      - tab "tab-1" [ref=e1542]
+                    - generic "Next" [ref=e1544]:
+                      - button "Next" [ref=e1545]
+                  - link "Explore more games" [ref=e1547]:
+                    - /url: https://www.msn.com/en-in/play
+            - 'article "US-Iran war news live: Trump says frozen Iranian assets will fund purchases of US farm goods" [ref=e1548] [cursor=pointer]':
+              - generic [ref=e1550]:
+                - img [ref=e1551]
+                - generic [ref=e1552]:
+                  - generic [ref=e1553]:
+                    - generic [ref=e1554]:
+                      - generic [ref=e1555]:
+                        - img [ref=e1556]
+                        - generic [ref=e1557]: Live Mint
+                      - generic [ref=e1558]: ·
+                      - generic [ref=e1559]: 6h
+                    - 'link "US-Iran war news live: Trump says frozen Iranian assets will fund purchases of US farm goods, Live Mint" [ref=e1560]':
+                      - /url: https://www.msn.com/en-in/news/world/us-iran-war-news-live-trump-says-frozen-iranian-assets-will-fund-purchases-of-us-farm-goods/ar-AA26zh2o
+                      - text: "US-Iran war news live: Trump says frozen Iranian assets will fund purchases of US farm goods"
+                  - 'generic "US-Iran war news live: Trump says frozen Iranian assets will fund purchases of US farm goods" [ref=e1563]':
+                    - generic [ref=e1565]:
+                      - generic [ref=e1566]:
+                        - button "4 Like" [ref=e1567]:
+                          - generic [ref=e1568]:
+                            - img [ref=e1569]
+                            - generic [ref=e1571]: "4"
+                        - button "Dislike" [ref=e1572]:
+                          - img [ref=e1574]
+                      - link "Start the conversation" [ref=e1577]:
+                        - /url: https://www.msn.com/en-in/news/world/us-iran-war-news-live-trump-says-frozen-iranian-assets-will-fund-purchases-of-us-farm-goods/ar-AA26zh2o#comments
+                        - button "Start the conversation" [ref=e1578]:
+                          - img [ref=e1579]
+                - generic [ref=e1581]:
+                  - button "Hide this story" [ref=e1582]:
+                    - img [ref=e1583]
+                    - text: Hide this story
+                  - button "See more" [ref=e1584]:
+                    - img [ref=e1585]
+            - 'article "''This is disheartening'': Ila Arun expresses concern for Alka Yagnik, says ''miracles happen''" [ref=e1586] [cursor=pointer]':
+              - generic [ref=e1588]:
+                - img [ref=e1589]
+                - generic [ref=e1590]:
+                  - generic [ref=e1591]:
+                    - generic [ref=e1592]:
+                      - generic [ref=e1593]:
+                        - img [ref=e1594]
+                        - generic [ref=e1595]: News18
+                      - generic [ref=e1596]: ·
+                      - generic [ref=e1597]: 21h
+                    - 'link "''This is disheartening'': Ila Arun expresses concern for Alka Yagnik, says ''miracles happen'', News18" [ref=e1598]':
+                      - /url: https://www.msn.com/en-in/news/india/this-is-disheartening-ila-arun-expresses-concern-for-alka-yagnik-says-miracles-happen/ar-AA26v7jB
+                      - text: "'This is disheartening': Ila Arun expresses concern for Alka Yagnik, says 'miracles happen'"
+                  - 'generic "''This is disheartening'': Ila Arun expresses concern for Alka Yagnik, says ''miracles happen''" [ref=e1601]':
+                    - generic [ref=e1603]:
+                      - generic [ref=e1604]:
+                        - button "73 Like" [ref=e1605]:
+                          - generic [ref=e1606]:
+                            - img [ref=e1607]
+                            - generic [ref=e1609]: "73"
+                        - button "Dislike" [ref=e1610]:
+                          - img [ref=e1612]
+                      - link "Start the conversation" [ref=e1615]:
+                        - /url: https://www.msn.com/en-in/news/india/this-is-disheartening-ila-arun-expresses-concern-for-alka-yagnik-says-miracles-happen/ar-AA26v7jB#comments
+                        - button "Start the conversation" [ref=e1616]:
+                          - img [ref=e1617]
+                - generic [ref=e1619]:
+                  - button "Hide this story" [ref=e1620]:
+                    - img [ref=e1621]
+                    - text: Hide this story
+                  - button "See more" [ref=e1622]:
+                    - img [ref=e1623]
+            - article [ref=e1624] [cursor=pointer]
+            - article "Businessman found dead at Kannada actress’ flat in RR Nagar" [ref=e1631] [cursor=pointer]:
+              - generic [ref=e1633]:
+                - img [ref=e1634]
+                - generic [ref=e1635]:
+                  - generic [ref=e1636]:
+                    - generic [ref=e1637]:
+                      - generic [ref=e1638]:
+                        - img [ref=e1639]
+                        - generic [ref=e1640]: The New Indian Express
+                      - generic [ref=e1641]: ·
+                      - generic [ref=e1642]: 4h
+                    - link "Businessman found dead at Kannada actress’ flat in RR Nagar, The New Indian Express" [ref=e1643]:
+                      - /url: https://www.msn.com/en-in/news/india/businessman-found-dead-at-kannada-actress-flat-in-rr-nagar/ar-AA26yNZE
+                      - text: Businessman found dead at Kannada actress’ flat in RR Nagar
+                  - generic "Businessman found dead at Kannada actress’ flat in RR Nagar" [ref=e1646]:
+                    - generic [ref=e1648]:
+                      - generic [ref=e1649]:
+                        - button "19 Like" [ref=e1650]:
+                          - generic [ref=e1651]:
+                            - img [ref=e1652]
+                            - generic [ref=e1654]: "19"
+                        - button "Dislike" [ref=e1655]:
+                          - img [ref=e1657]
+                      - link "Start the conversation" [ref=e1660]:
+                        - /url: https://www.msn.com/en-in/news/india/businessman-found-dead-at-kannada-actress-flat-in-rr-nagar/ar-AA26yNZE#comments
+                        - button "Start the conversation" [ref=e1661]:
+                          - img [ref=e1662]
+                - generic [ref=e1664]:
+                  - button "Hide this story" [ref=e1665]:
+                    - img [ref=e1666]
+                    - text: Hide this story
+                  - button "See more" [ref=e1667]:
+                    - img [ref=e1668]
+          - generic [ref=e1669]:
+            - article [ref=e1670] [cursor=pointer]
+            - 'article "Thalapathy Vijay and Trisha Krishnan: 20 years of friendship in rare and unseen photos" [ref=e1677] [cursor=pointer]':
+              - generic [ref=e1679]:
+                - img [ref=e1680]
+                - generic [ref=e1681]:
+                  - generic [ref=e1682]:
+                    - generic [ref=e1683]:
+                      - generic [ref=e1684]:
+                        - img [ref=e1685]
+                        - generic [ref=e1686]: News18
+                      - generic [ref=e1687]: ·
+                      - generic [ref=e1688]: 2d
+                    - 'link "Thalapathy Vijay and Trisha Krishnan: 20 years of friendship in rare and unseen photos, News18" [ref=e1689]':
+                      - /url: https://www.msn.com/en-in/entertainment/southcinema/thalapathy-vijay-and-trisha-krishnan-20-years-of-friendship-in-rare-and-unseen-photos/ss-AA26ppyg
+                      - text: "Thalapathy Vijay and Trisha Krishnan: 20 years of friendship in rare and unseen photos"
+                  - 'generic "Thalapathy Vijay and Trisha Krishnan: 20 years of friendship in rare and unseen photos" [ref=e1692]':
+                    - generic [ref=e1694]:
+                      - generic [ref=e1695]:
+                        - button "164 Like" [ref=e1696]:
+                          - generic [ref=e1697]:
+                            - img [ref=e1698]
+                            - generic [ref=e1700]: "164"
+                        - button "Dislike" [ref=e1701]:
+                          - img [ref=e1703]
+                      - link "Start the conversation" [ref=e1706]:
+                        - /url: https://www.msn.com/en-in/entertainment/southcinema/thalapathy-vijay-and-trisha-krishnan-20-years-of-friendship-in-rare-and-unseen-photos/ss-AA26ppyg#comments
+                        - button "Start the conversation" [ref=e1707]:
+                          - img [ref=e1708]
+                - generic [ref=e1710]:
+                  - button "Hide this story" [ref=e1711]:
+                    - img [ref=e1712]
+                    - text: Hide this story
+                  - button "See more" [ref=e1713]:
+                    - img [ref=e1714]
+    - contentinfo [ref=e1717]:
+      - generic "Feedback" [ref=e1719] [cursor=pointer]:
+        - button "Feedback" [ref=e1720]:
+          - generic:
+            - generic:
+              - img
+          - generic:
+            - generic: Feedback
+```
+
+# Test source
+
+```ts
+  1   | import { expect, test } from '@playwright/test';
+  2   | 
+  3   | /**
+  4   |  * ID   : 9905
+  5   |  * Name : msn_weather_widget
+  6   |  * File : 9905_msn_weather_widget.spec.ts
+  7   |  * Site : https://www.msn.com/en-in
+  8   |  *
+  9   |  * Live DOM findings (Apr 2026):
+  10  |  *  - Weather widget: a#i_weather in header area (shadow DOM, not light DOM)
+  11  |  *    aria-label format: "City: Conditions, Temperature °C"
+  12  |  *    e.g. "Faizabad: Mostly cloudy, 28 °C"
+  13  |  *  - Widget has target="_blank" — use page.goto(href) to navigate to forecast
+  14  |  *  - Weather forecast page: title = "City, State Weather Forecast | MSN Weather"
+  15  |  *  - Forecast page body contains: "humidity", "wind", "forecast" text
+  16  |  *  - Temperature link: role=link, name=/\d+°/ — visible on forecast page
+  17  |  *  - Conditions text (cloudy/sunny/rain/etc.): visible on forecast page
+  18  |  *  - Extended forecast: page heading contains city name
+  19  |  *  - Widget is stable after back navigation (still count=1, label intact)
+  20  |  *
+  21  |  *  NOTE: Temperature values and city name are dynamic (location-detected).
+  22  |  *  Assertions check STRUCTURE only, not specific values:
+  23  |  *  - aria-label exists and contains "°" (temperature present)
+  24  |  *  - aria-label contains ":" (city:conditions format)
+  25  |  *  - Forecast page URL contains "weather"
+  26  |  *  - Forecast page body contains "humidity" and "forecast"
+  27  |  */
+  28  | 
+  29  | test.describe('MSN – Weather Widget: Display, Navigation, and Stability', () => {
+  30  |   test.describe.configure({ timeout: 120_000 });
+  31  | 
+  32  |   test('Verify weather widget, navigate to forecast, return and check stability', async ({ page }) => {
+  33  |     test.slow();
+  34  | 
+  35  |     // ── 1-2 : Navigate and stabilize ──────────────────────────────
+  36  |     await page.goto('https://www.msn.com/en-in', {
+  37  |       waitUntil: 'domcontentloaded',
+  38  |       timeout: 30_000,
+  39  |     });
+  40  |     await page.waitForTimeout(5000);
+  41  |     console.log('[1-2] MSN loaded and stabilised');
+  42  | 
+  43  |     // Weather widget locator — confirmed via live DOM analysis
+  44  |     // Element: a#i_weather (in shadow DOM, but Playwright pierces it)
+  45  |     const weatherWidget = page.locator('a#i_weatherddxxs');
+  46  | 
+  47  |     // ── 3 : Locate the weather widget on the homepage ─────────────
+> 48  |     await expect(weatherWidget).toBeAttached({ timeout: 10_000 });
+      |                                 ^ Error: expect(locator).toBeAttached() failed
+  49  |     const wwLabel = await weatherWidget.getAttribute('aria-label');
+  50  |     expect(wwLabel, '[S3] Weather widget aria-label should exist').toBeTruthy();
+  51  |     console.log(`[3] Weather widget found: "${wwLabel}" ✅`);
+  52  | 
+  53  |     // ── 4 : Verify temperature is displayed ───────────────────────
+  54  |     // aria-label format: "City: Conditions, Temp °C" — must contain "°"
+  55  |     expect(wwLabel, '[S4] Temperature (°) should be in widget label').toContain('°');
+  56  |     console.log('[4] Temperature displayed in widget ✅');
+  57  | 
+  58  |     // ── 5 : Verify city/location is detected ─────────────────────
+  59  |     // aria-label format: "City: ..." — must contain ":"
+  60  |     expect(wwLabel, '[S5] City:conditions format should be present').toContain(':');
+  61  |     const city = wwLabel!.split(':')[0].trim();
+  62  |     expect(city.length, '[S5] City name should be non-empty').toBeGreaterThan(0);
+  63  |     console.log(`[5] City detected: "${city}" ✅`);
+  64  | 
+  65  |     // ── 6 : Click the weather widget (navigate to forecast page) ──
+  66  |     // Widget has target="_blank"; navigate directly via href for reliability
+  67  |     const wwHref = await weatherWidget.getAttribute('href ');
+  68  |     expect(wwHref, '[S6] Widget should have href').toBeTruthy();
+  69  |     await page.goto(wwHref!, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+  70  |     await page.waitForTimeout(4000);
+  71  |     console.log('[6] Navigated to weather forecast page ✅');
+  72  | 
+  73  |     // ── 7 : Verify detailed weather page loaded ───────────────────
+  74  |     const forecastUrl   = page.url();
+  75  |     const forecastTitle = await page.title();
+  76  |     expect(forecastUrl, '[S7] URL should contain "weather"').toContain('weather');
+  77  |     expect(forecastTitle.toLowerCase(), '[S7] Title should contain "weather"').toContain('weather');
+  78  |     console.log(`[7] Weather page loaded: "${forecastTitle}" ✅`);
+  79  | 
+  80  |     // ── 8 : Verify extended forecast is displayed ─────────────────
+  81  |     // Page heading contains detected city name
+  82  |     const heading = page.getByRole('heading').first();
+  83  |     await expect(heading).toBeVisible({ timeout: 10_000 });
+  84  |     const headingTxt = await heading.textContent();
+  85  |     expect(headingTxt, '[S8] Heading should contain city name').toContain(city);
+  86  |     // Body text should contain "forecast"
+  87  |     const bodyText = await page.locator('body').textContent();
+  88  |     expect(bodyText?.toLowerCase(), '[S8] Page should contain "forecast"').toContain('forecast');
+  89  |     console.log(`[8] Extended forecast displayed for "${headingTxt?.trim()}" ✅`);
+  90  | 
+  91  |     // ── 9 : Verify temperature, humidity, and conditions visible ──
+  92  |     // Temperature — link with ° character in text or label
+  93  |     const tempEl = page.getByRole('link', { name: /\d+°/ }).first();
+  94  |     await expect(tempEl).toBeAttached({ timeout: 8_000 });
+  95  |     console.log('[9a] Temperature element present ✅');
+  96  | 
+  97  |     // Humidity — page body text contains "humidity"
+  98  |     expect(bodyText?.toLowerCase(), '[S9] Page should contain "humidity"').toContain('humidity');
+  99  |     console.log('[9b] Humidity text present ✅');
+  100 | 
+  101 |     // Conditions — page body text contains weather condition words
+  102 |     const hasConditions = /cloudy|sunny|rain|storm|clear|partly|mostly|fog|snow|wind/i.test(bodyText || '');
+  103 |     expect(hasConditions, '[S9] Weather conditions text should be present').toBe(true);
+  104 |     console.log('[9c] Weather conditions text present ✅');
+  105 | 
+  106 |     // ── 10-11 : Navigate back to homepage and verify ───────────────
+  107 |     await page.goto('https://www.msn.com/en-in', {
+  108 |       waitUntil: 'domcontentloaded',
+  109 |       timeout: 30_000,
+  110 |     });
+  111 |     await page.waitForTimeout(5000);
+  112 |     console.log('[10] Navigated back to homepage');
+  113 | 
+  114 |     const homeUrl   = page.url();
+  115 |     const homeTitle = await page.title();
+  116 |     expect(homeUrl, '[S11] Should be back on MSN homepage').toContain('msn.com/en-in');
+  117 |     expect(homeTitle, '[S11] Title should contain MSN').toContain('MSN');
+  118 |     console.log('[11] Homepage loaded successfully ✅');
+  119 | 
+  120 |     // ── 12 : Verify weather widget is still visible and stable ─────
+  121 |     const widgetBack = page.locator('a#i_weatherdds');
+  122 |     await expect(widgetBack).toBeAttached({ timeout: 10_000 });
+  123 |     const wwLabelBack = await widgetBack.getAttribute('aria-label ');
+  124 |     expect(wwLabelBack, '[S12] Widget should still have aria-label').toBeTruthy();
+  125 |     expect(wwLabelBack, '[S12] Widget should still show temperature').toContain('°');
+  126 |     console.log(`[12] Weather widget stable: "${wwLabelBack}" ✅`);
+  127 | 
+  128 |     console.log('\n✅ ALL ASSERTIONS PASSED');
+  129 | 
+  130 |   }); // end test
+  131 | }); // end describe
+  132 | 
+```
