@@ -1,0 +1,3 @@
+[1-2] MSN loaded and stabilised
+[3] "Open settings" button visible ✅
+[4] Clicked "Open settings"
