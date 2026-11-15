@@ -1,1 +1,1 @@
-{"id":"7dc0726da293bbb92a6ee423b583e4cd","fullName":"msn/regressionTest/weatherModule/example_weather1.spec.ts:31:7","name":"Weather widget displays temperature or condition information","status":"broken","testResultsByEnv":{"default":"8dc0838f3ea03d9968352cfd0f356cac"}}
+{"id":"7dc0726da293bbb92a6ee423b583e4cd","fullName":"msn/regressionTest/weatherModule/example_weather1.spec.ts:31:7","name":"Weather widget displays temperature or condition information","status":"passed","testResultsByEnv":{"default":"3982ed7e54fbc4de301d74f24eb86c8d"}}
